@@ -1,3 +1,4 @@
+// Main-View ~ Homepage
 import React from 'react';
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
@@ -6,7 +7,7 @@ export class MainView extends React.Component {   // here you export the MainVie
 
   constructor() {
     super();
-    this.state = {
+    this.state = {  //MainView's state has objects --> movies, selectedMovie
       movies: [
         { _id: 1, title: 'Inception', description: 'desc1...', imageUrl: '...'},
         { _id: 2, title: 'The Shawshank Redemption', description: 'desc2...', imageUrl: '...'},
@@ -15,24 +16,32 @@ export class MainView extends React.Component {   // here you export the MainVie
       selectedMovie: null
     };
   }
+
+// Custom component method "setSelectedMovie":
+  setSelectedMovie(newSelectedMovie) {
+    this.setState({
+      selectedMovie: newSelectedMovie
+    });
+  }
+
 // visual representation of component:
 render() {
-  const {movies, selectedMovie} = this.state.movies;
+  const { movies, selectedMovie } = this.state;
 
   if (selectedMovie) return <MovieView movie={selectedMovie} />;
 
-  if (movies.length === 0){
-    return <div className="main-view">The list is empty!</div>;
-  } else {
-    return (
-      <div className="main-view">
-        <button onClick={() => {alert('Nice!')}}>Click me!</button>
-        {movies.map((movie) => {
-          return <MovieCard key={movie._id} movie={movie}/>;
-        })}
-      </div>
-    );
-  }
+  if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
+
+  return (
+    <div className="main-view">
+      {selectedMovie
+        ? <MovieView movie={selectedMovie} onBackClick={newSelectedMovie => { this.setSelectedMovie(newSelectedMovie); }}/>
+        : movies.map(movie => (
+          <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie) }}/>
+        ))
+      }
+    </div>
+  );
  }
  
 }
