@@ -7,4 +7,5 @@
 
  So, get down to business and choose something for you!
 
- - Single Page Application made with React / also available on your Phone
+ - Single Page Application made with React also available on your Phone
+ - React Packages used: Parcel
