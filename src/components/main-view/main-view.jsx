@@ -2,19 +2,29 @@
 import React from 'react';
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import axios from 'axios';
 
 export class MainView extends React.Component {   // here you export the MainView Component as an instance of the React.Component(=blueprint for a component)
   constructor() {
     super();
-    this.state = {  //MainView's state has objects --> movies, selectedMovie
-      movies: [
-        { _id: 1, title: 'Inception', description: 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.', imageUrl: 'https://www.imdb.com/title/tt1375666/mediaviewer/rm3426651392/?ref_=tt_ov_i'},
-        { _id: 2, title: 'The Shawshank Redemption', description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.', imageUrl: 'https://www.imdb.com/title/tt0111161/mediaviewer/rm10105600/?ref_=tt_ov_i'},
-        { _id: 3, title: 'Gladiator', description: 'A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.', imageUrl: 'https://www.imdb.com/title/tt0172495/mediaviewer/rm2442542592/?ref_=tt_ov_i'}
-      ],
+    this.state = {
+      movies: [],
       selectedMovie: null
     };
   }
+
+  componentDidMount() {
+    axios.get('https://actor-inspector.herokuapp.com/movies')
+    .then(response => {
+      this.setState({
+        movies: response.data
+      });
+    })
+    .catch(error => {
+      console.log(error);
+    });
+  }
+
 
 // Custom component method "setSelectedMovie":
   setSelectedMovie(newSelectedMovie) {
@@ -27,9 +37,7 @@ export class MainView extends React.Component {   // here you export the MainVie
 render() {
   const { movies, selectedMovie } = this.state;
 
-  //if (selectedMovie) return <MovieView movie={selectedMovie} />;
-
-  if (movies.length === 0) return <div className="main-view">The list is empty!</div>;
+  if (movies.length === 0) return <div className="main-view" />;
 
   return (
     <div className="main-view">
@@ -42,4 +50,5 @@ render() {
     </div>
   );
  }
+
 }
