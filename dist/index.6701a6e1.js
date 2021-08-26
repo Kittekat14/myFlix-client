@@ -22873,20 +22873,20 @@ class MainView extends _reactDefault.default.Component {
                 {
                     _id: 1,
                     title: 'Inception',
-                    description: 'desc1...',
-                    imageUrl: '...'
+                    description: 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.',
+                    imageUrl: 'https://www.imdb.com/title/tt1375666/mediaviewer/rm3426651392/?ref_=tt_ov_i'
                 },
                 {
                     _id: 2,
                     title: 'The Shawshank Redemption',
-                    description: 'desc2...',
-                    imageUrl: '...'
+                    description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
+                    imageUrl: 'https://www.imdb.com/title/tt0111161/mediaviewer/rm10105600/?ref_=tt_ov_i'
                 },
                 {
                     _id: 3,
                     title: 'Gladiator',
-                    description: 'desc3...',
-                    imageUrl: '...'
+                    description: 'A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.',
+                    imageUrl: 'https://www.imdb.com/title/tt0172495/mediaviewer/rm2442542592/?ref_=tt_ov_i'
                 }
             ],
             selectedMovie: null
@@ -22901,11 +22901,12 @@ class MainView extends _reactDefault.default.Component {
     // visual representation of component:
     render() {
         const { movies , selectedMovie  } = this.state;
+        //if (selectedMovie) return <MovieView movie={selectedMovie} />;
         if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 31
+                lineNumber: 32
             },
             __self: this,
             children: "The list is empty!"
@@ -22914,7 +22915,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 34
+                lineNumber: 35
             },
             __self: this,
             children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
@@ -22924,7 +22925,7 @@ class MainView extends _reactDefault.default.Component {
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 36
+                    lineNumber: 37
                 },
                 __self: this
             }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
@@ -22934,7 +22935,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 38
+                        lineNumber: 39
                     },
                     __self: this
                 }, movie._id)
