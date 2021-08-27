@@ -5,6 +5,7 @@ import axios from 'axios';
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
+import { RegistrationView } from "../registration-view/registration-view";
 
 export class MainView extends React.Component {   // here you export the MainView Component as an instance of the React.Component(=blueprint for a component)
   constructor() {
@@ -12,7 +13,8 @@ export class MainView extends React.Component {   // here you export the MainVie
     this.state = {
       movies: [],
       selectedMovie: null,
-      user: null
+      user: null,
+      register: null
     };
   }
 
@@ -29,13 +31,19 @@ export class MainView extends React.Component {   // here you export the MainVie
   }
 
 
-// Custom component method "setSelectedMovie":
+  // custom component method "setSelectedMovie":
   setSelectedMovie(movie) {
     this.setState({
       selectedMovie: movie
     });
   }
+  // custom component method "onRegistration"
 
+  onRegistration(register) {
+    this.setState({
+      register
+    })
+  }
   // custom component method "onLoggedIn" => updates the user when he/she has logged in
   onLoggedIn(user) {
     this.setState({
@@ -45,10 +53,14 @@ export class MainView extends React.Component {   // here you export the MainVie
 
 // visual representation of component:
 render() {
-  const { movies, selectedMovie } = this.state;
-
+  const { movies, selectedMovie, user, register } = this.state;
+  if(!register) {
+    return (
+      <RegistrationView onRegistration={(register) => { this.onRegistration(register) }} />
+    )
+  }
   /* If there is no user, the LoginView is rendered. If a user is logged in, his details are passed as a prop to the LoginView*/
-  if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)} />;
+  if (!user) return <LoginView onLoggedIn={(user) => {this.onLoggedIn(user)}} />;
 
   if (movies.length === 0) return <div className="main-view" />;
 
