@@ -22874,19 +22874,19 @@ class MainView extends _reactDefault.default.Component {
                     _id: 1,
                     title: 'Inception',
                     description: 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.',
-                    imageUrl: 'C:/Users/ASUS/Documents/careerfoundry/myFlix-client/img/Inception.png'
+                    imageUrl: 'https://m.media-amazon.com/images/M/MV5BMjExMjkwNTQ0Nl5BMl5BanBnXkFtZTcwNTY0OTk1Mw@@._V1_.jpg'
                 },
                 {
                     _id: 2,
                     title: 'The Shawshank Redemption',
                     description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
-                    imageUrl: 'C:/Users/ASUS/Documents/careerfoundry/myFlix-client/img/TheShawshankRedemption.png'
+                    imageUrl: 'https://upload.wikimedia.org/wikipedia/en/8/81/ShawshankRedemptionMoviePoster.jpg'
                 },
                 {
                     _id: 3,
                     title: 'Gladiator',
                     description: 'A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.',
-                    imageUrl: 'C:/Users/ASUS/Documents/careerfoundry/myFlix-client/img/Gladiator.png'
+                    imageUrl: 'https://upload.wikimedia.org/wikipedia/en/f/fb/Gladiator_%282000_film_poster%29.png'
                 }
             ],
             selectedMovie: null
