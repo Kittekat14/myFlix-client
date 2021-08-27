@@ -10,10 +10,6 @@ export class MovieView extends React.Component {
     document.addEventListener('keypress', this.keypressCallback);
   }
 
-  componentDidUpdate() {
-    
-  }
-
   componentWillUnmount() {
   document.removeEventListener('keypress', this.keypressCallback);
   }
