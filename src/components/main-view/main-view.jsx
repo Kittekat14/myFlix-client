@@ -30,7 +30,6 @@ export class MainView extends React.Component {   // here you export the MainVie
     });
   }
 
-
   // custom component method "setSelectedMovie":
   setSelectedMovie(movie) {
     this.setState({
@@ -38,13 +37,12 @@ export class MainView extends React.Component {   // here you export the MainVie
     });
   }
   // custom component method "onRegistration"
-
   onRegistration(register) {
     this.setState({
       register
     })
   }
-  // custom component method "onLoggedIn" => updates the user when he/she has logged in
+  /* custom component method "onLoggedIn" => when a user successfully logs in, this function updates the `user` property inside the state to that particular user */
   onLoggedIn(user) {
     this.setState({
       user

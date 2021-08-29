@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 
@@ -40,6 +41,6 @@ export function RegistrationView(props) {
   )
 }
 
-RegistrationView.PropTypes()
+
 
 
