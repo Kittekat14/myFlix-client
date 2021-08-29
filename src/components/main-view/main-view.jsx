@@ -2,9 +2,9 @@
 import React from 'react';
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
-import  Inception  from "../../../img/Inception-min.jpg";
-import  Shawshank  from "../../../img/TheShawshankRedemption-min.jpg";
-import  Gladiator  from "../../../img/Gladiator-min.jpg";
+import  Inception  from "url:../../../img/Inception-min.jpg";
+import  Shawshank  from "url:../../../img/TheShawshankRedemption-min.jpg";
+import  Gladiator  from "url:../../../img/Gladiator-min.jpg";
 
 export class MainView extends React.Component {   // here you export the MainView Component as an instance of the React.Component(=blueprint for a component)
   constructor() {

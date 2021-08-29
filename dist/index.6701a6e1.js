@@ -22865,11 +22865,11 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _movieCard = require("../movie-card/movie-card");
 var _movieView = require("../movie-view/movie-view");
-var _inceptionMinJpg = require("../../../img/Inception-min.jpg");
+var _inceptionMinJpg = require("url:../../../img/Inception-min.jpg");
 var _inceptionMinJpgDefault = parcelHelpers.interopDefault(_inceptionMinJpg);
-var _theShawshankRedemptionMinJpg = require("../../../img/TheShawshankRedemption-min.jpg");
+var _theShawshankRedemptionMinJpg = require("url:../../../img/TheShawshankRedemption-min.jpg");
 var _theShawshankRedemptionMinJpgDefault = parcelHelpers.interopDefault(_theShawshankRedemptionMinJpg);
-var _gladiatorMinJpg = require("../../../img/Gladiator-min.jpg");
+var _gladiatorMinJpg = require("url:../../../img/Gladiator-min.jpg");
 var _gladiatorMinJpgDefault = parcelHelpers.interopDefault(_gladiatorMinJpg);
 class MainView extends _reactDefault.default.Component {
     constructor(){
@@ -22955,7 +22955,7 @@ class MainView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","../movie-card/movie-card":"6EiBJ","../movie-view/movie-view":"ikZdr","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","../../../img/Inception-min.jpg":"f02Kw","../../../img/TheShawshankRedemption-min.jpg":"emrHV","../../../img/Gladiator-min.jpg":"dJESk"}],"6EiBJ":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","../movie-card/movie-card":"6EiBJ","../movie-view/movie-view":"ikZdr","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","url:../../../img/Inception-min.jpg":"7PQil","url:../../../img/TheShawshankRedemption-min.jpg":"g3V3g","url:../../../img/Gladiator-min.jpg":"dCR13"}],"6EiBJ":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4249 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -23143,8 +23143,8 @@ class MovieView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd"}],"f02Kw":[function(require,module,exports) {
-module.exports = require('./helpers/bundle-url').getBundleURL('3VpAv') + "Inception-min.2ef4e013.jpg";
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd"}],"7PQil":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('3VpAv') + "Inception-min.df8e663c.jpg";
 
 },{"./helpers/bundle-url":"cqSNj"}],"cqSNj":[function(require,module,exports) {
 "use strict";
@@ -23181,11 +23181,11 @@ exports.getBundleURL = getBundleURLCached;
 exports.getBaseURL = getBaseURL;
 exports.getOrigin = getOrigin;
 
-},{}],"emrHV":[function(require,module,exports) {
-module.exports = require('./helpers/bundle-url').getBundleURL('3VpAv') + "TheShawshankRedemption-min.77e70359.jpg";
+},{}],"g3V3g":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('3VpAv') + "TheShawshankRedemption-min.e56f0432.jpg";
 
-},{"./helpers/bundle-url":"cqSNj"}],"dJESk":[function(require,module,exports) {
-module.exports = require('./helpers/bundle-url').getBundleURL('3VpAv') + "Gladiator-min.a9691701.jpg";
+},{"./helpers/bundle-url":"cqSNj"}],"dCR13":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('3VpAv') + "Gladiator-min.047e6116.jpg";
 
 },{"./helpers/bundle-url":"cqSNj"}]},["drWAM","l0xXt","dLPEP"], "dLPEP", "parcelRequireaec4")
 
