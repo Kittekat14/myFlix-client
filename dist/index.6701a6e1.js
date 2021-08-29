@@ -22880,7 +22880,7 @@ class MainView extends _reactDefault.default.Component {
                     _id: 1,
                     title: 'Inception',
                     description: 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.',
-                    imageUrl: _inceptionMinJpgDefault.default
+                    imageUrl: 'https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_.jpg'
                 },
                 {
                     _id: 2,
@@ -23058,6 +23058,7 @@ class MovieView extends _reactDefault.default.Component {
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("img", {
                         src: movie.imageUrl,
+                        crossOrigin: "true",
                         __source: {
                             fileName: "src/components/movie-view/movie-view.jsx",
                             lineNumber: 11
