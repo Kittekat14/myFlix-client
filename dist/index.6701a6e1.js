@@ -23013,7 +23013,7 @@ MovieCard.propTypes = {
         description: _propTypesDefault.default.string.isRequired,
         imageUrl: _propTypesDefault.default.string.isRequired,
         year: _propTypesDefault.default.number.isRequired,
-        featured: _propTypesDefault.default.bool.isRequired,
+        featured: _propTypesDefault.default.bool,
         actors: _propTypesDefault.default.array.isRequired
     }),
     onMovieClick: _propTypesDefault.default.func.isRequired
@@ -23858,6 +23858,17 @@ class MovieView extends _reactDefault.default.Component {
         }));
     }
 }
+MovieView.propTypes = {
+    movie: _propTypesDefault.default.shape({
+        title: _propTypesDefault.default.string.isRequired,
+        description: _propTypesDefault.default.string.isRequired,
+        imageUrl: _propTypesDefault.default.string.isRequired,
+        year: _propTypesDefault.default.number.isRequired,
+        featured: _propTypesDefault.default.bool,
+        actors: _propTypesDefault.default.array.isRequired
+    }),
+    onBackClick: _propTypesDefault.default.func.isRequired
+};
 
   $parcel$ReactRefreshHelpers$3741.postlude(module);
 } finally {
@@ -25251,7 +25262,7 @@ function LoginView(props) {
     _s();
     const [username, setUsername] = _react.useState('');
     const [password, setPassword] = _react.useState('');
-    const handleSubmit = ()=>{
+    const handleSubmit = (e)=>{
         e.preventDefault();
         console.log(username, password);
         props.onLoggedIn(username);
@@ -25355,22 +25366,22 @@ function RegistrationView(props) {
     const [password, setPassword] = _react.useState("");
     const [email, setEmail] = _react.useState("");
     const [birthdate, setBirthdate] = _react.useState("");
-    const handleSubmit = ()=>{
+    const handleSubmit = (e)=>{
         e.preventDefault();
         console.log(username, password, email, birthdate);
-        /* Send a request to the server for authentication */ /* then call props.onLoggedIn(username) */ props.onRegistration(username);
+        props.onRegistration(username);
     };
     return(/*#__PURE__*/ _jsxRuntime.jsxs("form", {
         __source: {
             fileName: "src/components/registration-view/registration-view.jsx",
-            lineNumber: 22
+            lineNumber: 20
         },
         __self: this,
         children: [
             /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                 __source: {
                     fileName: "src/components/registration-view/registration-view.jsx",
-                    lineNumber: 23
+                    lineNumber: 21
                 },
                 __self: this,
                 children: [
@@ -25382,7 +25393,7 @@ function RegistrationView(props) {
                         ,
                         __source: {
                             fileName: "src/components/registration-view/registration-view.jsx",
-                            lineNumber: 25
+                            lineNumber: 23
                         },
                         __self: this
                     })
@@ -25391,7 +25402,7 @@ function RegistrationView(props) {
             /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                 __source: {
                     fileName: "src/components/registration-view/registration-view.jsx",
-                    lineNumber: 27
+                    lineNumber: 25
                 },
                 __self: this,
                 children: [
@@ -25403,7 +25414,7 @@ function RegistrationView(props) {
                         ,
                         __source: {
                             fileName: "src/components/registration-view/registration-view.jsx",
-                            lineNumber: 29
+                            lineNumber: 27
                         },
                         __self: this
                     })
@@ -25412,7 +25423,7 @@ function RegistrationView(props) {
             /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                 __source: {
                     fileName: "src/components/registration-view/registration-view.jsx",
-                    lineNumber: 31
+                    lineNumber: 29
                 },
                 __self: this,
                 children: [
@@ -25424,7 +25435,7 @@ function RegistrationView(props) {
                         ,
                         __source: {
                             fileName: "src/components/registration-view/registration-view.jsx",
-                            lineNumber: 33
+                            lineNumber: 31
                         },
                         __self: this
                     })
@@ -25433,7 +25444,7 @@ function RegistrationView(props) {
             /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                 __source: {
                     fileName: "src/components/registration-view/registration-view.jsx",
-                    lineNumber: 35
+                    lineNumber: 33
                 },
                 __self: this,
                 children: [
@@ -25445,7 +25456,7 @@ function RegistrationView(props) {
                         ,
                         __source: {
                             fileName: "src/components/registration-view/registration-view.jsx",
-                            lineNumber: 37
+                            lineNumber: 35
                         },
                         __self: this
                     })
@@ -25456,16 +25467,22 @@ function RegistrationView(props) {
                 onClick: handleSubmit,
                 __source: {
                     fileName: "src/components/registration-view/registration-view.jsx",
-                    lineNumber: 39
+                    lineNumber: 37
                 },
                 __self: this,
-                children: "Submit"
+                children: "Register"
             })
         ]
     }));
 }
 _s(RegistrationView, "RIZRq4jE1cgzcLOHGIpSeTDhd80=");
 _c = RegistrationView;
+RegistrationView.propTypes = {
+    username: _propTypesDefault.default.string.isRequired,
+    password: _propTypesDefault.default.string.isRequired,
+    email: _propTypesDefault.default.string.isRequired,
+    birthdate: _propTypesDefault.default.string
+};
 var _c;
 $RefreshReg$(_c, "RegistrationView");
 

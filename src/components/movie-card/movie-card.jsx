@@ -16,7 +16,7 @@ MovieCard.propTypes = {
     description: PropTypes.string.isRequired,
     imageUrl: PropTypes.string.isRequired,
     year: PropTypes.number.isRequired,
-    featured: PropTypes.bool.isRequired,
+    featured: PropTypes.bool,
     actors: PropTypes.array.isRequired
      
   }),  
