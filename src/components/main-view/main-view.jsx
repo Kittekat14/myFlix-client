@@ -2,15 +2,18 @@
 import React from 'react';
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
+import  Inception  from "../../../img/Inception-min.jpg";
+import  Shawshank  from "../../../img/TheShawshankRedemption-min.jpg";
+import  Gladiator  from "../../../img/Gladiator-min.jpg";
 
 export class MainView extends React.Component {   // here you export the MainView Component as an instance of the React.Component(=blueprint for a component)
   constructor() {
     super();
     this.state = {  //MainView's state has objects --> movies, selectedMovie
       movies: [
-        { _id: 1, title: 'Inception', description: 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.', imageUrl: 'https://m.media-amazon.com/images/M/MV5BMjExMjkwNTQ0Nl5BMl5BanBnXkFtZTcwNTY0OTk1Mw@@._V1_.jpg'},
-        { _id: 2, title: 'The Shawshank Redemption', description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.', imageUrl: '../../../img/TheShawshankRedemption.jpg'},
-        { _id: 3, title: 'Gladiator', description: 'A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.', imageUrl: '../../../img/Gladiator.jpg'}
+        { _id: 1, title: 'Inception', description: 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.', imageUrl: Inception},
+        { _id: 2, title: 'The Shawshank Redemption', description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.', imageUrl: Shawshank},
+        { _id: 3, title: 'Gladiator', description: 'A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.', imageUrl: Gladiator}
       ],
       selectedMovie: null
     };

@@ -22865,6 +22865,12 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _movieCard = require("../movie-card/movie-card");
 var _movieView = require("../movie-view/movie-view");
+var _inceptionMinJpg = require("../../../img/Inception-min.jpg");
+var _inceptionMinJpgDefault = parcelHelpers.interopDefault(_inceptionMinJpg);
+var _theShawshankRedemptionMinJpg = require("../../../img/TheShawshankRedemption-min.jpg");
+var _theShawshankRedemptionMinJpgDefault = parcelHelpers.interopDefault(_theShawshankRedemptionMinJpg);
+var _gladiatorMinJpg = require("../../../img/Gladiator-min.jpg");
+var _gladiatorMinJpgDefault = parcelHelpers.interopDefault(_gladiatorMinJpg);
 class MainView extends _reactDefault.default.Component {
     constructor(){
         super();
@@ -22874,19 +22880,19 @@ class MainView extends _reactDefault.default.Component {
                     _id: 1,
                     title: 'Inception',
                     description: 'A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.',
-                    imageUrl: 'https://m.media-amazon.com/images/M/MV5BMjExMjkwNTQ0Nl5BMl5BanBnXkFtZTcwNTY0OTk1Mw@@._V1_.jpg'
+                    imageUrl: _inceptionMinJpgDefault.default
                 },
                 {
                     _id: 2,
                     title: 'The Shawshank Redemption',
                     description: 'Two imprisoned men bond over a number of years, finding solace and eventual redemption through acts of common decency.',
-                    imageUrl: '../../../img/TheShawshankRedemption.jpg'
+                    imageUrl: _theShawshankRedemptionMinJpgDefault.default
                 },
                 {
                     _id: 3,
                     title: 'Gladiator',
                     description: 'A former Roman General sets out to exact vengeance against the corrupt emperor who murdered his family and sent him into slavery.',
-                    imageUrl: '../../../img/Gladiator.jpg'
+                    imageUrl: _gladiatorMinJpgDefault.default
                 }
             ],
             selectedMovie: null
@@ -22906,7 +22912,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 32
+                lineNumber: 35
             },
             __self: this,
             children: "The list is empty!"
@@ -22915,7 +22921,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 35
+                lineNumber: 38
             },
             __self: this,
             children: selectedMovie ? /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
@@ -22925,7 +22931,7 @@ class MainView extends _reactDefault.default.Component {
                 },
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 37
+                    lineNumber: 40
                 },
                 __self: this
             }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
@@ -22935,7 +22941,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 39
+                        lineNumber: 42
                     },
                     __self: this
                 }, movie._id)
@@ -22949,7 +22955,7 @@ class MainView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","../movie-card/movie-card":"6EiBJ","../movie-view/movie-view":"ikZdr","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd"}],"6EiBJ":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","../movie-card/movie-card":"6EiBJ","../movie-view/movie-view":"ikZdr","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","../../../img/Inception-min.jpg":"f02Kw","../../../img/TheShawshankRedemption-min.jpg":"emrHV","../../../img/Gladiator-min.jpg":"dJESk"}],"6EiBJ":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4249 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -23052,7 +23058,6 @@ class MovieView extends _reactDefault.default.Component {
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("img", {
                         src: movie.imageUrl,
-                        alt: "poster",
                         __source: {
                             fileName: "src/components/movie-view/movie-view.jsx",
                             lineNumber: 11
@@ -23137,6 +23142,50 @@ class MovieView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd"}]},["drWAM","l0xXt","dLPEP"], "dLPEP", "parcelRequireaec4")
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd"}],"f02Kw":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('3VpAv') + "Inception-min.2ef4e013.jpg";
+
+},{"./helpers/bundle-url":"cqSNj"}],"cqSNj":[function(require,module,exports) {
+"use strict";
+var bundleURL = {
+};
+function getBundleURLCached(id) {
+    var value = bundleURL[id];
+    if (!value) {
+        value = getBundleURL();
+        bundleURL[id] = value;
+    }
+    return value;
+}
+function getBundleURL() {
+    try {
+        throw new Error();
+    } catch (err) {
+        var matches = ('' + err.stack).match(/(https?|file|ftp):\/\/[^)\n]+/g);
+        if (matches) // The first two stack frames will be this function and getBundleURLCached.
+        // Use the 3rd one, which will be a runtime in the original bundle.
+        return getBaseURL(matches[2]);
+    }
+    return '/';
+}
+function getBaseURL(url) {
+    return ('' + url).replace(/^((?:https?|file|ftp):\/\/.+)\/[^/]+$/, '$1') + '/';
+} // TODO: Replace uses with `new URL(url).origin` when ie11 is no longer supported.
+function getOrigin(url) {
+    var matches = ('' + url).match(/(https?|file|ftp):\/\/[^/]+/);
+    if (!matches) throw new Error('Origin not found');
+    return matches[0];
+}
+exports.getBundleURL = getBundleURLCached;
+exports.getBaseURL = getBaseURL;
+exports.getOrigin = getOrigin;
+
+},{}],"emrHV":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('3VpAv') + "TheShawshankRedemption-min.77e70359.jpg";
+
+},{"./helpers/bundle-url":"cqSNj"}],"dJESk":[function(require,module,exports) {
+module.exports = require('./helpers/bundle-url').getBundleURL('3VpAv') + "Gladiator-min.a9691701.jpg";
+
+},{"./helpers/bundle-url":"cqSNj"}]},["drWAM","l0xXt","dLPEP"], "dLPEP", "parcelRequireaec4")
 
 //# sourceMappingURL=index.6701a6e1.js.map
