@@ -10,3 +10,5 @@
  - Single Page Application made with React also available on your Phone
  - React Packages used: 
  * Parcel built-tool (parcel version 2.0.0-rc.0)
+ * @parcel/transformer-image: version 2.0.0-rc.0
+ * @parcel/transformer-sass: 2.0.0-rc.0
