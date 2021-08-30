@@ -9,4 +9,4 @@
 
  - Single Page Application made with React also available on your Phone
  - React Packages used: 
- * Parcel built-tool
+ * Parcel built-tool (parcel version 2.0.0-rc.0)
