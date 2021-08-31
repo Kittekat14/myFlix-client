@@ -15,9 +15,9 @@ MovieCard.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     imageUrl: PropTypes.string.isRequired,
-    year: PropTypes.number.isRequired,
+    year: PropTypes.number,
     featured: PropTypes.bool,
-    actors: PropTypes.array.isRequired
+    actors: PropTypes.array
      
   }),  
   onMovieClick: PropTypes.func.isRequired
