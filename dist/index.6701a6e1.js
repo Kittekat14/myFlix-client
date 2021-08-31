@@ -22871,6 +22871,7 @@ var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 class MovieCard extends _reactDefault.default.Component {
     render() {
         const { movie , onMovieClick  } = this.props;
+        console.log(movie);
         return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
             className: "movie-card",
             onClick: ()=>{
@@ -22905,7 +22906,7 @@ MovieCard.propTypes = {
             movies: _propTypesDefault.default.array
         })
     }),
-    onMovieClick: _propTypesDefault.default.func.isRequired
+    onMovieClick: _propTypesDefault.default.func
 };
 
   $parcel$ReactRefreshHelpers$4249.postlude(module);
@@ -23897,7 +23898,7 @@ class MovieView extends _reactDefault.default.Component {
                             },
                             __self: this,
                             children: movie.genre
-                        }, movie.genre._id)
+                        })
                     ]
                 }),
                 /*#__PURE__*/ _jsxRuntime.jsxs("div", {
@@ -23953,7 +23954,7 @@ class MovieView extends _reactDefault.default.Component {
                             },
                             __self: this,
                             children: movie.director
-                        }, movie.director._id)
+                        })
                     ]
                 }),
                 /*#__PURE__*/ _jsxRuntime.jsx("button", {
@@ -25485,7 +25486,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","../registration-view/registration-view":"aP2YV"}],"aP2YV":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","../registration-view/registration-view":"aP2YV","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd"}],"aP2YV":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$8dd4 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
