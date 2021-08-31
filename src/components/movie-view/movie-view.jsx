@@ -10,7 +10,7 @@ export class MovieView extends React.Component {
     <div className="movie-view">
 
       <div className="movie-poster">
-        <img src={movie.imageUrl} crossOrigin={true} />
+        <img src={movie.imageUrl} alt="poster"/>
       </div>
       <div className="movie-title">
         <span className="label">Title: </span>
@@ -26,7 +26,7 @@ export class MovieView extends React.Component {
       </div>  
       <div className="movie-genre">
         <span className="label">Genre: </span>
-        <span className="value">{movie.genre}</span>  
+        <span className="value" key={movie.genre._id}>{movie.genre}</span>  
       </div>  
       <div className="movie-actors">
         <span className="label">Actors: </span>
@@ -34,12 +34,9 @@ export class MovieView extends React.Component {
       </div>  
       <div className="movie-director">
         <span className="label">Director: </span>
-        <span className="value">{movie.director}</span>  
+        <span className="value" key={movie.director._id}>{movie.director}</span>  
       </div>  
-      <div className="movie-_id">
-        <span className="label">ID: </span>
-        <span className="value">{movie._id}</span>
-      </div>
+      
       <button onClick={() => { onBackClick(null); }}>Back</button>
 
     </div>
@@ -51,15 +48,20 @@ export class MovieView extends React.Component {
 
 MovieView.propTypes = {
   movie: PropTypes.shape({ 
-    _id: PropTypes.string.isRequired,
+    _id: PropTypes.string,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     imageUrl: PropTypes.string.isRequired,
     year: PropTypes.number,
     featured: PropTypes.bool,
     actors: PropTypes.array,
-    genre: PropTypes.string,
-    director: PropTypes.string
+    genre: PropTypes.object,
+    director: PropTypes.shape({
+      name: PropTypes.string,
+      bio: PropTypes.string,
+      birthyear: PropTypes.string,
+      movies: PropTypes.array
+    })
   }),
   onBackClick: PropTypes.func.isRequired
 }
