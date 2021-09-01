@@ -14,9 +14,10 @@ export function LoginView(props) {
 
   const handleSignup = (e) => {
     e.preventDefault();
-    <RegistrationView />
+    return <RegistrationView />;
   };
 
+  
   return (
     <form>
       <label>
@@ -27,13 +28,18 @@ export function LoginView(props) {
         Password:
         <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
       </label>
-      <button type="submit" onClick={handleSignin}>Sign in</button>
-      <button type="submit" onClick={handleSignup}>Sign up</button>
+      <button className="signinBtn" type="submit" onClick={handleSignin}>Sign in</button>
+      <button className="signupBtn" type="submit" onClick={handleSignup}>Sign up</button>
     </form>
   );
 }
 
 LoginView.propTypes = {
-  username: PropTypes.string,
-  password: PropTypes.string
+  user: PropTypes.shape({
+    username: PropTypes.string,
+    password: PropTypes.string
+  }),
+  onLoggedIn: PropTypes.func,
+  handleSignin: PropTypes.func,
+  handleSignup: PropTypes.func
 }
