@@ -25394,13 +25394,15 @@ function LoginView(props) {
     };
     const handleSignup = (e)=>{
         e.preventDefault();
-        return(/*#__PURE__*/ _jsxRuntime.jsx(_registrationView.RegistrationView, {
+        /*#__PURE__*/ _jsxRuntime.jsx(_registrationView.RegistrationView, {
+            onRegistration: (register)=>onRegistration(register)
+            ,
             __source: {
                 fileName: "src/components/login-view/login-view.jsx",
                 lineNumber: 17
             },
             __self: this
-        }));
+        });
     };
     return(/*#__PURE__*/ _jsxRuntime.jsxs("form", {
         __source: {

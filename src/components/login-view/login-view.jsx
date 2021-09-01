@@ -14,7 +14,7 @@ export function LoginView(props) {
 
   const handleSignup = (e) => {
     e.preventDefault();
-    return <RegistrationView />;
+    <RegistrationView onRegistration={ register => onRegistration(register) } />;
   };
 
   
