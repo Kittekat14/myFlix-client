@@ -4,21 +4,22 @@ import PropTypes from 'prop-types';
 export class MovieView extends React.Component {
 
   render() {
-    const { movie, onBackClick } = this.props;
-    console.log(selectedMovie)
+    const { movie, onBackClick, imageUrl, title, description, year, genre, actors, director, featured } = this.props;
+    console.log(movie);
     return (
+
     <div className="movie-view">
 
-      <div className="movie-poster">
-        <img src={movie.imageUrl} alt="poster"/>
+        <div className="movie-poster">
+        <img src={movie.imageUrl} crossOrigin="true" width="300"/>
       </div>
       <div className="movie-title">
         <span className="label">Title: </span>
-        <span className="value">{movie.title}</span>  
+        <span className="value">{movie.title}</span>
       </div>
       <div className="movie-description">
         <span className="label">Description: </span>
-        <span className="value">{movie.description}</span>  
+        <span className="value">{movie.description}</span>
       </div>  
       <div className="movie-year">
         <span className="label">Year: </span>
@@ -26,16 +27,20 @@ export class MovieView extends React.Component {
       </div>  
       <div className="movie-genre">
         <span className="label">Genre: </span>
-        <span className="value" >{movie.genre}</span>  
+        <span className="value" >{movie.genre.name}</span>  
       </div>  
       <div className="movie-actors">
         <span className="label">Actors: </span>
-        <span className="value">{movie.actors}</span>  
+        <span className="value">{movie.actors.join(', ')}</span>  
       </div>  
       <div className="movie-director">
         <span className="label">Director: </span>
-        <span className="value" >{movie.director}</span>  
+        <span className="value" >{movie.director.name}</span>  
       </div>  
+      {/* <div className="movie-feature">
+        <span className="label">Featured: </span>
+        <span className="value" >{movie.featured}</span>  
+      </div> */}
       
       <button onClick={() => { onBackClick(null); }}>Back</button>
 
@@ -52,7 +57,7 @@ MovieView.propTypes = {
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     imageUrl: PropTypes.string.isRequired,
-    year: PropTypes.number,
+    year: PropTypes.number.isRequired,
     featured: PropTypes.bool,
     actors: PropTypes.array,
     genre: PropTypes.object,
