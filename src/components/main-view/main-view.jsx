@@ -2,10 +2,11 @@
 import React from 'react';
 import axios from 'axios';
 
+import { LoginView } from "../login-view/login-view";
+import { RegisterView } from "../register-view/register-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
-import { LoginView } from "../login-view/login-view";
-import { RegistrationView } from "../registration-view/registration-view";
+
 
 export class MainView extends React.Component {  
   constructor() {
@@ -13,8 +14,8 @@ export class MainView extends React.Component {
     this.state = {
       movies: [],
       selectedMovie: null,
-      user: false,
-      register: true
+      user: null,
+      register: null
     };
   }
 
@@ -32,21 +33,15 @@ export class MainView extends React.Component {
 
   // custom component method "setSelectedMovie":
   setSelectedMovie(movie) {
-    this.setState({
-      selectedMovie: movie
-    });
+    this.setState({selectedMovie: movie});
   }
   /* custom component method "onLoggedIn" => when a user successfully logs in, this function updates the `user` property inside the state to that particular user */
   onLoggedIn(user) {
-    this.setState({
-      user
-    });
+    this.setState({user});
   }
   // custom component method "onRegistration"
   onRegistration(register) {
-    this.setState({
-      register
-    })
+    this.setState({register});
   }
 
 
@@ -57,9 +52,9 @@ export class MainView extends React.Component {
     
     /* If there is no user, the LoginView is rendered. If a user is logged in, his details are passed as a prop to the LoginView*/
 
-    if (!user && register) return <LoginView onLoggedIn={ user => this.onLoggedIn(user) } />
+    if ( !user ) return <LoginView onLoggedIn={ user => this.onLoggedIn(user) } />
 
-    if(!user && !register) return <RegistrationView onRegistration={ register => this.onRegistration(register) } />
+    if( register ) return <RegisterView onRegistration={ register => this.onRegistration(register) } />
 
     if (movies.length === 0) return <div className="main-view" />;
 

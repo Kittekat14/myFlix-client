@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { LoginView } from '../login-view/login-view';
 
-export function RegistrationView(props) {
+export function RegisterView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -11,13 +11,14 @@ export function RegistrationView(props) {
   
   const handleSubmit = (e) => {
     e.preventDefault();
+
     console.log(username, password, email, birthdate);
     props.onRegistration(username);
   };
 
   
-  const handleSignin = (e) => {
-    e.preventDefault();
+  const handleLogin = (e) => {
+    // e.preventDefault();
     return <LoginView />;
   };
 
@@ -57,13 +58,13 @@ export function RegistrationView(props) {
         />
       </label>
       <button type="submit" onClick={handleSubmit}>Register</button>
-      <button type="submit" onClick={handleSignin}>Login User Account </button>
+      <button type="button" onClick={handleLogin}>Login</button>
       
     </form>
   )
 }
 
-RegistrationView.propTypes = {
+RegisterView.propTypes = {
   register: PropTypes.shape({
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
