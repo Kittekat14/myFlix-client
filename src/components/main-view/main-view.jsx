@@ -14,8 +14,8 @@ export class MainView extends React.Component {
     this.state = {
       movies: [],
       selectedMovie: null,
-      user: null,
-      register: null
+      user: '',
+      register: ''
     };
   }
 
@@ -52,9 +52,9 @@ export class MainView extends React.Component {
     
     /* If there is no user, the LoginView is rendered. If a user is logged in, his details are passed as a prop to the LoginView*/
 
-    if ( !user ) return <LoginView onLoggedIn={ user => this.onLoggedIn(user) } />
+    if ( !user ) { return <LoginView onLoggedIn={ (user) => this.onLoggedIn(user) } /> }
 
-    if( register ) return <RegisterView onRegistration={ register => this.onRegistration(register) } />
+    if ( !register ) return <RegisterView onRegistration={ (register) => this.onRegistration(register) } />
 
     if (movies.length === 0) return <div className="main-view" />;
 
@@ -68,5 +68,6 @@ export class MainView extends React.Component {
         }
       </div>
     );
+
   }
 }

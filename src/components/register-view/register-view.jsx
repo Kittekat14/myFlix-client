@@ -11,14 +11,12 @@ export function RegisterView(props) {
   
   const handleSubmit = (e) => {
     e.preventDefault();
-
     console.log(username, password, email, birthdate);
     props.onRegistration(username);
   };
 
   
   const handleLogin = (e) => {
-    // e.preventDefault();
     return <LoginView />;
   };
 
@@ -73,7 +71,7 @@ RegisterView.propTypes = {
   }),
   onRegistration: PropTypes.func,
   handleSubmit: PropTypes.func,
-  handleSignin: PropTypes.func    
-}
+  handleLogin: PropTypes.func    
+};
 
 
