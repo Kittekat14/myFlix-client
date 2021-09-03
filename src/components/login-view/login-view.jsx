@@ -15,10 +15,10 @@ export function LoginView(props) {
     props.onLoggedIn(username);
   };
 
-  const handleRegistration = (e) => {
+    const handleRegistration = (e) => {
     e.preventDefault();
     console.log(username);
-    return <RegisterView value={username} onRegistration={ e => setRegister(e.target.value) } />
+    props.onRegisterClick(true);
    }
 
   return (

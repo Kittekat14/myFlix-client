@@ -8,7 +8,6 @@ export function RegisterView(props) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthdate, setBirthdate] = useState("");
-  //const [login, toLogin] = useState("");
   
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -18,7 +17,7 @@ export function RegisterView(props) {
 
   
   const handleLogin = (e) => {
-    return <LoginView />;
+    props.onLoginClick(false);
   };
 
 
@@ -57,7 +56,7 @@ export function RegisterView(props) {
         />
       </label>
       <button type="submit" onClick={handleSubmit}>Register</button>
-      <button type="button" onClick={props.toLogin}>Login</button>
+      <button type="button" onClick={handleLogin}>Login</button>
       
     </form>
   )
