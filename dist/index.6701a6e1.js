@@ -25994,7 +25994,7 @@ function LoginView(props) {
                     lineNumber: 41
                 },
                 __self: this,
-                children: "Submit"
+                children: "Register"
             })
         ]
     }));

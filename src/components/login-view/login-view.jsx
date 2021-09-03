@@ -39,7 +39,7 @@ return (
     Submit
     </Button>
     <Button variant="primary" type="submit" onClick={handleRegistration}>
-    Submit
+    Register
     </Button>
   </Form>
 );
