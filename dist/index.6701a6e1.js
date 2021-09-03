@@ -22750,15 +22750,13 @@ var _registerView = require("../register-view/register-view");
 var _movieCard = require("../movie-card/movie-card");
 var _movieView = require("../movie-view/movie-view");
 class MainView extends _reactDefault.default.Component {
-    constructor(props){
-        super(props);
+    constructor(){
+        super();
         this.state = {
             movies: [],
             selectedMovie: null,
-            user: '',
-            register: '',
-            login: false,
-            signup: false
+            user: null,
+            register: false
         };
     }
     componentDidMount() {
@@ -22801,22 +22799,22 @@ class MainView extends _reactDefault.default.Component {
     // visual representation of component:
     render() {
         const { movies , selectedMovie , user , register , signup , login  } = this.state;
-        /* If there is no user, the LoginView is rendered. If a user is logged in, his details are passed as a prop to the LoginView*/ if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
-            onLoggedIn: (user1)=>this.onLoggedIn(user1)
+        /* If there is no user, the LoginView is rendered. If a user is logged in, his details are passed as a prop to the LoginView*/ if (!register) return(/*#__PURE__*/ _jsxRuntime.jsx(_registerView.RegisterView, {
+            onRegistration: (register1)=>this.onRegistration(register1)
             ,
+            registerHandler: _loginView.toRegister,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
                 lineNumber: 65
             },
             __self: this
         }));
-        if (!register) return(/*#__PURE__*/ _jsxRuntime.jsx(_registerView.RegisterView, {
-            onRegistration: (register1)=>this.onRegistration(register1)
+        if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
+            onLoggedIn: (user1)=>this.onLoggedIn(user1)
             ,
-            registerHandler: _loginView.toRegister,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 67
+                lineNumber: 70
             },
             __self: this
         }));
@@ -22824,7 +22822,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 69
+                lineNumber: 73
             },
             __self: this
         }));
@@ -22832,7 +22830,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 72
+                lineNumber: 76
             },
             __self: this,
             children: [
@@ -22843,7 +22841,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 74
+                        lineNumber: 78
                     },
                     __self: this
                 }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
@@ -22853,7 +22851,7 @@ class MainView extends _reactDefault.default.Component {
                         },
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 76
+                            lineNumber: 80
                         },
                         __self: this
                     }, movie._id)
@@ -22864,14 +22862,14 @@ class MainView extends _reactDefault.default.Component {
                     toLogin: this.toLogin.bind(this),
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 81
+                        lineNumber: 85
                     },
                     __self: this
                 }) : /*#__PURE__*/ _jsxRuntime.jsx(_registerView.RegisterView, {
                     toRegister: this.toRegister.bind(this),
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 85
+                        lineNumber: 89
                     },
                     __self: this
                 }),
