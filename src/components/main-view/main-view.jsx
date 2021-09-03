@@ -8,6 +8,7 @@ import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { Container } from 'react-bootstrap';
 
 export class MainView extends React.Component {  
   constructor() {
@@ -60,6 +61,7 @@ export class MainView extends React.Component {
     if (movies.length === 0) return <div className="main-view" />;
 
     return (
+    <Container>
       <div className="main-view">
         {selectedMovie
           ? ( <Row className="justify-content-md-center">
@@ -79,6 +81,7 @@ export class MainView extends React.Component {
           )
         }
       </div>
+      </Container>
     );
   }
 }
