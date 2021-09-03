@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { MainView } from '../main-view/main-view';
 import { RegisterView } from '../register-view/register-view';
 
 export function LoginView(props) {
-  const [ register, setRegister ] = useState('');
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
 
@@ -15,10 +15,11 @@ export function LoginView(props) {
     props.onLoggedIn(username);
   };
 
-  // const handleRegistration = (e) => {
-  //   console.log(username);
-  //   if ( !register ) return <RegisterView value={username} onRegistration={ e => setRegister(e.target.value) } />
-  // }
+  const handleRegistration = (e) => {
+    e.preventDefault();
+    console.log(username);
+    return <RegisterView value={username} onRegistration={ e => setRegister(e.target.value) } />
+   }
 
   return (
     <form>
@@ -31,7 +32,7 @@ export function LoginView(props) {
         <input type="password" value={password} onChange={e => setPassword(e.target.value)} />
       </label>
       <button className="loginBtn" type="submit" onClick={handleSubmit}>Login</button>
-      <button className="registerBtn" type="button" onClick={() => { onRegistration(null); }}>Register</button>
+      <button className="registerBtn" type="submit" onClick={handleRegistration}>Register</button>
     </form>
   );
 }
@@ -41,5 +42,8 @@ LoginView.propTypes = {
     username: PropTypes.string.isRequired,
     password: PropTypes.string.isRequired,
   }),
-  onLoggedIn: PropTypes.func,
+  onLoggedIn: PropTypes.func,  
+  handleSubmit: PropTypes.func,  
+  handleRegistration: PropTypes.func,  
+  toRegister: PropTypes.func
 };
