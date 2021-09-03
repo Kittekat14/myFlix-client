@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
+import { MainView } from '../main-view/main-view';
 import { RegisterView } from '../register-view/register-view';
 
 export function LoginView(props) {
-  const [ register, setRegister ] = useState('');
-  const [ user, setUser ] = useState('');
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
 
@@ -18,10 +17,11 @@ export function LoginView(props) {
     props.onLoggedIn(username);
   };
 
-  const handleRegistration = (e) => {
-    if(register) return <RegisterView onRegistration={ register => this.onRegistration(register) } />;
-    if(user) return <RegisterView onRegistration={ register => this.onRegistration(register)} />
-  }
+    const handleRegistration = (e) => {
+    e.preventDefault();
+    console.log(username);
+    props.onRegisterClick(true);
+   }
 
 return (
   <Form>
@@ -38,6 +38,20 @@ return (
     <Button variant="primary" type="submit" onClick={handleSubmit}>
     Submit
     </Button>
+    <Button variant="primary" type="submit" onClick={handleRegistration}>
+    Submit
+    </Button>
   </Form>
 );
 }
+
+LoginView.propTypes = {
+  user: PropTypes.shape({
+    username: PropTypes.string.isRequired,
+    password: PropTypes.string.isRequired,
+  }),
+  onLoggedIn: PropTypes.func,  
+  handleSubmit: PropTypes.func,  
+  handleRegistration: PropTypes.func,  
+  toRegister: PropTypes.func
+};

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import { MainView } from '../main-view/main-view';
 import { LoginView } from '../login-view/login-view';
 
 export function RegisterView(props) {
@@ -7,19 +8,16 @@ export function RegisterView(props) {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthdate, setBirthdate] = useState("");
-
   
   const handleSubmit = (e) => {
     e.preventDefault();
-
     console.log(username, password, email, birthdate);
     props.onRegistration(username);
   };
 
   
   const handleLogin = (e) => {
-    // e.preventDefault();
-    return <LoginView />;
+    props.onLoginClick(false);
   };
 
 
@@ -72,8 +70,9 @@ RegisterView.propTypes = {
     birthdate: PropTypes.string
   }),
   onRegistration: PropTypes.func,
+  toLogin: PropTypes.func,
   handleSubmit: PropTypes.func,
-  handleSignin: PropTypes.func    
-}
+  handleLogin: PropTypes.func    
+};
 
 
