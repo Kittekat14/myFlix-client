@@ -35,10 +35,10 @@ return (
       <Form.Control type="password" placeholder="Enter Password" onChange={e => setPassword(e.target.value)} />
     </Form.Group>
     
-    <Button variant="primary" type="submit" onClick={handleSubmit}>
+    <Button className="m-2" variant="primary" type="submit" onClick={handleSubmit}>
     Submit
     </Button>
-    <Button variant="primary" type="submit" onClick={handleRegistration}>
+    <Button variant="secondary" type="submit" onClick={handleRegistration}>
     Register
     </Button>
   </Form>

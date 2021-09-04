@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Form from 'react-bootstrap/Form';
-import Button from 'react-bootstrap/Button';
+import { Container, Form, Button, FloatingLabel } from 'react-bootstrap';
 
 export function RegisterView(props) {
   const [username, setUsername] = useState("");
@@ -22,44 +21,47 @@ export function RegisterView(props) {
 
 
   return (
-    <form>
-      <label className="username">
-        Username:
-        <input
-          type="text"
+  <Container>
+    <Form>
+      <Form.Group className="mb-3" controlId="formUsername">
+      <Form.Label>Username*:</Form.Label>
+      <Form.Control type="text" placeholder="Enter Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-        />
-      </label>
-      <label className="password">
-        Password:
-        <input
-          type="password"
+      />
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formPassword">
+      <Form.Label>Password*:</Form.Label>
+      <Form.Control type="password" placeholder="Enter Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-      </label>
-      <label className="email">
-        E-mail:
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </label>
-      <label className="birthdate">
-        Birth date:
-        <input
-          type="date"
-          value={birthdate}
-          onChange={(e) => setBirthdate(e.target.value)}
-        />
-      </label>
-      <button type="submit" onClick={handleSubmit}>Register</button>
-      <button type="button" onClick={handleLogin}>Login</button>
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formEmail">
+        <Form.Label label="Email" className="mb-3"
+        > Email*: 
+          <Form.Control type="email" placeholder="name@example.com" value={email}
+          onChange={(e) => setEmail(e.target.value)}/>
+        </Form.Label>
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBirthdate">
+        <Form.Label label="Birthdate" className="mb-3"
+        > Birthdate:
+          <Form.Control type="date" value={birthdate}
+          onChange={(e) => setPassword(e.target.value)}/>
+        </Form.Label>
+      </Form.Group>
+
       
-    </form>
-  )
+      <Button type="submit" variant="primary" onClick={handleSubmit}>Register</Button>
+      <Button type="button" variant="secondary" onClick={handleLogin}>Go To Login</Button>
+      
+    </Form>
+</Container>
+)
 }
 
 RegisterView.propTypes = {
