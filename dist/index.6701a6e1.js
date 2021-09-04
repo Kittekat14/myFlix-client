@@ -22746,7 +22746,6 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _loginView = require("../login-view/login-view");
-// import { toRegister } from "../login-view/login-view";
 var _registerView = require("../register-view/register-view");
 var _movieCard = require("../movie-card/movie-card");
 var _movieView = require("../movie-view/movie-view");
@@ -22779,7 +22778,6 @@ class MainView extends _reactDefault.default.Component {
         this.setState({
             user: user
         });
-        this.setState;
     }
     // custom component method "onRegistration"
     onRegistration(register) {
@@ -22787,24 +22785,18 @@ class MainView extends _reactDefault.default.Component {
             register: !register
         });
     }
-    // toRegister = () => {
-    //   this.setState({signup: !this.state.signup})
-    // }
-    // toLogin = () => {
-    //   this.setState({login: !this.state.login}) //sets it to opposite of previous value
-    // }
     // visual representation of component:
     render() {
         const { movies , selectedMovie , user , register , signup , login  } = this.state;
         console.log(this.state);
-        /* If there is no user, the LoginView is rendered. If a user is logged in, his details are passed as a prop to the LoginView*/ if (!register) return(/*#__PURE__*/ _jsxRuntime.jsx(_registerView.RegisterView, {
+        /* If there is no user logged in, the LoginView is rendered. If a user is logged in, his details are passed as a prop to the LoginView*/ if (!register) return(/*#__PURE__*/ _jsxRuntime.jsx(_registerView.RegisterView, {
             onLoginClick: (register1)=>this.onRegistration(register1)
             ,
             onRegistration: (user1)=>this.onLoggedIn(user1)
             ,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 66
+                lineNumber: 56
             },
             __self: this
         }));
@@ -22815,7 +22807,7 @@ class MainView extends _reactDefault.default.Component {
             ,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 71
+                lineNumber: 61
             },
             __self: this
         }));
@@ -22823,7 +22815,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 74
+                lineNumber: 64
             },
             __self: this
         }));
@@ -22831,7 +22823,7 @@ class MainView extends _reactDefault.default.Component {
             className: "main-view",
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 77
+                lineNumber: 67
             },
             __self: this,
             children: [
@@ -22842,7 +22834,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 79
+                        lineNumber: 70
                     },
                     __self: this
                 }) : movies.map((movie)=>/*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
@@ -22852,7 +22844,7 @@ class MainView extends _reactDefault.default.Component {
                         },
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 81
+                            lineNumber: 72
                         },
                         __self: this
                     }, movie._id)
@@ -25397,8 +25389,6 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _mainView = require("../main-view/main-view");
-var _registerView = require("../register-view/register-view");
 var _s = $RefreshSig$();
 function LoginView(props) {
     _s();
@@ -25407,24 +25397,23 @@ function LoginView(props) {
     const handleSubmit = (e)=>{
         e.preventDefault();
         console.log(username, password);
-        /* Send a request to the server for authentication */ /* then call props.onLoggedIn(username) */ props.onLoggedIn(username);
+        props.onLoggedIn(username);
     };
     const handleRegistration = (e)=>{
-        e.preventDefault();
         console.log(username);
         props.onRegisterClick(true);
     };
     return(/*#__PURE__*/ _jsxRuntime.jsxs("form", {
         __source: {
             fileName: "src/components/login-view/login-view.jsx",
-            lineNumber: 25
+            lineNumber: 21
         },
         __self: this,
         children: [
             /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 26
+                    lineNumber: 22
                 },
                 __self: this,
                 children: [
@@ -25436,7 +25425,7 @@ function LoginView(props) {
                         ,
                         __source: {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 28
+                            lineNumber: 24
                         },
                         __self: this
                     })
@@ -25445,7 +25434,7 @@ function LoginView(props) {
             /*#__PURE__*/ _jsxRuntime.jsxs("label", {
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 30
+                    lineNumber: 26
                 },
                 __self: this,
                 children: [
@@ -25457,7 +25446,7 @@ function LoginView(props) {
                         ,
                         __source: {
                             fileName: "src/components/login-view/login-view.jsx",
-                            lineNumber: 32
+                            lineNumber: 28
                         },
                         __self: this
                     })
@@ -25469,18 +25458,18 @@ function LoginView(props) {
                 onClick: handleSubmit,
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 34
+                    lineNumber: 30
                 },
                 __self: this,
                 children: "Login"
             }),
             /*#__PURE__*/ _jsxRuntime.jsx("button", {
                 className: "registerBtn",
-                type: "submit",
+                type: "button",
                 onClick: handleRegistration,
                 __source: {
                     fileName: "src/components/login-view/login-view.jsx",
-                    lineNumber: 35
+                    lineNumber: 31
                 },
                 __self: this,
                 children: "Register"
@@ -25495,10 +25484,8 @@ LoginView.propTypes = {
         username: _propTypesDefault.default.string.isRequired,
         password: _propTypesDefault.default.string.isRequired
     }),
-    onLoggedIn: _propTypesDefault.default.func,
     handleSubmit: _propTypesDefault.default.func,
-    handleRegistration: _propTypesDefault.default.func,
-    toRegister: _propTypesDefault.default.func
+    handleRegistration: _propTypesDefault.default.func
 };
 var _c;
 $RefreshReg$(_c, "LoginView");
@@ -25508,7 +25495,7 @@ $RefreshReg$(_c, "LoginView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","../register-view/register-view":"F9ahz","../main-view/main-view":"2zHas"}],"F9ahz":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd"}],"F9ahz":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$31a6 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -25524,8 +25511,6 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
-var _mainView = require("../main-view/main-view");
-var _loginView = require("../login-view/login-view");
 var _s = $RefreshSig$();
 function RegisterView(props) {
     _s();
@@ -25537,6 +25522,7 @@ function RegisterView(props) {
         e.preventDefault();
         console.log(username, password, email, birthdate);
         props.onRegistration(username);
+        props.onLoginClick(false);
     };
     const handleLogin = (e)=>{
         props.onLoginClick(false);
@@ -25544,7 +25530,7 @@ function RegisterView(props) {
     return(/*#__PURE__*/ _jsxRuntime.jsxs("form", {
         __source: {
             fileName: "src/components/register-view/register-view.jsx",
-            lineNumber: 25
+            lineNumber: 24
         },
         __self: this,
         children: [
@@ -25552,7 +25538,7 @@ function RegisterView(props) {
                 className: "username",
                 __source: {
                     fileName: "src/components/register-view/register-view.jsx",
-                    lineNumber: 26
+                    lineNumber: 25
                 },
                 __self: this,
                 children: [
@@ -25564,7 +25550,7 @@ function RegisterView(props) {
                         ,
                         __source: {
                             fileName: "src/components/register-view/register-view.jsx",
-                            lineNumber: 28
+                            lineNumber: 27
                         },
                         __self: this
                     })
@@ -25574,7 +25560,7 @@ function RegisterView(props) {
                 className: "password",
                 __source: {
                     fileName: "src/components/register-view/register-view.jsx",
-                    lineNumber: 34
+                    lineNumber: 33
                 },
                 __self: this,
                 children: [
@@ -25586,7 +25572,7 @@ function RegisterView(props) {
                         ,
                         __source: {
                             fileName: "src/components/register-view/register-view.jsx",
-                            lineNumber: 36
+                            lineNumber: 35
                         },
                         __self: this
                     })
@@ -25596,7 +25582,7 @@ function RegisterView(props) {
                 className: "email",
                 __source: {
                     fileName: "src/components/register-view/register-view.jsx",
-                    lineNumber: 42
+                    lineNumber: 41
                 },
                 __self: this,
                 children: [
@@ -25608,7 +25594,7 @@ function RegisterView(props) {
                         ,
                         __source: {
                             fileName: "src/components/register-view/register-view.jsx",
-                            lineNumber: 44
+                            lineNumber: 43
                         },
                         __self: this
                     })
@@ -25618,7 +25604,7 @@ function RegisterView(props) {
                 className: "birthdate",
                 __source: {
                     fileName: "src/components/register-view/register-view.jsx",
-                    lineNumber: 50
+                    lineNumber: 49
                 },
                 __self: this,
                 children: [
@@ -25630,28 +25616,30 @@ function RegisterView(props) {
                         ,
                         __source: {
                             fileName: "src/components/register-view/register-view.jsx",
-                            lineNumber: 52
+                            lineNumber: 51
                         },
                         __self: this
                     })
                 ]
             }),
             /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                className: "registerBtn",
                 type: "submit",
                 onClick: handleSubmit,
                 __source: {
                     fileName: "src/components/register-view/register-view.jsx",
-                    lineNumber: 58
+                    lineNumber: 57
                 },
                 __self: this,
                 children: "Register"
             }),
             /*#__PURE__*/ _jsxRuntime.jsx("button", {
+                className: "loginBtn",
                 type: "button",
                 onClick: handleLogin,
                 __source: {
                     fileName: "src/components/register-view/register-view.jsx",
-                    lineNumber: 59
+                    lineNumber: 58
                 },
                 __self: this,
                 children: "Login"
@@ -25668,8 +25656,6 @@ RegisterView.propTypes = {
         email: _propTypesDefault.default.string.isRequired,
         birthdate: _propTypesDefault.default.string
     }),
-    onRegistration: _propTypesDefault.default.func,
-    toLogin: _propTypesDefault.default.func,
     handleSubmit: _propTypesDefault.default.func,
     handleLogin: _propTypesDefault.default.func
 };
@@ -25681,6 +25667,6 @@ $RefreshReg$(_c, "RegisterView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","../login-view/login-view":"054li","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","../main-view/main-view":"2zHas"}],"jUTZ8":[function() {},{}]},["drWAM","l0xXt","dLPEP"], "dLPEP", "parcelRequireaec4")
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd"}],"jUTZ8":[function() {},{}]},["drWAM","l0xXt","dLPEP"], "dLPEP", "parcelRequireaec4")
 
 //# sourceMappingURL=index.6701a6e1.js.map

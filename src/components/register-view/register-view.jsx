@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { MainView } from '../main-view/main-view';
-import { LoginView } from '../login-view/login-view';
+
 
 export function RegisterView(props) {
   const [username, setUsername] = useState("");
@@ -13,9 +12,9 @@ export function RegisterView(props) {
     e.preventDefault();
     console.log(username, password, email, birthdate);
     props.onRegistration(username);
+    props.onLoginClick(false)
   };
 
-  
   const handleLogin = (e) => {
     props.onLoginClick(false);
   };
@@ -55,8 +54,8 @@ export function RegisterView(props) {
           onChange={(e) => setBirthdate(e.target.value)}
         />
       </label>
-      <button type="submit" onClick={handleSubmit}>Register</button>
-      <button type="button" onClick={handleLogin}>Login</button>
+      <button className="registerBtn" type="submit" onClick={handleSubmit}>Register</button>
+      <button className="loginBtn" type="button" onClick={handleLogin}>Login</button>
       
     </form>
   )
@@ -69,8 +68,7 @@ RegisterView.propTypes = {
     email: PropTypes.string.isRequired,
     birthdate: PropTypes.string
   }),
-  onRegistration: PropTypes.func,
-  toLogin: PropTypes.func,
+  
   handleSubmit: PropTypes.func,
   handleLogin: PropTypes.func    
 };
