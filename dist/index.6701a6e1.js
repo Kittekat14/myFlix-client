@@ -26759,6 +26759,7 @@ function RegisterView(props) {
                     children: "Register"
                 }),
                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                    className: "m-2",
                     type: "button",
                     variant: "secondary",
                     onClick: handleLogin,

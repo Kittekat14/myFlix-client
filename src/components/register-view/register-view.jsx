@@ -57,7 +57,7 @@ export function RegisterView(props) {
 
       
       <Button type="submit" variant="primary" onClick={handleSubmit}>Register</Button>
-      <Button type="button" variant="secondary" onClick={handleLogin}>Go To Login</Button>
+      <Button className="m-2" type="button" variant="secondary" onClick={handleLogin}>Go To Login</Button>
       
     </Form>
 </Container>
