@@ -1,7 +1,7 @@
 // Main-View ~ Homepage
 import React from 'react';
 import axios from 'axios';
-
+import './main-view.scss';
 import { LoginView } from "../login-view/login-view";
 // import { toRegister } from "../login-view/login-view";
 import { RegisterView } from "../register-view/register-view";
@@ -48,14 +48,6 @@ export class MainView extends React.Component {
     this.setState({register: !register});
   }
 
-  // toRegister = () => {
-  //   this.setState({signup: !this.state.signup})
-  // }
-
-  // toLogin = () => {
-  //   this.setState({login: !this.state.login}) //sets it to opposite of previous value
-  // }
-
   // visual representation of component:
   render() {
 
@@ -76,7 +68,7 @@ export class MainView extends React.Component {
     if (movies.length === 0) return <div className="main-view" />;
 
     return (
-    <Container>
+    <Container className="my-flix">
       <div className="main-view">
         {selectedMovie
           ? ( <Row className="justify-content-md-center">

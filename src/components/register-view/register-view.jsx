@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Form, Button, FloatingLabel } from 'react-bootstrap';
+import './register-view.scss';
 
 export function RegisterView(props) {
   const [username, setUsername] = useState("");
