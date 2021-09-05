@@ -3,7 +3,6 @@ import React from 'react';
 import axios from 'axios';
 import './main-view.scss';
 import { LoginView } from "../login-view/login-view";
-// import { toRegister } from "../login-view/login-view";
 import { RegisterView } from "../register-view/register-view";
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
@@ -41,7 +40,6 @@ export class MainView extends React.Component {
   /* custom component method "onLoggedIn" => when a user successfully logs in, this function updates the `user` property inside the state to that particular user */
   onLoggedIn(user) {
     this.setState({user: user});
-    this.setState
   }
   // custom component method "onRegistration"
   onRegistration(register) {
@@ -53,11 +51,11 @@ export class MainView extends React.Component {
 
     const { movies, selectedMovie, user, register, signup, login } = this.state;
     console.log(this.state);
-    /* If there is no user, the LoginView is rendered. If a user is logged in, his details are passed as a prop to the LoginView*/
+    /* If there is no user logged in, the LoginView is rendered. If a user is logged in, his details are passed as a prop to the LoginView*/
 
     if ( !register ) 
     return (
-    <RegisterView onLoginClick={ (register) => this.onRegistration(register) } onRegistration={ (user) => this.onLoggedIn(user) } />
+    <RegisterView onLoginClick={ (register) => this.onRegistration(register) } onRegistration={ (register) => this.onRegistration(register) } />
     );
 
     if ( user === '' ) 
@@ -70,6 +68,7 @@ export class MainView extends React.Component {
     return (
     <Container className="my-flix">
       <div className="main-view">
+
         {selectedMovie
           ? ( <Row className="justify-content-md-center">
                 <Col md={8}>

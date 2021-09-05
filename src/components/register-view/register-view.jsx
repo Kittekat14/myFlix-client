@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Container, Form, Button, FloatingLabel } from 'react-bootstrap';
+import { Container, Form, Button } from 'react-bootstrap';
 import './register-view.scss';
 
 export function RegisterView(props) {
@@ -13,9 +13,9 @@ export function RegisterView(props) {
     e.preventDefault();
     console.log(username, password, email, birthdate);
     props.onRegistration(username);
+    props.onLoginClick(false)
   };
 
-  
   const handleLogin = (e) => {
     props.onLoginClick(false);
   };
@@ -66,16 +66,8 @@ export function RegisterView(props) {
 }
 
 RegisterView.propTypes = {
-  register: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    birthdate: PropTypes.string
-  }),
-  onRegistration: PropTypes.func,
-  toLogin: PropTypes.func,
-  handleSubmit: PropTypes.func,
-  handleLogin: PropTypes.func    
+  onLoginClick: PropTypes.func,
+  onRegistration: PropTypes.func    
 };
 
 
