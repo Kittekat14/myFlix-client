@@ -63,9 +63,7 @@ export function RegisterView(props) {
 
 RegisterView.propTypes = {
   onLoginClick: PropTypes.func,
-  onRegistration: PropTypes.func,
-  handleSubmit: PropTypes.func,
-  handleLogin: PropTypes.func    
+  onRegistration: PropTypes.func    
 };
 
 
