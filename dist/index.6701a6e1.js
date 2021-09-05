@@ -22792,7 +22792,7 @@ class MainView extends _reactDefault.default.Component {
         /* If there is no user logged in, the LoginView is rendered. If a user is logged in, his details are passed as a prop to the LoginView*/ if (!register) return(/*#__PURE__*/ _jsxRuntime.jsx(_registerView.RegisterView, {
             onLoginClick: (register1)=>this.onRegistration(register1)
             ,
-            onRegistration: (user1)=>this.onLoggedIn(user1)
+            onRegistration: (register1)=>this.onRegistration(register1)
             ,
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
@@ -25480,10 +25480,8 @@ function LoginView(props) {
 _s(LoginView, "9FY2cPL9VBDmuhjwpF2ik6flsHs=");
 _c = LoginView;
 LoginView.propTypes = {
-    user: _propTypesDefault.default.shape({
-        username: _propTypesDefault.default.string.isRequired,
-        password: _propTypesDefault.default.string.isRequired
-    }),
+    onRegisterClick: _propTypesDefault.default.func,
+    onLoggedIn: _propTypesDefault.default.func,
     handleSubmit: _propTypesDefault.default.func,
     handleRegistration: _propTypesDefault.default.func
 };
@@ -25650,12 +25648,8 @@ function RegisterView(props) {
 _s(RegisterView, "RIZRq4jE1cgzcLOHGIpSeTDhd80=");
 _c = RegisterView;
 RegisterView.propTypes = {
-    register: _propTypesDefault.default.shape({
-        username: _propTypesDefault.default.string.isRequired,
-        password: _propTypesDefault.default.string.isRequired,
-        email: _propTypesDefault.default.string.isRequired,
-        birthdate: _propTypesDefault.default.string
-    }),
+    onLoginClick: _propTypesDefault.default.func,
+    onRegistration: _propTypesDefault.default.func,
     handleSubmit: _propTypesDefault.default.func,
     handleLogin: _propTypesDefault.default.func
 };

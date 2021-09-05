@@ -53,7 +53,7 @@ export class MainView extends React.Component {
 
     if ( !register ) 
     return (
-    <RegisterView onLoginClick={ (register) => this.onRegistration(register) } onRegistration={ (user) => this.onLoggedIn(user) } />
+    <RegisterView onLoginClick={ (register) => this.onRegistration(register) } onRegistration={ (register) => this.onRegistration(register) } />
     );
 
     if ( user === '' ) 
