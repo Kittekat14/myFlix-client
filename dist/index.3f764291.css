@@ -14,9 +14,11 @@
   background: steelblue;
 }
 h1 {
+  padding: 20px 0 0 20px;
   font-size: 50px;
-  line-height: 1.6;
+  line-height: 1.6rem;
   font-family: bangers;
+  color: black;
 }
 .card-info {
   font-size: 18px;
@@ -45,6 +47,10 @@ h1 {
   line-height: 1.5;
   background-color: whitesmoke;
   padding: 2rem;
+}
+.movie-view > div {
+  padding: 4px 0;
+  border-bottom: 1px dashed black;
 }
 .movie-title {
   margin-top: 20px;

@@ -13,7 +13,7 @@ export class MovieView extends React.Component {
     <Header />
     <div className="movie-view">
        
-        <div className="movie-poster">
+      <div className="movie-poster">
         <img src={movie.imageUrl} crossOrigin="true" width="300"/>
       </div>
       <div className="movie-title">
