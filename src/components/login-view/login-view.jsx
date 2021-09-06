@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Header from '../header/Header';
+import Header from '../header/Header.jsx';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
