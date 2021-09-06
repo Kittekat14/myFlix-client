@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import Header from '../header/Header';
 import { Container, Form, Button } from 'react-bootstrap';
 import './register-view.scss';
 
@@ -23,6 +24,7 @@ export function RegisterView(props) {
 
   return (
   <Container>
+    <Header />
     <Form>
       <Form.Group className="mb-3" controlId="formUsername">
       <Form.Label>Username*:</Form.Label>
@@ -52,7 +54,7 @@ export function RegisterView(props) {
         <Form.Label label="Birthdate" className="mb-3"
         > Birthdate:
           <Form.Control type="date" value={birthdate}
-          onChange={(e) => setPassword(e.target.value)}/>
+          onChange={(e) => setBirthdate(e.target.value)}/>
         </Form.Label>
       </Form.Group>
 

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Header from '../header/Header';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
@@ -21,6 +22,8 @@ export function LoginView(props) {
    }
 
 return (
+  <>
+  <Header />
   <Form>
     <Form.Group className="mb-3" controlId="formUsername">
       <Form.Label>Username:</Form.Label>
@@ -39,6 +42,7 @@ return (
     Register
     </Button>
   </Form>
+  </>
 );
 }
 

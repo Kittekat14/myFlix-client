@@ -48,7 +48,7 @@ export class MainView extends React.Component {
 
   // visual representation of component:
   render() {
-
+   
     const { movies, selectedMovie, user, register, signup, login } = this.state;
     console.log(this.state);
     /* If there is no user logged in, the LoginView is rendered. If a user is logged in, his details are passed as a prop to the LoginView*/
@@ -67,8 +67,9 @@ export class MainView extends React.Component {
 
     return (
     <Container className="my-flix">
+      
       <div className="main-view">
-
+      
         {selectedMovie
           ? ( <Row className="justify-content-md-center">
                 <Col md={8}>

@@ -1,27 +1,60 @@
+@font-face {
+  font-family: bangers;
+  src: url(fonts/bangers.regular.ttf);
+}
+@font-face {
+  font-family: alex;
+  src: url(fonts/AlexBrush-Regular.ttf);
+}
+
 $color: steelblue;
 
-@font-face {
-  font-family: 'alex_brushregular';
-  src: url('alexbrush-regular-webfont.woff2') format('woff2'),
-       url('alexbrush-regular-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-
-}
-@font-face {
-  font-family: 'bangersregular';
-  src: url('bangers.regular-webfont.woff2') format('woff2'),
-       url('bangers.regular-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-
-}
 
 .my-flix {
   background: $color;
 }
 
-.my-font {
-  font-family: 'bangersregular';
+h1 {
+  font-size: 50px;
+  line-height: 1.6;
+  font-family: bangers;
 }
-
+.card-info {
+  font-size: 18px;
+  font-family: fantasy;
+  font-weight: 400;
+}
+.card-title {
+  font-size: 35px;
+  font-weight: 800;
+  font-family: bangers;
+}
+.open-button {
+  background-color: rgb(43, 101, 226);
+  font-weight: 800;
+  font-family: bangers;
+}
+.back-button {
+  margin-top: 20px;
+  font-family: bangers;
+  font-size: 20px;
+  background-color: silver;
+  border: 1px solid grey;
+  border-radius: 4px;
+}
+.movie-view {
+  line-height: 1.5;
+  background-color: whitesmoke;
+  padding: 2rem;
+}
+.movie-title {
+  margin-top: 20px;
+}
+.label {
+  font-family: alex;
+  font-weight: 900;
+  font-size: 1.6em;
+}
+.value {
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}

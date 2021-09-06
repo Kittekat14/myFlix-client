@@ -1,15 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Header from '../header/Header';
 import './movie-view.scss';
 export class MovieView extends React.Component {
 
   render() {
+   
     const { movie, onBackClick, imageUrl, title, description, year, genre, actors, director, featured } = this.props;
     console.log(movie);
     return (
-
+    <>
+    <Header />
     <div className="movie-view">
-
+       
         <div className="movie-poster">
         <img src={movie.imageUrl} crossOrigin="true" width="300"/>
       </div>
@@ -42,9 +45,10 @@ export class MovieView extends React.Component {
         <span className="value" >{movie.featured}</span>  
       </div> */}
       
-      <button onClick={() => { onBackClick(null); }}>Back</button>
+      <button className="back-button" onClick={() => { onBackClick(null); }}>Back</button>
 
     </div>
+    </>
     );
     
   }
