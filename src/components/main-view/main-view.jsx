@@ -1,7 +1,7 @@
 // Main-View ~ Homepage
 import React from 'react';
 import axios from 'axios';
-import './main-view.scss';
+import '../../index.scss';
 import { LoginView } from "../login-view/login-view";
 import { RegisterView } from "../register-view/register-view";
 import { MovieCard } from "../movie-card/movie-card";

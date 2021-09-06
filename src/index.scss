@@ -1,5 +1,27 @@
 $color: steelblue;
 
+@font-face {
+  font-family: 'alex_brushregular';
+  src: url('alexbrush-regular-webfont.woff2') format('woff2'),
+       url('alexbrush-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+@font-face {
+  font-family: 'bangersregular';
+  src: url('bangers.regular-webfont.woff2') format('woff2'),
+       url('bangers.regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+
+}
+
 .my-flix {
   background: $color;
 }
+
+.my-font {
+  font-family: 'bangersregular';
+}
+
