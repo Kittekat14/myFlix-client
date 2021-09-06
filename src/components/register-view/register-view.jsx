@@ -24,7 +24,7 @@ export function RegisterView(props) {
 
   return (
   <Container>
-    <Header />
+    
     <Form>
       <Form.Group className="mb-3" controlId="formUsername">
       <Form.Label>Username*:</Form.Label>

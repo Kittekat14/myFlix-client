@@ -9,7 +9,7 @@ import { MovieView } from "../movie-view/movie-view";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
-import Navbar from '../header/Header';
+import Header from '../header/Header';
 
 export class MainView extends React.Component {  
   constructor() {
@@ -56,12 +56,18 @@ export class MainView extends React.Component {
 
     if ( !register ) 
     return (
+    <>
+      <Header />
     <RegisterView onLoginClick={ (register) => this.onRegistration(register) } onRegistration={ (register) => this.onRegistration(register) } />
+    </>
     );
 
     if ( user === '' ) 
     return (
+    <>
+      <Header />
     <LoginView onRegisterClick={ (register) => this.onRegistration(register) } onLoggedIn={ (user) => this.onLoggedIn(user) } /> 
+    </>
     );
 
     if (movies.length === 0) return <div className="main-view" />;
@@ -74,13 +80,14 @@ export class MainView extends React.Component {
         {selectedMovie
           ? ( <Row className="justify-content-md-center">
                 <Col md={8}>
+                  <Header />
                   <MovieView movie={selectedMovie} onBackClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie); }}/>
                 </Col>
               </Row> 
           ) 
           : (
           <Row className="justify-content-md-center">
-            <Navbar />
+            <Header />
             {movies.map(movie => (
               <Col md={3}> 
                 <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie); }}/>
