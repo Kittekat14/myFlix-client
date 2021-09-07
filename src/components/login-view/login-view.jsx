@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Header from '../header/Header.jsx';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
@@ -26,12 +25,12 @@ return (
   <Form>
     <Form.Group className="mb-3" controlId="formUsername">
       <Form.Label>Username:</Form.Label>
-      <Form.Control type="text" placeholder="Enter Username" onChange={e => setUsername(e.target.value)} />
+      <Form.Control type="text" placeholder="Enter Username" value={username} onChange={e => setUsername(e.target.value)} />
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="formPassword">
       <Form.Label>Password:</Form.Label>
-      <Form.Control type="password" placeholder="Enter Password" onChange={e => setPassword(e.target.value)} />
+      <Form.Control type="password" placeholder="Enter Password" value={password} onChange={e => setPassword(e.target.value)} />
     </Form.Group>
     
     <Button className="m-2" variant="primary" type="submit" onClick={handleSubmit}>

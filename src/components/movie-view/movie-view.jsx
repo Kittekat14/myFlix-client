@@ -1,7 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Header from '../header/Header.jsx';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import { Container } from 'react-bootstrap';
 import './movie-view.scss';
+
 export class MovieView extends React.Component {
 
   render() {
@@ -9,10 +12,10 @@ export class MovieView extends React.Component {
     const { movie, onBackClick, imageUrl, title, description, year, genre, actors, director, featured } = this.props;
     console.log(movie);
     return (
-    <div className="movie-view">
+    <Container className="movie-view">
        
       <div className="movie-poster">
-        <img src={movie.imageUrl} crossOrigin="true" width="300"/>
+        <img src={movie.imageUrl} crossOrigin="true" />
       </div>
       <div className="movie-title">
         <span className="label">Title: </span>
@@ -45,7 +48,7 @@ export class MovieView extends React.Component {
       
       <button className="back-button" onClick={() => { onBackClick(null); }}>Back</button>
 
-    </div>
+    </Container>
     );
     
   }

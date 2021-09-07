@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
+import CardGroup from 'react-bootstrap/CardGroup';
 import './movie-card.scss';
 
 export class MovieCard extends React.Component {
@@ -11,9 +12,9 @@ export class MovieCard extends React.Component {
     const { movie, onMovieClick } = this.props;
     
     return (
-    <div>
-      
-      <Card>
+    
+    <CardGroup className="h-100">
+      <Card className="card">
        
         <Card.Img variant="top" src={movie.imageUrl} crossOrigin="true" width="300"/>
         <Card.Body>
@@ -26,7 +27,7 @@ export class MovieCard extends React.Component {
         </Card.Body>
 
       </Card>
-    </div>
+    </CardGroup>
     )
   
   }

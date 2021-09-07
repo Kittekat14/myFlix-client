@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import Header from '../header/Header';
 import { Container, Form, Button } from 'react-bootstrap';
 import './register-view.scss';
 

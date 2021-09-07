@@ -9,7 +9,7 @@ import { MovieView } from "../movie-view/movie-view";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from 'react-bootstrap';
-import Header from '../header/Header';
+import NavigationBar from '../navbar/Navbar';
 
 export class MainView extends React.Component {  
   constructor() {
@@ -57,7 +57,7 @@ export class MainView extends React.Component {
     if ( !register ) 
     return (
     <>
-      <Header />
+      <NavigationBar users={this.state.user}/>
     <RegisterView onLoginClick={ (register) => this.onRegistration(register) } onRegistration={ (register) => this.onRegistration(register) } />
     </>
     );
@@ -65,7 +65,7 @@ export class MainView extends React.Component {
     if ( user === '' ) 
     return (
     <>
-      <Header />
+      <NavigationBar users={this.state.user}/>
     <LoginView onRegisterClick={ (register) => this.onRegistration(register) } onLoggedIn={ (user) => this.onLoggedIn(user) } /> 
     </>
     );
@@ -73,21 +73,20 @@ export class MainView extends React.Component {
     if (movies.length === 0) return <div className="main-view" />;
 
     return (
-    <Container className="my-flix">
+    <Container className="my-flix" className="main-view">
       
-      <div className="main-view">
       
         {selectedMovie
           ? ( <Row className="justify-content-md-center">
                 <Col md={8}>
-                  <Header />
+                  <NavigationBar users={this.state.user}/>
                   <MovieView movie={selectedMovie} onBackClick={(newSelectedMovie) => { this.setSelectedMovie(newSelectedMovie); }}/>
                 </Col>
               </Row> 
           ) 
           : (
           <Row className="justify-content-md-center">
-            <Header />
+            <NavigationBar users={this.state.user}/>
             {movies.map(movie => (
               <Col md={3}> 
                 <MovieCard key={movie._id} movie={movie} onMovieClick={(movie) => { this.setSelectedMovie(movie); }}/>
@@ -96,7 +95,7 @@ export class MainView extends React.Component {
           </Row>
           )
         }
-      </div>
+      
       </Container>
     );
 

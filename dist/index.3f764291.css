@@ -10,8 +10,8 @@
   font-family: alex;
   src: url(AlexBrush-Regular.cc968c01.ttf);
 }
-.my-flix {
-  background: steelblue;
+.main-view {
+  background-color: steelblue;
 }
 h1 {
   padding: 20px 0 0 20px;
@@ -19,6 +19,9 @@ h1 {
   line-height: 1.6rem;
   font-family: bangers;
   color: black;
+}
+.card {
+  margin: 15px 0;
 }
 .card-info {
   font-size: 18px;
@@ -45,8 +48,11 @@ h1 {
 }
 .movie-view {
   line-height: 1.5;
-  background-color: whitesmoke;
   padding: 2rem;
+}
+img {
+  width: 100%;
+  margin: auto 0;
 }
 .movie-view > div {
   padding: 4px 0;
