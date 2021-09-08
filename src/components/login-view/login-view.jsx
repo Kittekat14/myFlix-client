@@ -13,8 +13,8 @@ export function LoginView(props) {
   const handleSubmit = (e) => {
     e.preventDefault();
     axios.post('https://actor-inspector.herokuapp.com/login', {
-      Username: username,
-      Password: password
+      username: username,
+      password: password
     })
     .then(response => {
       const data = response.data;

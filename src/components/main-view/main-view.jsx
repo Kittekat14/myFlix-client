@@ -34,6 +34,16 @@ export class MainView extends React.Component {
     });
   }
 
+  componentDidMount() {
+    let accessToken = localStorage.getItem('token');
+    if(accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
+      });
+      this.getMovies(accessToken);
+    }
+  }
+
   // custom component method "setSelectedMovie":
   setSelectedMovie(movie) {
     this.setState({selectedMovie: movie});
@@ -67,6 +77,13 @@ export class MainView extends React.Component {
   // custom component method "onRegistration"
   onRegistration(register) {
     this.setState({register: !register});
+  }
+  onLoggedOut(){
+    localStorage.removeItem('token');
+    localStorage.removeItem('user');
+    this.setState({
+      user: null
+    }); 
   }
 
   // visual representation of component:

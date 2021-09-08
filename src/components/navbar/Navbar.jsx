@@ -12,7 +12,7 @@ return (
     <Navbar.Collapse className="nav-items" id="basic-navbar-nav">
       <Nav className="me-auto">
         <Nav.Link href="#">{message}{`${props.users}`}</Nav.Link>
-        <Nav.Link href="#">Logout</Nav.Link>
+        <Nav.Link href="#" onClick={() => { this.onLoggedOut() }}>Logout</Nav.Link>
         <NavDropdown title="Genres" id="basic-nav-dropdown">
           <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.2">Adventure</NavDropdown.Item>
