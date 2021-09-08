@@ -39,9 +39,17 @@ export class MainView extends React.Component {
     this.setState({selectedMovie: movie});
   }
   /* custom component method "onLoggedIn" => when a user successfully logs in, this function updates the `user` property inside the state to that particular user */
-  onLoggedIn(user) {
-    this.setState({user: user});
+  onLoggedIn(authData) {
+    console.log(authData);
+    this.setState({
+      user: authData.user.username
+    });
+
+  localStorage.setItem('token', authData.token);
+  localStorage.setItem('user', authData.user.username);
+  this.getMovies(authData.token);
   }
+
   // custom component method "onRegistration"
   onRegistration(register) {
     this.setState({register: !register});
