@@ -50,6 +50,20 @@ export class MainView extends React.Component {
   this.getMovies(authData.token);
   }
 
+  getMovies(token) {
+    axios.get('https://actor-inspector.herokuapp.com/movies', {
+      headers: { Authorization: `Bearer ${token}`}
+    })
+    .then(response => {
+      this.setState({
+        movies: response.data
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
   // custom component method "onRegistration"
   onRegistration(register) {
     this.setState({register: !register});
