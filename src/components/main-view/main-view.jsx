@@ -23,18 +23,6 @@ export class MainView extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://actor-inspector.herokuapp.com/movies')
-    .then(response => {
-      this.setState({
-        movies: response.data
-      });
-    })
-    .catch(error => {
-      console.log(error);
-    });
-  }
-
-  componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if(accessToken !== null) {
       this.setState({
@@ -43,6 +31,7 @@ export class MainView extends React.Component {
       this.getMovies(accessToken);
     }
   }
+   
 
   // custom component method "setSelectedMovie":
   setSelectedMovie(movie) {
@@ -60,6 +49,23 @@ export class MainView extends React.Component {
   this.getMovies(authData.token);
   }
 
+
+  //  Get user data from DB
+  getUsers(token) {
+    axios.post('https://actor-inspector.herokuapp.com/users', {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+      .then(response => {
+        this.setState({
+          users: response.data
+        });
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
   getMovies(token) {
     axios.get('https://actor-inspector.herokuapp.com/movies', {
       headers: { Authorization: `Bearer ${token}`}
@@ -68,11 +74,13 @@ export class MainView extends React.Component {
       this.setState({
         movies: response.data
       });
+      console.log(response);
     })
     .catch(function (error) {
       console.log(error);
     });
   }
+
 
   // custom component method "onRegistration"
   onRegistration(register) {
@@ -89,7 +97,7 @@ export class MainView extends React.Component {
   // visual representation of component:
   render() {
    
-    const { movies, selectedMovie, user, register, signup, login } = this.state;
+    const { movies, selectedMovie, user, register } = this.state;
     console.log(this.state);
     /* If there is no user logged in, the LoginView is rendered. If a user is logged in, his details are passed as a prop to the LoginView*/
 
