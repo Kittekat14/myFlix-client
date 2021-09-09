@@ -13,8 +13,20 @@
 .main-view {
   background-color: steelblue;
 }
+.navbar {
+  color: #4682b4;
+  font-size: 28px;
+  font-weight: 800;
+  font-family: alex;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.nav-items {
+  margin-left: 20px;
+}
 h1 {
-  padding: 20px 0 0 20px;
+  padding: 20px 0 0 0;
   font-size: 50px;
   line-height: 1.6rem;
   font-family: bangers;
@@ -25,7 +37,7 @@ h1 {
 }
 .card-info {
   font-size: 18px;
-  font-family: fantasy;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   font-weight: 400;
 }
 .card-title {
