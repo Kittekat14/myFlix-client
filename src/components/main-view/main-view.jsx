@@ -33,6 +33,14 @@ export class MainView extends React.Component {
   }
 
   componentDidMount() {
+    let accessToken = localStorage.getItem('token');
+    if(accessToken !== null) {
+      this.setState({
+        user: localStorage.getItem('user')
+      });
+      this.getMovies(accessToken);
+    }
+
     axios.get('https://actor-inspector.herokuapp.com/movies')
     .then(response => {
       this.setState({
@@ -65,13 +73,6 @@ export class MainView extends React.Component {
     console.log(err);
     })
 
-    let accessToken = localStorage.getItem('token');
-    if(accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem('user')
-      });
-      this.getMovies(accessToken);
-    }
   }
 
   // GET User data from DB

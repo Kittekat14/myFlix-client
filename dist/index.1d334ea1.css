@@ -1,6 +1,84 @@
 
 
-.my-flix {
-  background: steelblue;
+
+
+@font-face {
+  font-family: bangers;
+  src: url(bangers.regular.1c0d09ae.ttf);
+}
+@font-face {
+  font-family: alex;
+  src: url(AlexBrush-Regular.cc968c01.ttf);
+}
+.main-view {
+  background-color: steelblue;
+}
+.navbar {
+  color: #4682b4;
+  font-size: 28px;
+  font-weight: 800;
+  font-family: alex;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+}
+.nav-items {
+  margin-left: 20px;
+}
+h1 {
+  padding: 20px 0 0 0;
+  font-size: 50px;
+  line-height: 1.6rem;
+  font-family: bangers;
+  color: black;
+}
+.card {
+  margin: 15px 0;
+}
+.card-info {
+  font-size: 18px;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-weight: 400;
+}
+.card-title {
+  font-size: 35px;
+  font-weight: 800;
+  font-family: bangers;
+}
+.open-button {
+  background-color: #2b65e2;
+  font-weight: 800;
+  font-family: bangers;
+}
+.back-button {
+  margin-top: 20px;
+  font-family: bangers;
+  font-size: 20px;
+  background-color: silver;
+  border: 1px solid grey;
+  border-radius: 4px;
+}
+.movie-view {
+  line-height: 1.5;
+  padding: 2rem;
+}
+img {
+  width: 100%;
+  margin: auto 0;
+}
+.movie-view > div {
+  padding: 4px 0;
+  border-bottom: 1px dashed black;
+}
+.movie-title {
+  margin-top: 20px;
+}
+.label {
+  font-family: alex;
+  font-weight: 900;
+  font-size: 1.6em;
+}
+.value {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
 }
 /*# sourceMappingURL=index.1d334ea1.css.map */
