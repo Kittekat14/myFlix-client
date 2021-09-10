@@ -4,6 +4,7 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import CardGroup from 'react-bootstrap/CardGroup';
 import './movie-card.scss';
+import { Link } from "react-router-dom";
 
 export class MovieCard extends React.Component {
 
@@ -17,12 +18,15 @@ export class MovieCard extends React.Component {
       <Card className="card">
        
         <Card.Img variant="top" src={movie.imageUrl} crossOrigin="true" width="300"/>
+
         <Card.Body>
 
           <Card.Title className="card-title" >{movie.title}</Card.Title>
           <Card.Text className="card-info">{movie.description}</Card.Text>
-
-          <Button className="open-button" onClick={() => onMovieClick(movie)} >Open</Button>
+          
+          <Link to={`/movies/${movie.title}`}>
+            <Button className="open-button">Open</Button>
+          </Link>
 
         </Card.Body>
 
@@ -52,6 +56,5 @@ MovieCard.propTypes = {
       birthyear: PropTypes.string,
       movies: PropTypes.array
     })
-  }),  
-  onMovieClick: PropTypes.func
+  })
 };

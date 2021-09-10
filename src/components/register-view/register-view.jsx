@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Container, Form, Button } from 'react-bootstrap';
 import './register-view.scss';
+import axios from 'axios';
 
 export function RegisterView(props) {
   const [username, setUsername] = useState("");
@@ -11,9 +12,23 @@ export function RegisterView(props) {
   
   const handleSubmit = (e) => {
     e.preventDefault();
+    axios.post('https://actor-inspector.herokuapp.com/users', {
+      username: username,
+      password: password,
+      email: email,
+      birthdate: birthdate
+    })
+    .then(response => {
+      const data = response.data;
+      console.log(data);
+      window.open('/', '_self');
+    })
+    .catch(e => {
+      console.log('error registering new user')
+    });
     console.log(username, password, email, birthdate);
-    props.onRegistration(username);
-    props.onLoginClick(false)
+    // props.onRegistration(username);
+    // props.onLoginClick(false)
   };
 
   const handleLogin = (e) => {
