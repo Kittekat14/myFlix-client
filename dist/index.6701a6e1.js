@@ -40390,7 +40390,7 @@ class GenreView extends _reactDefault.default.Component {
         };
     }
     componentDidMount() {
-        _axiosDefault.default.get('https://actor-inspector.herokuapp.com/genres/:name').then((res)=>{
+        _axiosDefault.default.get('https://actor-inspector.herokuapp.com/genres').then((res)=>{
             console.log(res);
             this.setState({
                 genres: res.data
@@ -40518,7 +40518,7 @@ class DirectorView extends _reactDefault.default.Component {
         };
     }
     componentDidMount() {
-        _axiosDefault.default.get('https://actor-inspector.herokuapp.com/directors/:name').then((res)=>{
+        _axiosDefault.default.get('https://actor-inspector.herokuapp.com/directors').then((res)=>{
             console.log(res);
             this.setState({
                 directors: res.data

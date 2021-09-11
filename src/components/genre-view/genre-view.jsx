@@ -10,7 +10,7 @@ export default class GenreView extends React.Component {
     }
   }
    componentDidMount() {
-    axios.get('https://actor-inspector.herokuapp.com/genres/:name')
+    axios.get('https://actor-inspector.herokuapp.com/genres')
     .then(res => {
       console.log(res);
       this.setState({

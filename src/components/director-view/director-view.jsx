@@ -11,7 +11,7 @@ export default class DirectorView extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('https://actor-inspector.herokuapp.com/directors/:name')
+    axios.get('https://actor-inspector.herokuapp.com/directors')
     .then(res => {
       console.log(res);
       this.setState({
