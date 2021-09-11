@@ -26,9 +26,7 @@ export function RegisterView(props) {
     .catch(e => {
       console.log('error registering new user')
     });
-    console.log(username, password, email, birthdate);
-    // props.onRegistration(username);
-    // props.onLoginClick(false)
+    
   };
 
   const handleLogin = (e) => {
