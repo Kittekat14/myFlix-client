@@ -40389,22 +40389,24 @@ class GenreView extends _reactDefault.default.Component {
             genres: []
         };
     }
-    componentDidMount() {
-        _axiosDefault.default.get('https://actor-inspector.herokuapp.com/genres').then((res)=>{
-            console.log(res);
-            this.setState({
-                genres: res.data
-            });
-        }).catch((err)=>{
-            console.log(err);
-        });
-    }
+    //  componentDidMount() {
+    //   axios.get('https://actor-inspector.herokuapp.com/genres')
+    //   .then(res => {
+    //     console.log(res);
+    //     this.setState({
+    //       genres: res.data
+    //     })
+    //   })
+    //   .catch(err => {
+    //   console.log(err);
+    //   })
+    // }
     render() {
         const { genre , onBackClick  } = this.props;
         return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {
             __source: {
                 fileName: "src/components/genre-view/genre-view.jsx",
-                lineNumber: 28
+                lineNumber: 30
             },
             __self: this,
             children: [
@@ -40412,7 +40414,7 @@ class GenreView extends _reactDefault.default.Component {
                     className: "genre-name",
                     __source: {
                         fileName: "src/components/genre-view/genre-view.jsx",
-                        lineNumber: 29
+                        lineNumber: 31
                     },
                     __self: this,
                     children: [
@@ -40420,7 +40422,7 @@ class GenreView extends _reactDefault.default.Component {
                             className: "label",
                             __source: {
                                 fileName: "src/components/genre-view/genre-view.jsx",
-                                lineNumber: 30
+                                lineNumber: 32
                             },
                             __self: this,
                             children: "Name: "
@@ -40429,7 +40431,7 @@ class GenreView extends _reactDefault.default.Component {
                             className: "value",
                             __source: {
                                 fileName: "src/components/genre-view/genre-view.jsx",
-                                lineNumber: 31
+                                lineNumber: 33
                             },
                             __self: this,
                             children: genre.name
@@ -40440,7 +40442,7 @@ class GenreView extends _reactDefault.default.Component {
                     className: "genre-description",
                     __source: {
                         fileName: "src/components/genre-view/genre-view.jsx",
-                        lineNumber: 33
+                        lineNumber: 35
                     },
                     __self: this,
                     children: [
@@ -40448,7 +40450,7 @@ class GenreView extends _reactDefault.default.Component {
                             className: "label",
                             __source: {
                                 fileName: "src/components/genre-view/genre-view.jsx",
-                                lineNumber: 34
+                                lineNumber: 36
                             },
                             __self: this,
                             children: "Description: "
@@ -40457,7 +40459,7 @@ class GenreView extends _reactDefault.default.Component {
                             className: "value",
                             __source: {
                                 fileName: "src/components/genre-view/genre-view.jsx",
-                                lineNumber: 35
+                                lineNumber: 37
                             },
                             __self: this,
                             children: genre.description
@@ -40471,7 +40473,7 @@ class GenreView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/genre-view/genre-view.jsx",
-                        lineNumber: 38
+                        lineNumber: 40
                     },
                     __self: this,
                     children: "Back"
@@ -40517,16 +40519,18 @@ class DirectorView extends _reactDefault.default.Component {
             directors: []
         };
     }
-    componentDidMount() {
-        _axiosDefault.default.get('https://actor-inspector.herokuapp.com/directors').then((res)=>{
-            console.log(res);
-            this.setState({
-                directors: res.data
-            });
-        }).catch((err)=>{
-            console.log(err);
-        });
-    }
+    // componentDidMount() {
+    //   axios.get('https://actor-inspector.herokuapp.com/directors')
+    //   .then(res => {
+    //     console.log(res);
+    //     this.setState({
+    //       directors: res.data
+    //     })
+    //   })
+    //   .catch(err => {
+    //   console.log(err);
+    //   });    
+    // }
     render() {
         const { director , onBackClick  } = this.props;
         return(/*#__PURE__*/ _jsxRuntime.jsxs("div", {

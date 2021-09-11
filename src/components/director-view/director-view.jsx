@@ -10,18 +10,18 @@ export default class DirectorView extends React.Component {
     }
   }
 
-  componentDidMount() {
-    axios.get('https://actor-inspector.herokuapp.com/directors')
-    .then(res => {
-      console.log(res);
-      this.setState({
-        directors: res.data
-      })
-    })
-    .catch(err => {
-    console.log(err);
-    });    
-  }
+  // componentDidMount() {
+  //   axios.get('https://actor-inspector.herokuapp.com/directors')
+  //   .then(res => {
+  //     console.log(res);
+  //     this.setState({
+  //       directors: res.data
+  //     })
+  //   })
+  //   .catch(err => {
+  //   console.log(err);
+  //   });    
+  // }
 
  render() {
    const { director, onBackClick } = this.props;

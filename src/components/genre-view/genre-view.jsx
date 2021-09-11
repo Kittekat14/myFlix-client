@@ -9,18 +9,20 @@ export default class GenreView extends React.Component {
        genres: [] 
     }
   }
-   componentDidMount() {
-    axios.get('https://actor-inspector.herokuapp.com/genres')
-    .then(res => {
-      console.log(res);
-      this.setState({
-        genres: res.data
-      })
-    })
-    .catch(err => {
-    console.log(err);
-    })
-  }
+
+  
+  //  componentDidMount() {
+  //   axios.get('https://actor-inspector.herokuapp.com/genres')
+  //   .then(res => {
+  //     console.log(res);
+  //     this.setState({
+  //       genres: res.data
+  //     })
+  //   })
+  //   .catch(err => {
+  //   console.log(err);
+  //   })
+  // }
 
   render() {
     const { genre, onBackClick } = this.props;
