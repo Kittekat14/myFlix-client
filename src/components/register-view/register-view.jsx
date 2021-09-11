@@ -29,9 +29,9 @@ export function RegisterView(props) {
     
   };
 
-  const handleLogin = (e) => {
-    props.onLoginClick(false);
-  };
+  // const handleLogin = (e) => {
+  //   //props.onLoginClick(false);
+  // };
 
 
   return (

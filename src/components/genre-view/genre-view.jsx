@@ -10,7 +10,7 @@ export default class GenreView extends React.Component {
     }
   }
 
-  
+
   //  componentDidMount() {
   //   axios.get('https://actor-inspector.herokuapp.com/genres')
   //   .then(res => {
@@ -26,8 +26,18 @@ export default class GenreView extends React.Component {
 
   render() {
     const { genre, onBackClick } = this.props;
+    const { genres } = this.state;
+
     return (
       <div>
+        <div>
+        List of genres:
+        {
+          genres.length ?
+          genres.map( genre => <div key={genre._id}>{genre.name}</div> ) :
+          null
+        }
+        </div>
         <div className="genre-name">
           <span className="label">Name: </span>
           <span className="value">{genre.name}</span>    
