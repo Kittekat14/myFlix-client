@@ -2,13 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-export default class GenreView extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-       genres: [] 
-    }
-  }
+export class GenreView extends React.Component {
 
 
   //  componentDidMount() {
@@ -24,20 +18,15 @@ export default class GenreView extends React.Component {
   //   })
   // }
 
+
+  
   render() {
     const { genre, onBackClick } = this.props;
-    const { genres } = this.state;
+    //const { genres } = this.state;
 
     return (
       <div>
-        <div>
-        List of genres:
-        {
-          genres.length ?
-          genres.map( genre => <div key={genre._id}>{genre.name}</div> ) :
-          null
-        }
-        </div>
+        
         <div className="genre-name">
           <span className="label">Name: </span>
           <span className="value">{genre.name}</span>    

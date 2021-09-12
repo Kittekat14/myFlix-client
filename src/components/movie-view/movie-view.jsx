@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { Container } from 'react-bootstrap';
+import Container from 'react-bootstrap/Container';
 import './movie-view.scss';
 import { Link } from "react-router-dom";
 
@@ -11,7 +11,7 @@ export class MovieView extends React.Component {
 
   render() {
    
-    const { movie, onBackClick, imageUrl, title, description, year, genre, actors, director, featured } = this.props;
+    const { movie, onBackClick } = this.props;
     console.log(movie);
     return (
     <Container className="movie-view">

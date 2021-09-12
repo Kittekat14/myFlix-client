@@ -10,7 +10,7 @@ export function LoginView(props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
     axios.post('https://actor-inspector.herokuapp.com/login', {
       username: username,
@@ -43,7 +43,7 @@ return (
       <Form.Control type="password" placeholder="Enter Password" value={password} onChange={e => setPassword(e.target.value)} />
     </Form.Group>
     
-    <Button className="m-2" variant="primary" type="submit" onClick={handleSubmit}>
+    <Button className="m-2" variant="primary" type="submit" onClick={handleLogin}>
     Submit
     </Button>
     <Button variant="secondary" type="submit" onClick={handleRegistration}>

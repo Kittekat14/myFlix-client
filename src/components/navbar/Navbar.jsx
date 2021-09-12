@@ -1,19 +1,29 @@
 import React from 'react';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 
-const NavigationBar = (props) => {
-  const { users } = props;
-  const message = 'Welcome ';
+export class NavigationBar extends React.Component {
+  constructor() {
+    super();
 
- 
+    this.state = {};
+  }
+
+  onLoggedOut = () => {
+    localStorage.clear();
+    window.open('/', '_self');
+  }
+
+render() {
+  const message = 'Welcome ';
 return (
 <Navbar bg="light" expand="md" sticky="top" variant="info" className="navbar">
   <Container className="navbar-container">
     <Navbar.Brand href="#top"><h1>ActorInspector</h1></Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse className="nav-items">
-      <Nav className="me-auto navbar">
+      <Nav className="navbar">
         <Nav.Link className="nav-items" href="#">{message}{`${props.users}`}</Nav.Link>
+        <Nav.Link onClick={() => { this.onLoggedOut() }}>Logout</Nav.Link>
         <NavDropdown className="nav-items" title="Genres" id="basic-nav-dropdown">
           <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.2">Adventure</NavDropdown.Item>
@@ -31,5 +41,4 @@ return (
 </Navbar>
 );
 }
-
-export default NavigationBar;
+}

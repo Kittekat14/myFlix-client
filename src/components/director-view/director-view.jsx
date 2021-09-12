@@ -2,13 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 
-export default class DirectorView extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      directors: []
-    }
-  }
+export class DirectorView extends React.Component {
+  
 
   // componentDidMount() {
   //   axios.get('https://actor-inspector.herokuapp.com/directors')
@@ -23,8 +18,11 @@ export default class DirectorView extends React.Component {
   //   });    
   // }
 
- render() {
+render() {
+   
    const { director, onBackClick } = this.props;
+   //const { directors } = this.state;
+
     return (
       <div>
 
