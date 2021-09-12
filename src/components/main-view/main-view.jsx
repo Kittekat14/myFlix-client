@@ -3,21 +3,21 @@ import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
-import LoginView from "../login-view/login-view";
-import RegisterView from "../register-view/register-view";
-import ProfileView from '../profile-view/profile-view';
-import MovieCard from "../movie-card/movie-card";
-import MovieView from "../movie-view/movie-view";
-import NavBar from "../navbar/Navbar";
-import GenreView from "../genre-view/genre-view";
-import DirectorView from "../director-view/director-view";
+import { LoginView } from "../login-view/login-view";
+import { RegisterView } from "../register-view/register-view";
+import { ProfileView } from '../profile-view/profile-view';
+import { MovieCard } from "../movie-card/movie-card";
+import { MovieView } from "../movie-view/movie-view";
+import { NavBar } from "../navbar-view/navbar-view";
+import { GenreView } from "../genre-view/genre-view";
+import { DirectorView } from "../director-view/director-view";
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import '../../index.scss';
 
-export class MainView extends React.Component {  
+export default class MainView extends React.Component {  
 
   constructor() {
     super();
@@ -65,14 +65,6 @@ export class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
-  onLoggedOut(){
-    localStorage.removeItem('token');
-    localStorage.removeItem('user');
-    this.setState({
-      user: null
-    }); 
-  }
-
   // visual representation of component:
   render() {
    
@@ -80,13 +72,13 @@ export class MainView extends React.Component {
     
     return (
         <Router>
-          
-          <NavBar users={this.state.user}/>
 
           <Row className="main-view justify-content-md-center">
 
+          <NavBar users={user} />
+
             <Route exact path="/" render={() => {
-              if ( user ) 
+              if ( !user ) 
               return (
                 <Col>
                   <LoginView onLoggedIn={ (user) => this.onLoggedIn(user) } />

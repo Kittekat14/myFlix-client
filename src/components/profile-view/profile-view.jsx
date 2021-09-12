@@ -66,7 +66,7 @@ export class ProfileView extends Component {
             <span className="label">Favorite Movies: </span>
             <span className="value">{favorites}</span>  
           </div>
-          
+
       </div>
     )
   }
