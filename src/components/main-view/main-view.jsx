@@ -23,8 +23,7 @@ export class MainView extends React.Component {
 
     this.state = {
       movies: [],
-      user: null,
-
+      user: null
     };
   }
 

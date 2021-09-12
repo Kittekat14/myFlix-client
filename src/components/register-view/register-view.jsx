@@ -70,6 +70,15 @@ export function RegisterView(props) {
         </Form.Label>
       </Form.Group>
 
+      <Form.Group className="mb-3" controlId="formFavorites">
+        <Form.Label label="Favorites" className="mb-3"
+        > Favorite Movies:
+          <Form.Control type="array" 
+          value={favorites}
+          onChange={(e) => setFavorites(e.target.value)}/>
+        </Form.Label>
+      </Form.Group>
+
       
       <Button type="submit" variant="primary" onClick={handleRegister}>Register</Button>
       <Button className="m-2" type="button" variant="secondary" onClick={() => { onBackClick(null); }}>Go To Login</Button>
