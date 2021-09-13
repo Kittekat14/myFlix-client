@@ -5,14 +5,38 @@ import Col from 'react-bootstrap/Col';
 import Container from 'react-bootstrap/Container';
 import './movie-view.scss';
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 
 export class MovieView extends React.Component {
+  constructor(props) {
+    super(props)
+  
+    this.state = {
+       genres: null
+    }
+  }
+  
 
   render() {
    
     const { movie, onBackClick } = this.props;
-    console.log(movie);
+
+    // function genreClick(token) {
+    //   axios.get('https://actor-inspector.herokuapp.com/genres', {
+    //     headers: { Authorization: `Bearer ${token}`}
+    //   })
+    //   .then(response => {
+    //     this.setState({
+    //       genres: response.data
+    //     });
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   });
+    //   }
+
+
     return (
     <Container className="movie-view">
      <Row>
@@ -34,7 +58,7 @@ export class MovieView extends React.Component {
           </div>  
           <div className="movie-genre">
             <span className="label">Genre: </span>
-          <Link to={`/genres/${movie.genre.name}`}>
+          <Link to={`/genres/${movie.genre.name}`} >
             <span className="value" >{movie.genre.name}</span> 
           </Link> 
           </div>  
@@ -44,13 +68,13 @@ export class MovieView extends React.Component {
           </div>  
           <div className="movie-director">
             <span className="label">Director: </span>
-          <Link to={`/directors/${movie.director.name}`}>
+          <Link to={`/directors/${movie.director.name}`} >
             <span className="value" >{movie.director.name}</span>
           </Link> 
           </div>  
           <div className="movie-feature">
             <span className="label">Featured: </span>
-            <span className="value" >{movie.featured}</span>  
+            <span className="value" >{movie.featured ? 'yes' : 'no'}</span>  
           </div>
           
           <button className="back-button" onClick={() => { onBackClick(null); }}>Back</button>
