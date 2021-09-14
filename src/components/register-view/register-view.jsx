@@ -14,7 +14,7 @@ export function RegisterView() {
 
   const handleRegister = (e) => {
     e.preventDefault();
-    axios.post('https://actor-inspector.herokuapp.com/users', {
+    axios.post('https://actor-inspector.herokuapp.com/users', { 
       username: username,
       password: password,
       email: email,
@@ -24,13 +24,12 @@ export function RegisterView() {
     .then(response => {
       const data = response.data;
       console.log(data);
-      window.open('/', '_self');
+      window.open('/', '_self'); // the second argument '_self' is necessary so that the page will open in the current tab
     })
     .catch(e => {
-      console.log('error registering new user')
+      console.log('error registering the user')
     });
-    
-  };
+  }
 
 
   return (

@@ -1,14 +1,11 @@
 import React from 'react';
 import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import { ProfileView } from '../profile-view/profile-view';
 
 export const NavBar = ({ users, onLoggedOut }) => {
  
   const message = 'Welcome ';
-  const goToProfile = () => {
-   return <ProfileView />
-  }
+  
 
   return (
     <Navbar bg="light" expand="md" sticky="top" variant="light" className="navbar">

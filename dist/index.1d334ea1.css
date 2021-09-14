@@ -79,11 +79,18 @@ img {
   margin-top: 20px;
 }
 .label {
+  margin: 10px 0;
   font-family: alex;
   font-weight: 900;
   font-size: 1.6em;
 }
 .value {
+  margin: 10px 0;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.relMovies > * {
+  text-decoration: none;
+  color: #212529;
+  padding: 4px 0;
 }
 /*# sourceMappingURL=index.1d334ea1.css.map */

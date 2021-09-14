@@ -53,6 +53,8 @@ export default class MainView extends React.Component {
       console.log(error);
     });
     }
+  
+
 
   /* custom component method "onLoggedIn" => when a user successfully logs in, this function updates the `user` property inside the state to that particular user */
   onLoggedIn(authData) {
@@ -92,15 +94,15 @@ export default class MainView extends React.Component {
         <Router>
           <Row className="main-view justify-content-md-center">
 
-            <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} movies={movies} />
+            <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
 
             <Route exact path="/" render={() => {
               if ( !user ) 
-              return (
+              return <Row>
                 <Col>
                   <LoginView onLoggedIn={ (user) => this.onLoggedIn(user) } />
                 </Col>
-              );
+              </Row>
               if (movies.length === 0) return <div className="main-view" />;
               return movies.map(m => (
                 <Col md={3} key={m._id}>

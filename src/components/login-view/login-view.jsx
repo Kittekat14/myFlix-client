@@ -3,7 +3,6 @@ import axios from 'axios';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
-
 import './login-view.scss';
 
 export function LoginView(props) {
@@ -25,10 +24,6 @@ export function LoginView(props) {
     });
   }
 
-  const handleRegistration = (e) => {
-    console.log(username);
-    props.onRegisterClick(true);  
-  }
 
 return (
   <>
@@ -46,9 +41,11 @@ return (
     <Button className="m-2" variant="primary" type="submit" onClick={handleLogin}>
     Submit
     </Button>
-    <Button variant="secondary" type="submit" onClick={handleRegistration}>
+    
+    <Button to={`/register`} className="m-2" type="button" variant="secondary">
     Register
     </Button>
+   
   </Form>
   </>
 );
@@ -56,5 +53,5 @@ return (
 
 LoginView.propTypes = {
   onRegisterClick: PropTypes.func,
-  onLoggedIn: PropTypes.func
+  onLoggedIn: PropTypes.func,
 };
