@@ -13,7 +13,7 @@
 .main-view {
   background-color: steelblue;
 }
-.navbar {
+.navbar > * {
   color: #4682b4;
   font-size: 28px;
   font-weight: 800;
@@ -21,7 +21,11 @@
 }
 .nav-items {
   margin-right: 20px;
-  font-size: 28px;
+  font-size: 26px;
+  text-decoration: none;
+}
+.profile-link {
+  text-decoration: none;
 }
 .logout-button {
   font-size: 24px;

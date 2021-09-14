@@ -4,13 +4,14 @@ import axios from 'axios';
 import { Container, Form, Button } from 'react-bootstrap';
 import './register-view.scss';
 
-export function RegisterView(props) {
+export function RegisterView() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [favorites, setFavorites] = useState("");
   
+
   const handleRegister = (e) => {
     e.preventDefault();
     axios.post('https://actor-inspector.herokuapp.com/users', {
@@ -35,10 +36,10 @@ export function RegisterView(props) {
   return (
   <Container>
     
-    <Form>
+    <Form action="" method="">
       <Form.Group className="mb-3" controlId="formUsername">
       <Form.Label>Username*:</Form.Label>
-      <Form.Control type="text" placeholder="Enter Username"
+      <Form.Control required type="text" placeholder="Enter Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
       />
@@ -46,7 +47,7 @@ export function RegisterView(props) {
 
       <Form.Group className="mb-3" controlId="formPassword">
       <Form.Label>Password*:</Form.Label>
-      <Form.Control type="password" placeholder="Enter Password"
+      <Form.Control required type="password" placeholder="Enter Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -55,7 +56,7 @@ export function RegisterView(props) {
       <Form.Group className="mb-3" controlId="formEmail">
         <Form.Label label="Email" className="mb-3"
         > Email*: 
-          <Form.Control type="email" placeholder="name@example.com" 
+          <Form.Control required type="email" placeholder="name@example.com" 
           value={email}
           onChange={(e) => setEmail(e.target.value)}/>
         </Form.Label>

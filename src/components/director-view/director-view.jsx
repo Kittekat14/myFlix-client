@@ -41,7 +41,7 @@ DirectorView.propTypes = {
   director: PropTypes.shape({
     name: PropTypes.string,
     bio: PropTypes.string,
-    birthyear: PropTypes.instanceOf(Date),
+    birthyear: PropTypes.string,
     movies: PropTypes.array
   }).isRequired,
   onBackClick: PropTypes.func

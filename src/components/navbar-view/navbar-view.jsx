@@ -1,34 +1,52 @@
 import React from 'react';
 import { Navbar, Container, Nav, NavDropdown, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { ProfileView } from '../profile-view/profile-view';
 
 export const NavBar = ({ users, onLoggedOut }) => {
  
   const message = 'Welcome ';
-   
+  const goToProfile = () => {
+   return <ProfileView />
+  }
 
   return (
     <Navbar bg="light" expand="md" sticky="top" variant="light" className="navbar">
       <Container className="navbar-container">
-        <Navbar.Brand href="#top"><h1>ActorInspector</h1></Navbar.Brand>
+        <Navbar.Brand href="/"><h1>ActorInspector</h1></Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end">
           <Nav className="navbar">
-            <Nav.Link className="nav-items" href="#">{message}{`${users}`}</Nav.Link>
-            <Link className="nav-items" to={`/profile/${users}`}>{message}{`${users}`}</Link>
+            
+            <Nav.Item className="nav-items" href="#">{message}{`${users}`}</Nav.Item>
+
+            <Link className="nav-items" to={`/profile/${users}`} >Profile</Link>
 
             <NavDropdown className="nav-items" title="Genres" id="basic-nav-dropdown">
-
-              <NavDropdown.Item href="#action/3.1" >Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Adventure</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Biography</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.4">Comedy</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.5">Crime</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.6">Drama</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.7">Romance</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.8">Sci-fi</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.9">Thriller</NavDropdown.Item> 
-
+            <Link to="/genres/action">
+              <NavDropdown.Item className="nav-items">Action</NavDropdown.Item>
+            </Link>
+            <Link to="/genres/adventure">
+              <NavDropdown.Item className="nav-items">Adventure</NavDropdown.Item>
+            </Link>
+            <Link to="/genres/biography">
+              <NavDropdown.Item className="nav-items">Biography</NavDropdown.Item>
+            </Link>
+            <Link to="/genres/comedy">
+              <NavDropdown.Item className="nav-items">Comedy</NavDropdown.Item>
+            </Link>
+            <Link to="/genres/crime">
+              <NavDropdown.Item className="nav-items">Crime</NavDropdown.Item>
+            </Link>
+            <Link to="/genres/drama">
+              <NavDropdown.Item className="nav-items">Drama</NavDropdown.Item>
+            </Link>
+            <Link to="/genres/romance">
+              <NavDropdown.Item className="nav-items">Romance</NavDropdown.Item>
+            </Link>
+            <Link to="/genres/thriller">
+              <NavDropdown.Item className="nav-items">Thriller</NavDropdown.Item> 
+            </Link>
             </NavDropdown>
 
             <Link className="nav-items btn btn-lg btn-outline-danger logout-button" to="/" onClick={onLoggedOut}>Logout</Link>

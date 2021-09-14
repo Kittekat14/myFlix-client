@@ -35,12 +35,12 @@ return (
   <Form>
     <Form.Group className="mb-3" controlId="formUsername">
       <Form.Label>Username:</Form.Label>
-      <Form.Control type="text" placeholder="Enter Username" value={username} onChange={e => setUsername(e.target.value)} />
+      <Form.Control type="text" placeholder="Enter Username" value={username} onChange={e => setUsername(e.target.value)} required/>
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="formPassword">
       <Form.Label>Password:</Form.Label>
-      <Form.Control type="password" placeholder="Enter Password" value={password} onChange={e => setPassword(e.target.value)} />
+      <Form.Control type="password" placeholder="Enter Password" value={password} onChange={e => setPassword(e.target.value)} required/>
     </Form.Group>
     
     <Button className="m-2" variant="primary" type="submit" onClick={handleLogin}>

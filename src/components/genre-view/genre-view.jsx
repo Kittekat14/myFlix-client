@@ -26,7 +26,9 @@ export class GenreView extends React.Component {
           <Col className="label">All {genre.name.charAt(0).toUpperCase() + genre.name.slice(1)} Movies:</Col>
           <Col className="value">
             {genreMovies.map( (m) => (
-                 <Link to={`/movies/${m.title}`} key={m._id}>{` ${m.title}`}</Link>))}
+                <Link to={`/movies/${m.title}`} key={m._id}>
+                   <li className="relMovies">{m.title}</li>
+                </Link>))}
           </Col>
         </Row>
 
