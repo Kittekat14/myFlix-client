@@ -41,7 +41,7 @@ export function LoginView(props) {
   
 return (
   <>
-  <Form>
+  <Form onSubmit={handleLogin}>
     <Form.Group className="mb-3" controlId="formUsername">
       <Form.Label>Username:</Form.Label>
       <Form.Control type="text" placeholder="Enter Username" value={username} onChange={e => setUsername(e.target.value)} required/>

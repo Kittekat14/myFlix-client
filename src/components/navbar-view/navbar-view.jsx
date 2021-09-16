@@ -20,30 +20,23 @@ export const NavBar = ({ users, onLoggedOut }) => {
             <Link className="nav-items" to={`/profile/${users}`} >Profile</Link>
 
             <NavDropdown className="nav-items" title="Genres" id="basic-nav-dropdown">
-            <Link to="/genres/action">
-              <NavDropdown.Item className="nav-items">Action</NavDropdown.Item>
-            </Link>
-            <Link to="/genres/adventure">
-              <NavDropdown.Item className="nav-items">Adventure</NavDropdown.Item>
-            </Link>
-            <Link to="/genres/biography">
-              <NavDropdown.Item className="nav-items">Biography</NavDropdown.Item>
-            </Link>
-            <Link to="/genres/comedy">
-              <NavDropdown.Item className="nav-items">Comedy</NavDropdown.Item>
-            </Link>
-            <Link to="/genres/crime">
-              <NavDropdown.Item className="nav-items">Crime</NavDropdown.Item>
-            </Link>
-            <Link to="/genres/drama">
-              <NavDropdown.Item className="nav-items">Drama</NavDropdown.Item>
-            </Link>
-            <Link to="/genres/romance">
-              <NavDropdown.Item className="nav-items">Romance</NavDropdown.Item>
-            </Link>
-            <Link to="/genres/thriller">
-              <NavDropdown.Item className="nav-items">Thriller</NavDropdown.Item> 
-            </Link>
+            
+              <NavDropdown.Item className="nav-items"><Link to="/genres/action">Action</Link></NavDropdown.Item>
+            
+              <NavDropdown.Item className="nav-items"><Link to="/genres/adventure">Adventure</Link></NavDropdown.Item>
+            
+              <NavDropdown.Item className="nav-items"><Link to="/genres/biography">Biography</Link></NavDropdown.Item>
+            
+              <NavDropdown.Item className="nav-items"><Link to="/genres/comedy">Comedy</Link></NavDropdown.Item>
+           
+              <NavDropdown.Item className="nav-items"><Link to="/genres/crime">Crime</Link></NavDropdown.Item>
+            
+              <NavDropdown.Item className="nav-items"><Link to="/genres/drama">Drama</Link></NavDropdown.Item>
+            
+              <NavDropdown.Item className="nav-items"><Link to="/genres/romance">Romance</Link></NavDropdown.Item>
+           
+              <NavDropdown.Item className="nav-items"><Link to="/genres/thriller">Thriller</Link></NavDropdown.Item> 
+           
             </NavDropdown>
 
             <Link className="nav-items btn btn-lg btn-outline-danger logout-button" to="/" onClick={onLoggedOut}>Logout</Link>

@@ -25,7 +25,7 @@ export default class MainView extends React.Component {
 
     this.state = {
       movies: [],
-      user: null
+      user: ''
     };
   }
 
@@ -107,7 +107,6 @@ export default class MainView extends React.Component {
             
             <Route path="/register" render={() => {
               if ( !user ) return <Redirect to="/" />;
-              if ( user )
               return (
                 <Col>
                   <RegisterView onBackClick={() => history.goBack()}/>
