@@ -22,20 +22,6 @@ export class MovieView extends React.Component {
    
     const { movie, onBackClick } = this.props;
 
-    // function genreClick(token) {
-    //   axios.get('https://actor-inspector.herokuapp.com/genres', {
-    //     headers: { Authorization: `Bearer ${token}`}
-    //   })
-    //   .then(response => {
-    //     this.setState({
-    //       genres: response.data
-    //     });
-    //   })
-    //   .catch(function (error) {
-    //     console.log(error);
-    //   });
-    //   }
-
 
     return (
     <Container className="movie-view">

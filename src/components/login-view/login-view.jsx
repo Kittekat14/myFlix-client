@@ -1,13 +1,27 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 import Form from 'react-bootstrap/Form';
+import { RegisterView } from '../register-view/register-view';
 import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import './login-view.scss';
+import { BrowserRouter as Router,
+Switch,
+Route,
+Link } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
+
+  const history = useHistory();
+
+  function RegisterButton()  {
+      history.push("/register");
+    } 
+  
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -24,7 +38,7 @@ export function LoginView(props) {
     });
   }
 
-
+  
 return (
   <>
   <Form>
@@ -42,9 +56,7 @@ return (
     Submit
     </Button>
     
-    <Button to={`/register`} className="m-2" type="button" variant="secondary">
-    Register
-    </Button>
+    <Button className="m-2" variant="secondary" type="button" onClick={RegisterButton}>Register</Button>
    
   </Form>
   </>

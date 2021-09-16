@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import axios from 'axios';
 import { Container, Form, Button } from 'react-bootstrap';
 import './register-view.scss';
+import { useHistory } from "react-router-dom";
+import { LoginView } from '../login-view/login-view';
+
 
 export function RegisterView() {
   const [username, setUsername] = useState("");
@@ -10,10 +13,21 @@ export function RegisterView() {
   const [email, setEmail] = useState("");
   const [birthdate, setBirthdate] = useState("");
   const [favorites, setFavorites] = useState("");
-  
+  const [nameError, setNameError] = useState({});
+  const [passwordError, setPasswordError] = useState({});
+  const [emailError, setEmailError] = useState({});
+
+  const history = useHistory();
+
+  const LoginButton = () => {
+    history.push("/login");
+  }
+
 
   const handleRegister = (e) => {
     e.preventDefault();
+    const isValid = formValidation();
+    if(isValid) {
     axios.post('https://actor-inspector.herokuapp.com/users', { 
       username: username,
       password: password,
@@ -29,8 +43,34 @@ export function RegisterView() {
     .catch(e => {
       console.log('error registering the user')
     });
+  }}
+
+
+  const formValidation = () => {
+    const nameError = {};
+    const passwordError = {};
+    const emailError = {};
+    let isValid = true;
+    if(username.trim().length < 5) {
+        nameError.nameShort = 'Username is too short.';
+        isValid = false;
+    }
+    if(password.trim().length === 0) {
+      passwordError.passwordEmpty = 'Password cannot be empty.';
+      isValid = false;
+    }
+    if(!(email && email.trim().includes('@') && email.trim().includes('.'))) {
+      emailError.emailNot = 'This seems to be no email address.';
+      isValid = false;
+    }
+    
+    setNameError(nameError);
+    setPasswordError(passwordError);
+    setEmailError(emailError);
+    return isValid;
   }
 
+ 
 
   return (
   <Container>
@@ -42,6 +82,9 @@ export function RegisterView() {
           value={username}
           onChange={(e) => setUsername(e.target.value)}
       />
+      {Object.keys(nameError).map((key) => {
+        return <div style={{ fontSize: 12, color:'red'}}>{nameError[key]}</div>
+      })}
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formPassword">
@@ -50,6 +93,9 @@ export function RegisterView() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+      {Object.keys(passwordError).map((key) => {
+        return <div style={{ fontSize: 12, color:'red'}}>{passwordError[key]}</div>
+      })}
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formEmail">
@@ -59,6 +105,9 @@ export function RegisterView() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}/>
         </Form.Label>
+      {Object.keys(emailError).map((key) => {
+        return <div style={{ fontSize: 12, color:'red'}}>{emailError[key]}</div>
+      })}
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBirthdate">
@@ -73,7 +122,7 @@ export function RegisterView() {
       <Form.Group className="mb-3" controlId="formFavorites">
         <Form.Label label="Favorites" className="mb-3"
         > Favorite Movies:
-          <Form.Control type="array" 
+          <Form.Control type="text" 
           value={favorites}
           onChange={(e) => setFavorites(e.target.value)}/>
         </Form.Label>
@@ -81,7 +130,7 @@ export function RegisterView() {
 
       
       <Button type="submit" variant="primary" onClick={handleRegister}>Register</Button>
-      <Button className="m-2" type="button" variant="secondary" onClick={() => { onBackClick(null); }}>Go To Login</Button>
+      <Button className="m-2" type="button" variant="secondary" onClick={LoginButton}>Go To Login</Button>
       
     </Form>
 </Container>
@@ -89,8 +138,8 @@ export function RegisterView() {
 }
 
 RegisterView.propTypes = {
-  onBackClick: PropTypes.func
-
+  onBackClick: PropTypes.func,
+  
 };
 
 

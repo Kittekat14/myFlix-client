@@ -1,7 +1,7 @@
 // Main-View ~ Homepage
 import React from 'react';
 import axios from 'axios';
-import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom";
 
 import { LoginView } from "../login-view/login-view";
 import { RegisterView } from "../register-view/register-view";
@@ -83,13 +83,7 @@ export default class MainView extends React.Component {
     const { movies, user } = this.state;
 
     
-    if (!user) 
-    return <Row>
-      <Col>
-        <LoginView onLoggedIn={user => this.onLoggedIn(user)} />
-      </Col>
-          </Row>
-    if (movies.length === 0) return <div className="main-view" />;
+  
     return (
         <Router>
           <Row className="main-view justify-content-md-center">
@@ -130,7 +124,7 @@ export default class MainView extends React.Component {
               );
               if (movies.length === 0) return <div className="main-view" />;
               return <Col>
-              <ProfileView user={user} />
+              <ProfileView user={user} movies={movies}/>
               </Col>
             }} />       
 
