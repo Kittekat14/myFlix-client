@@ -27652,6 +27652,7 @@ function LoginView(props) {
             passwordError1.passwordEmpty = 'Password cannot be empty.';
             isValid = false; //this form has this error
         }
+        // update error objects
         setUsernameError(usernameError1);
         setPasswordError(passwordError1);
         return isValid;
@@ -27790,7 +27791,7 @@ function LoginView(props) {
         })
     }));
 }
-_s(LoginView, "HhXnqWSSURsE1m88gAEmWC7CA0E=", false, function() {
+_s(LoginView, "+m712BbR2gv06P8dilZ5F2M38UQ=", false, function() {
     return [_reactRouterDom.useHistory];
 });
 _c = LoginView;

@@ -15,8 +15,8 @@ import { useHistory } from "react-router-dom";
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
   const [ password, setPassword ] = useState('');
-  const [usernameError, setUsernameError] = useState({});
-  const [passwordError, setPasswordError] = useState({});
+  const [ usernameError, setUsernameError ] = useState({});
+  const [ passwordError, setPasswordError ] = useState({});
 
   const history = useHistory();
 
@@ -46,14 +46,14 @@ export function LoginView(props) {
     const passwordError = {};
     let isValid = true; //initial / default flag
     if(username.trim().length < 5) {
-        usernameError.nameShort = 'Username is too short.';
-        isValid = false; //this form has this error
+      usernameError.nameShort = 'Username is too short.';
+      isValid = false; //this form has this error
     }
     if(password.trim().length === 0) {
       passwordError.passwordEmpty = 'Password cannot be empty.';
       isValid = false; //this form has this error
     }
-
+    // update error objects
     setUsernameError(usernameError);
     setPasswordError(passwordError);
     return isValid;
