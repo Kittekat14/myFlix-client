@@ -45,8 +45,7 @@ export class ProfileView extends Component {
           password: response.data.password,
           email: response.data.email,
           birthdate: response.data.birthdate,
-          favorites: response.data.favorites,
-         
+          favorites: response.data.favorites
         });
       })
       .catch(function (error) {
@@ -126,13 +125,14 @@ export class ProfileView extends Component {
 
     const movieId = movies.find((movie) => movie.title === title)._id;
     
-    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {}, {
+    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, null, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((response) => {
         this.setState({
           favorites: response.data.favorites
-        })
+        });
+        this.componentDidMount();
       })
       .catch(function (error) {
         console.log(error);
@@ -177,9 +177,9 @@ export class ProfileView extends Component {
                           <Card.Img style={{ width: '200px' }} className="movieCard" variant="top" src={movie.imageUrl} crossOrigin="true" />
                           <Card.Body>
                             <Card.Title className="movie-card-title">{movie.title}</Card.Title>
-                            {/* <Button size='sm' className='profile-button remove-favorite' variant='danger' onClick={(e) => this.removeFavouriteMovie(e, movie)}>
+                            <Button size='sm' className='profile-button remove-favorite' variant='danger' onClick={() => this.removeFavoriteMovie(movie.title, movies)}>
                               Remove
-                            </Button> */}
+                            </Button>
                           </Card.Body>
                         </Card>
                     )}

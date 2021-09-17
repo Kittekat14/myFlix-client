@@ -27627,7 +27627,7 @@ function LoginView(props) {
     }
     const handleLogin = (e)=>{
         e.preventDefault();
-        const isValid = formValidation();
+        const isValid = LoginValidation();
         if (isValid) _axiosDefault.default.post('https://actor-inspector.herokuapp.com/login', {
             username: username,
             password: password
@@ -27638,12 +27638,12 @@ function LoginView(props) {
             console.log('no such user');
         });
     };
-    const formValidation = ()=>{
+    const LoginValidation = ()=>{
         const usernameError1 = {
         };
         const passwordError1 = {
         };
-        let isValid = true; //initial / default flag
+        let isValid = true; //initial/default flag
         if (username.trim().length < 5) {
             usernameError1.nameShort = 'Username is too short.';
             isValid = false; //this form has this error
@@ -27684,6 +27684,7 @@ function LoginView(props) {
                             children: "Username:"
                         }),
                         /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
+                            noValidate: true,
                             type: "text",
                             placeholder: "Enter Username",
                             value: username,
@@ -27730,6 +27731,7 @@ function LoginView(props) {
                             children: "Password:"
                         }),
                         /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
+                            noValidate: true,
                             type: "password",
                             placeholder: "Enter Password",
                             value: password,
@@ -40789,8 +40791,7 @@ class ProfileView extends _react.Component {
         const token = localStorage.getItem('token');
         const movieId = movies.find((movie)=>movie.title === title
         )._id;
-        _axiosDefault.default.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {
-        }, {
+        _axiosDefault.default.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, null, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
@@ -40798,6 +40799,7 @@ class ProfileView extends _react.Component {
             this.setState({
                 favorites: response.data.favorites
             });
+            this.componentDidMount();
         }).catch(function(error) {
             console.log(error);
         });
@@ -40988,21 +40990,36 @@ class ProfileView extends _react.Component {
                                                         },
                                                         __self: this
                                                     }),
-                                                    /*#__PURE__*/ _jsxRuntime.jsx(_cardDefault.default.Body, {
+                                                    /*#__PURE__*/ _jsxRuntime.jsxs(_cardDefault.default.Body, {
                                                         __source: {
                                                             fileName: "src/components/profile-view/profile-view.jsx",
                                                             lineNumber: 178
                                                         },
                                                         __self: this,
-                                                        children: /*#__PURE__*/ _jsxRuntime.jsx(_cardDefault.default.Title, {
-                                                            className: "movie-card-title",
-                                                            __source: {
-                                                                fileName: "src/components/profile-view/profile-view.jsx",
-                                                                lineNumber: 179
-                                                            },
-                                                            __self: this,
-                                                            children: movie.title
-                                                        })
+                                                        children: [
+                                                            /*#__PURE__*/ _jsxRuntime.jsx(_cardDefault.default.Title, {
+                                                                className: "movie-card-title",
+                                                                __source: {
+                                                                    fileName: "src/components/profile-view/profile-view.jsx",
+                                                                    lineNumber: 179
+                                                                },
+                                                                __self: this,
+                                                                children: movie.title
+                                                            }),
+                                                            /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
+                                                                size: "sm",
+                                                                className: "profile-button remove-favorite",
+                                                                variant: "danger",
+                                                                onClick: ()=>this.removeFavoriteMovie(movie.title, movies)
+                                                                ,
+                                                                __source: {
+                                                                    fileName: "src/components/profile-view/profile-view.jsx",
+                                                                    lineNumber: 180
+                                                                },
+                                                                __self: this,
+                                                                children: "Remove"
+                                                            })
+                                                        ]
                                                     })
                                                 ]
                                             }, movie._id));

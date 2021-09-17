@@ -26,7 +26,7 @@ export function LoginView(props) {
   
   const handleLogin = (e) => {
     e.preventDefault();
-    const isValid = formValidation();
+    const isValid = LoginValidation();
     if(isValid) {
     axios.post('https://actor-inspector.herokuapp.com/login', {
       username: username,
@@ -41,10 +41,10 @@ export function LoginView(props) {
     });
   }}
 
-  const formValidation = () => {
+  const LoginValidation = () => {
     const usernameError = {};
     const passwordError = {};
-    let isValid = true; //initial / default flag
+    let isValid = true; //initial/default flag
     if(username.trim().length < 5) {
       usernameError.nameShort = 'Username is too short.';
       isValid = false; //this form has this error
@@ -65,7 +65,7 @@ return (
   <Form onSubmit={handleLogin}>
     <Form.Group className="mb-3" controlId="formUsername">
       <Form.Label>Username:</Form.Label>
-      <Form.Control type="text" placeholder="Enter Username" value={username} onChange={e => setUsername(e.target.value)} required/>
+      <Form.Control noValidate type="text" placeholder="Enter Username" value={username} onChange={e => setUsername(e.target.value)} required/>
       {Object.keys(usernameError).map((key) => {
         return <div style={{ fontSize: 12, color:'red'}}>{usernameError[key]}</div>
       })}
@@ -73,7 +73,7 @@ return (
 
     <Form.Group className="mb-3" controlId="formPassword">
       <Form.Label>Password:</Form.Label>
-      <Form.Control type="password" placeholder="Enter Password" value={password} onChange={e => setPassword(e.target.value)} required/>
+      <Form.Control noValidate type="password" placeholder="Enter Password" value={password} onChange={e => setPassword(e.target.value)} required/>
       {Object.keys(passwordError).map((key) => {
         return <div style={{ fontSize: 12, color:'red'}}>{passwordError[key]}</div>
       })}
