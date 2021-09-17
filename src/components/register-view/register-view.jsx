@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Container, Form, Button } from 'react-bootstrap';
 import './register-view.scss';
 import { useHistory } from "react-router-dom";
-import { LoginView } from '../login-view/login-view';
+import { Link } from 'react-router-dom';
 
 
 export function RegisterView() {
@@ -22,7 +22,6 @@ export function RegisterView() {
   const LoginButton = () => {
     history.push("/login");
   }
-
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -130,7 +129,9 @@ export function RegisterView() {
 
       
       <Button type="submit" variant="primary" onClick={handleRegister}>Register</Button>
-      <Button className="m-2" type="button" variant="secondary" onClick={LoginButton}>Go To Login</Button>
+      <Link to={'/'}>
+      <Button className="m-2" type="link" variant="secondary">Go To Login</Button>
+      </Link>
       
     </Form>
 </Container>
@@ -139,7 +140,6 @@ export function RegisterView() {
 
 RegisterView.propTypes = {
   onBackClick: PropTypes.func,
-  
 };
 
 

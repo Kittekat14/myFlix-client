@@ -106,15 +106,13 @@ export default class MainView extends React.Component {
             }} />
             
             <Route path="/register" render={() => {
-              if ( !user ) return <Redirect to="/" />;
-              return (
-                <Col>
-                  <RegisterView onBackClick={() => history.goBack()}/>
-                </Col>
-              );
-            }} />
+            if (user) return <Redirect to="/" />
+            return <Col>
+              <RegisterView />
+            </Col>
+          }} />
 
-            <Route path="/profile/:username" render={() => {
+            <Route exact path="/profile/:username" render={() => {
               if ( !user ) 
               return (
                 <Col>
@@ -127,7 +125,7 @@ export default class MainView extends React.Component {
               </Col>
             }} />       
 
-            <Route path="/movies/:title" render={({ match, history }) => {
+            <Route exact path="/movies/:title" render={({ match, history }) => {
               if ( !user ) 
               return (
                 <Col>
@@ -140,7 +138,7 @@ export default class MainView extends React.Component {
               </Col>
             }}  />
             
-            <Route path="/genres/:name" render={({ match, history }) => { 
+            <Route exact path="/genres/:name" render={({ match, history }) => { 
               if ( !user ) 
               return (
                 <Col>
@@ -153,7 +151,7 @@ export default class MainView extends React.Component {
               </Col>
             }}  />
 
-            <Route path="/directors/:name" render={({ match, history }) => { 
+            <Route exact path="/directors/:name" render={({ match, history }) => { 
               if ( !user ) 
               return (
                 <Col>

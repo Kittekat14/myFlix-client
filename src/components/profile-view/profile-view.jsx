@@ -16,8 +16,12 @@ export class ProfileView extends Component {
       email: '',
       birthdate: '',
       favorites: [],
-      newFavorite: '',
-      removeFavorite: ''
+      addFavorite: '',
+      removeFavorite: '',
+      newUsername: '',
+      newPassword: '',
+      newEmail: '',
+      newBirthdate: '',
     };
   }
 
@@ -69,18 +73,18 @@ export class ProfileView extends Component {
       }
     }
   
-  handleUserUpdate(newUsername, newPassword, newEmail, newBirthdate, newFavorites) { 
+  handleUserUpdate(newUsername, newPassword, newEmail, newBirthdate) { 
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 
-    axios.put(`https://actor-inspector.herokuapp.com/users/${username}`, {
+    axios.put(`https://actor-inspector.herokuapp.com/users/${username}`, null, {
       headers: { Authorization: `Bearer ${token}` },
       data: {
         username: newUsername ? newUsername : this.state.username,
         password: newPassword ? newPassword : this.state.password,
         email: newEmail ? newEmail : this.state.email,
         birthdate: newBirthdate ? newBirthdate : this.state.birthdate,
-        favorites: newFavorites ? newFavorites : this.state.favorites
+        favorites: this.state.favorites
       },
     })
     .then((response) => {
@@ -218,20 +222,26 @@ export class ProfileView extends Component {
       <Form.Group className="mb-3" controlId="formUsername">
         <Form.Label>Username*:</Form.Label>
         <Form.Control required type="text" placeholder="Enter New Username"
-            onChange={this.handleUserUpdate}/>
+            onChange={(e) => this.setState(
+              {newUsername: e.target.value}
+              )}/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formPassword">
         <Form.Label>Password*:</Form.Label>
         <Form.Control required type="password" placeholder="Enter New Password"
-            onChange={this.handleUserUpdate}/>
+            onChange={(e) => this.setState(
+              {newPassword: e.target.value}
+              )}/>
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formEmail">
           <Form.Label label="Email" className="mb-3"
           > Email*: 
             <Form.Control required type="email" placeholder="Enter New Email"
-            onChange={this.handleUserUpdate}/>
+            onChange={(e) => this.setState(
+              {newEmail: e.target.value}
+              )}/>
           </Form.Label>
       </Form.Group>
 
@@ -239,19 +249,14 @@ export class ProfileView extends Component {
         <Form.Label label="Birthdate" className="mb-3"
         > Birthdate:
           <Form.Control type="date" placeholder="Enter New Birthdate"
-          onChange={this.handleUserUpdate}/>
+          onChange={(e) => this.setState(
+            {newBirthdate: e.target.value}
+            )}/>
         </Form.Label>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formFavorites">
-        <Form.Label label="Favorites" className="mb-3"
-        > Favorite Movies:
-          <Form.Control type="text" placeholder="Enter New Favorite Movies"
-          onChange={this.handleUserUpdate}/>
-        </Form.Label>
-      </Form.Group>
 
-      <Button onClick={ () => {this.handleUserUpdate()} }>Update your Account</Button>
+      <Button type="button" onClick={ () => { this.handleUserUpdate(this.state.newUsername, this.state.newPassword, this.state.newEmail, this.state.newBirthdate) } }>Update your Account</Button>
 
     </Form>
   
