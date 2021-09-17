@@ -27614,13 +27614,18 @@ function LoginView(props) {
     _s();
     const [username, setUsername] = _react.useState('');
     const [password, setPassword] = _react.useState('');
+    const [nameError, setNameError] = _react.useState({
+    });
+    const [passwordError, setPasswordError] = _react.useState({
+    });
     const history = _reactRouterDom.useHistory();
     function RegisterButton() {
         history.push("/register");
     }
     const handleLogin = (e)=>{
         e.preventDefault();
-        _axiosDefault.default.post('https://actor-inspector.herokuapp.com/login', {
+        const isvalid = formvalidation();
+        if (isvalid) _axiosDefault.default.post('https://actor-inspector.herokuapp.com/login', {
             username: username,
             password: password
         }).then((response)=>{
@@ -27630,12 +27635,30 @@ function LoginView(props) {
             console.log('no such user');
         });
     };
+    const formvalidation = ()=>{
+        const nameError1 = {
+        };
+        const passwordError1 = {
+        };
+        let isvalid = true;
+        if (username.trim().length < 5) {
+            nameError1.nameShort = 'Username is too short.';
+            isvalid = false;
+        }
+        if (password.trim().length === 0) {
+            passwordError1.passwordEmpty = 'Password cannot be empty.';
+            isvalid = false;
+        }
+        setNameError(nameError1);
+        setPasswordError(passwordError1);
+        return isValid;
+    };
     return(/*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
         children: /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default, {
             onSubmit: handleLogin,
             __source: {
                 fileName: "src/components/login-view/login-view.jsx",
-                lineNumber: 44
+                lineNumber: 68
             },
             __self: this,
             children: [
@@ -27644,14 +27667,14 @@ function LoginView(props) {
                     controlId: "formUsername",
                     __source: {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 45
+                        lineNumber: 69
                     },
                     __self: this,
                     children: [
                         /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Label, {
                             __source: {
                                 fileName: "src/components/login-view/login-view.jsx",
-                                lineNumber: 46
+                                lineNumber: 70
                             },
                             __self: this,
                             children: "Username:"
@@ -27665,7 +27688,7 @@ function LoginView(props) {
                             required: true,
                             __source: {
                                 fileName: "src/components/login-view/login-view.jsx",
-                                lineNumber: 47
+                                lineNumber: 71
                             },
                             __self: this
                         })
@@ -27676,14 +27699,14 @@ function LoginView(props) {
                     controlId: "formPassword",
                     __source: {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 50
+                        lineNumber: 74
                     },
                     __self: this,
                     children: [
                         /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Label, {
                             __source: {
                                 fileName: "src/components/login-view/login-view.jsx",
-                                lineNumber: 51
+                                lineNumber: 75
                             },
                             __self: this,
                             children: "Password:"
@@ -27697,7 +27720,7 @@ function LoginView(props) {
                             required: true,
                             __source: {
                                 fileName: "src/components/login-view/login-view.jsx",
-                                lineNumber: 52
+                                lineNumber: 76
                             },
                             __self: this
                         })
@@ -27710,7 +27733,7 @@ function LoginView(props) {
                     onClick: handleLogin,
                     __source: {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 55
+                        lineNumber: 79
                     },
                     __self: this,
                     children: "Submit"
@@ -27722,7 +27745,7 @@ function LoginView(props) {
                     onClick: RegisterButton,
                     __source: {
                         fileName: "src/components/login-view/login-view.jsx",
-                        lineNumber: 59
+                        lineNumber: 83
                     },
                     __self: this,
                     children: "Register"
@@ -27731,7 +27754,7 @@ function LoginView(props) {
         })
     }));
 }
-_s(LoginView, "r+OvzGOB71OgavkK/AEIFbVQbcA=", false, function() {
+_s(LoginView, "loZOYvZuSbIysPvbHLNaYOLNiA8=", false, function() {
     return [_reactRouterDom.useHistory];
 });
 _c = LoginView;
@@ -28723,11 +28746,16 @@ function RegisterView() {
         e.preventDefault();
         const isValid = formValidation();
         if (isValid) _axiosDefault.default.post('https://actor-inspector.herokuapp.com/users', {
-            username: username,
-            password: password,
-            email: email,
-            birthdate: birthdate,
-            favorites: favorites
+            headers: {
+                Authorization: `Bearer ${token}`
+            },
+            data: {
+                username: username,
+                password: password,
+                email: email,
+                birthdate: birthdate,
+                favorites: favorites
+            }
         }).then((response)=>{
             const data = response.data;
             console.log(data);
@@ -28764,15 +28792,13 @@ function RegisterView() {
     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Container, {
         __source: {
             fileName: "src/components/register-view/register-view.jsx",
-            lineNumber: 76
+            lineNumber: 79
         },
         __self: this,
         children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form, {
-            action: "",
-            method: "",
             __source: {
                 fileName: "src/components/register-view/register-view.jsx",
-                lineNumber: 78
+                lineNumber: 81
             },
             __self: this,
             children: [
@@ -28781,14 +28807,14 @@ function RegisterView() {
                     controlId: "formUsername",
                     __source: {
                         fileName: "src/components/register-view/register-view.jsx",
-                        lineNumber: 79
+                        lineNumber: 82
                     },
                     __self: this,
                     children: [
                         /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
                             __source: {
                                 fileName: "src/components/register-view/register-view.jsx",
-                                lineNumber: 80
+                                lineNumber: 83
                             },
                             __self: this,
                             children: "Username*:"
@@ -28802,7 +28828,7 @@ function RegisterView() {
                             ,
                             __source: {
                                 fileName: "src/components/register-view/register-view.jsx",
-                                lineNumber: 81
+                                lineNumber: 84
                             },
                             __self: this
                         }),
@@ -28814,7 +28840,7 @@ function RegisterView() {
                                 },
                                 __source: {
                                     fileName: "src/components/register-view/register-view.jsx",
-                                    lineNumber: 86
+                                    lineNumber: 89
                                 },
                                 __self: this,
                                 children: nameError[key]
@@ -28827,14 +28853,14 @@ function RegisterView() {
                     controlId: "formPassword",
                     __source: {
                         fileName: "src/components/register-view/register-view.jsx",
-                        lineNumber: 90
+                        lineNumber: 93
                     },
                     __self: this,
                     children: [
                         /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
                             __source: {
                                 fileName: "src/components/register-view/register-view.jsx",
-                                lineNumber: 91
+                                lineNumber: 94
                             },
                             __self: this,
                             children: "Password*:"
@@ -28848,7 +28874,7 @@ function RegisterView() {
                             ,
                             __source: {
                                 fileName: "src/components/register-view/register-view.jsx",
-                                lineNumber: 92
+                                lineNumber: 95
                             },
                             __self: this
                         }),
@@ -28860,7 +28886,7 @@ function RegisterView() {
                                 },
                                 __source: {
                                     fileName: "src/components/register-view/register-view.jsx",
-                                    lineNumber: 97
+                                    lineNumber: 100
                                 },
                                 __self: this,
                                 children: passwordError[key]
@@ -28873,7 +28899,7 @@ function RegisterView() {
                     controlId: "formEmail",
                     __source: {
                         fileName: "src/components/register-view/register-view.jsx",
-                        lineNumber: 101
+                        lineNumber: 104
                     },
                     __self: this,
                     children: [
@@ -28882,7 +28908,7 @@ function RegisterView() {
                             className: "mb-3",
                             __source: {
                                 fileName: "src/components/register-view/register-view.jsx",
-                                lineNumber: 102
+                                lineNumber: 105
                             },
                             __self: this,
                             children: [
@@ -28896,7 +28922,7 @@ function RegisterView() {
                                     ,
                                     __source: {
                                         fileName: "src/components/register-view/register-view.jsx",
-                                        lineNumber: 104
+                                        lineNumber: 107
                                     },
                                     __self: this
                                 })
@@ -28910,7 +28936,7 @@ function RegisterView() {
                                 },
                                 __source: {
                                     fileName: "src/components/register-view/register-view.jsx",
-                                    lineNumber: 109
+                                    lineNumber: 112
                                 },
                                 __self: this,
                                 children: emailError[key]
@@ -28923,7 +28949,7 @@ function RegisterView() {
                     controlId: "formBirthdate",
                     __source: {
                         fileName: "src/components/register-view/register-view.jsx",
-                        lineNumber: 113
+                        lineNumber: 116
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Label, {
@@ -28931,7 +28957,7 @@ function RegisterView() {
                         className: "mb-3",
                         __source: {
                             fileName: "src/components/register-view/register-view.jsx",
-                            lineNumber: 114
+                            lineNumber: 117
                         },
                         __self: this,
                         children: [
@@ -28943,7 +28969,7 @@ function RegisterView() {
                                 ,
                                 __source: {
                                     fileName: "src/components/register-view/register-view.jsx",
-                                    lineNumber: 116
+                                    lineNumber: 119
                                 },
                                 __self: this
                             })
@@ -28955,7 +28981,7 @@ function RegisterView() {
                     controlId: "formFavorites",
                     __source: {
                         fileName: "src/components/register-view/register-view.jsx",
-                        lineNumber: 122
+                        lineNumber: 125
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Label, {
@@ -28963,7 +28989,7 @@ function RegisterView() {
                         className: "mb-3",
                         __source: {
                             fileName: "src/components/register-view/register-view.jsx",
-                            lineNumber: 123
+                            lineNumber: 126
                         },
                         __self: this,
                         children: [
@@ -28975,7 +29001,7 @@ function RegisterView() {
                                 ,
                                 __source: {
                                     fileName: "src/components/register-view/register-view.jsx",
-                                    lineNumber: 125
+                                    lineNumber: 128
                                 },
                                 __self: this
                             })
@@ -28988,7 +29014,7 @@ function RegisterView() {
                     onClick: handleRegister,
                     __source: {
                         fileName: "src/components/register-view/register-view.jsx",
-                        lineNumber: 132
+                        lineNumber: 135
                     },
                     __self: this,
                     children: "Register"
@@ -29000,7 +29026,7 @@ function RegisterView() {
                     onClick: LoginButton,
                     __source: {
                         fileName: "src/components/register-view/register-view.jsx",
-                        lineNumber: 133
+                        lineNumber: 136
                     },
                     __self: this,
                     children: "Go To Login"
@@ -40629,7 +40655,7 @@ class ProfileView extends _react.Component {
             email: '',
             birthdate: '',
             favorites: [],
-            newFavorite: '',
+            addFavorite: '',
             removeFavorite: ''
         };
     }
@@ -40659,6 +40685,7 @@ class ProfileView extends _react.Component {
     deleteUser(token) {
         const username = localStorage.getItem('user');
         if (window.confirm('Are you sure you want to delete your user account?')) _axiosDefault.default.delete(`https://actor-inspector.herokuapp.com/users/${username}`, {
+        }, {
             headers: {
                 Authorization: `Bearer ${token}`
             }
