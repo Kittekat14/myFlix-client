@@ -12,7 +12,7 @@ export function RegisterView() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [birthdate, setBirthdate] = useState("");
-  const [favorites, setFavorites] = useState("");
+  
   const [nameError, setNameError] = useState({});
   const [passwordError, setPasswordError] = useState({});
   const [emailError, setEmailError] = useState({});
@@ -31,8 +31,7 @@ export function RegisterView() {
       username: username,
       password: password,
       email: email,
-      birthdate: birthdate,
-      favorites: favorites
+      birthdate: birthdate
     })
     .then(response => {
       const data = response.data;
@@ -44,6 +43,16 @@ export function RegisterView() {
     });
   }}
 
+  //handleChange = () => {
+   // setValues({
+    // ...values,
+    // [event.target.name]: event.target.value;
+  // })
+  //} 
+
+  //handleFormSubmit = () => {
+  //  
+  //}
 
   const formValidation = () => {
     const nameError = {};
@@ -77,7 +86,7 @@ export function RegisterView() {
     <Form action="" method="">
       <Form.Group className="mb-3" controlId="formUsername">
       <Form.Label>Username*:</Form.Label>
-      <Form.Control required type="text" placeholder="Enter Username"
+      <Form.Control required minLength="5" pattern="" type="text" placeholder="Enter Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
       />
@@ -88,7 +97,7 @@ export function RegisterView() {
 
       <Form.Group className="mb-3" controlId="formPassword">
       <Form.Label>Password*:</Form.Label>
-      <Form.Control required type="password" placeholder="Enter Password"
+      <Form.Control required minLength="1" pattern="" type="password" placeholder="Enter Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
@@ -98,8 +107,7 @@ export function RegisterView() {
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formEmail">
-        <Form.Label label="Email" className="mb-3"
-        > Email*: 
+        <Form.Label> Email*: 
           <Form.Control required type="email" placeholder="name@example.com" 
           value={email}
           onChange={(e) => setEmail(e.target.value)}/>
@@ -118,15 +126,7 @@ export function RegisterView() {
         </Form.Label>
       </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formFavorites">
-        <Form.Label label="Favorites" className="mb-3"
-        > Favorite Movies:
-          <Form.Control type="text" 
-          value={favorites}
-          onChange={(e) => setFavorites(e.target.value)}/>
-        </Form.Label>
-      </Form.Group>
-
+      
       
       <Button type="submit" variant="primary" onClick={handleRegister}>Register</Button>
       <Link to={'/'}>

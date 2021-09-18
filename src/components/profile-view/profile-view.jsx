@@ -21,7 +21,7 @@ export class ProfileView extends Component {
       newUsername: '',
       newPassword: '',
       newEmail: '',
-      newBirthdate: '',
+      newBirthdate: ''
     };
   }
 
@@ -72,34 +72,7 @@ export class ProfileView extends Component {
       }
     }
   
-  handleUserUpdate(newUsername, newPassword, newEmail, newBirthdate) { 
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-
-    axios.put(`https://actor-inspector.herokuapp.com/users/${username}`, null, {
-      headers: { Authorization: `Bearer ${token}` },
-      data: {
-        username: newUsername ? newUsername : this.state.username,
-        password: newPassword ? newPassword : this.state.password,
-        email: newEmail ? newEmail : this.state.email,
-        birthdate: newBirthdate ? newBirthdate : this.state.birthdate,
-        favorites: this.state.favorites
-      },
-    })
-    .then((response) => {
-      this.setState({
-        username: response.data.username,
-        password: response.data.password,
-        email: response.data.email,
-        birthdate: response.data.birthdate,
-        favorites: response.data.favorites
-      });
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
-
+  
   addToFavorites(title, movies) {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
@@ -138,6 +111,35 @@ export class ProfileView extends Component {
         console.log(error);
       })
   }
+
+  handleUserUpdate() { 
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+    const data = {
+      username: this.state.newUsername,
+      password: this.state.newPassword,
+      email: this.state.newEmail,
+      birthdate: this.state.newBirthdate
+    };
+    axios.put(`https://actor-inspector.herokuapp.com/users/${username}`, data, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    .then((response) => {
+      this.setState({
+      username: response.data.username,
+      password: response.data.password,
+      email: response.data.email,
+      birthdate: response.data.birthdate
+      });
+      console.log(this.state);
+      localStorage.setItem('user', this.state.username);
+      window.open(`/profile/${username}`, '_self');
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
 
   render() {
     const {username, password, email, birthdate, favorites} = this.state;
@@ -216,7 +218,6 @@ export class ProfileView extends Component {
      
       <br />
       <br />
-
       <Form>
         <h3>Update Your User Data</h3>
       <Form.Group className="mb-3" controlId="formUsername">
@@ -256,9 +257,10 @@ export class ProfileView extends Component {
       </Form.Group>
 
 
-      <Button type="button" onClick={ () => { this.handleUserUpdate(this.state.newUsername, this.state.newPassword, this.state.newEmail, this.state.newBirthdate) } }>Update your Account</Button>
+      <Button type="button" onClick={ () => { this.handleUserUpdate() } }>Update your Account</Button>
 
     </Form>
+     
   
      </>
     )

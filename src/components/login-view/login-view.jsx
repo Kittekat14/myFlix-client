@@ -46,6 +46,7 @@ export function LoginView(props) {
     const passwordError = {};
     let isValid = true; //initial/default flag
     if(username.trim().length < 5) {
+      setUsernameError(username, 'Username is too short');
       usernameError.nameShort = 'Username is too short.';
       isValid = false; //this form has this error
     }
@@ -53,7 +54,7 @@ export function LoginView(props) {
       passwordError.passwordEmpty = 'Password cannot be empty.';
       isValid = false; //this form has this error
     }
-    // update error objects
+    // else (if errors are blank objects)
     setUsernameError(usernameError);
     setPasswordError(passwordError);
     return isValid;
