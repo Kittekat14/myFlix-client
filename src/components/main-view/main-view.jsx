@@ -88,8 +88,6 @@ export default class MainView extends React.Component {
         <Router>
           <Row className="main-view justify-content-md-center">
 
-            <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
-
             <Route exact path="/" render={() => {
               if ( !user ) 
               return <Row>
@@ -98,11 +96,18 @@ export default class MainView extends React.Component {
                 </Col>
               </Row>
               if (movies.length === 0) return <div className="main-view" />;
-              return movies.map(m => (
+              return (
+                <>
+                <Row className="m-3 navigation-main">
+                  <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
+                </Row>
+                 {movies.map(m => (
                 <Col md={3} key={m._id}>
                   <MovieCard movie={m} />
                 </Col>
               ))
+             }</>
+             )
             }} />
             
             <Route path="/register" render={() => {
