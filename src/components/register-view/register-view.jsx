@@ -43,16 +43,26 @@ export function RegisterView() {
     });
   }}
 
-  //handleChange = () => {
+  //const handleChange = (event) => {
    // setValues({
     // ...values,
     // [event.target.name]: event.target.value;
   // })
   //} 
 
-  //handleFormSubmit = () => {
-  //  
+  //const handleFormSubmit = (event) => {
+  //  event.preventDefault();
+  // setErrors(validation(values));
+  //setDataIsCorrect(true);
   //}
+
+  //useEffect(() => {
+  //  if(Object.keys(errors).length === 0 && dataIsCorrect) {
+//    submitForm(true);  }
+  //}, [errors])
+  //
+  //
+  //
 
   const formValidation = () => {
     const nameError = {};
