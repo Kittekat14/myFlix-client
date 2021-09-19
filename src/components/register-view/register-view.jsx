@@ -98,8 +98,7 @@ export function RegisterView() {
       <Form.Label>Username*:</Form.Label>
       <Form.Control required minLength="5" pattern="" type="text" placeholder="Enter Username"
           value={username}
-          onChange={handleChange}
-          onSubmit={(e) => setUsername(e.target.value)}
+          onChange={(e) => setUsername(e.target.value)}
       />
       {Object.keys(nameError).map((key) => {
         return <div style={{ fontSize: 12, color:'red'}}>{nameError[key]}</div>
@@ -110,8 +109,7 @@ export function RegisterView() {
       <Form.Label>Password*:</Form.Label>
       <Form.Control required minLength="1" pattern="" type="password" placeholder="Enter Password"
           value={password}
-          onChange={handleChange}
-          onSubmit={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
         />
       {Object.keys(passwordError).map((key) => {
         return <div style={{ fontSize: 12, color:'red'}}>{passwordError[key]}</div>
@@ -122,8 +120,7 @@ export function RegisterView() {
         <Form.Label> Email*: 
           <Form.Control required type="email" placeholder="name@example.com" 
           value={email}
-          onChange={handleChange}
-          onSubmit={(e) => setEmail(e.target.value)}/>
+          onChange={(e) => setEmail(e.target.value)}/>
         </Form.Label>
       {Object.keys(emailError).map((key) => {
         return <div style={{ fontSize: 12, color:'red'}}>{emailError[key]}</div>
@@ -135,8 +132,7 @@ export function RegisterView() {
         > Birthdate:
           <Form.Control type="date" 
           value={birthdate}
-          onChange={handleChange}
-          onSubmit={(e) => setBirthdate(e.target.value)}/>
+          onChange={(e) => setBirthdate(e.target.value)}/>
         </Form.Label>
       </Form.Group>
 

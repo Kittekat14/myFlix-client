@@ -72,7 +72,35 @@ export class ProfileView extends Component {
       }
     }
   
-  
+    handleUserUpdate() { 
+      const username = localStorage.getItem('user');
+      const token = localStorage.getItem('token');
+      const data = {
+        username: this.state.newUsername,
+        password: this.state.newPassword,
+        email: this.state.newEmail,
+        birthdate: this.state.newBirthdate
+      };
+      axios.put(`https://actor-inspector.herokuapp.com/users/${username}`, data, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then((response) => {
+        this.setState({
+        username: response.data.username,
+        password: response.data.password,
+        email: response.data.email,
+        birthdate: response.data.birthdate
+        });
+        console.log(this.state);
+        localStorage.setItem('user', this.state.username);
+        window.open(`/profile/${username}`, '_self');
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
+
+
   addToFavorites(title, movies) {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
@@ -98,7 +126,7 @@ export class ProfileView extends Component {
 
     const movieId = movies.find((movie) => movie.title === title)._id;
     
-    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, null, {
+    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((response) => {
@@ -110,34 +138,6 @@ export class ProfileView extends Component {
       .catch(function (error) {
         console.log(error);
       })
-  }
-
-  handleUserUpdate() { 
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-    const data = {
-      username: this.state.newUsername,
-      password: this.state.newPassword,
-      email: this.state.newEmail,
-      birthdate: this.state.newBirthdate
-    };
-    axios.put(`https://actor-inspector.herokuapp.com/users/${username}`, data, {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-    .then((response) => {
-      this.setState({
-      username: response.data.username,
-      password: response.data.password,
-      email: response.data.email,
-      birthdate: response.data.birthdate
-      });
-      console.log(this.state);
-      localStorage.setItem('user', this.state.username);
-      window.open(`/profile/${username}`, '_self');
-    })
-    .catch(function (error) {
-      console.log(error);
-    });
   }
 
 
@@ -166,7 +166,7 @@ export class ProfileView extends Component {
      
 
       <Row className="profile-view">
-        <Card className="profile-card">
+      <Card className="profile-card">
           <h2>Your Favorites Movies</h2>
           <Card.Body>
             {favorites.length === 0 && <div className="text-center">Empty.</div>}
@@ -179,7 +179,7 @@ export class ProfileView extends Component {
                           <Card.Img style={{ width: '200px' }} className="movieCard" variant="top" src={movie.imageUrl} crossOrigin="true" />
                           <Card.Body>
                             <Card.Title className="movie-card-title">{movie.title}</Card.Title>
-                            <Button size='sm' className='profile-button remove-favorite' variant='danger' onClick={() => this.removeFavoriteMovie(movie.title, movies)}>
+                            <Button size='sm' className='profile-button remove-favorite' variant='danger' value={movies.title} onClick={() => this.removeFavoriteMovie(movie.title, movies)}>
                               Remove
                             </Button>
                           </Card.Body>

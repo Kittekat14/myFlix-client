@@ -28897,229 +28897,239 @@ function RegisterView() {
         setEmailError(emailError1);
         return isValid;
     };
-    return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Container, {
+    return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
         __source: {
             fileName: "src/components/register-view/register-view.jsx",
             lineNumber: 94
         },
         __self: this,
-        children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form, {
-            action: "",
-            method: "",
-            __source: {
-                fileName: "src/components/register-view/register-view.jsx",
-                lineNumber: 96
-            },
-            __self: this,
-            children: [
-                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
-                    className: "mb-3",
-                    controlId: "formUsername",
-                    __source: {
-                        fileName: "src/components/register-view/register-view.jsx",
-                        lineNumber: 97
-                    },
-                    __self: this,
-                    children: [
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
-                            __source: {
-                                fileName: "src/components/register-view/register-view.jsx",
-                                lineNumber: 98
-                            },
-                            __self: this,
-                            children: "Username*:"
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
-                            required: true,
-                            minLength: "5",
-                            pattern: "",
-                            type: "text",
-                            placeholder: "Enter Username",
-                            value: username,
-                            onChange: (e)=>setUsername(e.target.value)
-                            ,
-                            __source: {
-                                fileName: "src/components/register-view/register-view.jsx",
-                                lineNumber: 99
-                            },
-                            __self: this
-                        }),
-                        Object.keys(nameError).map((key)=>{
-                            return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-                                style: {
-                                    fontSize: 12,
-                                    color: 'red'
-                                },
+        children: [
+            /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                __source: {
+                    fileName: "src/components/register-view/register-view.jsx",
+                    lineNumber: 95
+                },
+                __self: this,
+                children: "Create Account"
+            }),
+            /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form, {
+                action: "",
+                method: "",
+                __source: {
+                    fileName: "src/components/register-view/register-view.jsx",
+                    lineNumber: 96
+                },
+                __self: this,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
+                        className: "mb-3",
+                        controlId: "formUsername",
+                        __source: {
+                            fileName: "src/components/register-view/register-view.jsx",
+                            lineNumber: 97
+                        },
+                        __self: this,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
                                 __source: {
                                     fileName: "src/components/register-view/register-view.jsx",
-                                    lineNumber: 104
+                                    lineNumber: 98
                                 },
                                 __self: this,
-                                children: nameError[key]
-                            }));
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
-                    className: "mb-3",
-                    controlId: "formPassword",
-                    __source: {
-                        fileName: "src/components/register-view/register-view.jsx",
-                        lineNumber: 108
-                    },
-                    __self: this,
-                    children: [
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
-                            __source: {
-                                fileName: "src/components/register-view/register-view.jsx",
-                                lineNumber: 109
-                            },
-                            __self: this,
-                            children: "Password*:"
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
-                            required: true,
-                            minLength: "1",
-                            pattern: "",
-                            type: "password",
-                            placeholder: "Enter Password",
-                            value: password,
-                            onChange: (e)=>setPassword(e.target.value)
-                            ,
-                            __source: {
-                                fileName: "src/components/register-view/register-view.jsx",
-                                lineNumber: 110
-                            },
-                            __self: this
-                        }),
-                        Object.keys(passwordError).map((key)=>{
-                            return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-                                style: {
-                                    fontSize: 12,
-                                    color: 'red'
-                                },
+                                children: "Username*:"
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                required: true,
+                                minLength: "5",
+                                pattern: "",
+                                type: "text",
+                                placeholder: "Enter Username",
+                                value: username,
+                                onChange: (e)=>setUsername(e.target.value)
+                                ,
                                 __source: {
                                     fileName: "src/components/register-view/register-view.jsx",
-                                    lineNumber: 115
+                                    lineNumber: 99
+                                },
+                                __self: this
+                            }),
+                            Object.keys(nameError).map((key)=>{
+                                return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                    style: {
+                                        fontSize: 12,
+                                        color: 'red'
+                                    },
+                                    __source: {
+                                        fileName: "src/components/register-view/register-view.jsx",
+                                        lineNumber: 104
+                                    },
+                                    __self: this,
+                                    children: nameError[key]
+                                }));
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
+                        className: "mb-3",
+                        controlId: "formPassword",
+                        __source: {
+                            fileName: "src/components/register-view/register-view.jsx",
+                            lineNumber: 108
+                        },
+                        __self: this,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Label, {
+                                __source: {
+                                    fileName: "src/components/register-view/register-view.jsx",
+                                    lineNumber: 109
                                 },
                                 __self: this,
-                                children: passwordError[key]
-                            }));
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
-                    className: "mb-3",
-                    controlId: "formEmail",
-                    __source: {
-                        fileName: "src/components/register-view/register-view.jsx",
-                        lineNumber: 119
-                    },
-                    __self: this,
-                    children: [
-                        /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Label, {
+                                children: "Password*:"
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                required: true,
+                                minLength: "1",
+                                pattern: "",
+                                type: "password",
+                                placeholder: "Enter Password",
+                                value: password,
+                                onChange: (e)=>setPassword(e.target.value)
+                                ,
+                                __source: {
+                                    fileName: "src/components/register-view/register-view.jsx",
+                                    lineNumber: 110
+                                },
+                                __self: this
+                            }),
+                            Object.keys(passwordError).map((key)=>{
+                                return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                    style: {
+                                        fontSize: 12,
+                                        color: 'red'
+                                    },
+                                    __source: {
+                                        fileName: "src/components/register-view/register-view.jsx",
+                                        lineNumber: 115
+                                    },
+                                    __self: this,
+                                    children: passwordError[key]
+                                }));
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Group, {
+                        className: "mb-3",
+                        controlId: "formEmail",
+                        __source: {
+                            fileName: "src/components/register-view/register-view.jsx",
+                            lineNumber: 119
+                        },
+                        __self: this,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Label, {
+                                __source: {
+                                    fileName: "src/components/register-view/register-view.jsx",
+                                    lineNumber: 120
+                                },
+                                __self: this,
+                                children: [
+                                    " Email*:",
+                                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
+                                        required: true,
+                                        type: "email",
+                                        placeholder: "name@example.com",
+                                        value: email,
+                                        onChange: (e)=>setEmail(e.target.value)
+                                        ,
+                                        __source: {
+                                            fileName: "src/components/register-view/register-view.jsx",
+                                            lineNumber: 121
+                                        },
+                                        __self: this
+                                    })
+                                ]
+                            }),
+                            Object.keys(emailError).map((key)=>{
+                                return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                    style: {
+                                        fontSize: 12,
+                                        color: 'red'
+                                    },
+                                    __source: {
+                                        fileName: "src/components/register-view/register-view.jsx",
+                                        lineNumber: 126
+                                    },
+                                    __self: this,
+                                    children: emailError[key]
+                                }));
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Group, {
+                        className: "mb-3",
+                        controlId: "formBirthdate",
+                        __source: {
+                            fileName: "src/components/register-view/register-view.jsx",
+                            lineNumber: 130
+                        },
+                        __self: this,
+                        children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Label, {
+                            label: "Birthdate",
+                            className: "mb-3",
                             __source: {
                                 fileName: "src/components/register-view/register-view.jsx",
-                                lineNumber: 120
+                                lineNumber: 131
                             },
                             __self: this,
                             children: [
-                                " Email*:",
+                                " Birthdate:",
                                 /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
-                                    required: true,
-                                    type: "email",
-                                    placeholder: "name@example.com",
-                                    value: email,
-                                    onChange: (e)=>setEmail(e.target.value)
+                                    type: "date",
+                                    value: birthdate,
+                                    onChange: (e)=>setBirthdate(e.target.value)
                                     ,
                                     __source: {
                                         fileName: "src/components/register-view/register-view.jsx",
-                                        lineNumber: 121
+                                        lineNumber: 133
                                     },
                                     __self: this
                                 })
                             ]
-                        }),
-                        Object.keys(emailError).map((key)=>{
-                            return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-                                style: {
-                                    fontSize: 12,
-                                    color: 'red'
-                                },
-                                __source: {
-                                    fileName: "src/components/register-view/register-view.jsx",
-                                    lineNumber: 126
-                                },
-                                __self: this,
-                                children: emailError[key]
-                            }));
                         })
-                    ]
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Group, {
-                    className: "mb-3",
-                    controlId: "formBirthdate",
-                    __source: {
-                        fileName: "src/components/register-view/register-view.jsx",
-                        lineNumber: 130
-                    },
-                    __self: this,
-                    children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Form.Label, {
-                        label: "Birthdate",
-                        className: "mb-3",
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                        type: "submit",
+                        variant: "primary",
+                        onClick: handleRegister,
                         __source: {
                             fileName: "src/components/register-view/register-view.jsx",
-                            lineNumber: 131
+                            lineNumber: 141
                         },
                         __self: this,
-                        children: [
-                            " Birthdate:",
-                            /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Form.Control, {
-                                type: "date",
-                                value: birthdate,
-                                onChange: (e)=>setBirthdate(e.target.value)
-                                ,
-                                __source: {
-                                    fileName: "src/components/register-view/register-view.jsx",
-                                    lineNumber: 133
-                                },
-                                __self: this
-                            })
-                        ]
-                    })
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                    type: "submit",
-                    variant: "primary",
-                    onClick: handleRegister,
-                    __source: {
-                        fileName: "src/components/register-view/register-view.jsx",
-                        lineNumber: 141
-                    },
-                    __self: this,
-                    children: "Register"
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                    to: '/',
-                    __source: {
-                        fileName: "src/components/register-view/register-view.jsx",
-                        lineNumber: 142
-                    },
-                    __self: this,
-                    children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
-                        className: "m-2",
-                        type: "link",
-                        variant: "secondary",
+                        children: "Register"
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                        to: '/',
                         __source: {
                             fileName: "src/components/register-view/register-view.jsx",
-                            lineNumber: 143
+                            lineNumber: 142
                         },
                         __self: this,
-                        children: "Go To Login"
+                        children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Button, {
+                            className: "m-2",
+                            type: "link",
+                            variant: "secondary",
+                            __source: {
+                                fileName: "src/components/register-view/register-view.jsx",
+                                lineNumber: 143
+                            },
+                            __self: this,
+                            children: "Go To Login"
+                        })
                     })
-                })
-            ]
-        })
+                ]
+            })
+        ]
     }));
 }
 _s(RegisterView, "y3TWbFWQOL+MlWyZ2nc1WDrv/QE=", false, function() {
@@ -40788,41 +40798,6 @@ class ProfileView extends _react.Component {
             console.log(e);
         });
     }
-    addToFavorites(title, movies) {
-        const username = localStorage.getItem('user');
-        const token = localStorage.getItem('token');
-        const movieId = movies.find((movie)=>movie.title === title
-        )._id;
-        _axiosDefault.default.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, null, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>{
-            this.setState({
-                favorites: response.data.favorites
-            });
-        }).catch(function(error) {
-            console.log(error);
-        });
-    }
-    removeFavoriteMovie(title, movies) {
-        const username = localStorage.getItem('user');
-        const token = localStorage.getItem('token');
-        const movieId = movies.find((movie)=>movie.title === title
-        )._id;
-        _axiosDefault.default.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, null, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>{
-            this.setState({
-                favorites: response.data.favorites
-            });
-            this.componentDidMount();
-        }).catch(function(error) {
-            console.log(error);
-        });
-    }
     handleUserUpdate() {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
@@ -40846,6 +40821,41 @@ class ProfileView extends _react.Component {
             console.log(this.state);
             localStorage.setItem('user', this.state.username);
             window.open(`/profile/${username}`, '_self');
+        }).catch(function(error) {
+            console.log(error);
+        });
+    }
+    addToFavorites(title, movies) {
+        const username = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+        const movieId = movies.find((movie)=>movie.title === title
+        )._id;
+        _axiosDefault.default.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, null, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            this.setState({
+                favorites: response.data.favorites
+            });
+        }).catch(function(error) {
+            console.log(error);
+        });
+    }
+    removeFavoriteMovie(title, movies) {
+        const username = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+        const movieId = movies.find((movie)=>movie.title === title
+        )._id;
+        _axiosDefault.default.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            this.setState({
+                favorites: response.data.favorites
+            });
+            this.componentDidMount();
         }).catch(function(error) {
             console.log(error);
         });
@@ -41056,6 +41066,7 @@ class ProfileView extends _react.Component {
                                                                 size: "sm",
                                                                 className: "profile-button remove-favorite",
                                                                 variant: "danger",
+                                                                value: movies.title,
                                                                 onClick: ()=>this.removeFavoriteMovie(movie.title, movies)
                                                                 ,
                                                                 __source: {
