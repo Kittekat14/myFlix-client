@@ -200,7 +200,7 @@ export class ProfileView extends Component {
               {addFavorite: e.target.value}
               )}/>
             </Form.Group>
-            <Button onClick={() => { this.addToFavorites(this.state.addFavorite, movies)  } }>Add</Button> 
+            <Button value={movies.title} onClick={() => { this.addToFavorites(this.state.addFavorite, movies)  } }>Add</Button> 
           </Form>
           <Form>
             <Form.Group className="mb-3" >

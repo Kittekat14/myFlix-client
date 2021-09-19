@@ -20,7 +20,7 @@ export function LoginView(props) {
 
   const history = useHistory();
 
-  function RegisterButton()  {
+  function registerButton()  {
       history.push("/register");
     } 
   
@@ -83,11 +83,11 @@ return (
     <Button className="m-2" variant="primary" type="submit">
     Submit
     </Button>
-    <Link to={'/register'}>
-  <Button className="login-view-button" type="link">
-    Register
-  </Button>
-</Link>
+    {/* <Link to={'/register'}> */}
+    <Button className="m-2 register-view-button" type="link" onClick={registerButton}>
+      Register
+    </Button>
+    {/* </Link> */}
   </Form>
   </>
 );

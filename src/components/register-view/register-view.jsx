@@ -19,8 +19,8 @@ export function RegisterView() {
 
   const history = useHistory();
 
-  const LoginButton = () => {
-    history.push("/login");
+  const loginButton = () => {
+    history.push("/");
   }
 
   const handleRegister = (e) => {
@@ -139,9 +139,9 @@ export function RegisterView() {
       
       
       <Button type="submit" variant="primary" onClick={handleRegister}>Register</Button>
-      <Link to={'/'}>
-      <Button className="m-2" type="link" variant="secondary">Go To Login</Button>
-      </Link>
+      {/* <Link to={'/'}> */}
+      <Button className="m-2 login-view-button" type="link" variant="secondary" onClick={loginButton}>Go To Login</Button>
+      {/* </Link> */}
       
     </Form>
 </Container>
