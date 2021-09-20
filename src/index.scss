@@ -93,4 +93,16 @@ img {
   color: #212529;
   padding: 4px 0;
 }
+.error-msg {
+  font-size: 12px;
+  width: 100%;
+  color: red;
+}
+.success-msg {
+  background-color: #0f834d;
+  color: #fff;
+  width: 100%;
+  font-weight: 600;
+  padding: 20px;
+}
 

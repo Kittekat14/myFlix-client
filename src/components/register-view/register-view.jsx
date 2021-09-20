@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import { Link } from 'react-router-dom';
 
 
-export function RegisterView() {
+export function RegisterView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -64,23 +64,24 @@ export function RegisterView() {
   //
   //
 
-  const formValidation = () => {
+
+  const formValidation = (e) => {
     const nameError = {};
     const passwordError = {};
     const emailError = {};
     let isValid = true;
     if(username.trim().length < 5) {
-        nameError.nameShort = 'Username is too short.';
-        isValid = false;
+      nameError.nameShort = 'Username must at least have 5 characters.';
+      isValid = false;
     }
     if(password.trim().length === 0) {
       passwordError.passwordEmpty = 'Password cannot be empty.';
       isValid = false;
     }
     if(!(email && email.trim().includes('@') && email.trim().includes('.'))) {
-      emailError.emailNot = 'This seems to be no email address.';
+      emailError.emailNot = 'This seems to be no valid email address.';
       isValid = false;
-    }
+    } 
     
     setNameError(nameError);
     setPasswordError(passwordError);
@@ -93,12 +94,13 @@ export function RegisterView() {
   return (
   <Container>
     <h1>Create Account</h1>
-    <Form action="" method="">
+    <Form method="post">
       <Form.Group className="mb-3" controlId="formUsername">
       <Form.Label>Username*:</Form.Label>
       <Form.Control required minLength="5" pattern="" type="text" placeholder="Enter Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+          onInput={formValidation}
       />
       {Object.keys(nameError).map((key) => {
         return <div style={{ fontSize: 12, color:'red'}}>{nameError[key]}</div>
@@ -110,6 +112,7 @@ export function RegisterView() {
       <Form.Control required minLength="1" pattern="" type="password" placeholder="Enter Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          onInput={formValidation}
         />
       {Object.keys(passwordError).map((key) => {
         return <div style={{ fontSize: 12, color:'red'}}>{passwordError[key]}</div>
@@ -120,7 +123,9 @@ export function RegisterView() {
         <Form.Label> Email*: 
           <Form.Control required type="email" placeholder="name@example.com" 
           value={email}
-          onChange={(e) => setEmail(e.target.value)}/>
+          onChange={(e) => setEmail(e.target.value)}
+          onInput={formValidation}
+          />
         </Form.Label>
       {Object.keys(emailError).map((key) => {
         return <div style={{ fontSize: 12, color:'red'}}>{emailError[key]}</div>
@@ -132,7 +137,9 @@ export function RegisterView() {
         > Birthdate:
           <Form.Control type="date" 
           value={birthdate}
-          onChange={(e) => setBirthdate(e.target.value)}/>
+          onChange={(e) => setBirthdate(e.target.value)}
+          onInput={formValidation}
+          />
         </Form.Label>
       </Form.Group>
 
@@ -140,7 +147,7 @@ export function RegisterView() {
       
       <Button type="submit" variant="primary" onClick={handleRegister}>Register</Button>
       {/* <Link to={'/'}> */}
-      <Button className="m-2 login-view-button" type="link" variant="secondary" onClick={loginButton}>Go To Login</Button>
+      <Button className="m-2 login-view-button" type="button" variant="secondary" onClick={loginButton}>Go To Login</Button>
       {/* </Link> */}
       
     </Form>
@@ -151,5 +158,3 @@ export function RegisterView() {
 RegisterView.propTypes = {
   onBackClick: PropTypes.func,
 };
-
-

@@ -64,6 +64,8 @@ export function LoginView(props) {
 return (
   <>
   <Form onSubmit={handleLogin}>
+  <h1>Login</h1>
+
     <Form.Group className="mb-3" controlId="formUsername">
       <Form.Label>Username:</Form.Label>
       <Form.Control noValidate type="text" placeholder="Enter Username" value={username} onChange={e => setUsername(e.target.value)} required/>
@@ -84,7 +86,7 @@ return (
     Submit
     </Button>
     {/* <Link to={'/register'}> */}
-    <Button className="m-2 register-view-button" type="link" onClick={registerButton}>
+    <Button className="m-2 register-view-button" type="button" onClick={registerButton}>
       Register
     </Button>
     {/* </Link> */}
