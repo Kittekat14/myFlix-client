@@ -6,7 +6,7 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
-export class UpdateView extends Component {
+export default class UpdateView extends Component {
   constructor(props) {
     super(props)
   
@@ -18,27 +18,40 @@ export class UpdateView extends Component {
     }
   }
   
-
-  handleUserUpdate(newUsername, newPassword, newEmail, newBirthdate) { 
+  handleUserUpdate() { 
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
-
+    const data = {
+      username: this.state.newUsername,
+      password: this.state.newPassword,
+      email: this.state.newEmail,
+      birthdate: this.state.newBirthdate
+    };
     axios.put(`https://actor-inspector.herokuapp.com/users/${username}`, data, {
       headers: { Authorization: `Bearer ${token}` }
     })
-    .then((data) => {
-      console.log(data);
+    .then((response) => {
+      this.setState({
+      username: response.data.username,
+      password: response.data.password,
+      email: response.data.email,
+      birthdate: response.data.birthdate
+      });
+      console.log(this.state);
+      localStorage.setItem('user', this.state.username);
+      window.open(`/profile/${username}`, '_self');
     })
     .catch(function (error) {
       console.log(error);
     });
   }
 
-
+  
   render() {
     return (
       <>
-      <Form>
+
+    <Form>
         <h3>Update Your User Data</h3>
       <Form.Group className="mb-3" controlId="formUsername">
         <Form.Label>Username*:</Form.Label>
@@ -77,12 +90,12 @@ export class UpdateView extends Component {
       </Form.Group>
 
 
-      <Button type="button" onClick={ () => { this.handleUserUpdate(this.state.newUsername, this.state.newPassword, this.state.newEmail, this.state.newBirthdate) } }>Update your Account</Button>
+      <Button type="button" onClick={ () => { this.handleUserUpdate() } }>Update your Account</Button>
 
     </Form>
+
       </>
     )
   }
 }
 
-export default UpdateView;

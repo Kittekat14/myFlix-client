@@ -78,6 +78,15 @@ img {
 .movie-title {
   margin-top: 20px;
 }
+.favorite-button {
+  font-family: bangers;
+  border-radius: 2px;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 4px 2px;
+  margin-left: 4px;
+  background-color: #89BBFE;
+}
 .label {
   margin: 10px 0;
   font-family: alex;
@@ -87,6 +96,12 @@ img {
 .value {
   margin: 10px 0;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+.genre-link {
+  color: #fff;
+}
+.director-link {
+  color: #fff;
 }
 .relMovies > * {
   text-decoration: none;

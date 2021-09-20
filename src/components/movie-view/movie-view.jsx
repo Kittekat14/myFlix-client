@@ -41,9 +41,9 @@ export class MovieView extends React.Component {
 
 
     return (
-    <Container className="movie-view">
-     <Row>
-       <Col md={8}>
+    
+     <Row className="movie-view">
+       <Col md={8} className="movie-view">
           <div className="movie-poster">
             <img src={movie.imageUrl} crossOrigin="true" />
           </div>
@@ -61,8 +61,8 @@ export class MovieView extends React.Component {
           </div>  
           <div className="movie-genre">
             <span className="label">Genre: </span>
-          <Link to={`/genres/${movie.genre.name}`} >
-            <span className="value" >{movie.genre.name}</span> 
+          <Link to={`/genres/${movie.genre.name}`} className="genre-link">
+            <span className="value" >{movie.genre.name.charAt(0).toUpperCase() + movie.genre.name.slice(1)}</span> 
           </Link> 
           </div>  
           <div className="movie-actors">
@@ -71,7 +71,7 @@ export class MovieView extends React.Component {
           </div>  
           <div className="movie-director">
             <span className="label">Director: </span>
-          <Link to={`/directors/${movie.director.name}`} >
+          <Link to={`/directors/${movie.director.name}`} className="director-link">
             <span className="value" >{movie.director.name}</span>
           </Link> 
           </div>  
@@ -82,13 +82,13 @@ export class MovieView extends React.Component {
           
           <button className="back-button" onClick={() => { onBackClick(null); }}>Back</button>
           <button
-              className='favorite-button'
+              className="favorite-button"
               onClick={() => this.addToFavoriteMovies(movie._id)}
             >
               Add to favorite Movies</button>
       </Col>
      </Row>
-    </Container>
+    
     );
     
   }

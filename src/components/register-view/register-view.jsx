@@ -4,8 +4,6 @@ import axios from 'axios';
 import { Container, Form, Button } from 'react-bootstrap';
 import './register-view.scss';
 import { useHistory } from "react-router-dom";
-import { Link } from 'react-router-dom';
-
 
 export function RegisterView(props) {
   const [username, setUsername] = useState("");
@@ -42,27 +40,6 @@ export function RegisterView(props) {
       console.log('error registering the user')
     });
   }}
-
-  //const handleChange = (event) => {
-   // setValues({
-    // ...values,
-    // [event.target.name]: event.target.value;
-  // })
-  //} 
-
-  //const handleFormSubmit = (event) => {
-  //  event.preventDefault();
-  // setErrors(validation(values));
-  //setDataIsCorrect(true);
-  //}
-
-  //useEffect(() => {
-  //  if(Object.keys(errors).length === 0 && dataIsCorrect) {
-//    submitForm(true);  }
-  //}, [errors])
-  //
-  //
-  //
 
 
   const formValidation = (e) => {
@@ -146,9 +123,9 @@ export function RegisterView(props) {
       
       
       <Button type="submit" variant="primary" onClick={handleRegister}>Register</Button>
-      {/* <Link to={'/'}> */}
+     
       <Button className="m-2 login-view-button" type="button" variant="secondary" onClick={loginButton}>Go To Login</Button>
-      {/* </Link> */}
+     
       
     </Form>
 </Container>
