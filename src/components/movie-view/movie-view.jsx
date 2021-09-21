@@ -14,7 +14,8 @@ export class MovieView extends React.Component {
   
     this.state = {
        movies: [],
-       favorites: []
+       favorites: [],
+       buttonText: 'Add to Favorites'
     }
   }
   
@@ -22,23 +23,25 @@ export class MovieView extends React.Component {
     const username = localStorage.getItem('user')
     const token = localStorage.getItem('token')
 
-  axios.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, { favorites: this.favorites }, {
+    axios.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, { favorites: this.favorites }, {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then((response) => {
       this.setState({
-        favorites: response.data.favorites
+        favorites: response.data.favorites,
+        buttonText: 'Remove from Favorites'
       })
     })
     .catch(function (error) {
       console.log(error);
     })
+
   }
 
   render() {
    
     const { movie, onBackClick } = this.props;
-
+    //const buttonText = this.state.favorites.includes(movie._id) ? '' : 'Add to Favorites';
 
     return (
     
@@ -82,10 +85,9 @@ export class MovieView extends React.Component {
           
           <button className="back-button" onClick={() => { onBackClick(null); }}>Back</button>
           <button
-              className="favorite-button"
-              onClick={() => this.addToFavoriteMovies(movie._id)}
-            >
-              Add to favorite Movies</button>
+              className="favorite-button toggle-button"
+              onClick={this.addToFavoriteMovies(movie._id)}
+            >{this.state.buttonText}</button>
       </Col>
      </Row>
     
