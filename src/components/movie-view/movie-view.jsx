@@ -16,7 +16,7 @@ export class MovieView extends React.Component {
        movies: [],
        favorites: [],
        addFavorite: '',
-       removeFavorite: '',
+       //removeFavorite: '',
        //buttonText: 'Add to Favorites'
     }
   }
@@ -32,35 +32,38 @@ export class MovieView extends React.Component {
     })
     .then((response) => {
       this.setState({
-        favorites: response.data.favorites,
-        // buttonText: 'Remove from Favorites'
+        favorites: response.data.favorites
       })
     })
     .catch(function (error) {
       console.log(error);
     })
+
+    console.log(response.data.favorites);
   }
 
 
-  removeFavoriteMovie(title) {
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
+  // removeFavoriteMovie(movie) {
+  //   const username = localStorage.getItem('user');
+  //   const token = localStorage.getItem('token');
 
-    //const movieId = movies.find((movie) => movie.title === title)._id;
+  //   //const movieId = movies.find((movie) => movie.title === title)._id;
     
-    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      .then((response) => {
-        this.setState({
-          favorites: response.data.favorites
-        });
-        this.componentDidMount();
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-  }
+  //   axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, {
+  //       headers: { Authorization: `Bearer ${token}` }
+  //     })
+  //     .then((response) => {
+  //       this.setState({
+  //         favorites: response.data.favorites
+  //       });
+  //       this.componentDidMount();
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     })
+
+  //     console.log(response.data.favorites);
+  // }
 
 
   render() {
