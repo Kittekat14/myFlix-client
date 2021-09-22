@@ -27774,7 +27774,7 @@ function LoginView(props) {
                                 },
                                 __self: this,
                                 children: nameError[key]
-                            }));
+                            }, key));
                         })
                     ]
                 }),
@@ -27821,7 +27821,7 @@ function LoginView(props) {
                                 },
                                 __self: this,
                                 children: passwordError[key]
-                            }));
+                            }, key));
                         })
                     ]
                 }),
