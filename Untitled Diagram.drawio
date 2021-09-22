@@ -1,1 +1,21 @@
-<mxfile host="app.diagrams.net" modified="2021-09-22T19:11:52.078Z" agent="5.0 (Windows)" version="15.3.0" etag="5aK8MvuTlkBL_wBWN9DI" type="github"><diagram id="Yg3D-YNop6xcODFwDVZ-">UzV2zq1wL0osyPDNT0nNUTV2VTV2LsrPL4GwciucU3NyVI0MMlNUjV1UjYwMgFjVyA2HrCFY1qAgsSg1rwSLBiADYTaQg2Y1AA==</diagram></mxfile>
+<mxfile host="app.diagrams.net" modified="2021-09-22T19:17:08.341Z" agent="5.0 (Windows)" etag="XyKLrpBpkk2GnwNzNJ89" version="15.3.0" type="github">
+  <diagram id="Yg3D-YNop6xcODFwDVZ-" name="Page-1">
+    <mxGraphModel dx="1102" dy="572" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="7O_OZhT6sY6kMUz_unLC-2" style="edgeStyle=orthogonalEdgeStyle;shape=flexArrow;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="7O_OZhT6sY6kMUz_unLC-1" target="7O_OZhT6sY6kMUz_unLC-3">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="190" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7O_OZhT6sY6kMUz_unLC-1" value="&lt;div&gt;ACTIONS&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Add User&lt;/div&gt;&lt;div&gt;- Log User in&lt;/div&gt;&lt;div&gt;- Register User&lt;/div&gt;&lt;div&gt;- Update Username/Password/Email/Birthdate&lt;/div&gt;&lt;div&gt;- Add movies to list of favorite movies&lt;/div&gt;&lt;div&gt;- Delete movies from list of favorite movies&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="90" y="30" width="200" height="190" as="geometry" />
+        </mxCell>
+        <mxCell id="7O_OZhT6sY6kMUz_unLC-3" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="290" width="120" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
