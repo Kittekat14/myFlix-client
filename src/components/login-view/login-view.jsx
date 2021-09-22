@@ -64,7 +64,7 @@ return (
       <Form.Label>Username:</Form.Label>
       <Form.Control type="text" placeholder="Enter Username" value={username} onChange={e => setUsername(e.target.value)} required onInput={loginValidation}/>
       {Object.keys(nameError).map((key) => {
-        return <div style={{ fontSize: 12, color:'red'}}>{nameError[key]}</div>
+        return <div style={{ fontSize: 12, color:'red'}} key={key}>{nameError[key]}</div>
       })}
     </Form.Group>
 
@@ -72,7 +72,7 @@ return (
       <Form.Label>Password:</Form.Label>
       <Form.Control type="password" placeholder="Enter Password" value={password} onChange={e => setPassword(e.target.value)} required onInput={loginValidation} />
       {Object.keys(passwordError).map((key) => {
-        return <div style={{ fontSize: 12, color:'red'}}>{passwordError[key]}</div>
+        return <div style={{ fontSize: 12, color:'red'}} key={key}>{passwordError[key]}</div>
       })}
     </Form.Group>
     
