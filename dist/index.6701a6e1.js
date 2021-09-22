@@ -23004,7 +23004,7 @@ class MainView extends _reactDefault.default.Component {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","react-router-dom":"cpyQW","../login-view/login-view":"054li","../register-view/register-view":"F9ahz","../movie-card/movie-card":"6EiBJ","../movie-view/movie-view":"ikZdr","../navbar/Navbar":"5kcQH","../genre-view/genre-view":"8WCoL","../director-view/director-view":"ck15y","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","../../index.scss":"jUTZ8","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","../profile-view/profile-view":"2E7Aw"}],"iYoWk":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","react-router-dom":"cpyQW","../login-view/login-view":"054li","../register-view/register-view":"F9ahz","../movie-card/movie-card":"6EiBJ","../movie-view/movie-view":"ikZdr","../genre-view/genre-view":"8WCoL","../director-view/director-view":"ck15y","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","../../index.scss":"jUTZ8","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","../profile-view/profile-view":"2E7Aw","../navbar/Navbar":"5kcQH"}],"iYoWk":[function(require,module,exports) {
 module.exports = require('./lib/axios');
 
 },{"./lib/axios":"3QmO2"}],"3QmO2":[function(require,module,exports) {
@@ -40154,223 +40154,7 @@ MovieView.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","./movie-view.scss":"kvL93","react-router-dom":"cpyQW","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","react-bootstrap/Container":"2PRIq"}],"kvL93":[function() {},{}],"5kcQH":[function(require,module,exports) {
-var $parcel$ReactRefreshHelpers$a07f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
-var prevRefreshReg = window.$RefreshReg$;
-var prevRefreshSig = window.$RefreshSig$;
-$parcel$ReactRefreshHelpers$a07f.prelude(module);
-
-try {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "NavBar", ()=>NavBar
-);
-var _jsxRuntime = require("react/jsx-runtime");
-var _react = require("react");
-var _reactDefault = parcelHelpers.interopDefault(_react);
-var _reactBootstrap = require("react-bootstrap");
-class NavBar extends _reactDefault.default.Component {
-    constructor(){
-        super();
-        this.state = {
-        };
-    }
-    onLoggedOut = ()=>{
-        localStorage.clear();
-        window.open('/', '_self');
-    };
-    render() {
-        const message = 'Welcome ';
-        return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar, {
-            bg: "light",
-            expand: "md",
-            sticky: "top",
-            variant: "info",
-            className: "navbar",
-            __source: {
-                fileName: "src/components/navbar/Navbar.jsx",
-                lineNumber: 19
-            },
-            __self: this,
-            children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
-                className: "navbar-container",
-                __source: {
-                    fileName: "src/components/navbar/Navbar.jsx",
-                    lineNumber: 20
-                },
-                __self: this,
-                children: [
-                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar.Brand, {
-                        href: "#top",
-                        __source: {
-                            fileName: "src/components/navbar/Navbar.jsx",
-                            lineNumber: 21
-                        },
-                        __self: this,
-                        children: /*#__PURE__*/ _jsxRuntime.jsx("h1", {
-                            __source: {
-                                fileName: "src/components/navbar/Navbar.jsx",
-                                lineNumber: 21
-                            },
-                            __self: this,
-                            children: "ActorInspector"
-                        })
-                    }),
-                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar.Toggle, {
-                        "aria-controls": "basic-navbar-nav",
-                        __source: {
-                            fileName: "src/components/navbar/Navbar.jsx",
-                            lineNumber: 22
-                        },
-                        __self: this
-                    }),
-                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar.Collapse, {
-                        className: "nav-items",
-                        __source: {
-                            fileName: "src/components/navbar/Navbar.jsx",
-                            lineNumber: 23
-                        },
-                        __self: this,
-                        children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Nav, {
-                            className: "navbar",
-                            __source: {
-                                fileName: "src/components/navbar/Navbar.jsx",
-                                lineNumber: 24
-                            },
-                            __self: this,
-                            children: [
-                                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Nav.Link, {
-                                    className: "nav-items",
-                                    href: "#",
-                                    __source: {
-                                        fileName: "src/components/navbar/Navbar.jsx",
-                                        lineNumber: 25
-                                    },
-                                    __self: this,
-                                    children: [
-                                        message,
-                                        `${props.users}`
-                                    ]
-                                }),
-                                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
-                                    onClick: ()=>{
-                                        this.onLoggedOut();
-                                    },
-                                    __source: {
-                                        fileName: "src/components/navbar/Navbar.jsx",
-                                        lineNumber: 26
-                                    },
-                                    __self: this,
-                                    children: "Logout"
-                                }),
-                                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.NavDropdown, {
-                                    className: "nav-items",
-                                    title: "Genres",
-                                    id: "basic-nav-dropdown",
-                                    __source: {
-                                        fileName: "src/components/navbar/Navbar.jsx",
-                                        lineNumber: 27
-                                    },
-                                    __self: this,
-                                    children: [
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
-                                            href: "#action/3.1",
-                                            __source: {
-                                                fileName: "src/components/navbar/Navbar.jsx",
-                                                lineNumber: 28
-                                            },
-                                            __self: this,
-                                            children: "Action"
-                                        }),
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
-                                            href: "#action/3.2",
-                                            __source: {
-                                                fileName: "src/components/navbar/Navbar.jsx",
-                                                lineNumber: 29
-                                            },
-                                            __self: this,
-                                            children: "Adventure"
-                                        }),
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
-                                            href: "#action/3.3",
-                                            __source: {
-                                                fileName: "src/components/navbar/Navbar.jsx",
-                                                lineNumber: 30
-                                            },
-                                            __self: this,
-                                            children: "Biography"
-                                        }),
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
-                                            href: "#action/3.4",
-                                            __source: {
-                                                fileName: "src/components/navbar/Navbar.jsx",
-                                                lineNumber: 31
-                                            },
-                                            __self: this,
-                                            children: "Comedy"
-                                        }),
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
-                                            href: "#action/3.5",
-                                            __source: {
-                                                fileName: "src/components/navbar/Navbar.jsx",
-                                                lineNumber: 32
-                                            },
-                                            __self: this,
-                                            children: "Crime"
-                                        }),
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
-                                            href: "#action/3.6",
-                                            __source: {
-                                                fileName: "src/components/navbar/Navbar.jsx",
-                                                lineNumber: 33
-                                            },
-                                            __self: this,
-                                            children: "Drama"
-                                        }),
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
-                                            href: "#action/3.7",
-                                            __source: {
-                                                fileName: "src/components/navbar/Navbar.jsx",
-                                                lineNumber: 34
-                                            },
-                                            __self: this,
-                                            children: "Romance"
-                                        }),
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
-                                            href: "#action/3.8",
-                                            __source: {
-                                                fileName: "src/components/navbar/Navbar.jsx",
-                                                lineNumber: 35
-                                            },
-                                            __self: this,
-                                            children: "Sci-fi"
-                                        }),
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
-                                            href: "#action/3.9",
-                                            __source: {
-                                                fileName: "src/components/navbar/Navbar.jsx",
-                                                lineNumber: 36
-                                            },
-                                            __self: this,
-                                            children: "Thriller"
-                                        })
-                                    ]
-                                })
-                            ]
-                        })
-                    })
-                ]
-            })
-        }));
-    }
-}
-
-  $parcel$ReactRefreshHelpers$a07f.postlude(module);
-} finally {
-  window.$RefreshReg$ = prevRefreshReg;
-  window.$RefreshSig$ = prevRefreshSig;
-}
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd"}],"8WCoL":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","./movie-view.scss":"kvL93","react-router-dom":"cpyQW","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","react-bootstrap/Container":"2PRIq"}],"kvL93":[function() {},{}],"8WCoL":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$5f0a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -40885,6 +40669,222 @@ exports.default = ProfileView;
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd"}],"jUTZ8":[function() {},{}]},["drWAM","l0xXt","dLPEP"], "dLPEP", "parcelRequireaec4")
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd"}],"5kcQH":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$a07f = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$a07f.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "NavBar", ()=>NavBar
+);
+var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactBootstrap = require("react-bootstrap");
+class NavBar extends _reactDefault.default.Component {
+    constructor(){
+        super();
+        this.state = {
+        };
+    }
+    onLoggedOut = ()=>{
+        localStorage.clear();
+        window.open('/', '_self');
+    };
+    render() {
+        const message = 'Welcome ';
+        return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar, {
+            bg: "light",
+            expand: "md",
+            sticky: "top",
+            variant: "info",
+            className: "navbar",
+            __source: {
+                fileName: "src/components/navbar/Navbar.jsx",
+                lineNumber: 19
+            },
+            __self: this,
+            children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
+                className: "navbar-container",
+                __source: {
+                    fileName: "src/components/navbar/Navbar.jsx",
+                    lineNumber: 20
+                },
+                __self: this,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar.Brand, {
+                        href: "#top",
+                        __source: {
+                            fileName: "src/components/navbar/Navbar.jsx",
+                            lineNumber: 21
+                        },
+                        __self: this,
+                        children: /*#__PURE__*/ _jsxRuntime.jsx("h1", {
+                            __source: {
+                                fileName: "src/components/navbar/Navbar.jsx",
+                                lineNumber: 21
+                            },
+                            __self: this,
+                            children: "ActorInspector"
+                        })
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar.Toggle, {
+                        "aria-controls": "basic-navbar-nav",
+                        __source: {
+                            fileName: "src/components/navbar/Navbar.jsx",
+                            lineNumber: 22
+                        },
+                        __self: this
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar.Collapse, {
+                        className: "nav-items",
+                        __source: {
+                            fileName: "src/components/navbar/Navbar.jsx",
+                            lineNumber: 23
+                        },
+                        __self: this,
+                        children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Nav, {
+                            className: "navbar",
+                            __source: {
+                                fileName: "src/components/navbar/Navbar.jsx",
+                                lineNumber: 24
+                            },
+                            __self: this,
+                            children: [
+                                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Nav.Link, {
+                                    className: "nav-items",
+                                    href: "#",
+                                    __source: {
+                                        fileName: "src/components/navbar/Navbar.jsx",
+                                        lineNumber: 25
+                                    },
+                                    __self: this,
+                                    children: [
+                                        message,
+                                        `${props.users}`
+                                    ]
+                                }),
+                                /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Nav.Link, {
+                                    onClick: ()=>{
+                                        this.onLoggedOut();
+                                    },
+                                    __source: {
+                                        fileName: "src/components/navbar/Navbar.jsx",
+                                        lineNumber: 26
+                                    },
+                                    __self: this,
+                                    children: "Logout"
+                                }),
+                                /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.NavDropdown, {
+                                    className: "nav-items",
+                                    title: "Genres",
+                                    id: "basic-nav-dropdown",
+                                    __source: {
+                                        fileName: "src/components/navbar/Navbar.jsx",
+                                        lineNumber: 27
+                                    },
+                                    __self: this,
+                                    children: [
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
+                                            href: "#action/3.1",
+                                            __source: {
+                                                fileName: "src/components/navbar/Navbar.jsx",
+                                                lineNumber: 28
+                                            },
+                                            __self: this,
+                                            children: "Action"
+                                        }),
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
+                                            href: "#action/3.2",
+                                            __source: {
+                                                fileName: "src/components/navbar/Navbar.jsx",
+                                                lineNumber: 29
+                                            },
+                                            __self: this,
+                                            children: "Adventure"
+                                        }),
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
+                                            href: "#action/3.3",
+                                            __source: {
+                                                fileName: "src/components/navbar/Navbar.jsx",
+                                                lineNumber: 30
+                                            },
+                                            __self: this,
+                                            children: "Biography"
+                                        }),
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
+                                            href: "#action/3.4",
+                                            __source: {
+                                                fileName: "src/components/navbar/Navbar.jsx",
+                                                lineNumber: 31
+                                            },
+                                            __self: this,
+                                            children: "Comedy"
+                                        }),
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
+                                            href: "#action/3.5",
+                                            __source: {
+                                                fileName: "src/components/navbar/Navbar.jsx",
+                                                lineNumber: 32
+                                            },
+                                            __self: this,
+                                            children: "Crime"
+                                        }),
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
+                                            href: "#action/3.6",
+                                            __source: {
+                                                fileName: "src/components/navbar/Navbar.jsx",
+                                                lineNumber: 33
+                                            },
+                                            __self: this,
+                                            children: "Drama"
+                                        }),
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
+                                            href: "#action/3.7",
+                                            __source: {
+                                                fileName: "src/components/navbar/Navbar.jsx",
+                                                lineNumber: 34
+                                            },
+                                            __self: this,
+                                            children: "Romance"
+                                        }),
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
+                                            href: "#action/3.8",
+                                            __source: {
+                                                fileName: "src/components/navbar/Navbar.jsx",
+                                                lineNumber: 35
+                                            },
+                                            __self: this,
+                                            children: "Sci-fi"
+                                        }),
+                                        /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
+                                            href: "#action/3.9",
+                                            __source: {
+                                                fileName: "src/components/navbar/Navbar.jsx",
+                                                lineNumber: 36
+                                            },
+                                            __self: this,
+                                            children: "Thriller"
+                                        })
+                                    ]
+                                })
+                            ]
+                        })
+                    })
+                ]
+            })
+        }));
+    }
+}
+
+  $parcel$ReactRefreshHelpers$a07f.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd"}],"jUTZ8":[function() {},{}]},["drWAM","l0xXt","dLPEP"], "dLPEP", "parcelRequireaec4")
 
 //# sourceMappingURL=index.6701a6e1.js.map
