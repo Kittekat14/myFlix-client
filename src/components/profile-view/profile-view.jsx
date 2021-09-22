@@ -17,9 +17,7 @@ export class ProfileView extends Component {
       password: '',
       email: '',
       birthdate: '',
-      favorites: [],
-      addFavorite: '',
-      removeFavorite: ''
+      favorites: []
     };
   }
 
@@ -140,13 +138,15 @@ export class ProfileView extends Component {
           <h2>Your Favorites Movies</h2>
           <Card.Body>
             {favorites.length === 0 && <div className="text-center">Empty.</div>}
-            <div className="favorites-movies ">
+            <Row className="favorites-movies ">
+              
               {favorites.length > 0 &&
                 movies.map((movie) => {
                   if (movie._id === favorites.find((fav) => fav === movie._id)) {
                     return (
+                      <Col md={3}>
                         <Card className="favorites-item card-content" style={{ width: '16rem' }} key={movie._id}>
-                          <Card.Img style={{ width: '200px' }} className="movieCard" variant="top" src={movie.imageUrl} crossOrigin="true" />
+                          <Card.Img style={{ width: '100%' }} className="movieCard" variant="top" src={movie.imageUrl} crossOrigin="true" />
                           <Card.Body>
                             <Card.Title className="movie-card-title">{movie.title}</Card.Title>
                             <Button size='sm' className='profile-button remove-favorite' variant='danger' value={movies.title} onClick={() => this.removeFavoriteMovie(movie.title, movies)}>
@@ -154,10 +154,12 @@ export class ProfileView extends Component {
                             </Button>
                           </Card.Body>
                         </Card>
+                      </Col>
                     )}
                 })
               }
-            </div>
+              
+            </Row>
           </Card.Body>
         </Card>
       </Row >
