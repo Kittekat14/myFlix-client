@@ -13,17 +13,22 @@
 .main-view {
   background-color: steelblue;
 }
-.navbar {
+.navbar > * {
   color: #4682b4;
   font-size: 28px;
   font-weight: 800;
   font-family: alex;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
 }
 .nav-items {
-  margin-left: 20px;
+  margin-right: 20px;
+  font-size: 26px;
+  text-decoration: none;
+}
+.profile-link {
+  text-decoration: none;
+}
+.logout-button {
+  font-size: 24px;
 }
 h1 {
   padding: 20px 0 0 0;
@@ -33,7 +38,8 @@ h1 {
   color: black;
 }
 .card {
-  margin: 15px 0;
+  height: 100%;
+  margin: 0 auto;
 }
 .card-info {
   font-size: 18px;
@@ -73,12 +79,46 @@ img {
 .movie-title {
   margin-top: 20px;
 }
+.favorite-button {
+  font-family: bangers;
+  border-radius: 2px;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 4px 2px;
+  margin-left: 4px;
+  background-color: #89BBFE;
+}
 .label {
+  margin: 10px 0;
   font-family: alex;
   font-weight: 900;
   font-size: 1.6em;
 }
 .value {
+  margin: 10px 0;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+.genre-link {
+  color: #fff;
+}
+.director-link {
+  color: #fff;
+}
+.relMovies > * {
+  text-decoration: none;
+  color: #212529;
+  padding: 4px 0;
+}
+.error-msg {
+  font-size: 12px;
+  width: 100%;
+  color: red;
+}
+.success-msg {
+  background-color: #0f834d;
+  color: #fff;
+  width: 100%;
+  font-weight: 600;
+  padding: 20px;
 }
 /*# sourceMappingURL=index.1d334ea1.css.map */

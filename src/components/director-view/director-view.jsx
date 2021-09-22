@@ -1,60 +1,47 @@
 import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
+import { Button, Row, Col, Container } from 'react-bootstrap';
 
 export class DirectorView extends React.Component {
-  
-
-  // componentDidMount() {
-  //   axios.get('https://actor-inspector.herokuapp.com/directors')
-  //   .then(res => {
-  //     console.log(res);
-  //     this.setState({
-  //       directors: res.data
-  //     })
-  //   })
-  //   .catch(err => {
-  //   console.log(err);
-  //   });    
-  // }
-
-render() {
    
-   const { director, onBackClick } = this.props;
-   //const { directors } = this.state;
+
+  render() {
+    const { director, onBackClick } = this.props;
 
     return (
-      <div>
+      <Container>
 
-        <div className="director-name">
-          <span className="label">Name: </span>
-          <span className="value">{director.name}</span>    
-        </div>
-        <div className="director-bio">
-          <span className="label">Biography: </span>
-          <span className="value">{director.bio}</span>     
-        </div>  
-        <div className="director-birthyear">
-          <span className="label">Year of Birth: </span>
-          <span className="value">{director.birthyear}</span>      
-        </div>
-        <div className="director-movies">
-          <span className="label">Movies: </span>
-          <span className="value">{director.movies}</span>      
-        </div>
+        <Row className="director-name">
+          <Col className="label">Name: </Col>
+          <Col className="value">{director.name}</Col>    
+        </Row>
+        <Row className="director-bio">
+          <Col className="label">Biography: </Col>
+          <Col className="value">{director.bio}</Col>     
+        </Row>  
+        <Row className="director-birthyear">
+          <Col className="label">Year of Birth: </Col>
+          <Col className="value">{director.birthyear}</Col>      
+        </Row>
+        <Row className="director-movies">
+          <Col className="label">Movies: </Col>
+          <Col className="value">{director.movies.join(', ')}</Col>    
+        </Row>
         
-        <button className="back-button" onClick={() => { onBackClick(null); }}>Back</button>
+        <Button className="back-button" onClick={() => { onBackClick(null); }}>Back</Button>
 
-      </div>
-  );
- }
+      </Container>
+    );
+  };
+
 }
 
 DirectorView.propTypes = {
   director: PropTypes.shape({
     name: PropTypes.string,
     bio: PropTypes.string,
-    birthyear: PropTypes.instanceOf(Date),
+    birthyear: PropTypes.string,
     movies: PropTypes.array
   }).isRequired,
   onBackClick: PropTypes.func
