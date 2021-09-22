@@ -1,19 +1,32 @@
-<mxfile host="app.diagrams.net" modified="2021-09-22T19:17:08.341Z" agent="5.0 (Windows)" etag="XyKLrpBpkk2GnwNzNJ89" version="15.3.0" type="github">
+<mxfile host="app.diagrams.net" modified="2021-09-22T21:12:34.304Z" agent="5.0 (Windows)" etag="WnemY-xrWYdUutq-rP4v" version="15.3.0" type="github">
   <diagram id="Yg3D-YNop6xcODFwDVZ-" name="Page-1">
-    <mxGraphModel dx="1102" dy="572" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1102" dy="529" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="7O_OZhT6sY6kMUz_unLC-2" style="edgeStyle=orthogonalEdgeStyle;shape=flexArrow;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="7O_OZhT6sY6kMUz_unLC-1" target="7O_OZhT6sY6kMUz_unLC-3">
+        <mxCell id="7O_OZhT6sY6kMUz_unLC-2" style="edgeStyle=orthogonalEdgeStyle;shape=flexArrow;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.448;exitY=1.005;exitDx=0;exitDy=0;exitPerimeter=0;" edge="1" parent="1" source="7O_OZhT6sY6kMUz_unLC-1" target="7O_OZhT6sY6kMUz_unLC-3">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="190" y="320" as="targetPoint" />
+            <mxPoint x="230" y="350" as="targetPoint" />
+            <mxPoint x="230" y="280" as="sourcePoint" />
+            <Array as="points">
+              <mxPoint x="231" y="280" />
+              <mxPoint x="300" y="280" />
+            </Array>
           </mxGeometry>
         </mxCell>
-        <mxCell id="7O_OZhT6sY6kMUz_unLC-1" value="&lt;div&gt;ACTIONS&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Add User&lt;/div&gt;&lt;div&gt;- Log User in&lt;/div&gt;&lt;div&gt;- Register User&lt;/div&gt;&lt;div&gt;- Update Username/Password/Email/Birthdate&lt;/div&gt;&lt;div&gt;- Add movies to list of favorite movies&lt;/div&gt;&lt;div&gt;- Delete movies from list of favorite movies&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="90" y="30" width="200" height="190" as="geometry" />
+        <mxCell id="7O_OZhT6sY6kMUz_unLC-1" value="&lt;div&gt;ACTIONS&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;-display List of all Movies&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;- Add User/ Register new User&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;-Deregister User&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;- Log User in&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;-Log User out&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;- display directors information&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;- display genres information&lt;br&gt;&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;- Update Username/Password/Email/Birthdate&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;- Add movies to list of favorite movies&lt;/div&gt;&lt;div align=&quot;center&quot;&gt;- Delete movies from list of favorite movies&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="110" y="20" width="270" height="210" as="geometry" />
         </mxCell>
-        <mxCell id="7O_OZhT6sY6kMUz_unLC-3" value="" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="130" y="290" width="120" height="60" as="geometry" />
+        <mxCell id="7O_OZhT6sY6kMUz_unLC-4" style="edgeStyle=orthogonalEdgeStyle;shape=flexArrow;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="7O_OZhT6sY6kMUz_unLC-3" target="7O_OZhT6sY6kMUz_unLC-5">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="580" y="340" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="7O_OZhT6sY6kMUz_unLC-3" value="&lt;div&gt;REDUCERS&lt;/div&gt;&lt;div&gt;-&amp;nbsp; Get all movies&lt;/div&gt;&lt;div&gt;- Get director info&lt;/div&gt;&lt;div&gt;- Get genre info&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Display user profile &lt;br&gt;&lt;/div&gt;&lt;div&gt;- Register User&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Login User&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Update User info&lt;/div&gt;&lt;div&gt;- Delete User&lt;br&gt;&lt;/div&gt;&lt;div&gt;- add to favorite Movies&lt;/div&gt;&lt;div align=&quot;left&quot;&gt;- delete from favorite Movies&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;arcSize=18;fillColor=#e1d5e7;strokeColor=#9673a6;" vertex="1" parent="1">
+          <mxGeometry x="90" y="360" width="340" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="7O_OZhT6sY6kMUz_unLC-5" value="&lt;div&gt;STORE / STATE&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;- Login View&lt;/div&gt;&lt;div&gt;- Register View&lt;/div&gt;&lt;div&gt;- Movie View&lt;/div&gt;&lt;div&gt;&lt;div&gt;- Director View&lt;/div&gt;&lt;/div&gt;&lt;div&gt;- Genre View&lt;/div&gt;&lt;div&gt;- Profile View&lt;br&gt;&lt;/div&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="530" y="130" width="270" height="200" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
