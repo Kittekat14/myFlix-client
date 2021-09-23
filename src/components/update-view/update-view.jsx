@@ -54,23 +54,28 @@ export default class UpdateView extends Component {
   }
 
 formValidation() {
-  const nameError = {};
-  const passwordError = {};
-  const emailError = {};
+  let nameError = {};
+  let passwordError = {};
+  let emailError = {};
   let isValid = true;
 
-  if(username.trim().length < 5) {
-    nameError.nameShort = 'Username must at least have 5 characters and must only contain numbers and letters.';
+  if(this.state.username.trim().length < 5) {
+    this.state.nameError.nameShort = 'Username must at least have 5 characters and must only contain numbers and letters.';
     isValid = false;
   }
-  if(password.trim().length === 0) {
-    passwordError.passwordEmpty = 'Password cannot be empty.';
+  if(this.state.password.trim().length === 0) {
+    this.state.passwordError.passwordEmpty = 'Password cannot be empty.';
     isValid = false;
   }
-  if(!(email && email.trim().includes('@') && email.trim().includes('.'))) {
-    emailError.emailNot = 'This seems to be no valid email address.';
+  if(!(this.state.email && this.state.email.trim().includes('@') && this.state.email.trim().includes('.'))) {
+    this.state.emailError.emailNot = 'This seems to be no valid email address.';
     isValid = false;
-  } 
+  }
+  this.setState({
+    nameError: nameError,
+    passwordError: passwordError,
+    emailError: emailError
+  })
   return isValid;
 }
 
