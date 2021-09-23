@@ -44,14 +44,14 @@ export default class UpdateView extends Component {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 
-    const isValid = this.formValidation();
-   if(isValid) {
     const data = {
       username: this.state.newUsername,
       password: this.state.newPassword,
       email: this.state.newEmail,
       birthdate: this.state.newBirthdate
     };
+    const isValid = this.formValidation();
+    if(isValid) {
     axios.put(`https://actor-inspector.herokuapp.com/users/${username}`, data, {
       headers: { Authorization: `Bearer ${token}` }
     })

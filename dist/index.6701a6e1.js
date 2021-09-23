@@ -41329,32 +41329,30 @@ class UpdateView extends _react.Component {
     handleUserUpdate() {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
+        const data = {
+            username: this.state.newUsername,
+            password: this.state.newPassword,
+            email: this.state.newEmail,
+            birthdate: this.state.newBirthdate
+        };
         const isValid = this.formValidation();
-        if (isValid) {
-            const data = {
-                username: this.state.newUsername,
-                password: this.state.newPassword,
-                email: this.state.newEmail,
-                birthdate: this.state.newBirthdate
-            };
-            _axiosDefault.default.put(`https://actor-inspector.herokuapp.com/users/${username}`, data, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }).then((response)=>{
-                this.setState({
-                    username: response.data.username,
-                    password: response.data.password,
-                    email: response.data.email,
-                    birthdate: response.data.birthdate
-                });
-                console.log(this.state);
-                localStorage.setItem('user', this.state.username);
-                window.open(`/profile/${username}`, '_self');
-            }).catch(function(error) {
-                console.log(error);
+        if (isValid) _axiosDefault.default.put(`https://actor-inspector.herokuapp.com/users/${username}`, data, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            this.setState({
+                username: response.data.username,
+                password: response.data.password,
+                email: response.data.email,
+                birthdate: response.data.birthdate
             });
-        }
+            console.log(this.state);
+            localStorage.setItem('user', this.state.username);
+            window.open(`/profile/${username}`, '_self');
+        }).catch(function(error) {
+            console.log(error);
+        });
     }
     formValidation() {
         let nameError = {
