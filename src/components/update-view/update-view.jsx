@@ -11,21 +11,26 @@ export default class UpdateView extends Component {
     super(props)
   
     this.state = {
-      newUsername: '',
-      newPassword: '',
-      newEmail: '',
-      newBirthdate: ''
+      username: '',
+      password: '',
+      email: '',
+      birthdate: '',
+      nameError: '',
+      passwordError: '',
+      emailError: ''
     }
   }
   
-  handleUserUpdate() { 
+  handleUserUpdate() {
+    const isValid = this.formValidation();
+    if(isValid) {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     const data = {
-      username: this.state.newUsername,
-      password: this.state.newPassword,
-      email: this.state.newEmail,
-      birthdate: this.state.newBirthdate
+      username: this.state.username,
+      password: this.state.password,
+      email: this.state.email,
+      birthdate: this.state.birthdate
     };
     axios.put(`https://actor-inspector.herokuapp.com/users/${username}`, data, {
       headers: { Authorization: `Bearer ${token}` }
@@ -45,7 +50,36 @@ export default class UpdateView extends Component {
       console.log(error);
     });
   }
+}
 
+formValidation() {
+  const username = '';
+  const password = '';
+  const email = '';
+  const birthdate = '';
+  const nameError = {};
+  const passwordError = {};
+  const emailError = {};
+  let isValid = true;
+  if(username.trim().length < 5) {
+    nameError.nameShort = 'Username must at least have 5 characters and must only contain numbers and letters.';
+    isValid = false;
+  }
+  if(password.trim().length === 0) {
+    passwordError.passwordEmpty = 'Password cannot be empty.';
+    isValid = false;
+  }
+  if(!(email && email.trim().includes('@') && email.trim().includes('.'))) {
+    emailError.emailNot = 'This seems to be no valid email address.';
+    isValid = false;
+  }
+  this.setState({
+    nameError: nameError,
+    passwordError: passwordError,
+    emailError: emailError
+  })
+  return isValid;
+}
   
   render() {
     return (
@@ -57,7 +91,7 @@ export default class UpdateView extends Component {
         <Form.Label>Username*:</Form.Label>
         <Form.Control required type="text" placeholder="Enter New Username"
             onChange={(e) => this.setState(
-              {newUsername: e.target.value}
+              {username: e.target.value}
               )}/>
       </Form.Group>
 
@@ -65,7 +99,7 @@ export default class UpdateView extends Component {
         <Form.Label>Password*:</Form.Label>
         <Form.Control required type="password" placeholder="Enter New Password"
             onChange={(e) => this.setState(
-              {newPassword: e.target.value}
+              {password: e.target.value}
               )}/>
       </Form.Group>
 
@@ -74,7 +108,7 @@ export default class UpdateView extends Component {
           > Email*: 
             <Form.Control required type="email" placeholder="Enter New Email"
             onChange={(e) => this.setState(
-              {newEmail: e.target.value}
+              {email: e.target.value}
               )}/>
           </Form.Label>
       </Form.Group>
@@ -84,7 +118,7 @@ export default class UpdateView extends Component {
         > Birthdate:
           <Form.Control type="date" placeholder="Enter New Birthdate"
           onChange={(e) => this.setState(
-            {newBirthdate: e.target.value}
+            {birthdate: e.target.value}
             )}/>
         </Form.Label>
       </Form.Group>

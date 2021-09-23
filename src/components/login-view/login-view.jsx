@@ -41,7 +41,7 @@ export function LoginView(props) {
     const passwordError = {};
     let isValid = true; //initial/default flag
     if(username.trim().length < 5) {
-      nameError.nameShort = 'Username must at least have 5 characters.';
+      nameError.nameShort = 'Username must at least have 5 characters and must only contain numbers and letters.';
       isValid = false;
     }
     if(password.trim().length === 0) {

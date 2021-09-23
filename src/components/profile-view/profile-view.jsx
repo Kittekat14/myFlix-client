@@ -17,7 +17,9 @@ export class ProfileView extends Component {
       password: '',
       email: '',
       birthdate: '',
-      favorites: []
+      favorites: [],
+      addFavorite: '',
+      removeFavorite: ''
     };
   }
 

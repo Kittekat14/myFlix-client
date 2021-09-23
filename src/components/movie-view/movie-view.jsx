@@ -33,7 +33,7 @@ export class MovieView extends React.Component {
     .then((response) => {
       this.setState({
         favorites: response.data.favorites
-      })
+      });
     })
     .catch(function (error) {
       console.log(error);
