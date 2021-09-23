@@ -141,7 +141,6 @@ export class ProfileView extends Component {
           <Card.Body>
             {favorites.length === 0 && <div className="text-center">Empty.</div>}
             <Row className="favorites-movies ">
-              
               {favorites.length > 0 &&
                 movies.map((movie) => {
                   if (movie._id === favorites.find((fav) => fav === movie._id)) {
