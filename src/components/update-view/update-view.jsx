@@ -11,6 +11,7 @@ export default class UpdateView extends Component {
       newPassword: '',
       newEmail: '',
       newBirthdate: '',
+
       nameError: '',
       passwordError: '',
       emailError: ''
@@ -19,31 +20,10 @@ export default class UpdateView extends Component {
     // this.formValidation = this.formValidation.bind(this);
   }
 
-  // componentDidMount() {
-  //   let accessToken = localStorage.getItem('token');
-  //   this.getUser(accessToken);
-  // }
-
-  // getUser(token) {
-  //   let url = 'https://actor-inspector.herokuapp.com/users/' +
-  //     localStorage.getItem('user');
-  //   axios.get(url, { 
-  //     headers: { Authorization: `Bearer ${token}` } })
-  //       .then((response) => {
-  //         this.setState({
-  //           username: response.data.username,
-  //           password: response.data.password,
-  //           email: response.data.email,
-  //           birthdate: response.data.birthdate,
-  //         });
-  //       });
-  // }
   
-
   handleUserUpdate() { 
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
-
     const data = {
       username: this.state.newUsername,
       password: this.state.newPassword,
@@ -62,7 +42,6 @@ export default class UpdateView extends Component {
       email: response.data.email,
       birthdate: response.data.birthdate
       });
-      console.log(this.state);
       localStorage.setItem('user', this.state.username);
       window.open(`/profile/${username}`, '_self');
     })
@@ -72,34 +51,37 @@ export default class UpdateView extends Component {
    }
   }
 
-formValidation() {
-  let nameError = {};
-  let passwordError = {};
-  let emailError = {};
-  let isValid = true;
+  formValidation() {
+    const { newUsername, newPassword, newEmail } = this.state;
+    const nameError = {};
+    const passwordError = {};
+    const emailError = {};
+    let isValid = true;
+    
+    if(newUsername.trim().length < 5) {
+      nameError.nameShort = 'Username must at least have 5 characters and must only contain numbers and letters.';
+      isValid = false;
+    }
+    if(newPassword.trim().length === 0) {
+      passwordError.passwordEmpty = 'Password cannot be empty.';
+      isValid = false;
+    }
+    if(!(newEmail && newEmail.trim().includes('@') && newEmail.trim().includes('.'))) {
+      emailError.emailNot = 'This seems to be no valid email address.';
+      isValid = false;
+    }
+    this.setState({
+      nameError: nameError,
+      passwordError: passwordError,
+      emailError: emailError
+    })
+    return isValid;
+  }
   
-  if(newUsername.trim().length < 5) {
-    nameError.nameShort = 'Username must at least have 5 characters and must only contain numbers and letters.';
-    isValid = false;
-  }
-  if(newPassword.trim().length === 0) {
-    passwordError.passwordEmpty = 'Password cannot be empty.';
-    isValid = false;
-  }
-  if(!(newEmail && newEmail.trim().includes('@') && newEmail.trim().includes('.'))) {
-    emailError.emailNot = 'This seems to be no valid email address.';
-    isValid = false;
-  }
-  this.setState({
-    nameError: nameError,
-    passwordError: passwordError,
-    emailError: emailError
-  })
-  return isValid;
-}
-
 
   render() {
+    const { newUsername, newPassword, newEmail, newBirthdate, nameError, passwordError, emailError } = this.state;
+
     return (
       <>
 
@@ -108,12 +90,10 @@ formValidation() {
       <Form.Group className="mb-3" controlId="formUsername">
         <Form.Label>Username*:</Form.Label>
         <Form.Control required type="text" placeholder="Enter New Username"
-            onChange={(e) => this.setState(
-              {newUsername: e.target.value}
-              )}/>
-        {/* {Object.keys(nameError).map((key) => {
-        return <div style={{ fontSize: 12, color:'red'}}>{nameError[key]}</div>
-      })} */}
+        onChange={(e) => this.setState( {newUsername: e.target.value} ) }/>
+        {Object.keys(nameError).map((key) => {
+        return <div style={{ fontSize: 12, color:'red'}} key={key}>{nameError[key]}</div>
+        })}
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formPassword">
@@ -122,9 +102,9 @@ formValidation() {
             onChange={(e) => this.setState(
               {newPassword: e.target.value}
               )}/>
-        {/* {Object.keys(passwordError).map((key) => {
-        return <div style={{ fontSize: 12, color:'red'}}>{passwordError[key]}</div>
-      })} */}
+        {Object.keys(passwordError).map((key) => {
+        return <div style={{ fontSize: 12, color:'red'}} key={key}>{passwordError[key]}</div>
+      })}
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formEmail">
@@ -135,9 +115,9 @@ formValidation() {
               {newEmail: e.target.value}
               )}/>
           </Form.Label>
-          {/* {Object.keys(emailError).map((key) => {
-          return <div style={{ fontSize: 12, color:'red'}}>{emailError[key]}</div>
-      })} */}
+          {Object.keys(emailError).map((key) => {
+          return <div style={{ fontSize: 12, color:'red'}} key={key}>{emailError[key]}</div>
+      })}
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBirthdate">
