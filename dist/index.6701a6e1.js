@@ -40759,6 +40759,7 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _updateView = require("../update-view/update-view");
+var _updateViewDefault = parcelHelpers.interopDefault(_updateView);
 var _moment = require("moment");
 var _momentDefault = parcelHelpers.interopDefault(_moment);
 var _button = require("react-bootstrap/Button");
@@ -41218,7 +41219,7 @@ class ProfileView extends _react.Component {
                     },
                     __self: this
                 }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_updateView.UpdateView, {
+                /*#__PURE__*/ _jsxRuntime.jsx(_updateViewDefault.default, {
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
                         lineNumber: 192
@@ -41283,8 +41284,6 @@ $parcel$ReactRefreshHelpers$7299.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "UpdateView", ()=>UpdateView
-);
 var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
@@ -41300,276 +41299,285 @@ var _row = require("react-bootstrap/Row");
 var _rowDefault = parcelHelpers.interopDefault(_row);
 var _col = require("react-bootstrap/Col");
 var _colDefault = parcelHelpers.interopDefault(_col);
-var _s = $RefreshSig$();
-function UpdateView(props) {
-    _s();
-    const [username, setUsername] = _react.useState('');
-    const [password, setPassword] = _react.useState('');
-    const [email, setEmail] = _react.useState('');
-    const [birthdate, setBirthdate] = _react.useState('');
-    const [nameError, setNameError] = _react.useState('');
-    const [passwordError, setPasswordError] = _react.useState('');
-    const [emailError, setEmailError] = _react.useState('');
-    // (e, this.username, this.password, this.email, this.birthdate)
-    const handleUserUpdate = (e)=>{
-        e.preventDefault();
-        const username1 = localStorage.getItem('user');
+class UpdateView extends _react.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            newUsername: '',
+            newPassword: '',
+            newEmail: '',
+            newBirthdate: '',
+            nameError: '',
+            passwordError: '',
+            emailError: ''
+        };
+    }
+    handleUserUpdate() {
+        const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
-        const isValid = formValidation();
+        const isValid = this.formValidation();
         if (isValid) {
             const data = {
-                username: username1,
-                password: password,
-                email: email,
-                birthdate: birthdate
+                username: this.state.newUsername,
+                password: this.state.newPassword,
+                email: this.state.newEmail,
+                birthdate: this.state.newBirthdate
             };
-            _axiosDefault.default.put(`https://actor-inspector.herokuapp.com/users/${username1}`, data, {
+            _axiosDefault.default.put(`https://actor-inspector.herokuapp.com/users/${username}`, data, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 }
             }).then((response)=>{
-                const data1 = response.data;
-                console.log(data1);
-                window.open(`/profile/${username1}`, '_self');
+                this.setState({
+                    username: response.data.username,
+                    password: response.data.password,
+                    email: response.data.email,
+                    birthdate: response.data.birthdate
+                });
+                console.log(this.state);
+                localStorage.setItem('user', this.state.username);
+                window.open(`/profile/${username}`, '_self');
             }).catch(function(error) {
                 console.log(error);
             });
         }
-    };
-    const formValidation = (e)=>{
-        const nameError1 = {
+    }
+    formValidation() {
+        const nameError = {
         };
-        const passwordError1 = {
+        const passwordError = {
         };
-        const emailError1 = {
+        const emailError = {
         };
         let isValid = true;
         if (username.trim().length < 5) {
-            nameError1.nameShort = 'Username must at least have 5 characters and must only contain numbers and letters.';
+            nameError.nameShort = 'Username must at least have 5 characters and must only contain numbers and letters.';
             isValid = false;
         }
         if (password.trim().length === 0) {
-            passwordError1.passwordEmpty = 'Password cannot be empty.';
+            passwordError.passwordEmpty = 'Password cannot be empty.';
             isValid = false;
         }
         if (!(email && email.trim().includes('@') && email.trim().includes('.'))) {
-            emailError1.emailNot = 'This seems to be no valid email address.';
+            emailError.emailNot = 'This seems to be no valid email address.';
             isValid = false;
         }
-        setNameError(nameError1);
-        setPasswordError(passwordError1);
-        setEmailError(emailError1);
         return isValid;
-    };
-    return(/*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
-        children: /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default, {
-            __source: {
-                fileName: "src/components/update-view/update-view.jsx",
-                lineNumber: 75
-            },
-            __self: this,
-            children: [
-                /*#__PURE__*/ _jsxRuntime.jsx("h3", {
-                    __source: {
-                        fileName: "src/components/update-view/update-view.jsx",
-                        lineNumber: 76
-                    },
-                    __self: this,
-                    children: "Update Your User Data"
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Group, {
-                    className: "mb-3",
-                    controlId: "formUsername",
-                    __source: {
-                        fileName: "src/components/update-view/update-view.jsx",
-                        lineNumber: 77
-                    },
-                    __self: this,
-                    children: [
-                        /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Label, {
-                            __source: {
-                                fileName: "src/components/update-view/update-view.jsx",
-                                lineNumber: 78
-                            },
-                            __self: this,
-                            children: "Username*:"
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
-                            required: true,
-                            type: "text",
-                            placeholder: "Enter New Username",
-                            value: username,
-                            onChange: (e)=>setUsername(e.target.value)
-                            ,
-                            __source: {
-                                fileName: "src/components/update-view/update-view.jsx",
-                                lineNumber: 79
-                            },
-                            __self: this
-                        }),
-                        Object.keys(nameError).map((key)=>{
-                            return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-                                style: {
-                                    fontSize: 12,
-                                    color: 'red'
-                                },
+    }
+    render() {
+        return(/*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
+            children: /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default, {
+                __source: {
+                    fileName: "src/components/update-view/update-view.jsx",
+                    lineNumber: 82
+                },
+                __self: this,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsx("h3", {
+                        __source: {
+                            fileName: "src/components/update-view/update-view.jsx",
+                            lineNumber: 83
+                        },
+                        __self: this,
+                        children: "Update Your User Data"
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Group, {
+                        className: "mb-3",
+                        controlId: "formUsername",
+                        __source: {
+                            fileName: "src/components/update-view/update-view.jsx",
+                            lineNumber: 84
+                        },
+                        __self: this,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Label, {
                                 __source: {
                                     fileName: "src/components/update-view/update-view.jsx",
                                     lineNumber: 85
                                 },
                                 __self: this,
-                                children: nameError[key]
-                            }));
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Group, {
-                    className: "mb-3",
-                    controlId: "formPassword",
-                    __source: {
-                        fileName: "src/components/update-view/update-view.jsx",
-                        lineNumber: 89
-                    },
-                    __self: this,
-                    children: [
-                        /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Label, {
-                            __source: {
-                                fileName: "src/components/update-view/update-view.jsx",
-                                lineNumber: 90
-                            },
-                            __self: this,
-                            children: "Password*:"
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
-                            required: true,
-                            type: "password",
-                            placeholder: "Enter New Password",
-                            value: password,
-                            onChange: (e)=>setPassword(e.target.value)
-                            ,
-                            __source: {
-                                fileName: "src/components/update-view/update-view.jsx",
-                                lineNumber: 91
-                            },
-                            __self: this
-                        }),
-                        Object.keys(passwordError).map((key)=>{
-                            return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-                                style: {
-                                    fontSize: 12,
-                                    color: 'red'
+                                children: "Username*:"
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
+                                required: true,
+                                type: "text",
+                                placeholder: "Enter New Username",
+                                onChange: (e)=>this.setState({
+                                        newUsername: e.target.value
+                                    })
+                                ,
+                                __source: {
+                                    fileName: "src/components/update-view/update-view.jsx",
+                                    lineNumber: 86
                                 },
+                                __self: this
+                            }),
+                            Object.keys(nameError).map((key)=>{
+                                return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                    style: {
+                                        fontSize: 12,
+                                        color: 'red'
+                                    },
+                                    __source: {
+                                        fileName: "src/components/update-view/update-view.jsx",
+                                        lineNumber: 91
+                                    },
+                                    __self: this,
+                                    children: nameError[key]
+                                }));
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Group, {
+                        className: "mb-3",
+                        controlId: "formPassword",
+                        __source: {
+                            fileName: "src/components/update-view/update-view.jsx",
+                            lineNumber: 95
+                        },
+                        __self: this,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Label, {
+                                __source: {
+                                    fileName: "src/components/update-view/update-view.jsx",
+                                    lineNumber: 96
+                                },
+                                __self: this,
+                                children: "Password*:"
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
+                                required: true,
+                                type: "password",
+                                placeholder: "Enter New Password",
+                                onChange: (e)=>this.setState({
+                                        newPassword: e.target.value
+                                    })
+                                ,
                                 __source: {
                                     fileName: "src/components/update-view/update-view.jsx",
                                     lineNumber: 97
                                 },
+                                __self: this
+                            }),
+                            Object.keys(passwordError).map((key)=>{
+                                return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                    style: {
+                                        fontSize: 12,
+                                        color: 'red'
+                                    },
+                                    __source: {
+                                        fileName: "src/components/update-view/update-view.jsx",
+                                        lineNumber: 102
+                                    },
+                                    __self: this,
+                                    children: passwordError[key]
+                                }));
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Group, {
+                        className: "mb-3",
+                        controlId: "formEmail",
+                        __source: {
+                            fileName: "src/components/update-view/update-view.jsx",
+                            lineNumber: 106
+                        },
+                        __self: this,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Label, {
+                                label: "Email",
+                                className: "mb-3",
+                                __source: {
+                                    fileName: "src/components/update-view/update-view.jsx",
+                                    lineNumber: 107
+                                },
                                 __self: this,
-                                children: passwordError[key]
-                            }));
-                        })
-                    ]
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Group, {
-                    className: "mb-3",
-                    controlId: "formEmail",
-                    __source: {
-                        fileName: "src/components/update-view/update-view.jsx",
-                        lineNumber: 101
-                    },
-                    __self: this,
-                    children: [
-                        /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Label, {
-                            label: "Email",
+                                children: [
+                                    " Email*:",
+                                    /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
+                                        required: true,
+                                        type: "email",
+                                        placeholder: "Enter New Email",
+                                        onChange: (e)=>this.setState({
+                                                newEmail: e.target.value
+                                            })
+                                        ,
+                                        __source: {
+                                            fileName: "src/components/update-view/update-view.jsx",
+                                            lineNumber: 109
+                                        },
+                                        __self: this
+                                    })
+                                ]
+                            }),
+                            Object.keys(emailError).map((key)=>{
+                                return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                    style: {
+                                        fontSize: 12,
+                                        color: 'red'
+                                    },
+                                    __source: {
+                                        fileName: "src/components/update-view/update-view.jsx",
+                                        lineNumber: 115
+                                    },
+                                    __self: this,
+                                    children: emailError[key]
+                                }));
+                            })
+                        ]
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Group, {
+                        className: "mb-3",
+                        controlId: "formBirthdate",
+                        __source: {
+                            fileName: "src/components/update-view/update-view.jsx",
+                            lineNumber: 119
+                        },
+                        __self: this,
+                        children: /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Label, {
+                            label: "Birthdate",
                             className: "mb-3",
                             __source: {
                                 fileName: "src/components/update-view/update-view.jsx",
-                                lineNumber: 102
+                                lineNumber: 120
                             },
                             __self: this,
                             children: [
-                                " Email*:",
+                                " Birthdate:",
                                 /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
-                                    required: true,
-                                    type: "email",
-                                    placeholder: "Enter New Email",
-                                    value: email,
-                                    onChange: (e)=>setEmail(e.target.value)
+                                    type: "date",
+                                    placeholder: "Enter New Birthdate",
+                                    onChange: (e)=>this.setState({
+                                            newBirthdate: e.target.value
+                                        })
                                     ,
                                     __source: {
                                         fileName: "src/components/update-view/update-view.jsx",
-                                        lineNumber: 104
+                                        lineNumber: 122
                                     },
                                     __self: this
                                 })
                             ]
-                        }),
-                        Object.keys(emailError).map((key)=>{
-                            return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-                                style: {
-                                    fontSize: 12,
-                                    color: 'red'
-                                },
-                                __source: {
-                                    fileName: "src/components/update-view/update-view.jsx",
-                                    lineNumber: 111
-                                },
-                                __self: this,
-                                children: emailError[key]
-                            }));
                         })
-                    ]
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Group, {
-                    className: "mb-3",
-                    controlId: "formBirthdate",
-                    __source: {
-                        fileName: "src/components/update-view/update-view.jsx",
-                        lineNumber: 115
-                    },
-                    __self: this,
-                    children: /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Label, {
-                        label: "Birthdate",
-                        className: "mb-3",
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
+                        type: "button",
+                        onClick: ()=>{
+                            this.handleUserUpdate();
+                        },
                         __source: {
                             fileName: "src/components/update-view/update-view.jsx",
-                            lineNumber: 116
+                            lineNumber: 130
                         },
                         __self: this,
-                        children: [
-                            " Birthdate:",
-                            /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
-                                type: "date",
-                                placeholder: "Enter New Birthdate",
-                                value: birthdate,
-                                onChange: (e)=>setBirthdate(e.target.value)
-                                ,
-                                __source: {
-                                    fileName: "src/components/update-view/update-view.jsx",
-                                    lineNumber: 118
-                                },
-                                __self: this
-                            })
-                        ]
+                        children: "Update your Account"
                     })
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
-                    type: "submit",
-                    onClick: handleUserUpdate,
-                    __source: {
-                        fileName: "src/components/update-view/update-view.jsx",
-                        lineNumber: 127
-                    },
-                    __self: this,
-                    children: "Update your Account"
-                })
-            ]
-        })
-    }));
+                ]
+            })
+        }));
+    }
 }
-_s(UpdateView, "GZRcyOpeW49K8p0eYN8SRmeFb7E=");
-_c = UpdateView;
-var _c;
-$RefreshReg$(_c, "UpdateView");
+exports.default = UpdateView;
 
   $parcel$ReactRefreshHelpers$7299.postlude(module);
 } finally {
