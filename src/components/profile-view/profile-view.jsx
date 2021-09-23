@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import UpdateView from '../update-view/update-view';
+import {UpdateView} from '../update-view/update-view';
 import moment from 'moment';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
