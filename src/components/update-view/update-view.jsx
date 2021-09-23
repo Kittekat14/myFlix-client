@@ -81,6 +81,9 @@ return (
         placeholder="Enter New Username"
         value={username}
         onChange={(e) => setUsername(e.target.value)}/>
+        {Object.keys(nameError).map((key) => {
+        return <div style={{ fontSize: 12, color:'red'}}>{nameError[key]}</div>
+      })}
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formPassword">
@@ -90,17 +93,23 @@ return (
         placeholder="Enter New Password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}/>
+        {Object.keys(passwordError).map((key) => {
+        return <div style={{ fontSize: 12, color:'red'}}>{passwordError[key]}</div>
+      })}
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formEmail">
-          <Form.Label label="Email" className="mb-3"
-          > Email*: 
-            <Form.Control required 
-            type="email" 
-            placeholder="Enter New Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}/>
-          </Form.Label>
+        <Form.Label label="Email" className="mb-3"
+        > Email*: 
+        <Form.Control required 
+        type="email" 
+        placeholder="Enter New Email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}/>
+        </Form.Label>
+        {Object.keys(emailError).map((key) => {
+        return <div style={{ fontSize: 12, color:'red'}}>{emailError[key]}</div>
+      })}
       </Form.Group>
 
       <Form.Group className="mb-3" controlId="formBirthdate">
