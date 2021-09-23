@@ -41363,7 +41363,6 @@ function UpdateView(props) {
     };
     return(/*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
         children: /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default, {
-            onSubmit: handleUserUpdate,
             __source: {
                 fileName: "src/components/update-view/update-view.jsx",
                 lineNumber: 75
@@ -41511,6 +41510,7 @@ function UpdateView(props) {
                 }),
                 /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
                     type: "submit",
+                    onClick: handleUserUpdate,
                     __source: {
                         fileName: "src/components/update-view/update-view.jsx",
                         lineNumber: 118

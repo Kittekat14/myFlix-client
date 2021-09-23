@@ -72,7 +72,7 @@ export function UpdateView(props) {
 return (
       <>
 
-    <Form onSubmit={handleUserUpdate}>
+    <Form>
         <h3>Update Your User Data</h3>
       <Form.Group className="mb-3" controlId="formUsername">
         <Form.Label>Username*:</Form.Label>
@@ -115,7 +115,7 @@ return (
       </Form.Group>
 
 
-      <Button type="submit">Update your Account</Button>
+      <Button type="submit" onClick={handleUserUpdate}>Update your Account</Button>
 
     </Form>
 
