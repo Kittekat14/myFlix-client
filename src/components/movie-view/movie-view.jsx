@@ -33,7 +33,7 @@ export class MovieView extends React.Component {
     .then((response) => {
       this.setState({
         favorites: response.data.favorites,
-        // buttonText: 'Remove from Favorites'
+        //buttonText: 'Remove from Favorites'
       })
     })
     .catch(function (error) {
@@ -42,7 +42,7 @@ export class MovieView extends React.Component {
   }
 
 
-  removeFavoriteMovie(title) {
+  removeFavoriteMovie(movie) {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 
@@ -110,15 +110,13 @@ export class MovieView extends React.Component {
           </div>
           
           <button className="back-button" onClick={() => { onBackClick(null); }}>Back</button>
-          {/* <Button
-              className="favorite-button toggle-button"
-              onClick={this.addToFavoriteMovies(movie._id)}
-            >{this.state.buttonText}</Button> */}
-
+          
             
           {this.state.favorites.includes(movie._id) ?
-          null :
-          <Button className='favorite-button' onClick={() => this.addToFavoriteMovies(movie._id)}> Add to favorite Movies </Button>}
+          <Button className='favorite-button'
+          onClick={this.removeFavoriteMovie(movie._id)}> Delete from favorite Movies </Button> :
+          <Button className='favorite-button' 
+          onClick={this.addToFavoriteMovies(movie._id)}> Add to favorite Movies </Button>}
       </Col>
      </Row>
     

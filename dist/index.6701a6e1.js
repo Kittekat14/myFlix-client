@@ -39988,7 +39988,7 @@ class MovieView extends _reactDefault.default.Component {
             console.log(error);
         });
     }
-    removeFavoriteMovie(title) {
+    removeFavoriteMovie(movie) {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
         //const movieId = movies.find((movie) => movie.title === title)._id;
@@ -40268,13 +40268,21 @@ class MovieView extends _reactDefault.default.Component {
                         __self: this,
                         children: "Back"
                     }),
-                    this.state.favorites.includes(movie._id) ? null : /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
+                    this.state.favorites.includes(movie._id) ? /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
                         className: "favorite-button",
-                        onClick: ()=>this.addToFavoriteMovies(movie._id)
-                        ,
+                        onClick: this.removeFavoriteMovie(movie._id),
                         __source: {
                             fileName: "src/components/movie-view/movie-view.jsx",
-                            lineNumber: 121
+                            lineNumber: 116
+                        },
+                        __self: this,
+                        children: " Delete from favorite Movies "
+                    }) : /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
+                        className: "favorite-button",
+                        onClick: this.addToFavoriteMovies(movie._id),
+                        __source: {
+                            fileName: "src/components/movie-view/movie-view.jsx",
+                            lineNumber: 118
                         },
                         __self: this,
                         children: " Add to favorite Movies "
@@ -46674,6 +46682,8 @@ var _colDefault = parcelHelpers.interopDefault(_col);
 var _reactRedux = require("react-redux");
 var _reducers = require("../../reducers/reducers");
 var _reducersDefault = parcelHelpers.interopDefault(_reducers);
+var _visibilityFilterInput = require("../visibility-filter-input/visibility-filter-input");
+var _visibilityFilterInputDefault = parcelHelpers.interopDefault(_visibilityFilterInput);
 var _movieCard = require("../movie-card/movie-card");
 const mapStateToProps = (state)=>{
     const { visibilityFilter  } = state;
@@ -46690,27 +46700,50 @@ function MoviesList(props) {
         className: "main-view",
         __source: {
             fileName: "src/components/movies-list/movies-list.jsx",
-            lineNumber: 20
+            lineNumber: 21
         },
         __self: this
     }));
-    return filteredMovies.map((m)=>/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
-            md: 3,
-            __source: {
-                fileName: "src/components/movies-list/movies-list.jsx",
-                lineNumber: 23
-            },
-            __self: this,
-            children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
-                movie: m,
+    return(/*#__PURE__*/ _jsxRuntime.jsxs(_jsxRuntime.Fragment, {
+        children: [
+            /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+                md: 12,
+                style: {
+                    margin: '1em'
+                },
                 __source: {
                     fileName: "src/components/movies-list/movies-list.jsx",
-                    lineNumber: 24
+                    lineNumber: 25
                 },
-                __self: this
-            })
-        }, m._id)
-    );
+                __self: this,
+                children: /*#__PURE__*/ _jsxRuntime.jsx(_visibilityFilterInputDefault.default, {
+                    visibilityFilter: visibilityFilter,
+                    __source: {
+                        fileName: "src/components/movies-list/movies-list.jsx",
+                        lineNumber: 26
+                    },
+                    __self: this
+                })
+            }),
+            filteredMovies.map((m)=>/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+                    md: 3,
+                    __source: {
+                        fileName: "src/components/movies-list/movies-list.jsx",
+                        lineNumber: 29
+                    },
+                    __self: this,
+                    children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
+                        movie: m,
+                        __source: {
+                            fileName: "src/components/movies-list/movies-list.jsx",
+                            lineNumber: 30
+                        },
+                        __self: this
+                    })
+                }, m._id)
+            )
+        ]
+    }));
 }
 _c = MoviesList;
 exports.default = _reactRedux.connect(mapStateToProps)(MoviesList);
@@ -46722,7 +46755,7 @@ $RefreshReg$(_c, "MoviesList");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap/Col":"fbam0","react-redux":"2L0if","../../reducers/reducers":"btgQW","../movie-card/movie-card":"6EiBJ","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd"}],"btgQW":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap/Col":"fbam0","react-redux":"2L0if","../../reducers/reducers":"btgQW","../visibility-filter-input/visibility-filter-input":"7ZxGS","../movie-card/movie-card":"6EiBJ","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd"}],"btgQW":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _redux = require("redux");
@@ -47300,7 +47333,48 @@ function _defineProperty(obj, key, value) {
 }
 exports.default = _defineProperty;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"2govV"}],"6EiBJ":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"2govV"}],"7ZxGS":[function(require,module,exports) {
+var $parcel$ReactRefreshHelpers$9bc3 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+$parcel$ReactRefreshHelpers$9bc3.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _jsxRuntime = require("react/jsx-runtime");
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactRedux = require("react-redux");
+var _form = require("react-bootstrap/Form");
+var _formDefault = parcelHelpers.interopDefault(_form);
+var _actions = require("../../actions/actions");
+function VisibilityFilterInput(props) {
+    return(/*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
+        onChange: (e)=>props.setFilter(e.target.value)
+        ,
+        value: props.visibilityFilter,
+        placeholder: "filter",
+        __source: {
+            fileName: "src/components/visibility-filter-input/visibility-filter-input.jsx",
+            lineNumber: 9
+        },
+        __self: this
+    }));
+}
+_c = VisibilityFilterInput;
+exports.default = _reactRedux.connect(null, {
+    setFilter: _actions.setFilter
+})(VisibilityFilterInput);
+var _c;
+$RefreshReg$(_c, "VisibilityFilterInput");
+
+  $parcel$ReactRefreshHelpers$9bc3.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-redux":"2L0if","react-bootstrap/Form":"5ykgY","../../actions/actions":"1Ttfj","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd"}],"6EiBJ":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4249 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
