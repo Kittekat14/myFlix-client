@@ -39974,8 +39974,8 @@ var _reactRouterDom = require("react-router-dom");
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 class MovieView extends _reactDefault.default.Component {
-    constructor(props1){
-        super(props1);
+    constructor(){
+        super();
         this.state = {
             movies: [],
             favorites: []
@@ -40016,10 +40016,10 @@ class MovieView extends _reactDefault.default.Component {
     //     console.log(response.data.favorites);
     // }
     onRemove(props) {
-        props.removeMovie;
+        props.removeMovie(movie._id);
     }
     onAdd(props) {
-        props.addMovie;
+        props.addMovie(movie._id);
     }
     render() {
         const { movie , onBackClick  } = this.props;

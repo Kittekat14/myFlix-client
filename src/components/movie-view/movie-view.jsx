@@ -9,8 +9,8 @@ import axios from 'axios';
 
 
 export class MovieView extends React.Component {
-  constructor(props) {
-    super(props)
+  constructor() {
+    super()
   
     this.state = {
        movies: [],
@@ -60,10 +60,10 @@ export class MovieView extends React.Component {
   //     console.log(response.data.favorites);
   // }
   onRemove(props) {
-    props.removeMovie;
+    props.removeMovie(movie._id);
   }
   onAdd(props) {
-    props.addMovie;
+    props.addMovie(movie._id);
   }
 
   render() {
