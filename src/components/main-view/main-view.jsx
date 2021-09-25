@@ -93,7 +93,7 @@ export default class MainView extends React.Component {
     .catch(function (error) {
       console.log(error);
     })
-   //}
+   
   }
 
 
@@ -101,7 +101,7 @@ export default class MainView extends React.Component {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     
-    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, {}, {
+    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((response) => {
@@ -194,7 +194,7 @@ export default class MainView extends React.Component {
                   <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
               </Row>
               <Col md={8}>
-                <MovieView removeFavoriteMovie={() => this.removeFavoriteMovie(movies._id)} addToFavoriteMovies={() => this.addToFavoriteMovies(movies._id)} favorites={favorites} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()}/>
+                <MovieView removeMovie={() => this.removeFavoriteMovie.bind(this)} addMovie={() => this.addToFavoriteMovies.bind(this)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()}/>
               </Col>
               </>)
             }}  />

@@ -59,13 +59,17 @@ export class MovieView extends React.Component {
 
   //     console.log(response.data.favorites);
   // }
-
+  onRemove(props) {
+    props.removeMovie;
+  }
+  onAdd(props) {
+    props.addMovie;
+  }
 
   render() {
    
-    const { movie, onBackClick, removeFavoriteMovie, addToFavoriteMovies } = this.props;
+    const { movie, onBackClick } = this.props;
     const { favorites } = this.state;
-    
 
     return (
     
@@ -111,9 +115,17 @@ export class MovieView extends React.Component {
           
 
             
-          {favorites.includes(movie._id) ?
+          {/* {favorites.includes(movie._id) ?
           <Button className="favorite-button" onClick={() => { removeFavoriteMovie(movie._id) } }>Remove from favorite Movies</Button> :
-          <Button className='favorite-button' onClick={() => { addToFavoriteMovies(movie._id) } }> Add to favorite Movies </Button>}
+          <Button className='favorite-button' onClick={() => { addToFavoriteMovies(movie._id) } }> Add to favorite Movies </Button>} */}
+
+          {favorites.includes(movie._id) ?
+          <Button className='favorite-button'
+          onClick={this.onRemove}> Delete from favorite Movies </Button> :
+          <Button className='favorite-button' 
+          onClick={this.onAdd}> Add to favorite Movies </Button>}
+
+
       </Col>
      </Row>
     
@@ -141,7 +153,7 @@ MovieView.propTypes = {
     })
   }),
   onBackClick: PropTypes.func.isRequired,
-  addToFavoriteMovies: PropTypes.func.isRequired,
-  removeFavoriteMovie: PropTypes.func.isRequired,
-  favorites: PropTypes.array.isRequired
+  addMovie: PropTypes.func.isRequired,
+  removeMovie: PropTypes.func.isRequired,
+  // favorites: PropTypes.array.isRequired
 }
