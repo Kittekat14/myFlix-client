@@ -20,8 +20,7 @@ const mapStateToProps = state => {
   }
   if(!movies) return <div className="main-view" />;
   
-  return (
-  <>
+  return <>
   <Col md={12} style={{ margin: '1em' }}>
       <VisibilityFilterInput visibilityFilter={visibilityFilter} />
   </Col>
@@ -30,8 +29,9 @@ const mapStateToProps = state => {
       <MovieCard movie={m} />
     </Col>
   ))}
+  
   </>
-  )
+  
 }  
 
 export default connect(mapStateToProps)(MoviesList);

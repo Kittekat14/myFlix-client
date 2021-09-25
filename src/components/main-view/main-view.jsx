@@ -28,7 +28,7 @@ class MainView extends React.Component {
     super();
 
     this.state = {
-      user: ''
+      user: null
     };
   }
 
@@ -103,13 +103,10 @@ class MainView extends React.Component {
                 <Row className="m-3 navigation-main">
                   <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
                 </Row>
-                 {movies.map(m => (
-                <Col md={3} key={m._id}>
-                  <MoviesList movies={movies} />
-                </Col>
-              ))
-             }</>
-             )
+                 
+                <MoviesList movies={movies} />
+              </>
+              )
             }} />
             
             <Route path="/register" render={() => {

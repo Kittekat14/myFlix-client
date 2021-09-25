@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import './login-view.scss';
 import { useHistory } from "react-router-dom";
-
+import { connect } from 'react-redux';
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -90,6 +90,11 @@ return (
 }
 
 LoginView.propTypes = {
-  onRegisterClick: PropTypes.func,
-  onLoggedIn: PropTypes.func,
+  onLoggedIn: PropTypes.func
 };
+
+const mapDispatchToProps = (dispatch) => ({
+  handleLogin: (username, password) => dispatch(handleLogin(username, password))
+});
+
+export default connect(null, mapDispatchToProps)(LoginView);
