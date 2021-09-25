@@ -37,12 +37,12 @@ export default class UpdateView extends Component {
     })
     .then((response) => {
       this.setState({
-      username: response.data.username,
-      password: response.data.password,
-      email: response.data.email,
-      birthdate: response.data.birthdate
+      username: response.data.newUsername,
+      password: response.data.newPassword,
+      email: response.data.newEmail,
+      birthdate: response.data.newBirthdate
       });
-      localStorage.setItem('user', this.state.username);
+      localStorage.setItem('user', this.state.newUsername);
       window.open(`/profile/${username}`, '_self');
     })
     .catch(function (error) {

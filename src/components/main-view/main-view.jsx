@@ -25,7 +25,8 @@ export default class MainView extends React.Component {
 
     this.state = {
       movies: [],
-      user: ''
+      user: '',
+      favorites: []
     };
   }
 
@@ -77,10 +78,49 @@ export default class MainView extends React.Component {
   }
 
 
+  addToFavoriteMovies(movie) {
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+    
+    axios.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, { favorites: this.favorites }, {
+      headers: { Authorization: `Bearer ${token}` }
+    })
+    .then((response) => {
+      this.setState({
+        favorites: response.data.favorites
+      });
+    })
+    .catch(function (error) {
+      console.log(error);
+    })
+   //}
+  }
+
+
+  removeFavoriteMovie(movie) {
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+    
+    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, {}, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then((response) => {
+        this.setState({
+          favorites: response.data.favorites
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+
+      console.log(response.data.favorites);
+  }
+
+
   // visual representation of main component:
   render() {
    
-    const { movies, user } = this.state;
+    const { movies, user, favorites } = this.state;
 
     
   
@@ -154,7 +194,7 @@ export default class MainView extends React.Component {
                   <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
               </Row>
               <Col md={8}>
-                <MovieView movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()}/>
+                <MovieView removeFavoriteMovie={() => this.removeFavoriteMovie(movies._id)} addToFavoriteMovies={() => this.addToFavoriteMovies(movies._id)} favorites={favorites} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()}/>
               </Col>
               </>)
             }}  />

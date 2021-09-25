@@ -22773,7 +22773,8 @@ class MainView extends _reactDefault.default.Component {
         super();
         this.state = {
             movies: [],
-            user: ''
+            user: '',
+            favorites: []
         };
     }
     componentDidMount() {
@@ -22814,20 +22815,55 @@ class MainView extends _reactDefault.default.Component {
             user: null
         });
     }
+    addToFavoriteMovies(movie) {
+        const username = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+        _axiosDefault.default.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, {
+            favorites: this.favorites
+        }, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            this.setState({
+                favorites: response.data.favorites
+            });
+        }).catch(function(error) {
+            console.log(error);
+        });
+    //}
+    }
+    removeFavoriteMovie(movie) {
+        const username = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+        _axiosDefault.default.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, {
+        }, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            this.setState({
+                favorites: response.data.favorites
+            });
+        }).catch(function(error) {
+            console.log(error);
+        });
+        console.log(response.data.favorites);
+    }
     // visual representation of main component:
     render() {
-        const { movies , user  } = this.state;
+        const { movies , user , favorites  } = this.state;
         return(/*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 88
+                lineNumber: 128
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsxs(_rowDefault.default, {
                 className: "main-view justify-content-md-center",
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 89
+                    lineNumber: 129
                 },
                 __self: this,
                 children: [
@@ -22868,7 +22904,7 @@ class MainView extends _reactDefault.default.Component {
                         },
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 91
+                            lineNumber: 131
                         },
                         __self: this
                     }),
@@ -22889,7 +22925,7 @@ class MainView extends _reactDefault.default.Component {
                         },
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 113
+                            lineNumber: 153
                         },
                         __self: this
                     }),
@@ -22927,7 +22963,7 @@ class MainView extends _reactDefault.default.Component {
                         },
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 124
+                            lineNumber: 164
                         },
                         __self: this
                     }),
@@ -22957,6 +22993,11 @@ class MainView extends _reactDefault.default.Component {
                                     /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
                                         md: 8,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
+                                            removeFavoriteMovie: ()=>this.removeFavoriteMovie(movies._id)
+                                            ,
+                                            addToFavoriteMovies: ()=>this.addToFavoriteMovies(movies._id)
+                                            ,
+                                            favorites: favorites,
                                             movie: movies.find((m)=>m.title === match.params.title
                                             ),
                                             onBackClick: ()=>history.goBack()
@@ -22967,7 +23008,7 @@ class MainView extends _reactDefault.default.Component {
                         },
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 143
+                            lineNumber: 183
                         },
                         __self: this
                     }),
@@ -23009,7 +23050,7 @@ class MainView extends _reactDefault.default.Component {
                         },
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 162
+                            lineNumber: 202
                         },
                         __self: this
                     }),
@@ -23049,7 +23090,7 @@ class MainView extends _reactDefault.default.Component {
                         },
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 181
+                            lineNumber: 221
                         },
                         __self: this
                     })
@@ -40062,44 +40103,42 @@ class MovieView extends _reactDefault.default.Component {
             favorites: []
         };
     }
-    addToFavoriteMovies(movie) {
-        const username = localStorage.getItem('user');
-        const token = localStorage.getItem('token');
-        if (!this.state.favorites.includes((fav)=>fav.title === title
-        )._id) _axiosDefault.default.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, {
-            favorites: this.favorites
-        }, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>{
-            this.setState({
-                favorites: response.data.favorites
-            });
-        }).catch(function(error) {
-            console.log(error);
-        });
-    }
-    removeFavoriteMovie(movie) {
-        const username = localStorage.getItem('user');
-        const token = localStorage.getItem('token');
-        //   const movieId = movies.find((movie) => movie.title === title)._id;
-        _axiosDefault.default.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, {
-        }, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            }
-        }).then((response)=>{
-            this.setState({
-                favorites: response.data.favorites
-            });
-        }).catch(function(error) {
-            console.log(error);
-        });
-        console.log(response.data.favorites);
-    }
+    // addToFavoriteMovies(movie) {
+    //   const username = localStorage.getItem('user');
+    //   const token = localStorage.getItem('token');
+    //   if(!(this.state.favorites.includes((fav) => fav.title === title)._id)) { 
+    //   axios.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, { favorites: this.favorites }, {
+    //     headers: { Authorization: `Bearer ${token}` }
+    //   })
+    //   .then((response) => {
+    //     this.setState({
+    //       favorites: response.data.favorites
+    //     });
+    //   })
+    //   .catch(function (error) {
+    //     console.log(error);
+    //   })
+    //  }
+    // }
+    // removeFavoriteMovie(movie) {
+    //   const username = localStorage.getItem('user');
+    //   const token = localStorage.getItem('token');
+    // //   const movieId = movies.find((movie) => movie.title === title)._id;
+    //   axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, {}, {
+    //       headers: { Authorization: `Bearer ${token}` }
+    //     })
+    //     .then((response) => {
+    //       this.setState({
+    //         favorites: response.data.favorites
+    //       });
+    //     })
+    //     .catch(function (error) {
+    //       console.log(error);
+    //     })
+    //     console.log(response.data.favorites);
+    // }
     render() {
-        const { movie , onBackClick , movies  } = this.props;
+        const { movie , onBackClick , removeFavoriteMovie , addToFavoriteMovies  } = this.props;
         const { favorites  } = this.state;
         return(/*#__PURE__*/ _jsxRuntime.jsx(_rowDefault.default, {
             className: "movie-view",
@@ -40360,10 +40399,11 @@ class MovieView extends _reactDefault.default.Component {
                         __self: this,
                         children: "Back"
                     }),
-                    this.state.favorites.includes(movie._id) ? /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
-                        className: "favorite-button toggle-button",
-                        onClick: ()=>this.removeFavoriteMovie(movie._id)
-                        ,
+                    favorites.includes(movie._id) ? /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
+                        className: "favorite-button",
+                        onClick: ()=>{
+                            removeFavoriteMovie(movie._id);
+                        },
                         __source: {
                             fileName: "src/components/movie-view/movie-view.jsx",
                             lineNumber: 115
@@ -40372,8 +40412,9 @@ class MovieView extends _reactDefault.default.Component {
                         children: "Remove from favorite Movies"
                     }) : /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
                         className: "favorite-button",
-                        onClick: ()=>this.addToFavoriteMovies(movie._id)
-                        ,
+                        onClick: ()=>{
+                            addToFavoriteMovies(movie._id);
+                        },
                         __source: {
                             fileName: "src/components/movie-view/movie-view.jsx",
                             lineNumber: 116
@@ -40403,7 +40444,10 @@ MovieView.propTypes = {
             movies: _propTypesDefault.default.array
         })
     }),
-    onBackClick: _propTypesDefault.default.func.isRequired
+    onBackClick: _propTypesDefault.default.func.isRequired,
+    addToFavoriteMovies: _propTypesDefault.default.func.isRequired,
+    removeFavoriteMovie: _propTypesDefault.default.func.isRequired,
+    favorites: _propTypesDefault.default.array.isRequired
 };
 
   $parcel$ReactRefreshHelpers$3741.postlude(module);
@@ -41100,6 +41144,13 @@ class ProfileView extends _react.Component {
                         ]
                     })
                 }),
+                /*#__PURE__*/ _jsxRuntime.jsx("br", {
+                    __source: {
+                        fileName: "src/components/profile-view/profile-view.jsx",
+                        lineNumber: 167
+                    },
+                    __self: this
+                }),
                 /*#__PURE__*/ _jsxRuntime.jsxs("div", {
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
@@ -41331,12 +41382,12 @@ class UpdateView extends _react.Component {
             }
         }).then((response)=>{
             this.setState({
-                username: response.data.username,
-                password: response.data.password,
-                email: response.data.email,
-                birthdate: response.data.birthdate
+                username: response.data.newUsername,
+                password: response.data.newPassword,
+                email: response.data.newEmail,
+                birthdate: response.data.newBirthdate
             });
-            localStorage.setItem('user', this.state.username);
+            localStorage.setItem('user', this.state.newUsername);
             window.open(`/profile/${username}`, '_self');
         }).catch(function(error) {
             console.log(error);

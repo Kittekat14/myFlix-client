@@ -164,7 +164,7 @@ export class ProfileView extends Component {
           </Card.Body>
         </Card>
       </Row >
-
+      <br />
         <div>
           <Form>
             <Form.Group className="mb-3" >
