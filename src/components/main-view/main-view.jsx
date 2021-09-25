@@ -78,11 +78,13 @@ export default class MainView extends React.Component {
   }
 
 
-  addToFavoriteMovies(movie) {
+  addToFavoriteMovies(title, movies) {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
+
+    const movieId = movies.find((movie) => movie.title === title)._id;
     
-    axios.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, { favorites: this.favorites }, {
+    axios.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {}, {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then((response) => {
@@ -97,11 +99,13 @@ export default class MainView extends React.Component {
   }
 
 
-  removeFavoriteMovie(movie) {
+  removeFavoriteMovie(title, movie) {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
+
+    const movieId = movies.find((movie) => movie.title === title)._id;
     
-    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, {
+    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((response) => {
@@ -194,7 +198,7 @@ export default class MainView extends React.Component {
                   <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
               </Row>
               <Col md={8}>
-                <MovieView removeMovie={() => this.removeFavoriteMovie.bind(this)} addMovie={() => this.addToFavoriteMovies.bind(this)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()}/>
+                <MovieView removeMovie={() => this.removeFavoriteMovie.bind(this)} addMovie={(e) => this.addToFavoriteMovies(this.state.favorites._id, movies)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()}/>
               </Col>
               </>)
             }}  />

@@ -10,12 +10,8 @@ import axios from 'axios';
 
 export class MovieView extends React.Component {
   constructor() {
-    super()
-  
-    this.state = {
-       movies: [],
-       favorites: []
-    }
+    super();
+
   }
   
   // addToFavoriteMovies(movie) {
@@ -60,17 +56,16 @@ export class MovieView extends React.Component {
   //     console.log(response.data.favorites);
   // }
   onRemove(props) {
-    props.removeMovie(movie._id);
+    props.removeMovie();
   }
   onAdd(props) {
-    props.addMovie(movie._id);
+    props.addMovie();
   }
 
   render() {
    
     const { movie, onBackClick } = this.props;
-    const { favorites } = this.state;
-
+    
     return (
     
      <Row className="movie-view">
@@ -112,18 +107,15 @@ export class MovieView extends React.Component {
           </div>
           
           <button className="back-button" onClick={() => { onBackClick(null); }}>Back</button>
-          
-
             
           {/* {favorites.includes(movie._id) ?
           <Button className="favorite-button" onClick={() => { removeFavoriteMovie(movie._id) } }>Remove from favorite Movies</Button> :
           <Button className='favorite-button' onClick={() => { addToFavoriteMovies(movie._id) } }> Add to favorite Movies </Button>} */}
 
-          {favorites.includes(movie._id) ?
           <Button className='favorite-button'
-          onClick={this.onRemove}> Delete from favorite Movies </Button> :
+          onClick={this.onRemove}> Delete from favorite Movies </Button> 
           <Button className='favorite-button' 
-          onClick={this.onAdd}> Add to favorite Movies </Button>}
+          onClick={this.onAdd}> Add to favorite Movies </Button>
 
 
       </Col>
