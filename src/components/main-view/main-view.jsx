@@ -28,7 +28,7 @@ class MainView extends React.Component {
     super();
 
     this.state = {
-      user: null
+      user: ''
     };
   }
 
@@ -55,7 +55,6 @@ class MainView extends React.Component {
     });
     }
   
-
 
   /* custom component method "onLoggedIn" => when a user successfully logs in, this function updates the `user` property inside the state to that particular user */
   onLoggedIn(authData) {
@@ -202,8 +201,11 @@ class MainView extends React.Component {
   }
 }
 
+
 let mapStateToProps = state => {
   return { movies: state.movies }
 }
+
+
 
 export default connect(mapStateToProps, { setMovies } )(MainView);

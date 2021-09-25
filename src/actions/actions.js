@@ -1,7 +1,10 @@
 export const SET_MOVIES = "SET_MOVIES";
-export const SET_FILTER = "SET_FILTER"; 
+export const SET_FILTER = "SET_FILTER";
+export const SET_USER = "SET_USER";
+
 
 export function setMovies(value) {
+  console.log('SET_MOVIES action is triggered');
   return {
     type: SET_MOVIES,
     value
@@ -9,8 +12,17 @@ export function setMovies(value) {
 }
 
 export function setFilter(value) {
+  console.log('SET_FILTER action is triggered');
   return {
     type: SET_FILTER,
     value
+  }
+}
+
+export function setUser(user) {
+  console.log('SET_USER action is triggered');
+  return {
+    type: SET_USER,
+    user
   }
 }

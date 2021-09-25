@@ -5,6 +5,8 @@ import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { connect } from 'react-redux';
+
 
 export default class UpdateView extends Component {
   constructor(props) {

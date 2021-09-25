@@ -89,9 +89,6 @@ return (
 );
 }
 
-LoginView.propTypes = {
-  onLoggedIn: PropTypes.func
-};
 
 const mapDispatchToProps = (dispatch) => ({
   handleLogin: (username, password) => dispatch(handleLogin(username, password))

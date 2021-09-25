@@ -10,7 +10,6 @@ import { devToolsEnhancer } from 'redux-devtools-extension';
 // Import statement to indicate that you need to bundle `./index.scss`
 import './index.scss';
 
-
 //creating my "store" = "globalized state"
 
 const store = createStore(moviesApp, devToolsEnhancer());
@@ -32,8 +31,17 @@ class myFlixApplication extends React.Component {
 // Finds the root of your app
 const container = document.getElementsByClassName('app-container')[0];
 
-// store.subscribe(() => console.log(store.getState()));
-// store.dispatch(movies());
+// store.subscribe(() => {
+//   console.log('store updated!', store.getState())
+// });
+// store.dispatch({
+//   type: 'SET_USER',
+//   payload: 10
+// });
+// store.dispatch({
+//   type: 'SET_USER',
+//   payload: 10
+// });
 
 // Tells React to render your app in the root DOM element
 ReactDOM.render(React.createElement(myFlixApplication), container);

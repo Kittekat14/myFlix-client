@@ -7,6 +7,8 @@ import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { connect } from 'react-redux';
+import { setUser, updateUser } from '../../actions/actions';
 
 export class ProfileView extends Component {
   constructor(props) {
@@ -35,15 +37,18 @@ export class ProfileView extends Component {
     axios.get(`https://actor-inspector.herokuapp.com/users/${username}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-      .then((response) => {
-        this.setState({
-          username: response.data.username,
-          password: response.data.password,
-          email: response.data.email,
-          birthdate: moment(response.data.birthdate).format("YYYY-MM-DD"),
-          favorites: response.data.favorites
-        });
-      })
+    .then(response => {
+      this.props.setUser(response.data);
+    })
+      // .then((response) => {
+      //   this.setState({
+      //     username: response.data.username,
+      //     password: response.data.password,
+      //     email: response.data.email,
+      //     birthdate: moment(response.data.birthdate).format("YYYY-MM-DD"),
+      //     favorites: response.data.favorites
+      //   });
+      // })
       .catch(function (error) {
         console.log(error);
       });
