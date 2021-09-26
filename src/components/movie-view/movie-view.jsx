@@ -112,9 +112,9 @@ export class MovieView extends React.Component {
           <Button className="favorite-button" onClick={() => { removeFavoriteMovie(movie._id) } }>Remove from favorite Movies</Button> :
           <Button className='favorite-button' onClick={() => { addToFavoriteMovies(movie._id) } }> Add to favorite Movies </Button>} */}
 
-          <Button className='favorite-button'
+          <Button className='favorite-button' value={movie.title}
           onClick={this.onRemove}> Delete from favorite Movies </Button> 
-          <Button className='favorite-button' 
+          <Button className='favorite-button' value={movie.title}
           onClick={this.onAdd}> Add to favorite Movies </Button>
 
 

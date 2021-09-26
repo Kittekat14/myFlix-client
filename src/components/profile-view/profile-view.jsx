@@ -17,9 +17,9 @@ export class ProfileView extends Component {
       password: '',
       email: '',
       birthdate: '',
-      favorites: [],
-      addFavorite: '',
-      removeFavorite: ''
+      //favorites: []
+      // addFavorite: '',
+      // removeFavorite: ''
     };
   }
 
@@ -43,7 +43,7 @@ export class ProfileView extends Component {
           password: response.data.password,
           email: response.data.email,
           birthdate: moment(response.data.birthdate).format("YYYY-MM-DD"),
-          favorites: response.data.favorites
+          //favorites: response.data.favorites
         });
       })
       .catch(function (error) {
@@ -71,49 +71,48 @@ export class ProfileView extends Component {
     }
 
 
-  addToFavorites(title, movies) {
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
+  // addToFavorites(title, movies) {
+  //   const username = localStorage.getItem('user');
+  //   const token = localStorage.getItem('token');
 
-    const movieId = movies.find((movie) => movie.title === title)._id; 
+  //   const movieId = movies.find((movie) => movie.title === title)._id; 
 
-    axios.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, null, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      .then((response) => {
-        this.setState({
-          favorites: response.data.favorites
-        })
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-  }
+  //   axios.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, null, {
+  //       headers: { Authorization: `Bearer ${token}` }
+  //     })
+  //     .then((response) => {
+  //       this.setState({
+  //         favorites: response.data.favorites
+  //       })
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     })
+  // }
 
-  removeFavoriteMovie(title, movies) {
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
+  // removeFromFavorites(title, movies) {
+  //   const username = localStorage.getItem('user');
+  //   const token = localStorage.getItem('token');
 
-    const movieId = movies.find((movie) => movie.title === title)._id;
+  //   const movieId = movies.find((movie) => movie.title === title)._id;
     
-    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      .then((response) => {
-        this.setState({
-          favorites: response.data.favorites
-        });
-        this.componentDidMount();
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-  }
+  //   axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {
+  //       headers: { Authorization: `Bearer ${token}` }
+  //     })
+  //     .then((response) => {
+  //       this.setState({
+  //         favorites: response.data.favorites
+  //       });
+  //     })
+  //     .catch(function (error) {
+  //       console.log(error);
+  //     })
+  // }
 
 
   render() {
-    const {username, password, email, birthdate, favorites} = this.state;
-    const { movies } = this.props;
+    const { username, password, email, birthdate } = this.state;
+    const { movies, favorites } = this.props;
 
     return (
      <> 
@@ -137,7 +136,7 @@ export class ProfileView extends Component {
 
       <Row className="profile-view">
       <Card className="profile-card">
-          <h2>Your Favorites Movies</h2>
+          <h2>Your Favorite Movies</h2>
           <Card.Body>
             {favorites.length === 0 && <div className="text-center">Empty.</div>}
             <Row className="favorites-movies ">
@@ -150,7 +149,7 @@ export class ProfileView extends Component {
                           <Card.Img style={{ width: '100%' }} className="movieCard" variant="top" src={movie.imageUrl} crossOrigin="true" />
                           <Card.Body>
                             <Card.Title className="movie-card-title">{movie.title}</Card.Title>
-                            <Button size='sm' className='profile-button remove-favorite' variant='danger' value={movies.title} onClick={() => this.removeFavoriteMovie(movie.title, movies)}>
+                            <Button size='sm' className='profile-button remove-favorite' variant='danger' value={movies.title} onClick={() => this.removeFromFavorites(movie.title, movies)}>
                               Remove
                             </Button>
                           </Card.Body>
@@ -166,7 +165,7 @@ export class ProfileView extends Component {
       </Row >
       <br />
         <div>
-          <Form>
+          {/* <Form>
             <Form.Group className="mb-3" >
             <Form.Label>Add new Favorite Movie to your List:</Form.Label>
             <Form.Control type="text" placeholder="Enter Movie Title" onChange={(e) => this.setState(
@@ -183,7 +182,7 @@ export class ProfileView extends Component {
               )}/>
             </Form.Group>
             <Button onClick={() => { this.removeFavoriteMovie(this.state.removeFavorite, movies) }  }>Remove</Button>
-          </Form>
+          </Form> */}
         </div>
         
         <br />

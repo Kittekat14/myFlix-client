@@ -26,7 +26,7 @@ export default class MainView extends React.Component {
     this.state = {
       movies: [],
       user: '',
-      favorites: []
+      favorites: [],
     };
   }
 
@@ -55,8 +55,6 @@ export default class MainView extends React.Component {
     });
     }
   
-
-
   /* custom component method "onLoggedIn" => when a user successfully logs in, this function updates the `user` property inside the state to that particular user */
   onLoggedIn(authData) {
     console.log(authData);
@@ -68,7 +66,6 @@ export default class MainView extends React.Component {
     localStorage.setItem('user', authData.user.username);
     this.getMovies(authData.token);
   }
-
   onLoggedOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -77,29 +74,27 @@ export default class MainView extends React.Component {
     });
   }
 
-
-  addToFavoriteMovies(title, movies) {
+  addToFavorites(title, movies) {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 
-    const movieId = movies.find((movie) => movie.title === title)._id;
-    
-    axios.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {}, {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-    .then((response) => {
-      this.setState({
-        favorites: response.data.favorites
-      });
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
-   
+    const movieId = movies.find((movie) => movie.title === title)._id; 
+
+    axios.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, null, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then((response) => {
+        this.setState({
+          favorites: response.data.favorites
+        })
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
   }
 
 
-  removeFavoriteMovie(title, movie) {
+  removeFavoriteMovie(title, movies) {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 
@@ -179,7 +174,7 @@ export default class MainView extends React.Component {
                   <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
               </Row>
               <Col>
-              <ProfileView user={user} movies={movies}/>
+              <ProfileView user={user} movies={movies} favorites={favorites}/>
               </Col>
               </>)
             }} />       
@@ -198,7 +193,7 @@ export default class MainView extends React.Component {
                   <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
               </Row>
               <Col md={8}>
-                <MovieView removeMovie={() => this.removeFavoriteMovie.bind(this)} addMovie={(e) => this.addToFavoriteMovies(this.state.favorites._id, movies)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()}/>
+                <MovieView removeMovie={(e) => this.removeFavoriteMovie(e, movies)} addMovie={(e) => this.addToFavorites(e, movies)} favorites={this.state.favorites} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
               </Col>
               </>)
             }}  />
