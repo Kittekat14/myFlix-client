@@ -57,12 +57,44 @@ export class MovieView extends React.Component {
   // }
 
 
-  onRemove(props) {
-    props.removeMovie(); // parameters?
-  }
-  onAdd(props) {
-    props.addMovie(); // parameters?
-  }
+  removeFavorite(movieId) {
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem("token");
+    
+    axios
+      .delete(
+        `https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, { 
+          headers: { Authorization: `Bearer ${token}` }
+        })
+          .then(response => {
+            alert(`Removed from Favorites List`)
+            this.componentDidMount();
+          })
+          .catch(function (error) {
+            console.log(error);
+          })
+          
+      };
+
+
+      addFavorite(movieId) {
+        const username = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+   
+        axios
+         .post(
+           `https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {}, {
+          headers: { Authorization: `Bearer ${token}` }
+         })
+           .then(response => {
+             alert(`Added to Favorites List`)
+           })
+           .catch(function (error) {
+             console.log(error);
+           });
+       };
+
+
 
   render() {
    
@@ -115,9 +147,8 @@ export class MovieView extends React.Component {
           <Button className='favorite-button' onClick={() => { addToFavoriteMovies(movie._id) } }> Add to favorite Movies </Button>} */}
 
           <button className='favorite-button' value={movie._id}
-          onClick={this.onRemove}> Delete from favorite Movies </button> 
-          <button className='favorite-button' value={movie._id}
-          onClick={this.onAdd}> Add to favorite Movies </button>
+          onClick={() => this.removeFavorite( movie._id ) }> Delete from favorite Movies </button> 
+          <button className='favorite-button' value={movie._id} onClick={(e) => this.addFavorite(e, movie)}> Add to favorite Movies </button>
 
 
       </Col>
