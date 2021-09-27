@@ -9,8 +9,8 @@ import axios from 'axios';
 
 
 export class MovieView extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
   }
   
@@ -55,11 +55,13 @@ export class MovieView extends React.Component {
 
   //     console.log(response.data.favorites);
   // }
+
+
   onRemove(props) {
-    props.removeMovie();
+    props.removeMovie(); // parameters?
   }
   onAdd(props) {
-    props.addMovie();
+    props.addMovie(); // parameters?
   }
 
   render() {
@@ -112,10 +114,10 @@ export class MovieView extends React.Component {
           <Button className="favorite-button" onClick={() => { removeFavoriteMovie(movie._id) } }>Remove from favorite Movies</Button> :
           <Button className='favorite-button' onClick={() => { addToFavoriteMovies(movie._id) } }> Add to favorite Movies </Button>} */}
 
-          <Button className='favorite-button' value={movie.title}
-          onClick={this.onRemove}> Delete from favorite Movies </Button> 
-          <Button className='favorite-button' value={movie.title}
-          onClick={this.onAdd}> Add to favorite Movies </Button>
+          <button className='favorite-button' value={movie._id}
+          onClick={this.onRemove}> Delete from favorite Movies </button> 
+          <button className='favorite-button' value={movie._id}
+          onClick={this.onAdd}> Add to favorite Movies </button>
 
 
       </Col>

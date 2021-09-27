@@ -22,12 +22,11 @@ export default class MainView extends React.Component {
 
   constructor() {
     super();
-
     this.state = {
       movies: [],
       user: '',
-      favorites: [],
-    };
+      favorites: []
+    }
   }
 
   componentDidMount() {
@@ -74,13 +73,13 @@ export default class MainView extends React.Component {
     });
   }
 
-  addToFavorites(title, movies) {
+  addToFavorites() {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 
     const movieId = movies.find((movie) => movie.title === title)._id; 
 
-    axios.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, null, {
+    axios.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((response) => {
@@ -94,7 +93,7 @@ export default class MainView extends React.Component {
   }
 
 
-  removeFavoriteMovie(title, movies) {
+  removeFavoriteMovie() {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
 
@@ -122,7 +121,6 @@ export default class MainView extends React.Component {
     const { movies, user, favorites } = this.state;
 
     
-  
     return (
         <Router>
           <Row className="main-view justify-content-md-center">
@@ -193,7 +191,7 @@ export default class MainView extends React.Component {
                   <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
               </Row>
               <Col md={8}>
-                <MovieView removeMovie={(e) => this.removeFavoriteMovie(e, movies)} addMovie={(e) => this.addToFavorites(e, movies)} favorites={this.state.favorites} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
+                <MovieView removeMovie={() => this.removeFavoriteMovie()} addMovie={() => this.addToFavorites()} favorites={this.state.favorites} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
               </Col>
               </>)
             }}  />
