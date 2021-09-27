@@ -13,6 +13,18 @@ import './index.scss';
 //creating my "store" = "globalized state"
 
 const store = createStore(moviesApp, devToolsEnhancer());
+store.dispatch({
+    type: 'SET_MOVIES',
+    payload
+  });
+store.dispatch({
+    type: 'SET_USER',
+    payload
+  });
+store.dispatch({
+    type: 'SET_FILTER',
+    payload 
+  });
 
 
 // Main component (will eventually use all the others)
@@ -36,11 +48,11 @@ const container = document.getElementsByClassName('app-container')[0];
 // });
 // store.dispatch({
 //   type: 'SET_USER',
-//   payload: 10
+//   payload: 
 // });
 // store.dispatch({
-//   type: 'SET_USER',
-//   payload: 10
+//   type: 'SET_FILTER',
+//   payload: 
 // });
 
 // Tells React to render your app in the root DOM element

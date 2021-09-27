@@ -80,10 +80,8 @@ class MainView extends React.Component {
   // visual representation of main component:
   render() {
    
-    const { movies } = this.props;
-    const { user } = this.state;
-
-    
+    const { movies, user } = this.props;
+   
   
     return (
         <Router>
@@ -203,8 +201,10 @@ class MainView extends React.Component {
 
 
 let mapStateToProps = state => {
-  return { movies: state.movies,
-  user: state.user }
+  return {
+    movies: state.movies,
+    user: state.user
+  }
 }
 
 export default connect(mapStateToProps, { setMovies, setUser } )(MainView);
