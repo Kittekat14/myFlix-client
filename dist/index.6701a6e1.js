@@ -22772,8 +22772,8 @@ class MainView extends _reactDefault.default.Component {
     constructor(){
         super();
         this.state = {
-            movies: [],
             user: '',
+            movies: [],
             favorites: []
         };
     }
@@ -22998,7 +22998,6 @@ class MainView extends _reactDefault.default.Component {
                                             ,
                                             addMovie: ()=>this.addToFavorites()
                                             ,
-                                            favorites: this.state.favorites,
                                             movie: movies.find((m)=>m.title === match.params.title
                                             ),
                                             onBackClick: ()=>history.goBack()
@@ -27867,6 +27866,7 @@ _s(LoginView, "r+OvzGOB71OgavkK/AEIFbVQbcA=", false, function() {
     return [_reactRouterDom.useHistory];
 });
 _c = LoginView;
+// Nizar added this, I don't understand it, because I have onLoggedIn as only prop I think
 LoginView.propTypes = {
     user: _propTypesDefault.default.shape({
         username: _propTypesDefault.default.string.isRequired,
@@ -40036,6 +40036,9 @@ MovieCard.propTypes = {
         })
     })
 };
+MovieCard.propTypes = {
+    movie: _propTypesDefault.default.object
+};
 
   $parcel$ReactRefreshHelpers$4249.postlude(module);
 } finally {
@@ -40585,7 +40588,8 @@ GenreView.propTypes = {
         name: _propTypesDefault.default.string,
         description: _propTypesDefault.default.string
     }).isRequired,
-    onBackClick: _propTypesDefault.default.func
+    onBackClick: _propTypesDefault.default.func,
+    movies: _propTypesDefault.default.array
 };
 
   $parcel$ReactRefreshHelpers$5f0a.postlude(module);
@@ -40775,7 +40779,13 @@ try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "ProfileView", ()=>ProfileView
-);
+) // getting ERRORS when I define these at user prop
+ // ProfileView.propTypes = {
+ //   user: PropTypes.string.isRequired,
+ //   movies: PropTypes.array.isRequired,
+ //   favorites: PropTypes.array.isRequired
+ // };
+;
 var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
@@ -40876,7 +40886,7 @@ class ProfileView extends _react.Component {
     // }
     render() {
         const { username , password , email , birthdate  } = this.state;
-        const { movies , favorites  } = this.props;
+        const { movies , favorites , user  } = this.props;
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_jsxRuntime.Fragment, {
             children: [
                 /*#__PURE__*/ _jsxRuntime.jsxs(_rowDefault.default, {
@@ -45238,6 +45248,8 @@ parcelHelpers.export(exports, "NavBar", ()=>NavBar
 var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
 const NavBar = ({ users , onLoggedOut  })=>{
@@ -45250,14 +45262,14 @@ const NavBar = ({ users , onLoggedOut  })=>{
         className: "navbar",
         __source: {
             fileName: "src/components/navbar-view/navbar-view.jsx",
-            lineNumber: 11
+            lineNumber: 12
         },
         __self: undefined,
         children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
             className: "navbar-container",
             __source: {
                 fileName: "src/components/navbar-view/navbar-view.jsx",
-                lineNumber: 12
+                lineNumber: 13
             },
             __self: undefined,
             children: [
@@ -45265,13 +45277,13 @@ const NavBar = ({ users , onLoggedOut  })=>{
                     href: "/",
                     __source: {
                         fileName: "src/components/navbar-view/navbar-view.jsx",
-                        lineNumber: 13
+                        lineNumber: 14
                     },
                     __self: undefined,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                         __source: {
                             fileName: "src/components/navbar-view/navbar-view.jsx",
-                            lineNumber: 13
+                            lineNumber: 14
                         },
                         __self: undefined,
                         children: "ActorInspector"
@@ -45281,7 +45293,7 @@ const NavBar = ({ users , onLoggedOut  })=>{
                     "aria-controls": "basic-navbar-nav",
                     __source: {
                         fileName: "src/components/navbar-view/navbar-view.jsx",
-                        lineNumber: 14
+                        lineNumber: 15
                     },
                     __self: undefined
                 }),
@@ -45289,14 +45301,14 @@ const NavBar = ({ users , onLoggedOut  })=>{
                     className: "justify-content-end",
                     __source: {
                         fileName: "src/components/navbar-view/navbar-view.jsx",
-                        lineNumber: 15
+                        lineNumber: 16
                     },
                     __self: undefined,
                     children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Nav, {
                         className: "navbar",
                         __source: {
                             fileName: "src/components/navbar-view/navbar-view.jsx",
-                            lineNumber: 16
+                            lineNumber: 17
                         },
                         __self: undefined,
                         children: [
@@ -45305,7 +45317,7 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                 href: "#",
                                 __source: {
                                     fileName: "src/components/navbar-view/navbar-view.jsx",
-                                    lineNumber: 18
+                                    lineNumber: 19
                                 },
                                 __self: undefined,
                                 children: [
@@ -45318,7 +45330,7 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                 to: `/profile/${users}`,
                                 __source: {
                                     fileName: "src/components/navbar-view/navbar-view.jsx",
-                                    lineNumber: 20
+                                    lineNumber: 21
                                 },
                                 __self: undefined,
                                 children: "Profile"
@@ -45329,7 +45341,7 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                 id: "basic-nav-dropdown",
                                 __source: {
                                     fileName: "src/components/navbar-view/navbar-view.jsx",
-                                    lineNumber: 22
+                                    lineNumber: 23
                                 },
                                 __self: undefined,
                                 children: [
@@ -45337,14 +45349,14 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                         className: "nav-items",
                                         __source: {
                                             fileName: "src/components/navbar-view/navbar-view.jsx",
-                                            lineNumber: 24
+                                            lineNumber: 25
                                         },
                                         __self: undefined,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                                             to: "/genres/action",
                                             __source: {
                                                 fileName: "src/components/navbar-view/navbar-view.jsx",
-                                                lineNumber: 24
+                                                lineNumber: 25
                                             },
                                             __self: undefined,
                                             children: "Action"
@@ -45354,14 +45366,14 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                         className: "nav-items",
                                         __source: {
                                             fileName: "src/components/navbar-view/navbar-view.jsx",
-                                            lineNumber: 26
+                                            lineNumber: 27
                                         },
                                         __self: undefined,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                                             to: "/genres/adventure",
                                             __source: {
                                                 fileName: "src/components/navbar-view/navbar-view.jsx",
-                                                lineNumber: 26
+                                                lineNumber: 27
                                             },
                                             __self: undefined,
                                             children: "Adventure"
@@ -45371,14 +45383,14 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                         className: "nav-items",
                                         __source: {
                                             fileName: "src/components/navbar-view/navbar-view.jsx",
-                                            lineNumber: 28
+                                            lineNumber: 29
                                         },
                                         __self: undefined,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                                             to: "/genres/biography",
                                             __source: {
                                                 fileName: "src/components/navbar-view/navbar-view.jsx",
-                                                lineNumber: 28
+                                                lineNumber: 29
                                             },
                                             __self: undefined,
                                             children: "Biography"
@@ -45388,14 +45400,14 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                         className: "nav-items",
                                         __source: {
                                             fileName: "src/components/navbar-view/navbar-view.jsx",
-                                            lineNumber: 30
+                                            lineNumber: 31
                                         },
                                         __self: undefined,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                                             to: "/genres/comedy",
                                             __source: {
                                                 fileName: "src/components/navbar-view/navbar-view.jsx",
-                                                lineNumber: 30
+                                                lineNumber: 31
                                             },
                                             __self: undefined,
                                             children: "Comedy"
@@ -45405,14 +45417,14 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                         className: "nav-items",
                                         __source: {
                                             fileName: "src/components/navbar-view/navbar-view.jsx",
-                                            lineNumber: 32
+                                            lineNumber: 33
                                         },
                                         __self: undefined,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                                             to: "/genres/crime",
                                             __source: {
                                                 fileName: "src/components/navbar-view/navbar-view.jsx",
-                                                lineNumber: 32
+                                                lineNumber: 33
                                             },
                                             __self: undefined,
                                             children: "Crime"
@@ -45422,14 +45434,14 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                         className: "nav-items",
                                         __source: {
                                             fileName: "src/components/navbar-view/navbar-view.jsx",
-                                            lineNumber: 34
+                                            lineNumber: 35
                                         },
                                         __self: undefined,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                                             to: "/genres/drama",
                                             __source: {
                                                 fileName: "src/components/navbar-view/navbar-view.jsx",
-                                                lineNumber: 34
+                                                lineNumber: 35
                                             },
                                             __self: undefined,
                                             children: "Drama"
@@ -45439,14 +45451,14 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                         className: "nav-items",
                                         __source: {
                                             fileName: "src/components/navbar-view/navbar-view.jsx",
-                                            lineNumber: 36
+                                            lineNumber: 37
                                         },
                                         __self: undefined,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                                             to: "/genres/romance",
                                             __source: {
                                                 fileName: "src/components/navbar-view/navbar-view.jsx",
-                                                lineNumber: 36
+                                                lineNumber: 37
                                             },
                                             __self: undefined,
                                             children: "Romance"
@@ -45456,14 +45468,14 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                         className: "nav-items",
                                         __source: {
                                             fileName: "src/components/navbar-view/navbar-view.jsx",
-                                            lineNumber: 38
+                                            lineNumber: 39
                                         },
                                         __self: undefined,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                                             to: "/genres/thriller",
                                             __source: {
                                                 fileName: "src/components/navbar-view/navbar-view.jsx",
-                                                lineNumber: 38
+                                                lineNumber: 39
                                             },
                                             __self: undefined,
                                             children: "Thriller"
@@ -45477,7 +45489,7 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                 onClick: onLoggedOut,
                                 __source: {
                                     fileName: "src/components/navbar-view/navbar-view.jsx",
-                                    lineNumber: 42
+                                    lineNumber: 43
                                 },
                                 __self: undefined,
                                 children: "Logout"
@@ -45490,6 +45502,10 @@ const NavBar = ({ users , onLoggedOut  })=>{
     }));
 };
 _c = NavBar;
+NavBar.propTypes = {
+    users: _propTypesDefault.default.string,
+    onLoggedOut: _propTypesDefault.default.func.isRequired
+};
 var _c;
 $RefreshReg$(_c, "NavBar");
 
@@ -45498,6 +45514,6 @@ $RefreshReg$(_c, "NavBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","react-router-dom":"cpyQW","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd"}],"jUTZ8":[function() {},{}]},["drWAM","l0xXt","dLPEP"], "dLPEP", "parcelRequireaec4")
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","react-router-dom":"cpyQW","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","prop-types":"1tgq3"}],"jUTZ8":[function() {},{}]},["drWAM","l0xXt","dLPEP"], "dLPEP", "parcelRequireaec4")
 
 //# sourceMappingURL=index.6701a6e1.js.map

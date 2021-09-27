@@ -23,8 +23,8 @@ export default class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-      movies: [],
       user: '',
+      movies: [],
       favorites: []
     }
   }
@@ -191,7 +191,7 @@ export default class MainView extends React.Component {
                   <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
               </Row>
               <Col md={8}>
-                <MovieView removeMovie={() => this.removeFavoriteMovie()} addMovie={() => this.addToFavorites()} favorites={this.state.favorites} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
+                <MovieView removeMovie={() => this.removeFavoriteMovie()} addMovie={() => this.addToFavorites()} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
               </Col>
               </>)
             }}  />

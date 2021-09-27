@@ -112,7 +112,7 @@ export class ProfileView extends Component {
 
   render() {
     const { username, password, email, birthdate } = this.state;
-    const { movies, favorites } = this.props;
+    const { movies, favorites, user } = this.props;
 
     return (
      <> 
@@ -199,3 +199,10 @@ export class ProfileView extends Component {
     )
   }
 }
+
+// getting ERRORS when I define these at user prop
+// ProfileView.propTypes = {
+//   user: PropTypes.string.isRequired,
+//   movies: PropTypes.array.isRequired,
+//   favorites: PropTypes.array.isRequired
+// };

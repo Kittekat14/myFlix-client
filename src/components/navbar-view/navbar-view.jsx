@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -48,3 +49,8 @@ export const NavBar = ({ users, onLoggedOut }) => {
     </Navbar>
     );
 }
+
+NavBar.propTypes = {
+  users: PropTypes.string,
+  onLoggedOut: PropTypes.func.isRequired,
+};
