@@ -11,6 +11,7 @@ import Col from 'react-bootstrap/Col';
 import { connect } from 'react-redux';
 import { setUser, updateUser } from '../../actions/actions';
 
+
 const mapStateToProps = state => {
   const { username, password, email, birthdate, favorites } = state;
   return { username, password, email, birthdate, favorites };
@@ -18,6 +19,7 @@ const mapStateToProps = state => {
 
 class ProfileView extends Component {
   
+
   componentDidMount() {
     const accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
