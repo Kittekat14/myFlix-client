@@ -40412,7 +40412,10 @@ MovieView.propTypes = {
         year: _propTypesDefault.default.number.isRequired,
         featured: _propTypesDefault.default.bool,
         actors: _propTypesDefault.default.array,
-        genre: _propTypesDefault.default.object,
+        genre: _propTypesDefault.default.shape({
+            name: _propTypesDefault.default.string,
+            description: _propTypesDefault.default.string
+        }),
         director: _propTypesDefault.default.shape({
             name: _propTypesDefault.default.string,
             bio: _propTypesDefault.default.string,

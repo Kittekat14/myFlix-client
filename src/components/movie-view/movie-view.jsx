@@ -138,7 +138,10 @@ MovieView.propTypes = {
     year: PropTypes.number.isRequired,
     featured: PropTypes.bool,
     actors: PropTypes.array,
-    genre: PropTypes.object,
+    genre: PropTypes.shape({
+      name: PropTypes.string,
+      description: PropTypes.string
+    }),
     director: PropTypes.shape({
       name: PropTypes.string,
       bio: PropTypes.string,
