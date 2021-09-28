@@ -17,7 +17,7 @@ export class ProfileView extends Component {
       password: '',
       email: '',
       birthdate: '',
-      //favorites: []
+      favorites: []
       // addFavorite: '',
       // removeFavorite: ''
     };
@@ -43,7 +43,7 @@ export class ProfileView extends Component {
           password: response.data.password,
           email: response.data.email,
           birthdate: moment(response.data.birthdate).format("YYYY-MM-DD"),
-          //favorites: response.data.favorites
+          favorites: response.data.favorites
         });
       })
       .catch(function (error) {
@@ -90,30 +90,29 @@ export class ProfileView extends Component {
   //     })
   // }
 
-  // removeFromFavorites(title, movies) {
-  //   const username = localStorage.getItem('user');
-  //   const token = localStorage.getItem('token');
+  removeFromFavorites(_id) {
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
 
-  //   const movieId = movies.find((movie) => movie.title === title)._id;
-    
-  //   axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {
-  //       headers: { Authorization: `Bearer ${token}` }
-  //     })
-  //     .then((response) => {
-  //       this.setState({
-  //         favorites: response.data.favorites
-  //       });
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     })
-  // }
+      
+    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${_id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then((response) => {
+        this.setState({
+          favorites: response.data.favorites
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }
 
 
   render() {
-    const { username, password, email, birthdate } = this.state;
-    const { movies, favorites, user } = this.props;
-
+    const { username, password, email, birthdate, favorites } = this.state;
+    const { movies, user } = this.props;
+    console.log(this.state);
     return (
      <> 
      <Row>
@@ -149,7 +148,7 @@ export class ProfileView extends Component {
                           <Card.Img style={{ width: '100%' }} className="movieCard" variant="top" src={movie.imageUrl} crossOrigin="true" />
                           <Card.Body>
                             <Card.Title className="movie-card-title">{movie.title}</Card.Title>
-                            <Button size='sm' className='profile-button remove-favorite' variant='danger' value={movies.title} onClick={() => this.removeFromFavorites(movie.title, movies)}>
+                            <Button size='sm' className='profile-button remove-favorite' variant='danger' value={movies.title} onClick={() => this.removeFromFavorites(movie._id)}>
                               Remove
                             </Button>
                           </Card.Body>
