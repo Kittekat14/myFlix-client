@@ -104,8 +104,9 @@ export class MovieView extends React.Component {
 
   render() {
    
-    const { movie, onBackClick, addMovie, removeMovie } = this.props;
-    
+    const { movie, user, onBackClick, favorites } = this.props;
+    //let selectedMovie = favorites.find(movie => movie._id === _id);
+
     return (
     
      <Row className="movie-view">
@@ -148,12 +149,9 @@ export class MovieView extends React.Component {
           
           <button className="back-button" onClick={() => { onBackClick(null); }}>Back</button>
             
-          {/* {favorites.includes(movie._id) ?
-          <Button className="favorite-button" onClick={() => { removeFavoriteMovie(movie._id) } }>Remove from favorite Movies</Button> :
-          <Button className='favorite-button' onClick={() => { addToFavoriteMovies(movie._id) } }> Add to favorite Movies </Button>} */}
-          
-
-          <button type="submit" className='favorite-button' value={movie._id} onClick={() => this.addFavorite(movie._id)}> Add to favorite Movies </button>
+          {favorites.includes(movie._id) ?
+          null :
+          <button className='favorite-button' value={movie._id} onClick={() => this.addFavorite(movie._id)}> Add to favorite Movies </button>}          
 
 
       </Col>
@@ -187,6 +185,6 @@ MovieView.propTypes = {
   }),
   onBackClick: PropTypes.func.isRequired,
   addMovie: PropTypes.func,
-  //removeMovie: PropTypes.func.isRequired,
-  // favorites: PropTypes.array.isRequired
+  favorites: PropTypes.array,
+  user: PropTypes.string
 }

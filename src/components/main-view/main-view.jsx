@@ -73,8 +73,6 @@ export default class MainView extends React.Component {
     });
   }
 
-  
-
 
       addFavorite(_id) {
         const username = localStorage.getItem('user');
@@ -87,7 +85,7 @@ export default class MainView extends React.Component {
           headers: { Authorization: `Bearer ${token}` }
          })
            .then(response => {
-             alert(`Added to Favorites List`)
+             window.open(`/profile/${username}`, '_self');
            })
            .catch(function (error) {
              console.log(error);
@@ -172,7 +170,7 @@ export default class MainView extends React.Component {
               return (
               <>
               <Col md={8}>
-                <MovieView addMovie={(_id) => this.addFavorite(_id)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
+                <MovieView user={user} favorites={favorites} addMovie={(_id) => this.addFavorite(_id)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
               </Col>
               </>)
             }}  />
