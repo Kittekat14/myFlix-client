@@ -27686,7 +27686,7 @@ function LoginView(props) {
             const data = response.data;
             props.onLoggedIn(data);
         }).catch((e1)=>{
-            console.log('no such user');
+            alert('Wrong username or password');
         });
     //}
     };
