@@ -22815,7 +22815,7 @@ class MainView extends _reactDefault.default.Component {
             user: null
         });
     }
-    addFavorite(movies, title) {
+    addFavorite(_id) {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
         const movieId = movies.find((movie)=>movie.title === title
@@ -22974,7 +22974,7 @@ class MainView extends _reactDefault.default.Component {
                                     /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
                                         md: 8,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
-                                            addMovie: ()=>this.addFavorite(movies, title)
+                                            addMovie: ()=>this.addFavorite(_id)
                                             ,
                                             movie: movies.find((m)=>m.title === match.params.title
                                             ),
@@ -40390,7 +40390,7 @@ class MovieView extends _reactDefault.default.Component {
                     /*#__PURE__*/ _jsxRuntime.jsx("button", {
                         className: "favorite-button",
                         value: movie._id,
-                        onClick: (e)=>this.addFavorite(e, movie._id)
+                        onClick: ()=>this.addFavorite(movie._id)
                         ,
                         __source: {
                             fileName: "src/components/movie-view/movie-view.jsx",
@@ -40815,7 +40815,8 @@ class ProfileView extends _react.Component {
             username: '',
             password: '',
             email: '',
-            birthdate: ''
+            birthdate: '',
+            favorites: []
         };
     }
     componentDidMount() {
@@ -41254,12 +41255,6 @@ class UpdateView extends _react.Component {
                 Authorization: `Bearer ${token}`
             }
         }).then((response)=>{
-            this.setState({
-                username: response.data.username,
-                password: response.data.password,
-                email: response.data.email,
-                birthdate: response.data.birthdate
-            });
             localStorage.setItem('user', this.state.username);
             window.open(`/profile/${username}`, '_self');
         }).catch(function(error) {
@@ -41300,14 +41295,14 @@ class UpdateView extends _react.Component {
             children: /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default, {
                 __source: {
                     fileName: "src/components/update-view/update-view.jsx",
-                    lineNumber: 87
+                    lineNumber: 82
                 },
                 __self: this,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx("h3", {
                         __source: {
                             fileName: "src/components/update-view/update-view.jsx",
-                            lineNumber: 88
+                            lineNumber: 83
                         },
                         __self: this,
                         children: "Update Your User Data"
@@ -41317,14 +41312,14 @@ class UpdateView extends _react.Component {
                         controlId: "formUsername",
                         __source: {
                             fileName: "src/components/update-view/update-view.jsx",
-                            lineNumber: 90
+                            lineNumber: 85
                         },
                         __self: this,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Label, {
                                 __source: {
                                     fileName: "src/components/update-view/update-view.jsx",
-                                    lineNumber: 91
+                                    lineNumber: 86
                                 },
                                 __self: this,
                                 children: "Username*:"
@@ -41339,7 +41334,7 @@ class UpdateView extends _react.Component {
                                 ,
                                 __source: {
                                     fileName: "src/components/update-view/update-view.jsx",
-                                    lineNumber: 92
+                                    lineNumber: 87
                                 },
                                 __self: this
                             }),
@@ -41351,7 +41346,7 @@ class UpdateView extends _react.Component {
                                     },
                                     __source: {
                                         fileName: "src/components/update-view/update-view.jsx",
-                                        lineNumber: 96
+                                        lineNumber: 91
                                     },
                                     __self: this,
                                     children: nameError[key]
@@ -41364,14 +41359,14 @@ class UpdateView extends _react.Component {
                         controlId: "formPassword",
                         __source: {
                             fileName: "src/components/update-view/update-view.jsx",
-                            lineNumber: 101
+                            lineNumber: 96
                         },
                         __self: this,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Label, {
                                 __source: {
                                     fileName: "src/components/update-view/update-view.jsx",
-                                    lineNumber: 102
+                                    lineNumber: 97
                                 },
                                 __self: this,
                                 children: "Password*:"
@@ -41386,7 +41381,7 @@ class UpdateView extends _react.Component {
                                 ,
                                 __source: {
                                     fileName: "src/components/update-view/update-view.jsx",
-                                    lineNumber: 103
+                                    lineNumber: 98
                                 },
                                 __self: this
                             }),
@@ -41398,7 +41393,7 @@ class UpdateView extends _react.Component {
                                     },
                                     __source: {
                                         fileName: "src/components/update-view/update-view.jsx",
-                                        lineNumber: 109
+                                        lineNumber: 104
                                     },
                                     __self: this,
                                     children: passwordError[key]
@@ -41411,7 +41406,7 @@ class UpdateView extends _react.Component {
                         controlId: "formEmail",
                         __source: {
                             fileName: "src/components/update-view/update-view.jsx",
-                            lineNumber: 114
+                            lineNumber: 109
                         },
                         __self: this,
                         children: [
@@ -41420,7 +41415,7 @@ class UpdateView extends _react.Component {
                                 className: "mb-3",
                                 __source: {
                                     fileName: "src/components/update-view/update-view.jsx",
-                                    lineNumber: 115
+                                    lineNumber: 110
                                 },
                                 __self: this,
                                 children: [
@@ -41435,7 +41430,7 @@ class UpdateView extends _react.Component {
                                         ,
                                         __source: {
                                             fileName: "src/components/update-view/update-view.jsx",
-                                            lineNumber: 117
+                                            lineNumber: 112
                                         },
                                         __self: this
                                     })
@@ -41449,7 +41444,7 @@ class UpdateView extends _react.Component {
                                     },
                                     __source: {
                                         fileName: "src/components/update-view/update-view.jsx",
-                                        lineNumber: 124
+                                        lineNumber: 119
                                     },
                                     __self: this,
                                     children: emailError[key]
@@ -41462,7 +41457,7 @@ class UpdateView extends _react.Component {
                         controlId: "formBirthdate",
                         __source: {
                             fileName: "src/components/update-view/update-view.jsx",
-                            lineNumber: 129
+                            lineNumber: 124
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Label, {
@@ -41470,7 +41465,7 @@ class UpdateView extends _react.Component {
                             className: "mb-3",
                             __source: {
                                 fileName: "src/components/update-view/update-view.jsx",
-                                lineNumber: 130
+                                lineNumber: 125
                             },
                             __self: this,
                             children: [
@@ -41484,7 +41479,7 @@ class UpdateView extends _react.Component {
                                     ,
                                     __source: {
                                         fileName: "src/components/update-view/update-view.jsx",
-                                        lineNumber: 132
+                                        lineNumber: 127
                                     },
                                     __self: this
                                 })
@@ -41498,7 +41493,7 @@ class UpdateView extends _react.Component {
                         },
                         __source: {
                             fileName: "src/components/update-view/update-view.jsx",
-                            lineNumber: 140
+                            lineNumber: 135
                         },
                         __self: this,
                         children: "Update your Account"

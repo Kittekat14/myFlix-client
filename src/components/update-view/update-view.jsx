@@ -11,6 +11,7 @@ export default class UpdateView extends Component {
       password: '',
       email: '',
       birthdate: '',
+      
       nameError: '',
       passwordError: '',
       emailError: ''
@@ -35,12 +36,6 @@ export default class UpdateView extends Component {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then((response) => {
-      this.setState({
-      username: response.data.username,
-      password: response.data.password,
-      email: response.data.email,
-      birthdate: response.data.birthdate
-      });
       localStorage.setItem('user', this.state.username);
       window.open(`/profile/${username}`, '_self');
     })

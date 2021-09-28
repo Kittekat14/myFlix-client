@@ -76,7 +76,7 @@ export default class MainView extends React.Component {
   
 
 
-      addFavorite(movies, title) {
+      addFavorite(_id) {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
         const movieId = movies.find((movie) => movie.title === title)._id;
@@ -172,7 +172,7 @@ export default class MainView extends React.Component {
                   <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
               </Row>
               <Col md={8}>
-                <MovieView addMovie={() => this.addFavorite(movies,title)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
+                <MovieView addMovie={() => this.addFavorite(_id)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
               </Col>
               </>)
             }}  />
