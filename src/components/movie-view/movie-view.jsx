@@ -9,7 +9,9 @@ import axios from 'axios';
 
 
 export class MovieView extends React.Component {
-  
+  constructor() {
+    super();
+  }
   // addToFavoriteMovies(movie) {
   //   const username = localStorage.getItem('user');
   //   const token = localStorage.getItem('token');
@@ -96,9 +98,10 @@ export class MovieView extends React.Component {
   //   this.props.removeMovie(movie);
   // }
 
-  addFavorite(movie) {
-    this.props.addMovie(movie)
-  }
+  addFavorite(event, movie) {
+    event.preventDefault();
+    this.props.addMovie()
+  };
 
   render() {
    
@@ -151,7 +154,7 @@ export class MovieView extends React.Component {
           <Button className='favorite-button' onClick={() => { addToFavoriteMovies(movie._id) } }> Add to favorite Movies </Button>} */}
           
 
-          <button className='favorite-button' value={movie._id} onClick={() => this.addFavorite(movie._id)}> Add to favorite Movies </button>
+          <button type="submit" className='favorite-button' value={movie._id} onClick={event => this.addFavorite(event, movie)}> Add to favorite Movies </button>
 
 
       </Col>

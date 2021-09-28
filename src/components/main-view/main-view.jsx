@@ -76,14 +76,14 @@ export default class MainView extends React.Component {
   
 
 
-      addFavorite(favorites, title) {
+      addFavorite(movieid) {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
         //const movieId = favorites.find((fav) => fav.title === title)._id;
-        const movieId = movies.find(m => m.title === match.params.title)._id;
+        //const movieId = movies.find(m => m.title === match.params.title)._id;
         axios
          .post(
-           `https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {
+           `https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieid}`, {
           headers: { Authorization: `Bearer ${token}` }
          })
            .then(response => {
@@ -172,7 +172,7 @@ export default class MainView extends React.Component {
               return (
               <>
               <Col md={8}>
-                <MovieView addMovie={() => this.addFavorite()} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
+                <MovieView addMovie={(movie) => this.addFavorite(movie)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
               </Col>
               </>)
             }}  />
