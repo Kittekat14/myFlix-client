@@ -9,10 +9,6 @@ import axios from 'axios';
 
 
 export class MovieView extends React.Component {
-  constructor(props) {
-    super(props);
-
-  }
   
   // addToFavoriteMovies(movie) {
   //   const username = localStorage.getItem('user');
@@ -100,8 +96,8 @@ export class MovieView extends React.Component {
   //   this.props.removeMovie(movie);
   // }
 
-  addFavorite(_id) {
-    this.props.addMovie(_id)
+  addFavorite(movie) {
+    this.props.addMovie(movie)
   }
 
   render() {
@@ -188,7 +184,7 @@ MovieView.propTypes = {
     })
   }),
   onBackClick: PropTypes.func.isRequired,
-  addMovie: PropTypes.func.isRequired,
+  addMovie: PropTypes.func,
   //removeMovie: PropTypes.func.isRequired,
   // favorites: PropTypes.array.isRequired
 }

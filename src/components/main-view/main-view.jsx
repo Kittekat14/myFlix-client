@@ -76,11 +76,11 @@ export default class MainView extends React.Component {
   
 
 
-      addFavorite(_id) {
+      addFavorite(favorites, title) {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
-        const movieId = movies.find((movie) => movie.title === title)._id;
-   
+        //const movieId = favorites.find((fav) => fav.title === title)._id;
+        const movieId = movies.find(m => m.title === match.params.title)._id;
         axios
          .post(
            `https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {
@@ -103,9 +103,18 @@ export default class MainView extends React.Component {
 
     
     return (
-        <Router>
-          <Row className="main-view justify-content-md-center">
-
+      <Router>
+        
+          <Route path="/" render={() => {
+          if(user){
+          return (
+          <Row className="navigation-main">
+              <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
+          </Row>
+          )} 
+        }} />
+        
+        <Row className="main-view justify-content-md-center">
             <Route exact path="/" render={() => {
               if ( !user ) 
               return <Row>
@@ -116,9 +125,6 @@ export default class MainView extends React.Component {
               if (movies.length === 0) return <div className="main-view" />;
               return (
                 <>
-                <Row className="m-3 navigation-main">
-                  <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
-                </Row>
                  {movies.map(m => (
                 <Col md={3} key={m._id}>
                   <MovieCard movie={m} />
@@ -149,9 +155,6 @@ export default class MainView extends React.Component {
               if (movies.length === 0) return <div className="main-view" />;
               return (
               <>
-              <Row className="m-3 navigation-main">
-                  <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
-              </Row>
               <Col>
               <ProfileView user={user} movies={movies} favorites={favorites}/>
               </Col>
@@ -168,11 +171,8 @@ export default class MainView extends React.Component {
               if (movies.length === 0) return <div className="main-view" />;
               return (
               <>
-              <Row className="m-3 navigation-main">
-                  <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
-              </Row>
               <Col md={8}>
-                <MovieView addMovie={() => this.addFavorite(_id)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
+                <MovieView addMovie={() => this.addFavorite()} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
               </Col>
               </>)
             }}  />
@@ -187,9 +187,6 @@ export default class MainView extends React.Component {
               if (movies.length === 0) return <div className="main-view" />;
               return (
               <>
-              <Row className="m-3 navigation-main">
-                  <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
-              </Row>
               <Col md={8}>
                 <GenreView genre={movies.find(m => m.genre.name === match.params.name).genre} onBackClick={() => history.goBack()} movies={movies}/>
               </Col>
@@ -206,9 +203,6 @@ export default class MainView extends React.Component {
               if (movies.length === 0) return <div className="main-view" />;
               return (
               <>
-              <Row className="m-3 navigation-main">
-                  <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
-                </Row>
               <Col md={8}>
                 <DirectorView director={movies.find(m => m.director.name === match.params.name).director} onBackClick={() => history.goBack()}/>
               </Col>
