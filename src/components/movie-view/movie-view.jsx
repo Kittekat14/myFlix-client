@@ -57,48 +57,56 @@ export class MovieView extends React.Component {
   // }
 
 
-  removeFavorite(movieId) {
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem("token");
+  // removeFavorite(movieId) {
+  //   const username = localStorage.getItem('user');
+  //   const token = localStorage.getItem("token");
+  //   const movieId = movies.find((movie) => movie.title === title)._id;
     
-    axios
-      .delete(
-        `https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, { 
-          headers: { Authorization: `Bearer ${token}` }
-        })
-          .then(response => {
-            alert(`Removed from Favorites List`)
-            this.componentDidMount();
-          })
-          .catch(function (error) {
-            console.log(error);
-          })
+  //   axios
+  //     .delete(
+  //       `https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, { 
+  //         headers: { Authorization: `Bearer ${token}` }
+  //       })
+  //         .then(response => {
+  //           alert(`Removed from Favorites List`)
+  //           this.componentDidMount();
+  //         })
+  //         .catch(function (error) {
+  //           console.log(error);
+  //         })
           
-      };
+  //     };
 
 
-      addFavorite(movieId) {
-        const username = localStorage.getItem('user');
-        const token = localStorage.getItem('token');
+  //     addFavorite(movieId) {
+  //       const username = localStorage.getItem('user');
+  //       const token = localStorage.getItem('token');
+  //       const movieId = movies.find((movie) => movie.title === title)._id;
    
-        axios
-         .post(
-           `https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {}, {
-          headers: { Authorization: `Bearer ${token}` }
-         })
-           .then(response => {
-             alert(`Added to Favorites List`)
-           })
-           .catch(function (error) {
-             console.log(error);
-           });
-       };
+  //       axios
+  //        .post(
+  //          `https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {}, {
+  //         headers: { Authorization: `Bearer ${token}` }
+  //        })
+  //          .then(response => {
+  //            alert(`Added to Favorites List`)
+  //          })
+  //          .catch(function (error) {
+  //            console.log(error);
+  //          });
+  //      };
 
+  // removeFavorite( movie ) {
+  //   this.props.removeMovie(movie);
+  // }
 
+  addFavorite(_id) {
+    this.props.addMovie(_id)
+  }
 
   render() {
    
-    const { movie, onBackClick } = this.props;
+    const { movie, onBackClick, addMovie, removeMovie } = this.props;
     
     return (
     
@@ -145,10 +153,9 @@ export class MovieView extends React.Component {
           {/* {favorites.includes(movie._id) ?
           <Button className="favorite-button" onClick={() => { removeFavoriteMovie(movie._id) } }>Remove from favorite Movies</Button> :
           <Button className='favorite-button' onClick={() => { addToFavoriteMovies(movie._id) } }> Add to favorite Movies </Button>} */}
+          
 
-          <button className='favorite-button' value={movie._id}
-          onClick={() => this.removeFavorite( movie._id ) }> Delete from favorite Movies </button> 
-          <button className='favorite-button' value={movie._id} onClick={(e) => this.addFavorite(e, movie)}> Add to favorite Movies </button>
+          <button className='favorite-button' value={movie._id} onClick={(e) => this.addFavorite(e, movie._id)}> Add to favorite Movies </button>
 
 
       </Col>
@@ -182,6 +189,6 @@ MovieView.propTypes = {
   }),
   onBackClick: PropTypes.func.isRequired,
   addMovie: PropTypes.func.isRequired,
-  removeMovie: PropTypes.func.isRequired,
+  //removeMovie: PropTypes.func.isRequired,
   // favorites: PropTypes.array.isRequired
 }

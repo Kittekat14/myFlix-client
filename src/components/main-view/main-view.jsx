@@ -73,46 +73,27 @@ export default class MainView extends React.Component {
     });
   }
 
-  addToFavorites() {
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-
-    const movieId = movies.find((movie) => movie.title === title)._id; 
-
-    axios.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      .then((response) => {
-        this.setState({
-          favorites: response.data.favorites
-        })
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-  }
+  
 
 
-  removeFavoriteMovie() {
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
+      addFavorite(movies, title) {
+        const username = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+        const movieId = movies.find((movie) => movie.title === title)._id;
+   
+        axios
+         .post(
+           `https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {
+          headers: { Authorization: `Bearer ${token}` }
+         })
+           .then(response => {
+             alert(`Added to Favorites List`)
+           })
+           .catch(function (error) {
+             console.log(error);
+           });
+       };
 
-    const movieId = movies.find((movie) => movie.title === title)._id;
-    
-    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      .then((response) => {
-        this.setState({
-          favorites: response.data.favorites
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-
-      console.log(response.data.favorites);
-  }
 
 
   // visual representation of main component:
@@ -191,7 +172,7 @@ export default class MainView extends React.Component {
                   <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
               </Row>
               <Col md={8}>
-                <MovieView removeMovie={() => this.removeFavoriteMovie()} addMovie={() => this.addToFavorites()} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
+                <MovieView addMovie={() => this.addFavorite(movies,title)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
               </Col>
               </>)
             }}  />
