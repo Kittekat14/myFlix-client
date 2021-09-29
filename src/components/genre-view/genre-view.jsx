@@ -3,6 +3,9 @@ import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Button, Row, Col, Container } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { setMovies } from '../../actions/actions';
+
 
 export class GenreView extends React.Component {
 
@@ -45,6 +48,13 @@ export class GenreView extends React.Component {
   }
 }
 
+let mapStateToProps = state => {
+  return {
+    movies: state.movies
+  }
+}
+
+export default connect(mapStateToProps, { setMovies } )(GenreView);
 
 GenreView.propTypes = {
   genre: PropTypes.shape({

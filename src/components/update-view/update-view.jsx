@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { connect } from 'react-redux';
+import { setUser } from '../../actions/actions';
 
 
 export default class UpdateView extends Component {
@@ -147,3 +148,10 @@ export default class UpdateView extends Component {
   }
 }
 
+let mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps, { setUser } )(UpdateView);

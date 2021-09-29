@@ -2,6 +2,9 @@ import React from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import { Button, Row, Col, Container } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { setMovies } from '../../actions/actions';
+
 
 export class DirectorView extends React.Component {
    
@@ -36,6 +39,15 @@ export class DirectorView extends React.Component {
   };
 
 }
+
+
+let mapStateToProps = state => {
+  return {
+    movies: state.movies
+  }
+}
+
+export default connect(mapStateToProps, { setMovies } )(DirectorView);
 
 DirectorView.propTypes = {
   director: PropTypes.shape({

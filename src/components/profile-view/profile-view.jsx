@@ -9,6 +9,8 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { connect } from 'react-redux';
+import { setUser } from '../../actions/actions';
+
 
 
 class ProfileView extends Component {
@@ -165,15 +167,14 @@ class ProfileView extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  const { username, password, email, birthdate, favorites } = state;
-  return { username, password, email, birthdate, favorites };
-};
 
+let mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
 
-export default connect(mapStateToProps)(ProfileView);
-
-
+export default connect(mapStateToProps, { setUser })(ProfileView);
 
 
 // getting ERRORS when I define these as prop

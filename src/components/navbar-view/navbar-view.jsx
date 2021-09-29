@@ -2,6 +2,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+
+
+
+const mapStateToProps = state => {
+  const { user } = state;
+  return { user };
+};
+
 
 export const NavBar = ({ users, onLoggedOut }) => {
  
@@ -49,6 +58,8 @@ export const NavBar = ({ users, onLoggedOut }) => {
     </Navbar>
     );
 }
+
+export default connect(mapStateToProps)(NavBar);
 
 NavBar.propTypes = {
   users: PropTypes.string,
