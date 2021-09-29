@@ -24,8 +24,10 @@ export class MovieView extends React.Component {
     const { movie, user, onBackClick, favorites } = this.props;
     //let selectedMovie = favorites.find(movie => movie._id === _id);
     //const { favorites } = this.state;
+    console.log(user);
     console.log(this.state);
-    console.log(favorites);
+    console.log(movie);
+    
 
     return (
     
@@ -69,7 +71,7 @@ export class MovieView extends React.Component {
           
           <button className="back-button" onClick={() => { onBackClick(null); }}>Back</button>
 
-          {favorites.includes(movie._id) ?
+          {favorites.includes(movie) ?
           null :
           <button className='favorite-button' key={movie._id} value={movie._id} onClick={() => this.addFavorite(movie._id)}> Add to favorite Movies </button>}           
 
