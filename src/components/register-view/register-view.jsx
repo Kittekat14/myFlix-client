@@ -48,7 +48,7 @@ export function RegisterView(props) {
     const emailError = {};
     let isValid = true;
     if(username.trim().length < 5) {
-      nameError.nameShort = 'Username must at least have 5 characters.';
+      nameError.nameShort = 'Username must at least have 5 characters and must only contain numbers and letters.';
       isValid = false;
     }
     if(password.trim().length === 0) {
@@ -80,7 +80,7 @@ export function RegisterView(props) {
           onInput={formValidation}
       />
       {Object.keys(nameError).map((key) => {
-        return <div style={{ fontSize: 12, color:'red'}}>{nameError[key]}</div>
+        return <div style={{ fontSize: 12, color:'red'}} key={key}>{nameError[key]}</div>
       })}
       </Form.Group>
 
@@ -92,7 +92,7 @@ export function RegisterView(props) {
           onInput={formValidation}
         />
       {Object.keys(passwordError).map((key) => {
-        return <div style={{ fontSize: 12, color:'red'}}>{passwordError[key]}</div>
+        return <div style={{ fontSize: 12, color:'red'}} key={key}>{passwordError[key]}</div>
       })}
       </Form.Group>
 
@@ -105,7 +105,7 @@ export function RegisterView(props) {
           />
         </Form.Label>
       {Object.keys(emailError).map((key) => {
-        return <div style={{ fontSize: 12, color:'red'}}>{emailError[key]}</div>
+        return <div style={{ fontSize: 12, color:'red'}} key={key}>{emailError[key]}</div>
       })}
       </Form.Group>
 

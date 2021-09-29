@@ -26,10 +26,11 @@ class MainView extends React.Component {
 
   constructor() {
     super();
-
     this.state = {
-      user: ''
-    };
+      user: '',
+      movies: [],
+      favorites: []
+    }
   }
 
   componentDidMount() {
@@ -55,7 +56,6 @@ class MainView extends React.Component {
     });
     }
   
-
   /* custom component method "onLoggedIn" => when a user successfully logs in, this function updates the `user` property inside the state to that particular user */
   onLoggedIn(authData) {
     console.log(authData);
@@ -67,7 +67,6 @@ class MainView extends React.Component {
     localStorage.setItem('user', authData.user.username);
     this.getMovies(authData.token);
   }
-
   onLoggedOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -77,16 +76,49 @@ class MainView extends React.Component {
   }
 
 
+      addFavorite(_id) {
+        const username = localStorage.getItem('user');
+        const token = localStorage.getItem('token');
+        //const movieId = favorites.find((fav) => fav.title === title)._id;
+        //const movieId = movies.find(m => m.title === match.params.title)._id;
+        axios
+         .post(
+           `https://actor-inspector.herokuapp.com/users/${username}/favorites/${_id}`, null, {
+          headers: { Authorization: `Bearer ${token}` }
+         })
+           .then(response => {
+             this.setState({
+               favorites: response.data.favorites
+             })
+             window.open(`/profile/${username}`, '_self');
+           })
+           .catch(function (error) {
+             console.log(error);
+           });
+       };
+
+
+
   // visual representation of main component:
   render() {
    
-    const { movies, user } = this.props;
+    const { movies } = this.props;
+    const { user } = this.state;
    
   
     return (
-        <Router>
-          <Row className="main-view justify-content-md-center">
-
+      <Router>
+        
+          <Route path="/" render={() => {
+          if(user){
+          return (
+          <Row className="navigation-main">
+              <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
+          </Row>
+          )} 
+        }} />
+        
+        <Row className="main-view justify-content-md-center">
             <Route exact path="/" render={() => {
               if ( !user ) 
               return <Row>
@@ -127,11 +159,8 @@ class MainView extends React.Component {
               if (movies.length === 0) return <div className="main-view" />;
               return (
               <>
-              <Row className="m-3 navigation-main">
-                  <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
-              </Row>
               <Col>
-              <ProfileView user={user} movies={movies}/>
+              <ProfileView key={movies.title} user={user} movies={movies} favorites={favorites}/>
               </Col>
               </>)
             }} />       
@@ -146,11 +175,8 @@ class MainView extends React.Component {
               if (movies.length === 0) return <div className="main-view" />;
               return (
               <>
-              <Row className="m-3 navigation-main">
-                  <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
-              </Row>
               <Col md={8}>
-                <MovieView movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()}/>
+                <MovieView key={movies.title} user={user} favorites={this.state.favorites} addMovie={(_id) => this.addFavorite(_id)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
               </Col>
               </>)
             }}  />
@@ -165,9 +191,6 @@ class MainView extends React.Component {
               if (movies.length === 0) return <div className="main-view" />;
               return (
               <>
-              <Row className="m-3 navigation-main">
-                  <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
-              </Row>
               <Col md={8}>
                 <GenreView genre={movies.find(m => m.genre.name === match.params.name).genre} onBackClick={() => history.goBack()} movies={movies}/>
               </Col>
@@ -184,9 +207,6 @@ class MainView extends React.Component {
               if (movies.length === 0) return <div className="main-view" />;
               return (
               <>
-              <Row className="m-3 navigation-main">
-                  <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
-                </Row>
               <Col md={8}>
                 <DirectorView director={movies.find(m => m.director.name === match.params.name).director} onBackClick={() => history.goBack()}/>
               </Col>

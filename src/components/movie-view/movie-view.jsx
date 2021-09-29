@@ -15,59 +15,26 @@ export class MovieView extends React.Component {
     this.state = {
        movies: [],
        favorites: [],
-       addFavorite: '',
-       removeFavorite: '',
+      //  addFavorite: '',
+      //  removeFavorite: '',
        //buttonText: 'Add to Favorites'
     }
   }
   
-  addToFavoriteMovies(movie) {
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
 
-    //const movieId = movies.find((movie) => movie.title === title)._id; 
-
-    axios.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, { favorites: this.favorites }, {
-      headers: { Authorization: `Bearer ${token}` }
-    })
-    .then((response) => {
-      this.setState({
-        favorites: response.data.favorites,
-        //buttonText: 'Remove from Favorites'
-      })
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
-  }
-
-
-  removeFavoriteMovie(movie) {
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-
-    //const movieId = movies.find((movie) => movie.title === title)._id;
-    
-    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      .then((response) => {
-        this.setState({
-          favorites: response.data.favorites
-        });
-        this.componentDidMount();
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-  }
-
+  addFavorite(_id) {
+    this.props.addMovie(_id);
+  };
 
   render() {
    
-    const { movie, onBackClick, movies } = this.props;
-    const { favorites } = this.state;
-    //const buttonText = this.state.favorites.includes(movie._id) ? '' : 'Add to Favorites';
+    const { movie, user, onBackClick, favorites } = this.props;
+    //let selectedMovie = favorites.find(movie => movie._id === _id);
+    //const { favorites } = this.state;
+    console.log(user);
+    console.log(this.state);
+    console.log(movie);
+    
 
     return (
     
@@ -110,13 +77,12 @@ export class MovieView extends React.Component {
           </div>
           
           <button className="back-button" onClick={() => { onBackClick(null); }}>Back</button>
-          
-            
-          {this.state.favorites.includes(movie._id) ?
-          <Button className='favorite-button'
-          onClick={this.removeFavoriteMovie(movie._id)}> Delete from favorite Movies </Button> :
-          <Button className='favorite-button' 
-          onClick={this.addToFavoriteMovies(movie._id)}> Add to favorite Movies </Button>}
+
+          {favorites.includes(movie) ?
+          null :
+          <button className='favorite-button' key={movie._id} value={movie._id} onClick={() => this.addFavorite(movie._id)}> Add to favorite Movies </button>}           
+
+
       </Col>
      </Row>
     
@@ -135,7 +101,10 @@ MovieView.propTypes = {
     year: PropTypes.number.isRequired,
     featured: PropTypes.bool,
     actors: PropTypes.array,
-    genre: PropTypes.object,
+    genre: PropTypes.shape({
+      name: PropTypes.string,
+      description: PropTypes.string
+    }),
     director: PropTypes.shape({
       name: PropTypes.string,
       bio: PropTypes.string,
@@ -143,5 +112,7 @@ MovieView.propTypes = {
       movies: PropTypes.array
     })
   }),
-  onBackClick: PropTypes.func.isRequired
+  onBackClick: PropTypes.func.isRequired,
+  favorites: PropTypes.array,
+  user: PropTypes.string
 }
