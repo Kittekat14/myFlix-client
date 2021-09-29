@@ -13,7 +13,8 @@ import './index.scss';
 //creating my "store" = "globalized state"
 
 const store = createStore(moviesApp, devToolsEnhancer());
-console.log(store.getState());
+
+//console.log(store.getState());
 
 // store.dispatch({
 //     type: 'SET_MOVIES',

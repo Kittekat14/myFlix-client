@@ -5,12 +5,12 @@ import { connect } from 'react-redux';
 
 import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom";
 
-import { setMovies, setFilter, setUser } from '../../actions/actions';
+import { setMovies, setUser} from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 
 import { LoginView } from "../login-view/login-view";
 import { RegisterView } from "../register-view/register-view";
-import { ProfileView } from '../profile-view/profile-view';
+import ProfileView from '../profile-view/profile-view';
 import { MovieView } from "../movie-view/movie-view";
 import { NavBar } from "../navbar-view/navbar-view";
 import { GenreView } from "../genre-view/genre-view";
@@ -28,7 +28,7 @@ class MainView extends React.Component {
     super();
     this.state = {
       user: '',
-      movies: [],
+      //movies: [],
       favorites: []
     }
   }
@@ -79,8 +79,7 @@ class MainView extends React.Component {
       addFavorite(_id) {
         const username = localStorage.getItem('user');
         const token = localStorage.getItem('token');
-        //const movieId = favorites.find((fav) => fav.title === title)._id;
-        //const movieId = movies.find(m => m.title === match.params.title)._id;
+        
         axios
          .post(
            `https://actor-inspector.herokuapp.com/users/${username}/favorites/${_id}`, null, {
@@ -128,11 +127,7 @@ class MainView extends React.Component {
               </Row>
               if (movies.length === 0) return <div className="main-view" />;
               return (
-                <>
-                <Row className="m-3 navigation-main">
-                  <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
-                </Row>
-                 
+                <>   
                 <MoviesList movies={movies} />
               </>
               )
@@ -160,7 +155,7 @@ class MainView extends React.Component {
               return (
               <>
               <Col>
-              <ProfileView key={movies.title} user={user} movies={movies} favorites={favorites}/>
+              <ProfileView key={movies.title} user={user} movies={movies} />
               </Col>
               </>)
             }} />       
@@ -222,8 +217,9 @@ class MainView extends React.Component {
 
 let mapStateToProps = state => {
   return {
-    movies: state.movies
+    movies: state.movies,
+    user: state.user
   }
 }
 
-export default connect(mapStateToProps, { setMovies } )(MainView);
+export default connect(mapStateToProps, { setMovies, setUser } )(MainView);

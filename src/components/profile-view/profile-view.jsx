@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import UpdateView from '../update-view/update-view';
+import moment from 'moment';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
@@ -9,10 +10,6 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { connect } from 'react-redux';
 
-const mapStateToProps = state => {
-  const { username, password, email, birthdate, favorites } = state;
-  return { username, password, email, birthdate, favorites };
-};
 
 class ProfileView extends Component {
   
@@ -44,22 +41,19 @@ class ProfileView extends Component {
     axios.get(`https://actor-inspector.herokuapp.com/users/${username}`, {
       headers: { Authorization: `Bearer ${token}` },
     })
-    .then(response => {
-      this.props.setUser(response.data);
-    })
-      // .then((response) => {
-      //   this.setState({
-      //     username: response.data.username,
-      //     password: response.data.password,
-      //     email: response.data.email,
-      //     birthdate: moment(response.data.birthdate).format("YYYY-MM-DD"),
-      //     favorites: response.data.favorites
-      //   });
-      // })
+      .then((response) => {
+        this.setState({
+          username: response.data.username,
+          password: response.data.password,
+          email: response.data.email,
+          birthdate: moment(response.data.birthdate).format("YYYY-MM-DD"),
+          favorites: response.data.favorites
+        });
+      })
       .catch(function (error) {
         console.log(error);
       });
-  }
+  }  
 
   deleteUser(token) {
     const username = localStorage.getItem('user');
@@ -80,25 +74,6 @@ class ProfileView extends Component {
       }
     }
 
-
-  // addToFavorites(title, movies) {
-  //   const username = localStorage.getItem('user');
-  //   const token = localStorage.getItem('token');
-
-  //   const movieId = movies.find((movie) => movie.title === title)._id; 
-
-  //   axios.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, null, {
-  //       headers: { Authorization: `Bearer ${token}` }
-  //     })
-  //     .then((response) => {
-  //       this.setState({
-  //         favorites: response.data.favorites
-  //       })
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     })
-  // }
 
   removeFromFavorites(_id) {
     const username = localStorage.getItem('user');
@@ -123,6 +98,7 @@ class ProfileView extends Component {
     const { username, password, email, birthdate, favorites } = this.state;
     const { movies, user } = this.props;
     console.log(this.state);
+
     return (
      <> 
      <Row>
@@ -173,26 +149,6 @@ class ProfileView extends Component {
         </Card>
       </Row >
       <br />
-        <div>
-          {/* <Form>
-            <Form.Group className="mb-3" >
-            <Form.Label>Add new Favorite Movie to your List:</Form.Label>
-            <Form.Control type="text" placeholder="Enter Movie Title" onChange={(e) => this.setState(
-              {addFavorite: e.target.value}
-              )}/>
-            </Form.Group>
-            <Button value={movies.title} onClick={() => { this.addToFavorites(this.state.addFavorite, movies)  } }>Add</Button> 
-          </Form>
-          <Form>
-            <Form.Group className="mb-3" >
-            <Form.Label>Delete a Favorite Movie from your List:</Form.Label>
-            <Form.Control type="text" placeholder="Enter Movie Title" onChange={(e) => this.setState(
-              {removeFavorite: e.target.value}
-              )}/>
-            </Form.Group>
-            <Button onClick={() => { this.removeFavoriteMovie(this.state.removeFavorite, movies) }  }>Remove</Button>
-          </Form> */}
-        </div>
         
         <br />
         <br />
@@ -209,6 +165,11 @@ class ProfileView extends Component {
   }
 }
 
+const mapStateToProps = state => {
+  const { username, password, email, birthdate, favorites } = state;
+  return { username, password, email, birthdate, favorites };
+};
+
 
 export default connect(mapStateToProps)(ProfileView);
 
@@ -216,7 +177,7 @@ export default connect(mapStateToProps)(ProfileView);
 
 
 // getting ERRORS when I define these as prop
-// ProfileView.propTypes = {
-//   user: PropTypes.string,
-//   movies: PropTypes.array
-// };
+ProfileView.propTypes = {
+  user: PropTypes.string,
+  movies: PropTypes.array
+};
