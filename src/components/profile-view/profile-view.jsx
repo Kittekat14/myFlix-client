@@ -18,8 +18,6 @@ export class ProfileView extends Component {
       email: '',
       birthdate: '',
       favorites: []
-      // addFavorite: '',
-      // removeFavorite: ''
     };
   }
 

@@ -157,7 +157,7 @@ export default class MainView extends React.Component {
               return (
               <>
               <Col>
-              <ProfileView user={user} movies={movies} favorites={favorites}/>
+              <ProfileView key={movies.title} user={user} movies={movies} favorites={favorites}/>
               </Col>
               </>)
             }} />       
