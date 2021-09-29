@@ -71,25 +71,6 @@ export class ProfileView extends Component {
     }
 
 
-  // addToFavorites(title, movies) {
-  //   const username = localStorage.getItem('user');
-  //   const token = localStorage.getItem('token');
-
-  //   const movieId = movies.find((movie) => movie.title === title)._id; 
-
-  //   axios.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, null, {
-  //       headers: { Authorization: `Bearer ${token}` }
-  //     })
-  //     .then((response) => {
-  //       this.setState({
-  //         favorites: response.data.favorites
-  //       })
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     })
-  // }
-
   removeFromFavorites(_id) {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
@@ -134,7 +115,7 @@ export class ProfileView extends Component {
      
 
       <Row className="profile-view">
-      <Card className="profile-card">
+      <Card className="profile-card" >
           <h2>Your Favorite Movies</h2>
           <Card.Body>
             {favorites.length === 0 && <div className="text-center">Empty.</div>}
@@ -163,7 +144,6 @@ export class ProfileView extends Component {
         </Card>
       </Row >
       <br />
-        <div>
           {/* <Form>
             <Form.Group className="mb-3" >
             <Form.Label>Add new Favorite Movie to your List:</Form.Label>
@@ -182,7 +162,6 @@ export class ProfileView extends Component {
             </Form.Group>
             <Button onClick={() => { this.removeFavoriteMovie(this.state.removeFavorite, movies) }  }>Remove</Button>
           </Form> */}
-        </div>
         
         <br />
         <br />

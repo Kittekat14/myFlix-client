@@ -85,6 +85,9 @@ export default class MainView extends React.Component {
           headers: { Authorization: `Bearer ${token}` }
          })
            .then(response => {
+             this.setState({
+               favorites: response.data.favorites
+             })
              window.open(`/profile/${username}`, '_self');
            })
            .catch(function (error) {
@@ -97,8 +100,8 @@ export default class MainView extends React.Component {
   // visual representation of main component:
   render() {
    
-    const { movies, user, favorites } = this.state;
-
+    const { movies, user } = this.state;
+    const { favorites } = this.props;
     
     return (
       <Router>
@@ -170,7 +173,7 @@ export default class MainView extends React.Component {
               return (
               <>
               <Col md={8}>
-                <MovieView user={user} favorites={favorites} addMovie={(_id) => this.addFavorite(_id)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
+                <MovieView user={user} favorites={this.state.favorites} addMovie={(_id) => this.addFavorite(_id)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
               </Col>
               </>)
             }}  />

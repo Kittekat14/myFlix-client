@@ -9,94 +9,11 @@ import axios from 'axios';
 
 
 export class MovieView extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    
   }
-  // addToFavoriteMovies(movie) {
-  //   const username = localStorage.getItem('user');
-  //   const token = localStorage.getItem('token');
 
-  //   if(!(this.state.favorites.includes((fav) => fav.title === title)._id)) { 
-
-  //   axios.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, { favorites: this.favorites }, {
-  //     headers: { Authorization: `Bearer ${token}` }
-  //   })
-  //   .then((response) => {
-  //     this.setState({
-  //       favorites: response.data.favorites
-  //     });
-  //   })
-  //   .catch(function (error) {
-  //     console.log(error);
-  //   })
-  //  }
-  // }
-
-
-  // removeFavoriteMovie(movie) {
-  //   const username = localStorage.getItem('user');
-  //   const token = localStorage.getItem('token');
-
-  // //   const movieId = movies.find((movie) => movie.title === title)._id;
-    
-  //   axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movie}`, {}, {
-  //       headers: { Authorization: `Bearer ${token}` }
-  //     })
-  //     .then((response) => {
-  //       this.setState({
-  //         favorites: response.data.favorites
-  //       });
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     })
-
-  //     console.log(response.data.favorites);
-  // }
-
-
-  // removeFavorite(movieId) {
-  //   const username = localStorage.getItem('user');
-  //   const token = localStorage.getItem("token");
-  //   const movieId = movies.find((movie) => movie.title === title)._id;
-    
-  //   axios
-  //     .delete(
-  //       `https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, { 
-  //         headers: { Authorization: `Bearer ${token}` }
-  //       })
-  //         .then(response => {
-  //           alert(`Removed from Favorites List`)
-  //           this.componentDidMount();
-  //         })
-  //         .catch(function (error) {
-  //           console.log(error);
-  //         })
-          
-  //     };
-
-
-  //     addFavorite(movieId) {
-  //       const username = localStorage.getItem('user');
-  //       const token = localStorage.getItem('token');
-  //       const movieId = movies.find((movie) => movie.title === title)._id;
-   
-  //       axios
-  //        .post(
-  //          `https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, {}, {
-  //         headers: { Authorization: `Bearer ${token}` }
-  //        })
-  //          .then(response => {
-  //            alert(`Added to Favorites List`)
-  //          })
-  //          .catch(function (error) {
-  //            console.log(error);
-  //          });
-  //      };
-
-  // removeFavorite( movie ) {
-  //   this.props.removeMovie(movie);
-  // }
 
   addFavorite(_id) {
     this.props.addMovie(_id);
@@ -106,6 +23,9 @@ export class MovieView extends React.Component {
    
     const { movie, user, onBackClick, favorites } = this.props;
     //let selectedMovie = favorites.find(movie => movie._id === _id);
+    //const { favorites } = this.state;
+    console.log(this.state);
+    console.log(favorites);
 
     return (
     
@@ -148,10 +68,10 @@ export class MovieView extends React.Component {
           </div>
           
           <button className="back-button" onClick={() => { onBackClick(null); }}>Back</button>
-            
+
           {favorites.includes(movie._id) ?
           null :
-          <button className='favorite-button' value={movie._id} onClick={() => this.addFavorite(movie._id)}> Add to favorite Movies </button>}          
+          <button className='favorite-button' key={movie._id} value={movie._id} onClick={() => this.addFavorite(movie._id)}> Add to favorite Movies </button>}           
 
 
       </Col>
@@ -184,7 +104,6 @@ MovieView.propTypes = {
     })
   }),
   onBackClick: PropTypes.func.isRequired,
-  addMovie: PropTypes.func,
   favorites: PropTypes.array,
   user: PropTypes.string
 }
