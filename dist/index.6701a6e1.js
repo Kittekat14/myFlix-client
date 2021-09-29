@@ -22976,7 +22976,7 @@ class MainView extends _reactDefault.default.Component {
                                                 movie: movies.find((m)=>m.title === match.params.title
                                                 ),
                                                 onBackClick: ()=>history.goBack()
-                                            })
+                                            }, movies.title)
                                         })
                                     ]
                                 }));

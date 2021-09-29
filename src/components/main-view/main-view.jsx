@@ -173,7 +173,7 @@ export default class MainView extends React.Component {
               return (
               <>
               <Col md={8}>
-                <MovieView user={user} favorites={this.state.favorites} addMovie={(_id) => this.addFavorite(_id)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
+                <MovieView key={movies.title} user={user} favorites={this.state.favorites} addMovie={(_id) => this.addFavorite(_id)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
               </Col>
               </>)
             }}  />
