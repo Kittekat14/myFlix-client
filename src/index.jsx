@@ -13,18 +13,20 @@ import './index.scss';
 //creating my "store" = "globalized state"
 
 const store = createStore(moviesApp, devToolsEnhancer());
-store.dispatch({
-    type: 'SET_MOVIES',
-    payload
-  });
-store.dispatch({
-    type: 'SET_USER',
-    payload
-  });
-store.dispatch({
-    type: 'SET_FILTER',
-    payload 
-  });
+console.log(store.getState());
+
+// store.dispatch({
+//     type: 'SET_MOVIES',
+//     payload
+//   });
+// store.dispatch({
+//     type: 'SET_USER',
+//     payload
+//   });
+// store.dispatch({
+//     type: 'SET_FILTER',
+//     payload 
+//   });
 
 
 // Main component (will eventually use all the others)
