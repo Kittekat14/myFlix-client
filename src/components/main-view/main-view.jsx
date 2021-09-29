@@ -81,14 +81,14 @@ export default class MainView extends React.Component {
         //const movieId = movies.find(m => m.title === match.params.title)._id;
         axios
          .post(
-           `https://actor-inspector.herokuapp.com/users/${username}/favorites/${_id}`, null, {
+           `https://actor-inspector.herokuapp.com/users/${username}/favorites/${_id}`, {}, {
           headers: { Authorization: `Bearer ${token}` }
          })
            .then(response => {
-             this.setState({
+            this.setState({
                favorites: response.data.favorites
-             })
-             window.open(`/profile/${username}`, '_self');
+             });
+            window.open(`/profile/${username}`, '_self');
            })
            .catch(function (error) {
              console.log(error);
@@ -157,7 +157,7 @@ export default class MainView extends React.Component {
               return (
               <>
               <Col>
-              <ProfileView key={movies.title} user={user} movies={movies} favorites={favorites}/>
+              <ProfileView key={movies._id} user={user} movies={movies} favorites={this.state.favorites}/>
               </Col>
               </>)
             }} />       

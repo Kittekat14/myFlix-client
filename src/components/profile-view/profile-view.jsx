@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import UpdateView from '../update-view/update-view';
 import moment from 'moment';
@@ -143,8 +144,8 @@ export class ProfileView extends Component {
                 movies.map((movie) => {
                   if (movie._id === favorites.find((fav) => fav === movie._id)) {
                     return (
-                      <Col md={3}>
-                        <Card className="favorites-item card-content" style={{ width: '16rem' }} key={movie._id}>
+                      <Col md={3} key={movie._id}>
+                        <Card className="favorites-item card-content" style={{ width: '16rem' }}>
                           <Card.Img style={{ width: '100%' }} className="movieCard" variant="top" src={movie.imageUrl} crossOrigin="true" />
                           <Card.Body>
                             <Card.Title className="movie-card-title">{movie.title}</Card.Title>
@@ -200,8 +201,9 @@ export class ProfileView extends Component {
 }
 
 // getting ERRORS when I define these as prop
-// ProfileView.propTypes = {
-//   user: PropTypes.string,
-//   movies: PropTypes.array,
-//   favorites: PropTypes.array
-// };
+ProfileView.propTypes = {
+  user: PropTypes.string,
+  movies: PropTypes.array,
+  favorites: PropTypes.array,
+  key: PropTypes.string
+};
