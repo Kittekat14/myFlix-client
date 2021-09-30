@@ -4,7 +4,6 @@ import axios from 'axios';
 import UpdateView from '../update-view/update-view';
 import moment from 'moment';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
