@@ -31,8 +31,9 @@ export function LoginView(props) {
       const data = response.data;
       props.onLoggedIn(data);
     })
-    .catch(e => {
-      alert('Wrong username or password');
+    .catch(err => {
+      let errorMessage = document.querySelector('#fail');
+      errorMessage.innerHTML = 'Wrong Username or Password';
     });
   }
 }
@@ -41,6 +42,7 @@ export function LoginView(props) {
     const nameError = {};
     const passwordError = {};
     let isValid = true; //initial/default flag
+    
     if(username.trim().length < 5) {
       nameError.nameShort = 'The username must have at least 5 characters.';
       isValid = false;
@@ -65,7 +67,7 @@ return (
       <Form.Label>Username:</Form.Label>
       <Form.Control type="text" placeholder="Enter Username" value={username} onChange={e => setUsername(e.target.value)} required />
       {Object.keys(nameError).map((key) => {
-        return <div style={{ fontSize: 12, color:'red'}} key={key}>{nameError[key]}</div>
+        return <div style={{ fontSize: 14, fontWeight: 600, color:'red'}} key={key}>{nameError[key]}</div>
       })}
     </Form.Group>
 
@@ -73,9 +75,11 @@ return (
       <Form.Label>Password:</Form.Label>
       <Form.Control type="password" placeholder="Enter Password" value={password} onChange={e => setPassword(e.target.value)} required />
       {Object.keys(passwordError).map((key) => {
-        return <div style={{ fontSize: 12, color:'red'}} key={key}>{passwordError[key]}</div>
+        return <div style={{ fontSize: 14, fontWeight: 600, color:'red'}} key={key}>{passwordError[key]}</div>
       })}
     </Form.Group>
+    
+    <div id="fail" style={{ fontSize: 14, fontWeight: 600, color:'red'}}></div>
     
     <Button className="m-2" variant="primary" type="submit">
     Submit

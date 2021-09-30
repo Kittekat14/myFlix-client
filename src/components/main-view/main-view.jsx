@@ -54,7 +54,7 @@ export default class MainView extends React.Component {
     });
     }
   
-  /* custom component method "onLoggedIn" => when a user successfully logs in, this function updates the `user` property inside the state to that particular user */
+  /* When a user successfully logs in, this function updates the `user` property inside the state to that particular user */
   onLoggedIn(authData) {
     console.log(authData);
     this.setState({
@@ -74,35 +74,37 @@ export default class MainView extends React.Component {
   }
 
 
-      addFavorite(_id) {
-        const username = localStorage.getItem('user');
-        const token = localStorage.getItem('token');
-        //const movieId = favorites.find((fav) => fav.title === title)._id;
-        //const movieId = movies.find(m => m.title === match.params.title)._id;
-        axios
-         .post(
-           `https://actor-inspector.herokuapp.com/users/${username}/favorites/${_id}`, {}, {
-          headers: { Authorization: `Bearer ${token}` }
-         })
-           .then(response => {
-            this.setState({
-               favorites: response.data.favorites
-             });
-            window.open(`/profile/${username}`, '_self');
-           })
-           .catch(function (error) {
-             console.log(error);
-           });
-       };
+  addFavorite(_id) {
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+    
+    axios
+     .post(
+       `https://actor-inspector.herokuapp.com/users/${username}/favorites/${_id}`, {}, {
+      headers: { Authorization: `Bearer ${token}` }
+     })
+       .then(response => {
+        this.setState({
+           favorites: response.data
+         });
+        window.open(`/profile/${username}`, '_self');
+       })
+       .catch(function (error) {
+         console.log(error);
+       });
+   };    
 
 
 
   // visual representation of main component:
   render() {
    
-    const { movies, user } = this.state;
-    const { favorites } = this.props;
-    
+    const { movies, user, favorites } = this.state;
+    console.log(favorites);
+    console.log(movies);
+    console.log(user);
+
+
     return (
       <Router>
         

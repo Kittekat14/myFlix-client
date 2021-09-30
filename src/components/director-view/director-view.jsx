@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import { Button, Row, Col, Container } from 'react-bootstrap';
 
 export class DirectorView extends React.Component {
-   
 
   render() {
     const { director, onBackClick } = this.props;

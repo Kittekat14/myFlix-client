@@ -6,7 +6,6 @@ import { Link } from 'react-router-dom';
 
 export class GenreView extends React.Component {
 
-  
   render() {
     const { genre, onBackClick, movies } = this.props;
     const genreMovies = movies.filter(m => m.genre.name === genre.name);

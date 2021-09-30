@@ -2,10 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 import './movie-view.scss';
 import { Link } from "react-router-dom";
-import axios from 'axios';
 
 
 export class MovieView extends React.Component {
@@ -22,17 +20,16 @@ export class MovieView extends React.Component {
   render() {
    
     const { movie, user, onBackClick, favorites } = this.props;
-    //let selectedMovie = favorites.find(movie => movie._id === _id);
-    // const { favorites } = this.state;
-    console.log(user);
-    console.log(this.props);
+    
+    console.log(favorites);
     console.log(movie);
+    console.log(user);
     
 
     return (
     
      <Row className="movie-view">
-       <Col md={8} className="movie-view">
+       <Col md={8} className="movie-view" key={movie.title}>
           <div className="movie-poster">
             <img src={movie.imageUrl} crossOrigin="true" />
           </div>
