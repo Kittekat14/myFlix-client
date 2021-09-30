@@ -19,8 +19,6 @@ export class ProfileView extends Component {
       email: '',
       birthdate: '',
       favorites: []
-      // addFavorite: '',
-      // removeFavorite: ''
     };
   }
 
@@ -72,25 +70,6 @@ export class ProfileView extends Component {
     }
 
 
-  // addToFavorites(title, movies) {
-  //   const username = localStorage.getItem('user');
-  //   const token = localStorage.getItem('token');
-
-  //   const movieId = movies.find((movie) => movie.title === title)._id; 
-
-  //   axios.post(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${movieId}`, null, {
-  //       headers: { Authorization: `Bearer ${token}` }
-  //     })
-  //     .then((response) => {
-  //       this.setState({
-  //         favorites: response.data.favorites
-  //       })
-  //     })
-  //     .catch(function (error) {
-  //       console.log(error);
-  //     })
-  // }
-
   removeFromFavorites(_id) {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
@@ -113,7 +92,10 @@ export class ProfileView extends Component {
   render() {
     const { username, password, email, birthdate, favorites } = this.state;
     const { movies, user } = this.props;
-    console.log(this.state);
+    console.log(username);
+    console.log(favorites);
+    console.log(email);
+
     return (
      <> 
      <Row>
@@ -144,7 +126,7 @@ export class ProfileView extends Component {
                 movies.map((movie) => {
                   if (movie._id === favorites.find((fav) => fav === movie._id)) {
                     return (
-                      <Col md={3} key={movie._id}>
+                      <Col lg={4} key={movie._id}>
                         <Card className="favorites-item card-content" style={{ width: '16rem' }}>
                           <Card.Img style={{ width: '100%' }} className="movieCard" variant="top" src={movie.imageUrl} crossOrigin="true" />
                           <Card.Body>
@@ -163,38 +145,16 @@ export class ProfileView extends Component {
           </Card.Body>
         </Card>
       </Row >
+      <br />        
       <br />
-        <div>
-          {/* <Form>
-            <Form.Group className="mb-3" >
-            <Form.Label>Add new Favorite Movie to your List:</Form.Label>
-            <Form.Control type="text" placeholder="Enter Movie Title" onChange={(e) => this.setState(
-              {addFavorite: e.target.value}
-              )}/>
-            </Form.Group>
-            <Button value={movies.title} onClick={() => { this.addToFavorites(this.state.addFavorite, movies)  } }>Add</Button> 
-          </Form>
-          <Form>
-            <Form.Group className="mb-3" >
-            <Form.Label>Delete a Favorite Movie from your List:</Form.Label>
-            <Form.Control type="text" placeholder="Enter Movie Title" onChange={(e) => this.setState(
-              {removeFavorite: e.target.value}
-              )}/>
-            </Form.Group>
-            <Button onClick={() => { this.removeFavoriteMovie(this.state.removeFavorite, movies) }  }>Remove</Button>
-          </Form> */}
-        </div>
-        
-        <br />
-        <br />
+      <br />
       <UpdateView />
-        <br />
-        <br />
-        <br />
-          <Button onClick={() => { this.deleteUser() } }>Delete Account</Button>  
-        <br />
+      <br />
+      <br />
+      <br />
+      <Button onClick={() => { this.deleteUser() } }>Delete Account</Button>  
+      <br />  
      
-  
      </>
     )
   }
@@ -202,8 +162,6 @@ export class ProfileView extends Component {
 
 // getting ERRORS when I define these as prop
 ProfileView.propTypes = {
-  user: PropTypes.string,
   movies: PropTypes.array,
-  favorites: PropTypes.array,
-  key: PropTypes.string
+  favorites: PropTypes.array
 };

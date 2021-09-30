@@ -14,7 +14,6 @@ import { DirectorView } from "../director-view/director-view";
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 
 import '../../index.scss';
 
@@ -79,20 +78,21 @@ export default class MainView extends React.Component {
     const token = localStorage.getItem('token');
     
     axios
-     .post(
-       `https://actor-inspector.herokuapp.com/users/${username}/favorites/${_id}`, {}, {
-      headers: { Authorization: `Bearer ${token}` }
-     })
-       .then(response => {
+      .post(
+        `https://actor-inspector.herokuapp.com/users/${username}/favorites/${_id}`, {}, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then((response) => {
         this.setState({
-           favorites: response.data
-         });
+          favorites: response.data.favorites
+        });
+        this.state.favorites.push(_id);
         window.open(`/profile/${username}`, '_self');
-       })
-       .catch(function (error) {
-         console.log(error);
-       });
-   };    
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };    
 
 
 
@@ -107,17 +107,18 @@ export default class MainView extends React.Component {
 
     return (
       <Router>
-        
-          <Route path="/" render={() => {
-          if(user){
-          return (
-          <Row className="navigation-main">
-              <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
-          </Row>
-          )} 
-        }} />
-        
+
+            <Route path="/" render={() => {
+              if(user){
+              return (
+              <Row className="navigation-main">
+                  <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
+              </Row>
+              )} 
+            }} />
+
         <Row className="main-view justify-content-md-center">
+
             <Route exact path="/" render={() => {
               if ( !user ) 
               return <Row>
@@ -146,7 +147,7 @@ export default class MainView extends React.Component {
             </Col>
             </>
             )
-          }} />
+            }} />
 
             <Route exact path="/profile/:username" render={() => {
               if ( !user ) 
@@ -159,7 +160,7 @@ export default class MainView extends React.Component {
               return (
               <>
               <Col>
-              <ProfileView key={movies._id} user={user} movies={movies} favorites={this.state.favorites}/>
+              <ProfileView key={movies._id} movies={movies} favorites={favorites}/>
               </Col>
               </>)
             }} />       
@@ -175,7 +176,7 @@ export default class MainView extends React.Component {
               return (
               <>
               <Col md={8}>
-                <MovieView key={movies.title} user={user} favorites={this.state.favorites} addMovie={(_id) => this.addFavorite(_id)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
+                <MovieView key={movies.title} user={user} favorites={favorites} addMovie={(_id) => this.addFavorite(_id)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
               </Col>
               </>)
             }}  />
@@ -212,9 +213,9 @@ export default class MainView extends React.Component {
               </>)
             }}  />
 
-          </Row>
-      </Router>
-      )
+        </Row>
+     </Router>
+    )
   
 
   }
