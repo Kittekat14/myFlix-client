@@ -86,8 +86,6 @@ export default class MainView extends React.Component {
         this.setState({
           favorites: response.data.favorites
         });
-        this.state.favorites.push(_id);
-        window.open(`/profile/${username}`, '_self');
       })
       .catch(function (error) {
         console.log(error);
@@ -160,7 +158,7 @@ export default class MainView extends React.Component {
               return (
               <>
               <Col>
-              <ProfileView key={movies._id} movies={movies} favorites={favorites}/>
+              <ProfileView movies={movies} favorites={favorites} onBackClick={() => history.goBack()}/>
               </Col>
               </>)
             }} />       
@@ -176,7 +174,7 @@ export default class MainView extends React.Component {
               return (
               <>
               <Col md={8}>
-                <MovieView key={movies.title} user={user} favorites={favorites} addMovie={(_id) => this.addFavorite(_id)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
+                <MovieView user={user} favorites={favorites} addMovie={(_id) => this.addFavorite(_id)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
               </Col>
               </>)
             }}  />

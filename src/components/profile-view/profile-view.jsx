@@ -8,16 +8,17 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
+
 export class ProfileView extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      username: '',
-      password: '',
-      email: '',
-      birthdate: '',
-      favorites: []
+      myUsername: '',
+      myPassword: '',
+      myEmail: '',
+      myBirthdate: '',
+      myFavorites: []
     };
   }
 
@@ -37,11 +38,11 @@ export class ProfileView extends Component {
     })
       .then((response) => {
         this.setState({
-          username: response.data.username,
-          password: response.data.password,
-          email: response.data.email,
-          birthdate: moment(response.data.birthdate).format("YYYY-MM-DD"),
-          favorites: response.data.favorites
+          myUsername: response.data.username,
+          myPassword: response.data.password,
+          myEmail: response.data.email,
+          myBirthdate: moment(response.data.birthdate).format("YYYY-MM-DD"),
+          myFavorites: response.data.favorites
         });
       })
       .catch(function (error) {
@@ -79,7 +80,7 @@ export class ProfileView extends Component {
       })
       .then((response) => {
         this.setState({
-          favorites: response.data.favorites
+          myFavorites: response.data.favorites
         });
       })
       .catch(function (error) {
@@ -89,29 +90,32 @@ export class ProfileView extends Component {
 
 
   render() {
-    const { username, password, email, birthdate, favorites } = this.state;
+    
+    const { myUsername, myPassword, myEmail, myBirthdate, myFavorites } = this.state;
     const { movies, user } = this.props;
-    console.log(username);
-    console.log(favorites);
-    console.log(email);
-
+    console.log(myUsername);
+    console.log(myFavorites);
+    console.log(this.state);
+    console.log(myEmail);
+    //const fav = this.props.favorites;
+    
     return (
      <> 
      <Row>
         <Col className="label">Username: </Col>
-        <Col className="value">{username}</Col>
+        <Col className="value">{myUsername}</Col>
      </Row>
      <Row>
         <Col className="label">Password: </Col>
-        <Col className="value">{password}</Col>
+        <Col className="value">{myPassword}</Col>
      </Row>
      <Row>
         <Col className="label">Email: </Col>
-        <Col className="value">{email}</Col>
+        <Col className="value">{myEmail}</Col>
      </Row>
      <Row>
         <Col className="label">Birthdate: </Col>
-        <Col className="value">{birthdate}</Col>
+        <Col className="value">{myBirthdate}</Col>
      </Row>
      
 
@@ -119,11 +123,11 @@ export class ProfileView extends Component {
       <Card className="profile-card">
           <h2>Your Favorite Movies</h2>
           <Card.Body>
-            {favorites.length === 0 && <div className="text-center">Empty.</div>}
+            {myFavorites.length === 0 && <div className="text-center">Empty.</div>}
             <Row className="favorites-movies ">
-              {favorites.length > 0 &&
+              {myFavorites.length > 0 &&
                 movies.map((movie) => {
-                  if (movie._id === favorites.find((fav) => fav === movie._id)) {
+                  if (movie._id === myFavorites.find((fav) => fav === movie._id)) {
                     return (
                       <Col lg={4} key={movie._id}>
                         <Card className="favorites-item card-content" style={{ width: '16rem' }}>
@@ -162,5 +166,6 @@ export class ProfileView extends Component {
 // getting ERRORS when I define these as prop
 ProfileView.propTypes = {
   movies: PropTypes.array,
-  favorites: PropTypes.array
+  favorites: PropTypes.array,
+  onBackClick: PropTypes.func
 };
