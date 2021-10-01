@@ -27928,7 +27928,6 @@ _s(LoginView, "nR6nHUk6j/pG5S7dd04e460sYh0=", false, function() {
     return [_reactRouterDom.useHistory];
 });
 _c = LoginView;
-// Nizar added this, I don't understand it, because I have onLoggedIn as only prop I think
 LoginView.propTypes = {
     onLoggedIn: _propTypesDefault.default.func.isRequired
 };

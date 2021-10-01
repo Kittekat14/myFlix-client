@@ -94,7 +94,6 @@ return (
 );
 }
 
-// Nizar added this, I don't understand it, because I have onLoggedIn as only prop I think
 LoginView.propTypes = {
   onLoggedIn: PropTypes.func.isRequired
 }
