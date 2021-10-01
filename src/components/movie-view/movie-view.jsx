@@ -9,7 +9,6 @@ import { Link } from "react-router-dom";
 export class MovieView extends React.Component {
   constructor(props) {
     super(props);
-    
   }
 
 
@@ -104,5 +103,6 @@ MovieView.propTypes = {
   }),
   onBackClick: PropTypes.func.isRequired,
   favorites: PropTypes.array,
-  user: PropTypes.string
+  user: PropTypes.string,
+  addMovie: PropTypes.func
 }

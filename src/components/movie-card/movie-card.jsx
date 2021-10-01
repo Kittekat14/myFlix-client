@@ -55,7 +55,3 @@ MovieCard.propTypes = {
     })
   })
 }
-
-MovieCard.propTypes = {
-  movie: PropTypes.object
-};

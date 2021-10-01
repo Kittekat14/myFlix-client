@@ -96,8 +96,5 @@ return (
 
 // Nizar added this, I don't understand it, because I have onLoggedIn as only prop I think
 LoginView.propTypes = {
-  user: PropTypes.shape({
-    username: PropTypes.string.isRequired,
-    password: PropTypes.string.isRequired
-  })
+  onLoggedIn: PropTypes.func.isRequired
 }

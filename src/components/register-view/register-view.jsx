@@ -131,7 +131,3 @@ export function RegisterView(props) {
 </Container>
 )
 }
-
-RegisterView.propTypes = {
-  onBackClick: PropTypes.func,
-};

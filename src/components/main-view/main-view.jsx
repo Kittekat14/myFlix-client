@@ -2,7 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom";
-
+import moment from 'moment';
 import { LoginView } from "../login-view/login-view";
 import { RegisterView } from "../register-view/register-view";
 import { ProfileView } from '../profile-view/profile-view';
@@ -24,7 +24,11 @@ export default class MainView extends React.Component {
     this.state = {
       user: '',
       movies: [],
-      favorites: []
+      favorites: [],
+      username: '',
+      password: '',
+      email: '',
+      birthdate: ''
     }
   }
 
@@ -35,6 +39,7 @@ export default class MainView extends React.Component {
         user: localStorage.getItem('user')
       });
       this.getMovies(accessToken);
+      this.getUser(accessToken);
     }
   }
  
@@ -72,6 +77,65 @@ export default class MainView extends React.Component {
     });
   }
 
+  // GET User for his own profile
+  getUser(token) {
+    const username = localStorage.getItem('user');
+
+    axios.get(`https://actor-inspector.herokuapp.com/users/${username}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((response) => {
+        this.setState({
+          username: response.data.username,
+          password: response.data.password,
+          email: response.data.email,
+          birthdate: moment(response.data.birthdate).format("YYYY-MM-DD"),
+          favorites: response.data.favorites
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  deleteUser(token) {
+    const username = localStorage.getItem('user');
+
+    if(window.confirm('Are you sure you want to delete your user account?')) {
+      axios.delete(`https://actor-inspector.herokuapp.com/users/${username}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then(() => {
+          localStorage.removeItem('user');
+          localStorage.removeItem('token');
+          alert('Your account has been deleted.');
+          window.open(`/`, '_self');
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      }
+    }
+
+
+  removeFromFavorites(_id) {
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+
+      
+    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${_id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then((response) => {
+        this.setState({
+          favorites: response.data.favorites
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }
+
 
   addFavorite(_id) {
     const username = localStorage.getItem('user');
@@ -97,7 +161,7 @@ export default class MainView extends React.Component {
   // visual representation of main component:
   render() {
    
-    const { movies, user, favorites } = this.state;
+    const { movies, user, username, password, email, birthdate, favorites } = this.state;
     console.log(favorites);
     console.log(movies);
     console.log(user);
@@ -158,7 +222,7 @@ export default class MainView extends React.Component {
               return (
               <>
               <Col>
-              <ProfileView movies={movies} favorites={favorites} onBackClick={() => history.goBack()}/>
+              <ProfileView username={username} password={password} email={email} birthdate={birthdate} favorites={favorites} movies={movies} onBackClick={() => history.goBack()} removeMovie={(_id) => this.removeFromFavorites(_id)} />
               </Col>
               </>)
             }} />       
