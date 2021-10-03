@@ -3,9 +3,9 @@ import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
 
-import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
-import { setMovies, setUser} from '../../actions/actions';
+import { setMovies, setUser, setFilter} from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 
 import { LoginView } from "../login-view/login-view";
@@ -18,7 +18,6 @@ import { DirectorView } from "../director-view/director-view";
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 
 import '../../index.scss';
 
@@ -217,8 +216,9 @@ class MainView extends React.Component {
 
 let mapStateToProps = state => {
   return {
-    movies: state.movies
+    movies: state.movies,
+    user: state.user
   }
 }
 
-export default connect(mapStateToProps, { setMovies } )(MainView);
+export default connect(mapStateToProps, { setMovies, setUser } )(MainView);

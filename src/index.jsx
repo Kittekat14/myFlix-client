@@ -14,21 +14,6 @@ import './index.scss';
 
 const store = createStore(moviesApp, devToolsEnhancer());
 
-//console.log(store.getState());
-
-// store.dispatch({
-//     type: 'SET_MOVIES',
-//     payload
-//   });
-// store.dispatch({
-//     type: 'SET_USER',
-//     payload
-//   });
-// store.dispatch({
-//     type: 'SET_FILTER',
-//     payload 
-//   });
-
 
 // Main component (will eventually use all the others)
 class myFlixApplication extends React.Component {
@@ -46,17 +31,6 @@ class myFlixApplication extends React.Component {
 // Finds the root of your app
 const container = document.getElementsByClassName('app-container')[0];
 
-// store.subscribe(() => {
-//   console.log('store updated!', store.getState())
-// });
-// store.dispatch({
-//   type: 'SET_USER',
-//   payload: 
-// });
-// store.dispatch({
-//   type: 'SET_FILTER',
-//   payload: 
-// });
 
 // Tells React to render your app in the root DOM element
 ReactDOM.render(React.createElement(myFlixApplication), container);

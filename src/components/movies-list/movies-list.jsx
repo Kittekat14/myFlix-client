@@ -32,4 +32,4 @@ const mapStateToProps = state => {
   
 }  
 
-export default connect(mapStateToProps)(MoviesList);
+export default connect(mapStateToProps, null)(MoviesList); // props { movies, visibilityFilter } of MovieList will go to the store

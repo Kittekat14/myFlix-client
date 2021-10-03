@@ -957,19 +957,6 @@ var _reduxDevtoolsExtension = require("redux-devtools-extension");
 var _indexScss = require("./index.scss");
 //creating my "store" = "globalized state"
 const store = _redux.createStore(_reducersDefault.default, _reduxDevtoolsExtension.devToolsEnhancer());
-//console.log(store.getState());
-// store.dispatch({
-//     type: 'SET_MOVIES',
-//     payload
-//   });
-// store.dispatch({
-//     type: 'SET_USER',
-//     payload
-//   });
-// store.dispatch({
-//     type: 'SET_FILTER',
-//     payload 
-//   });
 // Main component (will eventually use all the others)
 class myFlixApplication extends _reactDefault.default.Component {
     render() {
@@ -977,19 +964,19 @@ class myFlixApplication extends _reactDefault.default.Component {
             store: store,
             __source: {
                 fileName: "src/index.jsx",
-                lineNumber: 37
+                lineNumber: 22
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Container, {
                 __source: {
                     fileName: "src/index.jsx",
-                    lineNumber: 38
+                    lineNumber: 23
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_mainViewDefault.default, {
                     __source: {
                         fileName: "src/index.jsx",
-                        lineNumber: 39
+                        lineNumber: 24
                     },
                     __self: this
                 })
@@ -999,17 +986,6 @@ class myFlixApplication extends _reactDefault.default.Component {
 }
 // Finds the root of your app
 const container = document.getElementsByClassName('app-container')[0];
-// store.subscribe(() => {
-//   console.log('store updated!', store.getState())
-// });
-// store.dispatch({
-//   type: 'SET_USER',
-//   payload: 
-// });
-// store.dispatch({
-//   type: 'SET_FILTER',
-//   payload: 
-// });
 // Tells React to render your app in the root DOM element
 _reactDomDefault.default.render(/*#__PURE__*/ _reactDefault.default.createElement(myFlixApplication), container);
 
@@ -22808,8 +22784,6 @@ var _row = require("react-bootstrap/Row");
 var _rowDefault = parcelHelpers.interopDefault(_row);
 var _col = require("react-bootstrap/Col");
 var _colDefault = parcelHelpers.interopDefault(_col);
-var _button = require("react-bootstrap/Button");
-var _buttonDefault = parcelHelpers.interopDefault(_button);
 var _indexScss = require("../../index.scss");
 class MainView extends _reactDefault.default.Component {
     constructor(){
@@ -22879,7 +22853,7 @@ class MainView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 109
+                lineNumber: 108
             },
             __self: this,
             children: [
@@ -22898,7 +22872,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 111
+                        lineNumber: 110
                     },
                     __self: this
                 }),
@@ -22906,7 +22880,7 @@ class MainView extends _reactDefault.default.Component {
                     className: "main-view justify-content-md-center",
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 120
+                        lineNumber: 119
                     },
                     __self: this,
                     children: [
@@ -22934,7 +22908,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 121
+                                lineNumber: 120
                             },
                             __self: this
                         }),
@@ -22955,7 +22929,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 136
+                                lineNumber: 135
                             },
                             __self: this
                         }),
@@ -22984,7 +22958,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 147
+                                lineNumber: 146
                             },
                             __self: this
                         }),
@@ -23019,7 +22993,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 163
+                                lineNumber: 162
                             },
                             __self: this
                         }),
@@ -23052,7 +23026,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 179
+                                lineNumber: 178
                             },
                             __self: this
                         }),
@@ -23083,7 +23057,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 195
+                                lineNumber: 194
                             },
                             __self: this
                         })
@@ -23095,11 +23069,13 @@ class MainView extends _reactDefault.default.Component {
 }
 let mapStateToProps = (state)=>{
     return {
-        movies: state.movies
+        movies: state.movies,
+        user: state.user
     };
 };
 exports.default = _reactRedux.connect(mapStateToProps, {
-    setMovies: _actions.setMovies
+    setMovies: _actions.setMovies,
+    setUser: _actions.setUser
 })(MainView);
 
   $parcel$ReactRefreshHelpers$35bf.postlude(module);
@@ -23107,7 +23083,7 @@ exports.default = _reactRedux.connect(mapStateToProps, {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","react-router-dom":"cpyQW","../login-view/login-view":"054li","../register-view/register-view":"F9ahz","../movie-view/movie-view":"ikZdr","../genre-view/genre-view":"8WCoL","../director-view/director-view":"ck15y","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","../../index.scss":"jUTZ8","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","../profile-view/profile-view":"2E7Aw","../navbar-view/navbar-view":"j0Dt2","react-bootstrap/Button":"9CzHT","react-redux":"2L0if","../../actions/actions":"1Ttfj","../movies-list/movies-list":"1kGQ5"}],"iYoWk":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","react-router-dom":"cpyQW","../login-view/login-view":"054li","../register-view/register-view":"F9ahz","../movie-view/movie-view":"ikZdr","../genre-view/genre-view":"8WCoL","../director-view/director-view":"ck15y","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","../../index.scss":"jUTZ8","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","../profile-view/profile-view":"2E7Aw","../navbar-view/navbar-view":"j0Dt2","react-redux":"2L0if","../../actions/actions":"1Ttfj","../movies-list/movies-list":"1kGQ5"}],"iYoWk":[function(require,module,exports) {
 module.exports = require('./lib/axios');
 
 },{"./lib/axios":"3QmO2"}],"3QmO2":[function(require,module,exports) {
@@ -42349,7 +42325,7 @@ ProfileView.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","../update-view/update-view":"8jXgg","moment":"5Keig","react-bootstrap/Button":"9CzHT","react-bootstrap/Card":"MoOk8","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","react-bootstrap/Form":"5ykgY","prop-types":"1tgq3","react-redux":"2L0if","../../actions/actions":"1Ttfj"}],"8jXgg":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","../update-view/update-view":"8jXgg","react-bootstrap/Button":"9CzHT","react-bootstrap/Card":"MoOk8","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","prop-types":"1tgq3","moment":"5Keig","react-bootstrap/Form":"5ykgY","react-redux":"2L0if","../../actions/actions":"1Ttfj"}],"8jXgg":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$7299 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -46758,7 +46734,7 @@ function MoviesList(props) {
     }));
 }
 _c = MoviesList;
-exports.default = _reactRedux.connect(mapStateToProps)(MoviesList);
+exports.default = _reactRedux.connect(mapStateToProps, null)(MoviesList); // props { movies, visibilityFilter } of MovieList will go to the store
 var _c;
 $RefreshReg$(_c, "MoviesList");
 
