@@ -13,7 +13,7 @@ export class MovieCard extends React.Component {
     
     return (
     
-      <Card className="card h-100">
+      <Card className="card h-100" key={movie.title}>
        
         <Card.Img variant="top" src={movie.imageUrl} crossOrigin="true" width="300"/>
 
@@ -55,7 +55,3 @@ MovieCard.propTypes = {
     })
   })
 }
-
-MovieCard.propTypes = {
-  movie: PropTypes.object
-};

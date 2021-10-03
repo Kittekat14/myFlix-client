@@ -20,12 +20,12 @@ export const NavBar = ({ users, onLoggedOut }) => {
   return (
     <Navbar bg="light" expand="md" sticky="top" variant="light" className="navbar">
       <Container className="navbar-container">
-        <Navbar.Brand href="/"><h1>ActorInspector</h1></Navbar.Brand>
+        <Link className="brand" to="/"><h1>ActorInspector</h1></Link>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse className="justify-content-end">
           <Nav className="navbar">
             
-            <Nav.Item className="nav-items" href="#">{message}{`${users}`}</Nav.Item>
+            <Nav.Item className="nav-items">{message}{`${users}`}</Nav.Item>
 
             <Link className="nav-items" to={`/profile/${users}`} >Profile</Link>
 

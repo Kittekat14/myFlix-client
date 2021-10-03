@@ -22,8 +22,7 @@ export default class UpdateView extends Component {
       passwordError: '',
       emailError: ''
     };
-    // this.handleUserUpdate = this.handleUserUpdate.bind(this);
-    // this.formValidation = this.formValidation.bind(this);
+    
   }
 
   

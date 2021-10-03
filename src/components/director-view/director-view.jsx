@@ -7,7 +7,6 @@ import { setMovies } from '../../actions/actions';
 
 
 export class DirectorView extends React.Component {
-   
 
   render() {
     const { director, onBackClick } = this.props;

@@ -2,7 +2,7 @@
 import React from 'react';
 import axios from 'axios';
 import { connect } from 'react-redux';
-
+import moment from 'moment';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 import { setMovies, setUser, setFilter} from '../../actions/actions';
@@ -26,8 +26,13 @@ class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-      user: '',
-      //movies: [],
+      user: {
+        username: '',
+        password: '',
+        email: '',
+        birthdate: ''
+      },
+      movies: [],
       favorites: []
     }
   }
@@ -39,6 +44,7 @@ class MainView extends React.Component {
         user: localStorage.getItem('user')
       });
       this.getMovies(accessToken);
+      this.getUser(accessToken);
     }
   }
  
@@ -55,7 +61,7 @@ class MainView extends React.Component {
     });
     }
   
-  /* custom component method "onLoggedIn" => when a user successfully logs in, this function updates the `user` property inside the state to that particular user */
+  /* When a user successfully logs in, this function updates the `user` property inside the state to that particular user */
   onLoggedIn(authData) {
     console.log(authData);
     this.setState({
@@ -74,27 +80,85 @@ class MainView extends React.Component {
     });
   }
 
+  // GET User for his own profile
+  getUser(token) {
+    const username = localStorage.getItem('user');
+     
+    axios.get(`https://actor-inspector.herokuapp.com/users/${username}`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((response) => {
+        this.setState({
+          username: response.data.username,
+          password: response.data.password,
+          email: response.data.email,
+          birthdate: moment(response.data.birthdate).format("YYYY-MM-DD"),
+          favorites: response.data.favorites
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
 
-      addFavorite(_id) {
-        const username = localStorage.getItem('user');
-        const token = localStorage.getItem('token');
-        
-        axios
-         .post(
-           `https://actor-inspector.herokuapp.com/users/${username}/favorites/${_id}`, null, {
-          headers: { Authorization: `Bearer ${token}` }
-         })
-           .then(response => {
-             this.setState({
-               favorites: response.data.favorites
-             })
-             window.open(`/profile/${username}`, '_self');
-           })
-           .catch(function (error) {
-             console.log(error);
-           });
-       };
 
+  deleteUser(token) {
+    const username = localStorage.getItem('user');
+
+    if(window.confirm('Are you sure you want to delete your user account?')) {
+      axios.delete(`https://actor-inspector.herokuapp.com/users/${username}`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+        .then(() => {
+          localStorage.removeItem('user');
+          localStorage.removeItem('token');
+          alert('Your account has been deleted.');
+          window.open(`/`, '_self');
+        })
+        .catch((e) => {
+          console.log(e);
+        });
+      }
+    }
+
+
+  removeFromFavorites(_id) {
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+
+      
+    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${_id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then((response) => {
+        this.setState({
+          favorites: response.data.favorites
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }
+
+
+  addFavorite(_id) {
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+    
+    axios
+      .post(
+        `https://actor-inspector.herokuapp.com/users/${username}/favorites/${_id}`, {}, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then((response) => {
+        this.setState({
+          favorites: response.data.favorites
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };    
 
 
   // visual representation of main component:
@@ -106,17 +170,18 @@ class MainView extends React.Component {
   
     return (
       <Router>
-        
-          <Route path="/" render={() => {
-          if(user){
-          return (
-          <Row className="navigation-main">
-              <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
-          </Row>
-          )} 
-        }} />
-        
+
+            <Route path="/" render={() => {
+              if(user){
+              return (
+              <Row className="navigation-main">
+                  <NavBar users={user} onLoggedOut={() => { this.onLoggedOut() }} />
+              </Row>
+              )} 
+            }} />
+
         <Row className="main-view justify-content-md-center">
+
             <Route exact path="/" render={() => {
               if ( !user ) 
               return <Row>
@@ -141,7 +206,7 @@ class MainView extends React.Component {
             </Col>
             </>
             )
-          }} />
+            }} />
 
             <Route exact path="/profile/:username" render={() => {
               if ( !user ) 
@@ -154,7 +219,7 @@ class MainView extends React.Component {
               return (
               <>
               <Col>
-              <ProfileView key={movies.title} user={user} movies={movies} />
+              <ProfileView username={username} password={password} email={email} birthdate={birthdate} favorites={favorites} movies={movies} onBackClick={() => history.goBack()} removeMovie={(_id) => this.removeFromFavorites(_id)} />
               </Col>
               </>)
             }} />       
@@ -170,7 +235,7 @@ class MainView extends React.Component {
               return (
               <>
               <Col md={8}>
-                <MovieView key={movies.title} user={user} favorites={this.state.favorites} addMovie={(_id) => this.addFavorite(_id)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
+                <MovieView user={user} favorites={favorites} addMovie={(_id) => this.addFavorite(_id)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
               </Col>
               </>)
             }}  />

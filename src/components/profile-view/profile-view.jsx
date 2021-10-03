@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import axios from 'axios';
 import PropTypes from 'prop-types';
 import UpdateView from '../update-view/update-view';
-import moment from 'moment';
 import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -12,95 +11,20 @@ import { connect } from 'react-redux';
 import { setUser } from '../../actions/actions';
 
 
-
 class ProfileView extends Component {
   
   constructor(props) {
     super(props);
-
-    this.state = {
-      username: '',
-      password: '',
-      email: '',
-      birthdate: '',
-      favorites: []
-      // addFavorite: '',
-      // removeFavorite: ''
-    };
   }
 
-  componentDidMount() {
-    const accessToken = localStorage.getItem('token');
-    if (accessToken !== null) {
-      this.getUser(accessToken);
-    }
+  removeFavorite(_id) {
+    this.props.removeMovie(_id);
   }
-
-  // GET User for his own profile
-  getUser(token) {
-    const username = localStorage.getItem('user');
-
-    axios.get(`https://actor-inspector.herokuapp.com/users/${username}`, {
-      headers: { Authorization: `Bearer ${token}` },
-    })
-      .then((response) => {
-        this.setState({
-          username: response.data.username,
-          password: response.data.password,
-          email: response.data.email,
-          birthdate: moment(response.data.birthdate).format("YYYY-MM-DD"),
-          favorites: response.data.favorites
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }  
-
-  deleteUser(token) {
-    const username = localStorage.getItem('user');
-
-    if(window.confirm('Are you sure you want to delete your user account?')) {
-      axios.delete(`https://actor-inspector.herokuapp.com/users/${username}`, {
-        headers: { Authorization: `Bearer ${token}` },
-      })
-        .then(() => {
-          localStorage.removeItem('user');
-          localStorage.removeItem('token');
-          alert('Your account has been deleted.');
-          window.open(`/`, '_self');
-        })
-        .catch((e) => {
-          console.log(e);
-        });
-      }
-    }
-
-
-  removeFromFavorites(_id) {
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-
-      
-    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${_id}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      .then((response) => {
-        this.setState({
-          favorites: response.data.favorites
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-  }
-
 
   render() {
-    const { username, password, email, birthdate, favorites } = this.state;
-    const { movies, user } = this.props;
-    console.log(this.state);
-
+    
+    const { movies, username, password, email, birthdate, favorites } = this.props;
+    
     return (
      <> 
      <Row>
@@ -131,12 +55,12 @@ class ProfileView extends Component {
                 movies.map((movie) => {
                   if (movie._id === favorites.find((fav) => fav === movie._id)) {
                     return (
-                      <Col md={3}>
-                        <Card className="favorites-item card-content" style={{ width: '16rem' }} key={movie._id}>
+                      <Col lg={4} key={movie._id}>
+                        <Card className="favorites-item card-content" style={{ width: '16rem' }}>
                           <Card.Img style={{ width: '100%' }} className="movieCard" variant="top" src={movie.imageUrl} crossOrigin="true" />
                           <Card.Body>
                             <Card.Title className="movie-card-title">{movie.title}</Card.Title>
-                            <Button size='sm' className='profile-button remove-favorite' variant='danger' value={movies.title} onClick={() => this.removeFromFavorites(movie._id)}>
+                            <Button size='sm' className='profile-button remove-favorite' variant='danger' value={movies.title} onClick={() => this.removeFavorite(movie._id)}>
                               Remove
                             </Button>
                           </Card.Body>
@@ -150,18 +74,18 @@ class ProfileView extends Component {
           </Card.Body>
         </Card>
       </Row >
+      <br />        
       <br />
-        
+      <br />
         <br />
         <br />
       <UpdateView />
-        <br />
-        <br />
-        <br />
-          <Button onClick={() => { this.deleteUser() } }>Delete Account</Button>  
-        <br />
+      <br />
+      <br />
+      <br />
+      <Button onClick={() => { this.deleteUser() } }>Delete Account</Button>  
+      <br />  
      
-  
      </>
     )
   }
@@ -179,6 +103,12 @@ export default connect(mapStateToProps, { setUser })(ProfileView);
 
 // getting ERRORS when I define these as prop
 ProfileView.propTypes = {
-  user: PropTypes.string,
-  movies: PropTypes.array
+  movies: PropTypes.array,
+  username: PropTypes.string,
+  password: PropTypes.string,
+  email: PropTypes.string,
+  birthdate: PropTypes.string,
+  favorites: PropTypes.array,
+  onBackClick: PropTypes.func,
+  removeMovie: PropTypes.func
 };

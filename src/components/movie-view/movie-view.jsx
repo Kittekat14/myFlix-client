@@ -2,23 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 import './movie-view.scss';
 import { Link } from "react-router-dom";
-import axios from 'axios';
 
 
 export class MovieView extends React.Component {
   constructor(props) {
-    super(props)
-  
-    this.state = {
-       movies: [],
-       favorites: [],
-      //  addFavorite: '',
-      //  removeFavorite: '',
-       //buttonText: 'Add to Favorites'
-    }
+    super(props);
   }
   
 
@@ -29,17 +19,16 @@ export class MovieView extends React.Component {
   render() {
    
     const { movie, user, onBackClick, favorites } = this.props;
-    //let selectedMovie = favorites.find(movie => movie._id === _id);
-    //const { favorites } = this.state;
-    console.log(user);
-    console.log(this.state);
+    
+    console.log(favorites);
     console.log(movie);
+    console.log(user);
     
 
     return (
     
      <Row className="movie-view">
-       <Col md={8} className="movie-view">
+       <Col md={8} className="movie-view" key={movie.title}>
           <div className="movie-poster">
             <img src={movie.imageUrl} crossOrigin="true" />
           </div>
@@ -78,9 +67,9 @@ export class MovieView extends React.Component {
           
           <button className="back-button" onClick={() => { onBackClick(null); }}>Back</button>
 
-          {favorites.includes(movie) ?
+          {favorites.includes(movie._id) ?
           null :
-          <button className='favorite-button' key={movie._id} value={movie._id} onClick={() => this.addFavorite(movie._id)}> Add to favorite Movies </button>}           
+          <button className='favorite-button' onClick={() => this.addFavorite(movie._id)}> Add to favorite Movies </button>}           
 
 
       </Col>
@@ -114,5 +103,6 @@ MovieView.propTypes = {
   }),
   onBackClick: PropTypes.func.isRequired,
   favorites: PropTypes.array,
-  user: PropTypes.string
+  user: PropTypes.string,
+  addMovie: PropTypes.func
 }
