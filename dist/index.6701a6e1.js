@@ -22791,6 +22791,7 @@ class MainView extends _reactDefault.default.Component {
     constructor(){
         super();
         this.state = {
+            user: '',
             username: '',
             password: '',
             email: '',
@@ -22801,7 +22802,7 @@ class MainView extends _reactDefault.default.Component {
     componentDidMount() {
         let accessToken = localStorage.getItem('token');
         if (accessToken !== null) {
-            this.props.setUser({
+            this.setState({
                 user: localStorage.getItem('user')
             });
             this.getMovies(accessToken);
@@ -22820,12 +22821,12 @@ class MainView extends _reactDefault.default.Component {
     }
     /* When a user successfully logs in, this function updates the `user` property inside the state to that particular user */ onLoggedIn(authData) {
         console.log(authData);
-        this.props.setUser({
+        this.setState({
             user: authData.user.username
         });
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', authData.user.username);
-        this.props.setMovies(authData.token);
+        this.getMovies(authData.token);
     }
     onLoggedOut() {
         localStorage.removeItem("token");
@@ -22906,7 +22907,7 @@ class MainView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 168
+                lineNumber: 169
             },
             __self: this,
             children: [
@@ -22925,7 +22926,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 170
+                        lineNumber: 171
                     },
                     __self: this
                 }),
@@ -22933,7 +22934,7 @@ class MainView extends _reactDefault.default.Component {
                     className: "main-view justify-content-md-center",
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 179
+                        lineNumber: 180
                     },
                     __self: this,
                     children: [
@@ -22961,7 +22962,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 181
+                                lineNumber: 182
                             },
                             __self: this
                         }),
@@ -22982,7 +22983,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 196
+                                lineNumber: 197
                             },
                             __self: this
                         }),
@@ -23018,7 +23019,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 207
+                                lineNumber: 208
                             },
                             __self: this
                         }),
@@ -23053,7 +23054,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 223
+                                lineNumber: 224
                             },
                             __self: this
                         }),
@@ -23086,7 +23087,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 239
+                                lineNumber: 240
                             },
                             __self: this
                         }),
@@ -23117,7 +23118,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 255
+                                lineNumber: 256
                             },
                             __self: this
                         })
@@ -41751,9 +41752,14 @@ parcelHelpers.export(exports, "SET_USER", ()=>SET_USER
 parcelHelpers.export(exports, "setMovies", ()=>setMovies
 );
 parcelHelpers.export(exports, "setFilter", ()=>setFilter
-);
-parcelHelpers.export(exports, "setUser", ()=>setUser
-);
+) // export function setUser(value) {
+ //   console.log('SET_USER action is triggered');
+ //   return {
+ //     type: SET_USER,
+ //     value
+ //   }
+ // }
+;
 const SET_MOVIES = "SET_MOVIES";
 const SET_FILTER = "SET_FILTER";
 const SET_USER = "SET_USER";
@@ -41768,13 +41774,6 @@ function setFilter(value) {
     console.log('SET_FILTER action is triggered');
     return {
         type: SET_FILTER,
-        value
-    };
-}
-function setUser(value) {
-    console.log('SET_USER action is triggered');
-    return {
-        type: SET_USER,
         value
     };
 }

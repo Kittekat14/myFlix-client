@@ -21,10 +21,10 @@ export function setFilter(value) {
   }
 }
 
-export function setUser(value) {
-  console.log('SET_USER action is triggered');
-  return {
-    type: SET_USER,
-    value
-  }
-}
+// export function setUser(value) {
+//   console.log('SET_USER action is triggered');
+//   return {
+//     type: SET_USER,
+//     value
+//   }
+// }

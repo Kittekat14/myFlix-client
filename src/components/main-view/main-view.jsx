@@ -26,6 +26,7 @@ class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
+      user: '',
       username: '',
       password: '',
       email: '',
@@ -37,7 +38,7 @@ class MainView extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-      this.props.setUser({
+      this.setState({
         user: localStorage.getItem('user')
       });
       this.getMovies(accessToken);
@@ -60,13 +61,13 @@ class MainView extends React.Component {
   /* When a user successfully logs in, this function updates the `user` property inside the state to that particular user */
   onLoggedIn(authData) {
     console.log(authData);
-    this.props.setUser({
+    this.setState({
       user: authData.user.username
     });
 
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.username);
-    this.props.setMovies(authData.token);
+    this.getMovies(authData.token);
   }
   onLoggedOut() {
     localStorage.removeItem("token");
