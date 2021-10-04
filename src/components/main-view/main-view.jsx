@@ -26,7 +26,6 @@ class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-      // user: '',
       username: '',
       password: '',
       email: '',
@@ -42,7 +41,6 @@ class MainView extends React.Component {
         user: localStorage.getItem('user')
       });
       this.getMovies(accessToken);
-      this.getUser(accessToken);
     }
   }
  
@@ -163,7 +161,7 @@ class MainView extends React.Component {
   render() {
    
     const { movies } = this.props;
-    const { user, username, password, email, birthdate, favorites } = this.state;
+    const { user } = this.state;
    
   
     return (
