@@ -26,13 +26,11 @@ class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-      user: {
-        username: '',
-        password: '',
-        email: '',
-        birthdate: ''
-      },
-      movies: [],
+      // user: '',
+      username: '',
+      password: '',
+      email: '',
+      birthdate: '',
       favorites: []
     }
   }
@@ -40,7 +38,7 @@ class MainView extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-      this.setState({
+      this.props.setUser({
         user: localStorage.getItem('user')
       });
       this.getMovies(accessToken);
@@ -64,18 +62,18 @@ class MainView extends React.Component {
   /* When a user successfully logs in, this function updates the `user` property inside the state to that particular user */
   onLoggedIn(authData) {
     console.log(authData);
-    this.setState({
+    this.props.setUser({
       user: authData.user.username
     });
 
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.username);
-    this.getMovies(authData.token);
+    this.props.setMovies(authData.token);
   }
   onLoggedOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    this.setState({
+    this.props.setUser({
       user: null
     });
   }
@@ -88,7 +86,7 @@ class MainView extends React.Component {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
-        this.setState({
+        this.props.setUser({
           username: response.data.username,
           password: response.data.password,
           email: response.data.email,
@@ -165,7 +163,7 @@ class MainView extends React.Component {
   render() {
    
     const { movies } = this.props;
-    const { user } = this.state;
+    const { user, username, password, email, birthdate, favorites } = this.state;
    
   
     return (
