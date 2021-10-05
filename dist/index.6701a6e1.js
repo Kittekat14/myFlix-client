@@ -22814,7 +22814,7 @@ class MainView extends _reactDefault.default.Component {
                 Authorization: `Bearer ${token}`
             }
         }).then((response)=>{
-            this.props.setMovies(response.data);
+            this.getMovies(response.data);
         }).catch(function(error) {
             console.log(error);
         });
