@@ -5,7 +5,7 @@ import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import './login-view.scss';
 import { useHistory } from "react-router-dom";
-
+import { connect } from 'react-redux';
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');

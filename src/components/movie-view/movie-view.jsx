@@ -4,17 +4,9 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './movie-view.scss';
 import { Link } from "react-router-dom";
-import { connect } from 'react-redux';
 
 
-let mapStateToProps = state => {
-  return {
-    user: state.user,
-    movies: state.movies
-  }
-}
-
-class MovieView extends React.Component {
+export class MovieView extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -88,9 +80,6 @@ class MovieView extends React.Component {
   }
 
 }
-
-export default connect(mapStateToProps)(MovieView);
-
 
 MovieView.propTypes = {
   movie: PropTypes.shape({ 

@@ -26,11 +26,21 @@ class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
+<<<<<<< HEAD
       user: '',
       username: '',
       password: '',
       email: '',
       birthdate: '',
+=======
+      user: {
+        username: '',
+        password: '',
+        email: '',
+        birthdate: ''
+      },
+      movies: [],
+>>>>>>> parent of bad0323 (creating new user reducer and setUser action)
       favorites: []
     }
   }

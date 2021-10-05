@@ -7,13 +7,12 @@ import { connect } from 'react-redux';
 
 
 const mapStateToProps = state => {
-  return { 
-    user: state.user 
-  }
-}
+  const { user } = state;
+  return { user };
+};
 
 
-const NavBar = ({ users, onLoggedOut }) => {
+export const NavBar = ({ users, onLoggedOut }) => {
  
   const message = 'Welcome ';
   

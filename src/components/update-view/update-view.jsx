@@ -9,12 +9,6 @@ import { connect } from 'react-redux';
 import { setUser } from '../../actions/actions';
 
 
-let mapStateToProps = state => {
-  return {
-    user: state.user
-  }
-}
-
 export default class UpdateView extends Component {
   constructor(props) {
     super(props);
@@ -150,6 +144,12 @@ export default class UpdateView extends Component {
 
       </>
     )
+  }
+}
+
+let mapStateToProps = state => {
+  return {
+    user: state.user
   }
 }
 

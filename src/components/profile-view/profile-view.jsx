@@ -11,12 +11,6 @@ import { connect } from 'react-redux';
 import { setUser } from '../../actions/actions';
 
 
-let mapStateToProps = state => {
-  return {
-    user: state.user
-  }
-}
-
 class ProfileView extends Component {
   
   constructor(props) {
@@ -97,6 +91,12 @@ class ProfileView extends Component {
   }
 }
 
+
+let mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
 
 export default connect(mapStateToProps, { setUser })(ProfileView);
 
