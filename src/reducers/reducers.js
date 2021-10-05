@@ -33,6 +33,37 @@ function user(state = '', action) {
   }
 }
 
+//try out
+
+// const userData = {
+//   username: '',
+//   password:'',
+//   email: '',
+//   birthdate: ''
+// }
+
+// function user(state = userData, action) {
+//   switch (action.type) {
+//     case SET_USER:
+//       console.log('SET_USER reducer reached');
+//       return action.value;
+//     default:
+//       return state;  //returns initial state = ''
+//   }
+// }
+
+// function login(state = '', action) {
+//   switch (action.type) {
+//     case LOGIN:
+//       console.log('LOGIN reducer reached');
+//       return (
+//        loginHandler???
+//              );
+//     default:
+//       return state;  //returns initial state = ''
+//   }
+// }
+
 function favorites(state = [], action) {
   switch (action.type) {
     case SET_FAVORITE: 
