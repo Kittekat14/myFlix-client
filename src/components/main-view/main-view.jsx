@@ -72,7 +72,7 @@ class MainView extends React.Component {
   onLoggedOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    this.props.setUser({
+    this.setState({
       user: null
     });
   }
@@ -85,7 +85,7 @@ class MainView extends React.Component {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
-        this.props.setUser({
+        this.setState({
           username: response.data.username,
           password: response.data.password,
           email: response.data.email,
@@ -110,7 +110,6 @@ class MainView extends React.Component {
           localStorage.removeItem('user');
           localStorage.removeItem('token');
           alert('Your account has been deleted.');
-          window.open(`/`, '_self');
         })
         .catch((e) => {
           console.log(e);
