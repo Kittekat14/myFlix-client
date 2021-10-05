@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { setUser } from '../../actions/actions';
 
 
-export default class UpdateView extends Component {
+export class UpdateView extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -43,7 +43,6 @@ export default class UpdateView extends Component {
     .then((response) => {
       let username = response.data.username;
       localStorage.setItem('user', username);
-      window.open(`/profile/${username}`, '_self');
     })
     .catch(function (error) {
       console.log(error);
@@ -146,11 +145,3 @@ export default class UpdateView extends Component {
     )
   }
 }
-
-let mapStateToProps = state => {
-  return {
-    user: state.user
-  }
-}
-
-export default connect(mapStateToProps, { setUser } )(UpdateView);

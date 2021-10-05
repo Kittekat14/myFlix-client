@@ -7,17 +7,17 @@ import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 
 import { setMovies, setUser, setFilter} from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
-
 import { LoginView } from "../login-view/login-view";
 import { RegisterView } from "../register-view/register-view";
 import ProfileView from '../profile-view/profile-view';
-import { MovieView } from "../movie-view/movie-view";
-import { NavBar } from "../navbar-view/navbar-view";
+import MovieView from "../movie-view/movie-view";
+import NavBar from "../navbar-view/navbar-view";
 import { GenreView } from "../genre-view/genre-view";
 import { DirectorView } from "../director-view/director-view";
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
 
 import '../../index.scss';
 
@@ -26,21 +26,10 @@ class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-<<<<<<< HEAD
-      user: '',
       username: '',
       password: '',
       email: '',
       birthdate: '',
-=======
-      user: {
-        username: '',
-        password: '',
-        email: '',
-        birthdate: ''
-      },
-      movies: [],
->>>>>>> parent of bad0323 (creating new user reducer and setUser action)
       favorites: []
     }
   }
@@ -48,10 +37,10 @@ class MainView extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-      this.setState({
+      this.props.setUser({
         user: localStorage.getItem('user')
       });
-      this.getMovies(accessToken);
+      this.props.setMovies(accessToken);
     }
   }
  
@@ -61,7 +50,7 @@ class MainView extends React.Component {
       headers: { Authorization: `Bearer ${token}`}
     })
     .then(response => {
-      this.getMovies(response.data);
+      this.props.setMovies(response.data);
     })
     .catch(function (error) {
       console.log(error);
@@ -71,14 +60,15 @@ class MainView extends React.Component {
   /* When a user successfully logs in, this function updates the `user` property inside the state to that particular user */
   onLoggedIn(authData) {
     console.log(authData);
-    this.setState({
+    this.props.setUser({
       user: authData.user.username
     });
 
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.username);
-    this.getMovies(authData.token);
+    this.props.setMovies(authData.token);
   }
+
   onLoggedOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
@@ -171,13 +161,13 @@ class MainView extends React.Component {
   // visual representation of main component:
   render() {
    
-    const { movies } = this.props;
-    const { user } = this.state;
+    const { user, movies } = this.state;
+    const { username, password, email, birthdate, favorites } = this.props;
    
   
     return (
       <Router>
-
+        <Container>
             <Route path="/" render={() => {
               if(user){
               return (
@@ -199,7 +189,7 @@ class MainView extends React.Component {
               if (movies.length === 0) return <div className="main-view" />;
               return (
                 <>   
-                <MoviesList movies={movies} />
+                <MoviesList user={user} movies={movies} />
               </>
               )
             }} />
@@ -280,6 +270,7 @@ class MainView extends React.Component {
             }}  />
 
           </Row>
+        </Container>
       </Router>
       )
   }
@@ -287,9 +278,9 @@ class MainView extends React.Component {
 
 
 let mapStateToProps = state => {
-  return {
+  return { 
     movies: state.movies,
-    user: state.user
+    user: state.user 
   }
 }
 

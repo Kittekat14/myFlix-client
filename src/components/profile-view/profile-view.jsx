@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import axios from 'axios';
 import PropTypes from 'prop-types';
-import UpdateView from '../update-view/update-view';
+import { UpdateView } from '../update-view/update-view';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
@@ -77,8 +77,6 @@ class ProfileView extends Component {
       <br />        
       <br />
       <br />
-        <br />
-        <br />
       <UpdateView />
       <br />
       <br />

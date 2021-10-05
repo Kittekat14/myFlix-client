@@ -6,7 +6,7 @@ import './movie-view.scss';
 import { Link } from "react-router-dom";
 
 
-export class MovieView extends React.Component {
+export default class MovieView extends React.Component {
   constructor(props) {
     super(props);
   }

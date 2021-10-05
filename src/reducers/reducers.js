@@ -23,19 +23,7 @@ function movies(state = [], action) {
   }
 }
 
-<<<<<<< HEAD
-
-// function user(state = '', action) {
-//   switch (action.type) {
-//     case SET_USER:
-//       console.log('SET_USER reducer reached');
-//       return action.value;
-//     default:
-//       return state;
-//   }
-//   }
-=======
-function user(state = {}, action) {
+function user(state = '', action) {
   switch (action.type) {
     case SET_USER:
       console.log('SET_USER reducer reached');
@@ -45,9 +33,9 @@ function user(state = {}, action) {
   }
 }
 
-function favorite(state = [], action) {
+function favorites(state = [], action) {
   switch (action.type) {
-    case SET_FAVORITE: // I have to create that action still
+    case SET_FAVORITE: 
       console.log('SET_FAVORITE reducer reached');
       return action.value;
     default:
@@ -55,17 +43,12 @@ function favorite(state = [], action) {
   }
 }
 
->>>>>>> parent of bad0323 (creating new user reducer and setUser action)
 
 const moviesApp = combineReducers({
   visibilityFilter,
   movies,
-<<<<<<< HEAD
-  //user
-=======
-  user,
-  favorite
->>>>>>> parent of bad0323 (creating new user reducer and setUser action)
+  user, 
+  favorites
 });
 
 export default moviesApp;

@@ -12,7 +12,7 @@ const mapStateToProps = state => {
 };
 
 
-export const NavBar = ({ users, onLoggedOut }) => {
+const NavBar = ({ users, onLoggedOut }) => {
  
   const message = 'Welcome ';
   

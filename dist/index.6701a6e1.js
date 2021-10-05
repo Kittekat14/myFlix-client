@@ -945,11 +945,11 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactDom = require("react-dom");
 var _reactDomDefault = parcelHelpers.interopDefault(_reactDom);
-var _mainView = require("./components/main-view/main-view");
-var _mainViewDefault = parcelHelpers.interopDefault(_mainView);
 var _reactBootstrap = require("react-bootstrap");
 var _redux = require("redux");
 var _reactRedux = require("react-redux");
+var _mainView = require("./components/main-view/main-view");
+var _mainViewDefault = parcelHelpers.interopDefault(_mainView);
 var _reducers = require("./reducers/reducers");
 var _reducersDefault = parcelHelpers.interopDefault(_reducers);
 var _reduxDevtoolsExtension = require("redux-devtools-extension");
@@ -964,19 +964,19 @@ class myFlixApplication extends _reactDefault.default.Component {
             store: store,
             __source: {
                 fileName: "src/index.jsx",
-                lineNumber: 22
+                lineNumber: 23
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Container, {
                 __source: {
                     fileName: "src/index.jsx",
-                    lineNumber: 23
+                    lineNumber: 24
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_mainViewDefault.default, {
                     __source: {
                         fileName: "src/index.jsx",
-                        lineNumber: 24
+                        lineNumber: 25
                     },
                     __self: this
                 })
@@ -22779,43 +22779,36 @@ var _registerView = require("../register-view/register-view");
 var _profileView = require("../profile-view/profile-view");
 var _profileViewDefault = parcelHelpers.interopDefault(_profileView);
 var _movieView = require("../movie-view/movie-view");
+var _movieViewDefault = parcelHelpers.interopDefault(_movieView);
 var _navbarView = require("../navbar-view/navbar-view");
+var _navbarViewDefault = parcelHelpers.interopDefault(_navbarView);
 var _genreView = require("../genre-view/genre-view");
 var _directorView = require("../director-view/director-view");
 var _row = require("react-bootstrap/Row");
 var _rowDefault = parcelHelpers.interopDefault(_row);
 var _col = require("react-bootstrap/Col");
 var _colDefault = parcelHelpers.interopDefault(_col);
+var _container = require("react-bootstrap/Container");
+var _containerDefault = parcelHelpers.interopDefault(_container);
 var _indexScss = require("../../index.scss");
 class MainView extends _reactDefault.default.Component {
     constructor(){
         super();
         this.state = {
-<<<<<<< HEAD
-            user: '',
             username: '',
             password: '',
             email: '',
             birthdate: '',
-=======
-            user: {
-                username: '',
-                password: '',
-                email: '',
-                birthdate: ''
-            },
-            movies: [],
->>>>>>> parent of bad0323 (creating new user reducer and setUser action)
             favorites: []
         };
     }
     componentDidMount() {
         let accessToken = localStorage.getItem('token');
         if (accessToken !== null) {
-            this.setState({
+            this.props.setUser({
                 user: localStorage.getItem('user')
             });
-            this.getMovies(accessToken);
+            this.props.setMovies(accessToken);
         }
     }
     /* GET movie data from DB; getMovies method is called with this.getMovies() in 'onLoggedIn', when right token for username is sent*/ getMovies(token) {
@@ -22824,19 +22817,19 @@ class MainView extends _reactDefault.default.Component {
                 Authorization: `Bearer ${token}`
             }
         }).then((response)=>{
-            this.getMovies(response.data);
+            this.props.setMovies(response.data);
         }).catch(function(error) {
             console.log(error);
         });
     }
     /* When a user successfully logs in, this function updates the `user` property inside the state to that particular user */ onLoggedIn(authData) {
         console.log(authData);
-        this.setState({
+        this.props.setUser({
             user: authData.user.username
         });
         localStorage.setItem('token', authData.token);
         localStorage.setItem('user', authData.user.username);
-        this.getMovies(authData.token);
+        this.props.setMovies(authData.token);
     }
     onLoggedOut() {
         localStorage.removeItem("token");
@@ -22912,265 +22905,237 @@ class MainView extends _reactDefault.default.Component {
     }
     // visual representation of main component:
     render() {
-        const { movies  } = this.props;
-        const { user  } = this.state;
-        return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
+        const { user , movies  } = this.state;
+        const { username , password , email , birthdate , favorites  } = this.props;
+        return(/*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-<<<<<<< HEAD
                 lineNumber: 169
-=======
-                lineNumber: 172
->>>>>>> parent of bad0323 (creating new user reducer and setUser action)
             },
             __self: this,
-            children: [
-                /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
-                    path: "/",
-                    render: ()=>{
-                        if (user) return(/*#__PURE__*/ _jsxRuntime.jsx(_rowDefault.default, {
-                            className: "navigation-main",
-                            children: /*#__PURE__*/ _jsxRuntime.jsx(_navbarView.NavBar, {
-                                users: user,
-                                onLoggedOut: ()=>{
-                                    this.onLoggedOut();
-                                }
-                            })
-                        }));
-                    },
-                    __source: {
-                        fileName: "src/components/main-view/main-view.jsx",
-<<<<<<< HEAD
-                        lineNumber: 171
-=======
-                        lineNumber: 174
->>>>>>> parent of bad0323 (creating new user reducer and setUser action)
-                    },
-                    __self: this
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsxs(_rowDefault.default, {
-                    className: "main-view justify-content-md-center",
-                    __source: {
-                        fileName: "src/components/main-view/main-view.jsx",
-<<<<<<< HEAD
-                        lineNumber: 180
-=======
-                        lineNumber: 183
->>>>>>> parent of bad0323 (creating new user reducer and setUser action)
-                    },
-                    __self: this,
-                    children: [
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
-                            exact: true,
-                            path: "/",
-                            render: ()=>{
-                                if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_rowDefault.default, {
-                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+            children: /*#__PURE__*/ _jsxRuntime.jsxs(_containerDefault.default, {
+                __source: {
+                    fileName: "src/components/main-view/main-view.jsx",
+                    lineNumber: 170
+                },
+                __self: this,
+                children: [
+                    /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
+                        path: "/",
+                        render: ()=>{
+                            if (user) return(/*#__PURE__*/ _jsxRuntime.jsx(_rowDefault.default, {
+                                className: "navigation-main",
+                                children: /*#__PURE__*/ _jsxRuntime.jsx(_navbarViewDefault.default, {
+                                    users: user,
+                                    onLoggedOut: ()=>{
+                                        this.onLoggedOut();
+                                    }
+                                })
+                            }));
+                        },
+                        __source: {
+                            fileName: "src/components/main-view/main-view.jsx",
+                            lineNumber: 171
+                        },
+                        __self: this
+                    }),
+                    /*#__PURE__*/ _jsxRuntime.jsxs(_rowDefault.default, {
+                        className: "main-view justify-content-md-center",
+                        __source: {
+                            fileName: "src/components/main-view/main-view.jsx",
+                            lineNumber: 180
+                        },
+                        __self: this,
+                        children: [
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
+                                exact: true,
+                                path: "/",
+                                render: ()=>{
+                                    if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_rowDefault.default, {
+                                        children: /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+                                            children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
+                                                onLoggedIn: (user1)=>this.onLoggedIn(user1)
+                                            })
+                                        })
+                                    }));
+                                    if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                        className: "main-view"
+                                    }));
+                                    return(/*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
+                                        children: [
+                                            /*#__PURE__*/ _jsxRuntime.jsx(_moviesListDefault.default, {
+                                                user: user,
+                                                movies: movies
+                                            })
+                                        ]
+                                    }));
+                                },
+                                __source: {
+                                    fileName: "src/components/main-view/main-view.jsx",
+                                    lineNumber: 182
+                                },
+                                __self: this
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
+                                path: "/register",
+                                render: ()=>{
+                                    if (user) return(/*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Redirect, {
+                                        to: "/"
+                                    }));
+                                    return(/*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
+                                        children: [
+                                            /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+                                                children: /*#__PURE__*/ _jsxRuntime.jsx(_registerView.RegisterView, {
+                                                })
+                                            })
+                                        ]
+                                    }));
+                                },
+                                __source: {
+                                    fileName: "src/components/main-view/main-view.jsx",
+                                    lineNumber: 197
+                                },
+                                __self: this
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
+                                exact: true,
+                                path: "/profile/:username",
+                                render: ()=>{
+                                    if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
                                             onLoggedIn: (user1)=>this.onLoggedIn(user1)
                                         })
-                                    })
-                                }));
-                                if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-                                    className: "main-view"
-                                }));
-                                return(/*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
-                                    children: [
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_moviesListDefault.default, {
-                                            movies: movies
-                                        })
-                                    ]
-                                }));
-                            },
-                            __source: {
-                                fileName: "src/components/main-view/main-view.jsx",
-<<<<<<< HEAD
-                                lineNumber: 182
-=======
-                                lineNumber: 185
->>>>>>> parent of bad0323 (creating new user reducer and setUser action)
-                            },
-                            __self: this
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
-                            path: "/register",
-                            render: ()=>{
-                                if (user) return(/*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Redirect, {
-                                    to: "/"
-                                }));
-                                return(/*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
-                                    children: [
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
-                                            children: /*#__PURE__*/ _jsxRuntime.jsx(_registerView.RegisterView, {
+                                    }));
+                                    if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                        className: "main-view"
+                                    }));
+                                    return(/*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
+                                        children: [
+                                            /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+                                                children: /*#__PURE__*/ _jsxRuntime.jsx(_profileViewDefault.default, {
+                                                    username: username,
+                                                    password: password,
+                                                    email: email,
+                                                    birthdate: birthdate,
+                                                    favorites: favorites,
+                                                    movies: movies,
+                                                    onBackClick: ()=>history.goBack()
+                                                    ,
+                                                    removeMovie: (_id)=>this.removeFromFavorites(_id)
+                                                })
                                             })
+                                        ]
+                                    }));
+                                },
+                                __source: {
+                                    fileName: "src/components/main-view/main-view.jsx",
+                                    lineNumber: 208
+                                },
+                                __self: this
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
+                                exact: true,
+                                path: "/movies/:title",
+                                render: ({ match , history  })=>{
+                                    if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+                                        children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
+                                            onLoggedIn: (user1)=>this.onLoggedIn(user1)
                                         })
-                                    ]
-                                }));
-                            },
-                            __source: {
-                                fileName: "src/components/main-view/main-view.jsx",
-<<<<<<< HEAD
-                                lineNumber: 197
-=======
-                                lineNumber: 200
->>>>>>> parent of bad0323 (creating new user reducer and setUser action)
-                            },
-                            __self: this
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
-                            exact: true,
-                            path: "/profile/:username",
-                            render: ()=>{
-                                if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
-                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
-                                        onLoggedIn: (user1)=>this.onLoggedIn(user1)
-                                    })
-                                }));
-                                if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-                                    className: "main-view"
-                                }));
-                                return(/*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
-                                    children: [
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
-                                            children: /*#__PURE__*/ _jsxRuntime.jsx(_profileViewDefault.default, {
-                                                username: username,
-                                                password: password,
-                                                email: email,
-                                                birthdate: birthdate,
-                                                favorites: favorites,
-                                                movies: movies,
-                                                onBackClick: ()=>history.goBack()
-                                                ,
-                                                removeMovie: (_id)=>this.removeFromFavorites(_id)
+                                    }));
+                                    if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                        className: "main-view"
+                                    }));
+                                    return(/*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
+                                        children: [
+                                            /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+                                                md: 8,
+                                                children: /*#__PURE__*/ _jsxRuntime.jsx(_movieViewDefault.default, {
+                                                    user: user,
+                                                    favorites: favorites,
+                                                    addMovie: (_id)=>this.addFavorite(_id)
+                                                    ,
+                                                    movie: movies.find((m)=>m.title === match.params.title
+                                                    ),
+                                                    onBackClick: ()=>history.goBack()
+                                                })
                                             })
+                                        ]
+                                    }));
+                                },
+                                __source: {
+                                    fileName: "src/components/main-view/main-view.jsx",
+                                    lineNumber: 224
+                                },
+                                __self: this
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
+                                exact: true,
+                                path: "/genres/:name",
+                                render: ({ match , history  })=>{
+                                    if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+                                        children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
+                                            onLoggedIn: (user1)=>this.onLoggedIn(user1)
                                         })
-                                    ]
-                                }));
-                            },
-                            __source: {
-                                fileName: "src/components/main-view/main-view.jsx",
-<<<<<<< HEAD
-                                lineNumber: 208
-=======
-                                lineNumber: 211
->>>>>>> parent of bad0323 (creating new user reducer and setUser action)
-                            },
-                            __self: this
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
-                            exact: true,
-                            path: "/movies/:title",
-                            render: ({ match , history  })=>{
-                                if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
-                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
-                                        onLoggedIn: (user1)=>this.onLoggedIn(user1)
-                                    })
-                                }));
-                                if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-                                    className: "main-view"
-                                }));
-                                return(/*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
-                                    children: [
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
-                                            md: 8,
-                                            children: /*#__PURE__*/ _jsxRuntime.jsx(_movieView.MovieView, {
-                                                user: user,
-                                                favorites: favorites,
-                                                addMovie: (_id)=>this.addFavorite(_id)
-                                                ,
-                                                movie: movies.find((m)=>m.title === match.params.title
-                                                ),
-                                                onBackClick: ()=>history.goBack()
+                                    }));
+                                    if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                        className: "main-view"
+                                    }));
+                                    return(/*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
+                                        children: [
+                                            /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+                                                md: 8,
+                                                children: /*#__PURE__*/ _jsxRuntime.jsx(_genreView.GenreView, {
+                                                    genre: movies.find((m)=>m.genre.name === match.params.name
+                                                    ).genre,
+                                                    onBackClick: ()=>history.goBack()
+                                                    ,
+                                                    movies: movies
+                                                })
                                             })
+                                        ]
+                                    }));
+                                },
+                                __source: {
+                                    fileName: "src/components/main-view/main-view.jsx",
+                                    lineNumber: 240
+                                },
+                                __self: this
+                            }),
+                            /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
+                                exact: true,
+                                path: "/directors/:name",
+                                render: ({ match , history  })=>{
+                                    if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+                                        children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
+                                            onLoggedIn: (user1)=>this.onLoggedIn(user1)
                                         })
-                                    ]
-                                }));
-                            },
-                            __source: {
-                                fileName: "src/components/main-view/main-view.jsx",
-<<<<<<< HEAD
-                                lineNumber: 224
-=======
-                                lineNumber: 227
->>>>>>> parent of bad0323 (creating new user reducer and setUser action)
-                            },
-                            __self: this
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
-                            exact: true,
-                            path: "/genres/:name",
-                            render: ({ match , history  })=>{
-                                if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
-                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
-                                        onLoggedIn: (user1)=>this.onLoggedIn(user1)
-                                    })
-                                }));
-                                if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-                                    className: "main-view"
-                                }));
-                                return(/*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
-                                    children: [
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
-                                            md: 8,
-                                            children: /*#__PURE__*/ _jsxRuntime.jsx(_genreView.GenreView, {
-                                                genre: movies.find((m)=>m.genre.name === match.params.name
-                                                ).genre,
-                                                onBackClick: ()=>history.goBack()
-                                                ,
-                                                movies: movies
+                                    }));
+                                    if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
+                                        className: "main-view"
+                                    }));
+                                    return(/*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
+                                        children: [
+                                            /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+                                                md: 8,
+                                                children: /*#__PURE__*/ _jsxRuntime.jsx(_directorView.DirectorView, {
+                                                    director: movies.find((m)=>m.director.name === match.params.name
+                                                    ).director,
+                                                    onBackClick: ()=>history.goBack()
+                                                })
                                             })
-                                        })
-                                    ]
-                                }));
-                            },
-                            __source: {
-                                fileName: "src/components/main-view/main-view.jsx",
-<<<<<<< HEAD
-                                lineNumber: 240
-=======
-                                lineNumber: 243
->>>>>>> parent of bad0323 (creating new user reducer and setUser action)
-                            },
-                            __self: this
-                        }),
-                        /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Route, {
-                            exact: true,
-                            path: "/directors/:name",
-                            render: ({ match , history  })=>{
-                                if (!user) return(/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
-                                    children: /*#__PURE__*/ _jsxRuntime.jsx(_loginView.LoginView, {
-                                        onLoggedIn: (user1)=>this.onLoggedIn(user1)
-                                    })
-                                }));
-                                if (movies.length === 0) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
-                                    className: "main-view"
-                                }));
-                                return(/*#__PURE__*/ _jsxRuntime.jsx(_jsxRuntime.Fragment, {
-                                    children: [
-                                        /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
-                                            md: 8,
-                                            children: /*#__PURE__*/ _jsxRuntime.jsx(_directorView.DirectorView, {
-                                                director: movies.find((m)=>m.director.name === match.params.name
-                                                ).director,
-                                                onBackClick: ()=>history.goBack()
-                                            })
-                                        })
-                                    ]
-                                }));
-                            },
-                            __source: {
-                                fileName: "src/components/main-view/main-view.jsx",
-<<<<<<< HEAD
-                                lineNumber: 256
-=======
-                                lineNumber: 259
->>>>>>> parent of bad0323 (creating new user reducer and setUser action)
-                            },
-                            __self: this
-                        })
-                    ]
-                })
-            ]
+                                        ]
+                                    }));
+                                },
+                                __source: {
+                                    fileName: "src/components/main-view/main-view.jsx",
+                                    lineNumber: 256
+                                },
+                                __self: this
+                            })
+                        ]
+                    })
+                ]
+            })
         }));
     }
 }
@@ -23190,7 +23155,7 @@ exports.default = _reactRedux.connect(mapStateToProps, {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","react-router-dom":"cpyQW","../login-view/login-view":"054li","../register-view/register-view":"F9ahz","../movie-view/movie-view":"ikZdr","../genre-view/genre-view":"8WCoL","../director-view/director-view":"ck15y","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","../../index.scss":"jUTZ8","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","../profile-view/profile-view":"2E7Aw","../navbar-view/navbar-view":"j0Dt2","react-redux":"2L0if","../../actions/actions":"1Ttfj","../movies-list/movies-list":"1kGQ5","moment":"5Keig"}],"iYoWk":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","react-router-dom":"cpyQW","../login-view/login-view":"054li","../register-view/register-view":"F9ahz","../movie-view/movie-view":"ikZdr","../genre-view/genre-view":"8WCoL","../director-view/director-view":"ck15y","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","../../index.scss":"jUTZ8","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","../profile-view/profile-view":"2E7Aw","../navbar-view/navbar-view":"j0Dt2","react-redux":"2L0if","../../actions/actions":"1Ttfj","../movies-list/movies-list":"1kGQ5","moment":"5Keig","react-bootstrap/Container":"2PRIq"}],"iYoWk":[function(require,module,exports) {
 module.exports = require('./lib/axios');
 
 },{"./lib/axios":"3QmO2"}],"3QmO2":[function(require,module,exports) {
@@ -30480,7 +30445,7 @@ $RefreshReg$(_c, "RegisterView");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","react-bootstrap":"h2YVd","./register-view.scss":"lzDtJ","axios":"iYoWk","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","react-router-dom":"cpyQW"}],"h2YVd":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","./register-view.scss":"lzDtJ","axios":"iYoWk","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","react-router-dom":"cpyQW","prop-types":"1tgq3"}],"h2YVd":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "Accordion", ()=>_accordionDefault.default
@@ -41274,8 +41239,6 @@ $parcel$ReactRefreshHelpers$3741.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "MovieView", ()=>MovieView
-);
 var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
@@ -41574,6 +41537,7 @@ class MovieView extends _reactDefault.default.Component {
         }));
     }
 }
+exports.default = MovieView;
 MovieView.propTypes = {
     movie: _propTypesDefault.default.shape({
         _id: _propTypesDefault.default.string,
@@ -41760,14 +41724,6 @@ class GenreView extends _reactDefault.default.Component {
         }));
     }
 }
-let mapStateToProps = (state)=>{
-    return {
-        movies: state.movies
-    };
-};
-exports.default = _reactRedux.connect(mapStateToProps, {
-    setMovies: _actions.setMovies
-})(GenreView);
 GenreView.propTypes = {
     genre: _propTypesDefault.default.shape({
         name: _propTypesDefault.default.string,
@@ -41791,21 +41747,21 @@ parcelHelpers.export(exports, "SET_FILTER", ()=>SET_FILTER
 );
 parcelHelpers.export(exports, "SET_USER", ()=>SET_USER
 );
+parcelHelpers.export(exports, "SET_FAVORITE", ()=>SET_FAVORITE
+);
 //action creators
 parcelHelpers.export(exports, "setMovies", ()=>setMovies
 );
 parcelHelpers.export(exports, "setFilter", ()=>setFilter
-) // export function setUser(value) {
- //   console.log('SET_USER action is triggered');
- //   return {
- //     type: SET_USER,
- //     value
- //   }
- // }
-;
+);
+parcelHelpers.export(exports, "setUser", ()=>setUser
+);
+parcelHelpers.export(exports, "setFavorite", ()=>setFavorite
+);
 const SET_MOVIES = "SET_MOVIES";
 const SET_FILTER = "SET_FILTER";
 const SET_USER = "SET_USER";
+const SET_FAVORITE = "SET_FAVORITE";
 function setMovies(value) {
     console.log('SET_MOVIES action is triggered');
     return {
@@ -41817,6 +41773,20 @@ function setFilter(value) {
     console.log('SET_FILTER action is triggered');
     return {
         type: SET_FILTER,
+        value
+    };
+}
+function setUser(value) {
+    console.log('SET_USER action is triggered');
+    return {
+        type: SET_USER,
+        value
+    };
+}
+function setFavorite(value) {
+    console.log('SET_FAVORITE action is triggered');
+    return {
+        type: SET_FAVORITE,
         value
     };
 }
@@ -41980,14 +41950,6 @@ class DirectorView extends _reactDefault.default.Component {
         }));
     }
 }
-let mapStateToProps = (state)=>{
-    return {
-        movies: state.movies
-    };
-};
-exports.default = _reactRedux.connect(mapStateToProps, {
-    setMovies: _actions.setMovies
-})(DirectorView);
 DirectorView.propTypes = {
     director: _propTypesDefault.default.shape({
         name: _propTypesDefault.default.string,
@@ -42020,7 +41982,6 @@ var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _axios = require("axios");
 var _axiosDefault = parcelHelpers.interopDefault(_axios);
 var _updateView = require("../update-view/update-view");
-var _updateViewDefault = parcelHelpers.interopDefault(_updateView);
 var _button = require("react-bootstrap/Button");
 var _buttonDefault = parcelHelpers.interopDefault(_button);
 var _card = require("react-bootstrap/Card");
@@ -42293,7 +42254,7 @@ class ProfileView extends _react.Component {
                     },
                     __self: this
                 }),
-                /*#__PURE__*/ _jsxRuntime.jsx("br", {
+                /*#__PURE__*/ _jsxRuntime.jsx(_updateView.UpdateView, {
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
                         lineNumber: 80
@@ -42307,7 +42268,7 @@ class ProfileView extends _react.Component {
                     },
                     __self: this
                 }),
-                /*#__PURE__*/ _jsxRuntime.jsx(_updateViewDefault.default, {
+                /*#__PURE__*/ _jsxRuntime.jsx("br", {
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
                         lineNumber: 82
@@ -42321,27 +42282,13 @@ class ProfileView extends _react.Component {
                     },
                     __self: this
                 }),
-                /*#__PURE__*/ _jsxRuntime.jsx("br", {
-                    __source: {
-                        fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 84
-                    },
-                    __self: this
-                }),
-                /*#__PURE__*/ _jsxRuntime.jsx("br", {
-                    __source: {
-                        fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 85
-                    },
-                    __self: this
-                }),
                 /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
                     onClick: ()=>{
                         this.deleteUser();
                     },
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 86
+                        lineNumber: 84
                     },
                     __self: this,
                     children: "Delete Account"
@@ -42349,7 +42296,7 @@ class ProfileView extends _react.Component {
                 /*#__PURE__*/ _jsxRuntime.jsx("br", {
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
-                        lineNumber: 87
+                        lineNumber: 85
                     },
                     __self: this
                 })
@@ -42382,7 +42329,7 @@ ProfileView.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","../update-view/update-view":"8jXgg","react-bootstrap/Button":"9CzHT","react-bootstrap/Card":"MoOk8","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","prop-types":"1tgq3","react-redux":"2L0if","../../actions/actions":"1Ttfj"}],"8jXgg":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","../update-view/update-view":"8jXgg","react-bootstrap/Button":"9CzHT","react-bootstrap/Card":"MoOk8","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","prop-types":"1tgq3","react-redux":"2L0if","../../actions/actions":"1Ttfj","axios":"iYoWk"}],"8jXgg":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$7299 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -42391,6 +42338,8 @@ $parcel$ReactRefreshHelpers$7299.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "UpdateView", ()=>UpdateView
+);
 var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
@@ -42438,7 +42387,6 @@ class UpdateView extends _react.Component {
         }).then((response)=>{
             let username1 = response.data.username;
             localStorage.setItem('user', username1);
-            window.open(`/profile/${username1}`, '_self');
         }).catch(function(error) {
             console.log(error);
         });
@@ -42477,14 +42425,14 @@ class UpdateView extends _react.Component {
             children: /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default, {
                 __source: {
                     fileName: "src/components/update-view/update-view.jsx",
-                    lineNumber: 88
+                    lineNumber: 87
                 },
                 __self: this,
                 children: [
                     /*#__PURE__*/ _jsxRuntime.jsx("h3", {
                         __source: {
                             fileName: "src/components/update-view/update-view.jsx",
-                            lineNumber: 89
+                            lineNumber: 88
                         },
                         __self: this,
                         children: "Update Your User Data"
@@ -42494,14 +42442,14 @@ class UpdateView extends _react.Component {
                         controlId: "formUsername",
                         __source: {
                             fileName: "src/components/update-view/update-view.jsx",
-                            lineNumber: 91
+                            lineNumber: 90
                         },
                         __self: this,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Label, {
                                 __source: {
                                     fileName: "src/components/update-view/update-view.jsx",
-                                    lineNumber: 92
+                                    lineNumber: 91
                                 },
                                 __self: this,
                                 children: "Username*:"
@@ -42516,7 +42464,7 @@ class UpdateView extends _react.Component {
                                 ,
                                 __source: {
                                     fileName: "src/components/update-view/update-view.jsx",
-                                    lineNumber: 93
+                                    lineNumber: 92
                                 },
                                 __self: this
                             }),
@@ -42528,7 +42476,7 @@ class UpdateView extends _react.Component {
                                     },
                                     __source: {
                                         fileName: "src/components/update-view/update-view.jsx",
-                                        lineNumber: 97
+                                        lineNumber: 96
                                     },
                                     __self: this,
                                     children: nameError[key]
@@ -42541,14 +42489,14 @@ class UpdateView extends _react.Component {
                         controlId: "formPassword",
                         __source: {
                             fileName: "src/components/update-view/update-view.jsx",
-                            lineNumber: 102
+                            lineNumber: 101
                         },
                         __self: this,
                         children: [
                             /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Label, {
                                 __source: {
                                     fileName: "src/components/update-view/update-view.jsx",
-                                    lineNumber: 103
+                                    lineNumber: 102
                                 },
                                 __self: this,
                                 children: "Password*:"
@@ -42563,7 +42511,7 @@ class UpdateView extends _react.Component {
                                 ,
                                 __source: {
                                     fileName: "src/components/update-view/update-view.jsx",
-                                    lineNumber: 104
+                                    lineNumber: 103
                                 },
                                 __self: this
                             }),
@@ -42575,7 +42523,7 @@ class UpdateView extends _react.Component {
                                     },
                                     __source: {
                                         fileName: "src/components/update-view/update-view.jsx",
-                                        lineNumber: 110
+                                        lineNumber: 109
                                     },
                                     __self: this,
                                     children: passwordError[key]
@@ -42588,7 +42536,7 @@ class UpdateView extends _react.Component {
                         controlId: "formEmail",
                         __source: {
                             fileName: "src/components/update-view/update-view.jsx",
-                            lineNumber: 115
+                            lineNumber: 114
                         },
                         __self: this,
                         children: [
@@ -42597,7 +42545,7 @@ class UpdateView extends _react.Component {
                                 className: "mb-3",
                                 __source: {
                                     fileName: "src/components/update-view/update-view.jsx",
-                                    lineNumber: 116
+                                    lineNumber: 115
                                 },
                                 __self: this,
                                 children: [
@@ -42612,7 +42560,7 @@ class UpdateView extends _react.Component {
                                         ,
                                         __source: {
                                             fileName: "src/components/update-view/update-view.jsx",
-                                            lineNumber: 118
+                                            lineNumber: 117
                                         },
                                         __self: this
                                     })
@@ -42626,7 +42574,7 @@ class UpdateView extends _react.Component {
                                     },
                                     __source: {
                                         fileName: "src/components/update-view/update-view.jsx",
-                                        lineNumber: 125
+                                        lineNumber: 124
                                     },
                                     __self: this,
                                     children: emailError[key]
@@ -42639,7 +42587,7 @@ class UpdateView extends _react.Component {
                         controlId: "formBirthdate",
                         __source: {
                             fileName: "src/components/update-view/update-view.jsx",
-                            lineNumber: 130
+                            lineNumber: 129
                         },
                         __self: this,
                         children: /*#__PURE__*/ _jsxRuntime.jsxs(_formDefault.default.Label, {
@@ -42647,7 +42595,7 @@ class UpdateView extends _react.Component {
                             className: "mb-3",
                             __source: {
                                 fileName: "src/components/update-view/update-view.jsx",
-                                lineNumber: 131
+                                lineNumber: 130
                             },
                             __self: this,
                             children: [
@@ -42661,7 +42609,7 @@ class UpdateView extends _react.Component {
                                     ,
                                     __source: {
                                         fileName: "src/components/update-view/update-view.jsx",
-                                        lineNumber: 133
+                                        lineNumber: 132
                                     },
                                     __self: this
                                 })
@@ -42675,7 +42623,7 @@ class UpdateView extends _react.Component {
                         },
                         __source: {
                             fileName: "src/components/update-view/update-view.jsx",
-                            lineNumber: 141
+                            lineNumber: 140
                         },
                         __self: this,
                         children: "Update your Account"
@@ -42685,15 +42633,6 @@ class UpdateView extends _react.Component {
         }));
     }
 }
-exports.default = UpdateView;
-let mapStateToProps = (state)=>{
-    return {
-        user: state.user
-    };
-};
-exports.default = _reactRedux.connect(mapStateToProps, {
-    setUser: _actions.setUser
-})(UpdateView);
 
   $parcel$ReactRefreshHelpers$7299.postlude(module);
 } finally {
@@ -42709,8 +42648,6 @@ $parcel$ReactRefreshHelpers$469c.prelude(module);
 try {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "NavBar", ()=>NavBar
-);
 var _jsxRuntime = require("react/jsx-runtime");
 var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
@@ -43006,12 +42943,6 @@ var _reactRedux = require("react-redux");
 var _visibilityFilterInput = require("../visibility-filter-input/visibility-filter-input");
 var _visibilityFilterInputDefault = parcelHelpers.interopDefault(_visibilityFilterInput);
 var _movieCard = require("../movie-card/movie-card");
-const mapStateToProps = (state)=>{
-    const { visibilityFilter  } = state;
-    return {
-        visibilityFilter
-    };
-};
 function MoviesList(props) {
     const { movies , visibilityFilter  } = props;
     let filteredMovies = movies;
@@ -43021,7 +42952,7 @@ function MoviesList(props) {
         className: "main-view",
         __source: {
             fileName: "src/components/movies-list/movies-list.jsx",
-            lineNumber: 19
+            lineNumber: 18
         },
         __self: this
     }));
@@ -43034,14 +42965,14 @@ function MoviesList(props) {
                 },
                 __source: {
                     fileName: "src/components/movies-list/movies-list.jsx",
-                    lineNumber: 22
+                    lineNumber: 21
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_visibilityFilterInputDefault.default, {
                     visibilityFilter: visibilityFilter,
                     __source: {
                         fileName: "src/components/movies-list/movies-list.jsx",
-                        lineNumber: 23
+                        lineNumber: 22
                     },
                     __self: this
                 })
@@ -43050,14 +42981,14 @@ function MoviesList(props) {
                     md: 3,
                     __source: {
                         fileName: "src/components/movies-list/movies-list.jsx",
-                        lineNumber: 26
+                        lineNumber: 25
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
                         movie: m,
                         __source: {
                             fileName: "src/components/movies-list/movies-list.jsx",
-                            lineNumber: 27
+                            lineNumber: 26
                         },
                         __self: this
                     })
@@ -43067,7 +42998,13 @@ function MoviesList(props) {
     }));
 }
 _c = MoviesList;
-exports.default = _reactRedux.connect(mapStateToProps, null)(MoviesList); // props { movies, visibilityFilter } of MovieList will go to the store
+const mapStateToProps = (state)=>{
+    const { visibilityFilter  } = state;
+    return {
+        visibilityFilter
+    };
+};
+exports.default = _reactRedux.connect(mapStateToProps)(MoviesList); // state of store will go to { movies, visibilityFilter } = props
 var _c;
 $RefreshReg$(_c, "MoviesList");
 
@@ -43091,18 +43028,48 @@ var _reactDefault = parcelHelpers.interopDefault(_react);
 var _reactRedux = require("react-redux");
 var _form = require("react-bootstrap/Form");
 var _formDefault = parcelHelpers.interopDefault(_form);
+var _container = require("react-bootstrap/Container");
+var _containerDefault = parcelHelpers.interopDefault(_container);
+var _row = require("react-bootstrap/Row");
+var _rowDefault = parcelHelpers.interopDefault(_row);
+var _col = require("react-bootstrap/Col");
+var _colDefault = parcelHelpers.interopDefault(_col);
 var _actions = require("../../actions/actions");
 function VisibilityFilterInput(props) {
-    return(/*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
-        onChange: (e)=>props.setFilter(e.target.value)
-        ,
-        value: props.visibilityFilter,
-        placeholder: "filter",
+    return(/*#__PURE__*/ _jsxRuntime.jsx(_containerDefault.default, {
+        fluid: true,
         __source: {
             fileName: "src/components/visibility-filter-input/visibility-filter-input.jsx",
-            lineNumber: 9
+            lineNumber: 13
         },
-        __self: this
+        __self: this,
+        children: /*#__PURE__*/ _jsxRuntime.jsx(_rowDefault.default, {
+            className: "justify-content-md-center",
+            __source: {
+                fileName: "src/components/visibility-filter-input/visibility-filter-input.jsx",
+                lineNumber: 14
+            },
+            __self: this,
+            children: /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+                xs: 12,
+                __source: {
+                    fileName: "src/components/visibility-filter-input/visibility-filter-input.jsx",
+                    lineNumber: 15
+                },
+                __self: this,
+                children: /*#__PURE__*/ _jsxRuntime.jsx(_formDefault.default.Control, {
+                    onChange: (e)=>props.setFilter(e.target.value)
+                    ,
+                    value: props.visibilityFilter,
+                    placeholder: "filter",
+                    __source: {
+                        fileName: "src/components/visibility-filter-input/visibility-filter-input.jsx",
+                        lineNumber: 16
+                    },
+                    __self: this
+                })
+            })
+        })
     }));
 }
 _c = VisibilityFilterInput;
@@ -43117,7 +43084,7 @@ $RefreshReg$(_c, "VisibilityFilterInput");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-redux":"2L0if","react-bootstrap/Form":"5ykgY","../../actions/actions":"1Ttfj","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd"}],"6EiBJ":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-redux":"2L0if","react-bootstrap/Form":"5ykgY","../../actions/actions":"1Ttfj","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","react-bootstrap/Container":"2PRIq","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0"}],"6EiBJ":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$4249 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -47510,7 +47477,7 @@ exports.default = _defineProperty;
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"2govV"}],"btgQW":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-//reducers
+//Reducer functions
 var _redux = require("redux");
 var _actions = require("../actions/actions");
 function visibilityFilter(state = '', action) {
@@ -47531,8 +47498,7 @@ function movies(state = [], action) {
             return state; //returns initial state = []
     }
 }
-function user(state = {
-}, action) {
+function user(state = '', action) {
     switch(action.type){
         case _actions.SET_USER:
             console.log('SET_USER reducer reached');
@@ -47541,20 +47507,20 @@ function user(state = {
             return state; //returns initial state = ''
     }
 }
-function favorite(state = [], action) {
+function favorites(state = [], action) {
     switch(action.type){
-        case SET_FAVORITE:
-            console.log('SET_FAVORITE reducer reached');
+        case _actions.SET_FAVORITES:
+            console.log('SET_FAVORITES reducer reached');
             return action.value;
         default:
-            return state; //returns initial state = ''
+            return state; //returns initial state = []
     }
 }
 const moviesApp = _redux.combineReducers({
     visibilityFilter,
     movies,
     user,
-    favorite
+    favorites
 });
 exports.default = moviesApp;
 
