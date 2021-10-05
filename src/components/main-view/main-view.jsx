@@ -55,7 +55,7 @@ class MainView extends React.Component {
     .catch(function (error) {
       console.log(error);
     });
-    }
+  }
   
   /* When a user successfully logs in, this function updates the `user` property inside the state to that particular user */
   onLoggedIn(authData) {
@@ -161,7 +161,7 @@ class MainView extends React.Component {
   // visual representation of main component:
   render() {
    
-    const { user, movies } = this.state;
+    const { user, movies } = this.props;
     const { username, password, email, birthdate, favorites } = this.props;
    
   

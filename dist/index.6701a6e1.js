@@ -22905,7 +22905,7 @@ class MainView extends _reactDefault.default.Component {
     }
     // visual representation of main component:
     render() {
-        const { user , movies  } = this.state;
+        const { user , movies  } = this.props;
         const { username , password , email , birthdate , favorites  } = this.props;
         return(/*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.BrowserRouter, {
             __source: {
@@ -42655,13 +42655,6 @@ var _propTypes = require("prop-types");
 var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
 var _reactBootstrap = require("react-bootstrap");
 var _reactRouterDom = require("react-router-dom");
-var _reactRedux = require("react-redux");
-const mapStateToProps = (state)=>{
-    const { user  } = state;
-    return {
-        user
-    };
-};
 const NavBar = ({ users , onLoggedOut  })=>{
     const message = 'Welcome ';
     return(/*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.Navbar, {
@@ -42672,14 +42665,14 @@ const NavBar = ({ users , onLoggedOut  })=>{
         className: "navbar",
         __source: {
             fileName: "src/components/navbar-view/navbar-view.jsx",
-            lineNumber: 21
+            lineNumber: 13
         },
         __self: undefined,
         children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Container, {
             className: "navbar-container",
             __source: {
                 fileName: "src/components/navbar-view/navbar-view.jsx",
-                lineNumber: 22
+                lineNumber: 14
             },
             __self: undefined,
             children: [
@@ -42688,13 +42681,13 @@ const NavBar = ({ users , onLoggedOut  })=>{
                     to: "/",
                     __source: {
                         fileName: "src/components/navbar-view/navbar-view.jsx",
-                        lineNumber: 23
+                        lineNumber: 15
                     },
                     __self: undefined,
                     children: /*#__PURE__*/ _jsxRuntime.jsx("h1", {
                         __source: {
                             fileName: "src/components/navbar-view/navbar-view.jsx",
-                            lineNumber: 23
+                            lineNumber: 15
                         },
                         __self: undefined,
                         children: "ActorInspector"
@@ -42704,7 +42697,7 @@ const NavBar = ({ users , onLoggedOut  })=>{
                     "aria-controls": "basic-navbar-nav",
                     __source: {
                         fileName: "src/components/navbar-view/navbar-view.jsx",
-                        lineNumber: 24
+                        lineNumber: 16
                     },
                     __self: undefined
                 }),
@@ -42712,14 +42705,14 @@ const NavBar = ({ users , onLoggedOut  })=>{
                     className: "justify-content-end",
                     __source: {
                         fileName: "src/components/navbar-view/navbar-view.jsx",
-                        lineNumber: 25
+                        lineNumber: 17
                     },
                     __self: undefined,
                     children: /*#__PURE__*/ _jsxRuntime.jsxs(_reactBootstrap.Nav, {
                         className: "navbar",
                         __source: {
                             fileName: "src/components/navbar-view/navbar-view.jsx",
-                            lineNumber: 26
+                            lineNumber: 18
                         },
                         __self: undefined,
                         children: [
@@ -42727,7 +42720,7 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                 className: "nav-items",
                                 __source: {
                                     fileName: "src/components/navbar-view/navbar-view.jsx",
-                                    lineNumber: 28
+                                    lineNumber: 20
                                 },
                                 __self: undefined,
                                 children: [
@@ -42740,7 +42733,7 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                 to: `/profile/${users}`,
                                 __source: {
                                     fileName: "src/components/navbar-view/navbar-view.jsx",
-                                    lineNumber: 30
+                                    lineNumber: 22
                                 },
                                 __self: undefined,
                                 children: "Profile"
@@ -42751,10 +42744,78 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                 id: "basic-nav-dropdown",
                                 __source: {
                                     fileName: "src/components/navbar-view/navbar-view.jsx",
-                                    lineNumber: 32
+                                    lineNumber: 24
                                 },
                                 __self: undefined,
                                 children: [
+                                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
+                                        className: "nav-items",
+                                        __source: {
+                                            fileName: "src/components/navbar-view/navbar-view.jsx",
+                                            lineNumber: 26
+                                        },
+                                        __self: undefined,
+                                        children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                                            to: "/genres/action",
+                                            __source: {
+                                                fileName: "src/components/navbar-view/navbar-view.jsx",
+                                                lineNumber: 26
+                                            },
+                                            __self: undefined,
+                                            children: "Action"
+                                        })
+                                    }),
+                                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
+                                        className: "nav-items",
+                                        __source: {
+                                            fileName: "src/components/navbar-view/navbar-view.jsx",
+                                            lineNumber: 28
+                                        },
+                                        __self: undefined,
+                                        children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                                            to: "/genres/adventure",
+                                            __source: {
+                                                fileName: "src/components/navbar-view/navbar-view.jsx",
+                                                lineNumber: 28
+                                            },
+                                            __self: undefined,
+                                            children: "Adventure"
+                                        })
+                                    }),
+                                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
+                                        className: "nav-items",
+                                        __source: {
+                                            fileName: "src/components/navbar-view/navbar-view.jsx",
+                                            lineNumber: 30
+                                        },
+                                        __self: undefined,
+                                        children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                                            to: "/genres/biography",
+                                            __source: {
+                                                fileName: "src/components/navbar-view/navbar-view.jsx",
+                                                lineNumber: 30
+                                            },
+                                            __self: undefined,
+                                            children: "Biography"
+                                        })
+                                    }),
+                                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
+                                        className: "nav-items",
+                                        __source: {
+                                            fileName: "src/components/navbar-view/navbar-view.jsx",
+                                            lineNumber: 32
+                                        },
+                                        __self: undefined,
+                                        children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
+                                            to: "/genres/comedy",
+                                            __source: {
+                                                fileName: "src/components/navbar-view/navbar-view.jsx",
+                                                lineNumber: 32
+                                            },
+                                            __self: undefined,
+                                            children: "Comedy"
+                                        })
+                                    }),
                                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
                                         className: "nav-items",
                                         __source: {
@@ -42763,13 +42824,13 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                         },
                                         __self: undefined,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                                            to: "/genres/action",
+                                            to: "/genres/crime",
                                             __source: {
                                                 fileName: "src/components/navbar-view/navbar-view.jsx",
                                                 lineNumber: 34
                                             },
                                             __self: undefined,
-                                            children: "Action"
+                                            children: "Crime"
                                         })
                                     }),
                                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
@@ -42780,13 +42841,13 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                         },
                                         __self: undefined,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                                            to: "/genres/adventure",
+                                            to: "/genres/drama",
                                             __source: {
                                                 fileName: "src/components/navbar-view/navbar-view.jsx",
                                                 lineNumber: 36
                                             },
                                             __self: undefined,
-                                            children: "Adventure"
+                                            children: "Drama"
                                         })
                                     }),
                                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
@@ -42797,13 +42858,13 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                         },
                                         __self: undefined,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                                            to: "/genres/biography",
+                                            to: "/genres/romance",
                                             __source: {
                                                 fileName: "src/components/navbar-view/navbar-view.jsx",
                                                 lineNumber: 38
                                             },
                                             __self: undefined,
-                                            children: "Biography"
+                                            children: "Romance"
                                         })
                                     }),
                                     /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
@@ -42814,78 +42875,10 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                         },
                                         __self: undefined,
                                         children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                                            to: "/genres/comedy",
-                                            __source: {
-                                                fileName: "src/components/navbar-view/navbar-view.jsx",
-                                                lineNumber: 40
-                                            },
-                                            __self: undefined,
-                                            children: "Comedy"
-                                        })
-                                    }),
-                                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
-                                        className: "nav-items",
-                                        __source: {
-                                            fileName: "src/components/navbar-view/navbar-view.jsx",
-                                            lineNumber: 42
-                                        },
-                                        __self: undefined,
-                                        children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                                            to: "/genres/crime",
-                                            __source: {
-                                                fileName: "src/components/navbar-view/navbar-view.jsx",
-                                                lineNumber: 42
-                                            },
-                                            __self: undefined,
-                                            children: "Crime"
-                                        })
-                                    }),
-                                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
-                                        className: "nav-items",
-                                        __source: {
-                                            fileName: "src/components/navbar-view/navbar-view.jsx",
-                                            lineNumber: 44
-                                        },
-                                        __self: undefined,
-                                        children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                                            to: "/genres/drama",
-                                            __source: {
-                                                fileName: "src/components/navbar-view/navbar-view.jsx",
-                                                lineNumber: 44
-                                            },
-                                            __self: undefined,
-                                            children: "Drama"
-                                        })
-                                    }),
-                                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
-                                        className: "nav-items",
-                                        __source: {
-                                            fileName: "src/components/navbar-view/navbar-view.jsx",
-                                            lineNumber: 46
-                                        },
-                                        __self: undefined,
-                                        children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
-                                            to: "/genres/romance",
-                                            __source: {
-                                                fileName: "src/components/navbar-view/navbar-view.jsx",
-                                                lineNumber: 46
-                                            },
-                                            __self: undefined,
-                                            children: "Romance"
-                                        })
-                                    }),
-                                    /*#__PURE__*/ _jsxRuntime.jsx(_reactBootstrap.NavDropdown.Item, {
-                                        className: "nav-items",
-                                        __source: {
-                                            fileName: "src/components/navbar-view/navbar-view.jsx",
-                                            lineNumber: 48
-                                        },
-                                        __self: undefined,
-                                        children: /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                                             to: "/genres/thriller",
                                             __source: {
                                                 fileName: "src/components/navbar-view/navbar-view.jsx",
-                                                lineNumber: 48
+                                                lineNumber: 40
                                             },
                                             __self: undefined,
                                             children: "Thriller"
@@ -42899,7 +42892,7 @@ const NavBar = ({ users , onLoggedOut  })=>{
                                 onClick: onLoggedOut,
                                 __source: {
                                     fileName: "src/components/navbar-view/navbar-view.jsx",
-                                    lineNumber: 52
+                                    lineNumber: 44
                                 },
                                 __self: undefined,
                                 children: "Logout"
@@ -42912,9 +42905,9 @@ const NavBar = ({ users , onLoggedOut  })=>{
     }));
 };
 _c = NavBar;
-exports.default = _reactRedux.connect(mapStateToProps)(NavBar);
+exports.default = NavBar;
 NavBar.propTypes = {
-    users: _propTypesDefault.default.string,
+    users: _propTypesDefault.default.object,
     onLoggedOut: _propTypesDefault.default.func.isRequired
 };
 var _c;
@@ -42925,7 +42918,7 @@ $RefreshReg$(_c, "NavBar");
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","react-router-dom":"cpyQW","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","prop-types":"1tgq3","react-redux":"2L0if"}],"1kGQ5":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","react-bootstrap":"h2YVd","react-router-dom":"cpyQW","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","prop-types":"1tgq3"}],"1kGQ5":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$2519 = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -42943,16 +42936,22 @@ var _reactRedux = require("react-redux");
 var _visibilityFilterInput = require("../visibility-filter-input/visibility-filter-input");
 var _visibilityFilterInputDefault = parcelHelpers.interopDefault(_visibilityFilterInput);
 var _movieCard = require("../movie-card/movie-card");
+const mapStateToProps = (state)=>{
+    const { visibilityFilter  } = state;
+    return {
+        visibilityFilter
+    };
+};
 function MoviesList(props) {
     const { movies , visibilityFilter  } = props;
     let filteredMovies = movies;
-    if (visibilityFilter !== '') filteredMovies = movies.filter((m)=>m.title.toLowerCase().includes(visibilityFilter.toLowerCase())
+    if (visibilityFilter !== '') filteredMovies = movies.filter((m)=>m.Title.toLowerCase().includes(visibilityFilter.toLowerCase())
     );
     if (!movies) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
         className: "main-view",
         __source: {
             fileName: "src/components/movies-list/movies-list.jsx",
-            lineNumber: 18
+            lineNumber: 21
         },
         __self: this
     }));
@@ -42965,14 +42964,14 @@ function MoviesList(props) {
                 },
                 __source: {
                     fileName: "src/components/movies-list/movies-list.jsx",
-                    lineNumber: 21
+                    lineNumber: 24
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_visibilityFilterInputDefault.default, {
                     visibilityFilter: visibilityFilter,
                     __source: {
                         fileName: "src/components/movies-list/movies-list.jsx",
-                        lineNumber: 22
+                        lineNumber: 25
                     },
                     __self: this
                 })
@@ -42981,14 +42980,14 @@ function MoviesList(props) {
                     md: 3,
                     __source: {
                         fileName: "src/components/movies-list/movies-list.jsx",
-                        lineNumber: 25
+                        lineNumber: 28
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCard.MovieCard, {
                         movie: m,
                         __source: {
                             fileName: "src/components/movies-list/movies-list.jsx",
-                            lineNumber: 26
+                            lineNumber: 29
                         },
                         __self: this
                     })
@@ -42998,12 +42997,6 @@ function MoviesList(props) {
     }));
 }
 _c = MoviesList;
-const mapStateToProps = (state)=>{
-    const { visibilityFilter  } = state;
-    return {
-        visibilityFilter
-    };
-};
 exports.default = _reactRedux.connect(mapStateToProps)(MoviesList); // state of store will go to { movies, visibilityFilter } = props
 var _c;
 $RefreshReg$(_c, "MoviesList");
