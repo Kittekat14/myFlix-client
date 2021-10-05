@@ -22831,7 +22831,7 @@ class MainView extends _reactDefault.default.Component {
     onLoggedOut() {
         localStorage.removeItem("token");
         localStorage.removeItem("user");
-        this.props.setUser({
+        this.setState({
             user: null
         });
     }
@@ -22843,7 +22843,7 @@ class MainView extends _reactDefault.default.Component {
                 Authorization: `Bearer ${token}`
             }
         }).then((response)=>{
-            this.props.setUser({
+            this.setState({
                 username: response.data.username,
                 password: response.data.password,
                 email: response.data.email,
