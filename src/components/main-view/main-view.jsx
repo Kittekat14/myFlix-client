@@ -1,11 +1,10 @@
 // Main-View ~ Homepage
 import React from 'react';
 import axios from 'axios';
-import { connect } from 'react-redux';
 import moment from 'moment';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
-import { setMovies, setUser, setFilter} from '../../actions/actions';
 import MoviesList from '../movies-list/movies-list';
 import { LoginView } from "../login-view/login-view";
 import { RegisterView } from "../register-view/register-view";
@@ -23,16 +22,18 @@ import '../../index.scss';
 
 class MainView extends React.Component {  
 
-  constructor() {
+constructor() {
     super();
     this.state = {
-      username: '',
-      password: '',
-      email: '',
-      birthdate: '',
-      favorites: []
-    }
+    //   user: {
+    //     username: '',
+    //     password: '',
+    //     email: '',
+    //     birthdate: '',
+    //     favorites: []
+    // }
   }
+}
 
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
@@ -72,7 +73,7 @@ class MainView extends React.Component {
   onLoggedOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    this.setState({
+    this.props.setUser({
       user: null
     });
   }
@@ -85,7 +86,7 @@ class MainView extends React.Component {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
-        this.setState({
+        this.props.setUser({
           username: response.data.username,
           password: response.data.password,
           email: response.data.email,
@@ -110,13 +111,14 @@ class MainView extends React.Component {
           localStorage.removeItem('user');
           localStorage.removeItem('token');
           alert('Your account has been deleted.');
-          window.open(`/`, '_self');
+          const history = useHistory();
+          history.push("/");
         })
         .catch((e) => {
           console.log(e);
         });
       }
-    }
+  }
 
 
   removeFromFavorites(_id) {
@@ -148,7 +150,7 @@ class MainView extends React.Component {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((response) => {
-        this.setState({
+        this.props.addFavorite({
           favorites: response.data.favorites
         });
       })
@@ -189,7 +191,7 @@ class MainView extends React.Component {
               if (movies.length === 0) return <div className="main-view" />;
               return (
                 <>   
-                <MoviesList user={user} movies={movies} />
+                <MoviesList movies={movies} />
               </>
               )
             }} />
@@ -276,12 +278,15 @@ class MainView extends React.Component {
   }
 }
 
+export default MainView;
 
-let mapStateToProps = state => {
-  return { 
-    movies: state.movies,
-    user: state.user 
-  }
-}
 
-export default connect(mapStateToProps, { setMovies, setUser } )(MainView);
+// const mapStateToProps = (state) => {
+//   return { 
+//     movies: state.movies,
+//     user: state.user,
+//     visibilityFilter: state.visibilityFilter 
+//   }
+// }
+
+// export default connect(mapStateToProps, {setMovies, setUser, setFilter, addFavorite})(MainView);

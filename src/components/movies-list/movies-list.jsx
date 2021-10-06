@@ -10,15 +10,16 @@ const mapStateToProps = state => {
   return { visibilityFilter };
 };
 
+
 function MoviesList(props) {
   const { movies, visibilityFilter } = props;
   let filteredMovies = movies;
 
-  if(visibilityFilter !== '') {
-    filteredMovies = movies.filter(m => m.Title.toLowerCase().includes(visibilityFilter.toLowerCase()))
+  if (visibilityFilter !== '') {
+    filteredMovies = movies.filter(m => m.title.toLowerCase().includes(visibilityFilter.toLowerCase()));
   }
 
-  if(!movies) return <div className="main-view"/>;
+  if (!movies) return <div className="main-view"/>;
 
   return <>
     <Col md={12} style={{ margin: '1em' }}>
@@ -31,6 +32,5 @@ function MoviesList(props) {
     ))}
   </>;
 }
-
 
 export default connect(mapStateToProps)(MoviesList); // state of store will go to { movies, visibilityFilter } = props

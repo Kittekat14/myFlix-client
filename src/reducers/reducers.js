@@ -1,7 +1,7 @@
 //reducers
 import { combineReducers } from 'redux';
 
-import { SET_FILTER, SET_MOVIES, SET_USER } from '../actions/actions';
+import { SET_FILTER, SET_MOVIES, SET_USER, ADD_FAVORITE } from '../actions/actions';
 
 function visibilityFilter(state = '', action) {
   switch (action.type) {
@@ -23,34 +23,30 @@ function movies(state = [], action) {
   }
 }
 
-function user(state = '', action) {
+const userData = {
+    username: '',
+    password:'',
+    email: '',
+    birthdate: '',
+    favorites: []
+  }
+
+function user(state = userData, action) {
   switch (action.type) {
     case SET_USER:
       console.log('SET_USER reducer reached');
       return action.value;
+    case ADD_FAVORITE:
+      return {
+        ...state,
+        favorites: action.id
+      }
     default:
       return state;  //returns initial state = ''
   }
 }
 
-//try out
-
-// const userData = {
-//   username: '',
-//   password:'',
-//   email: '',
-//   birthdate: ''
-// }
-
-// function user(state = userData, action) {
-//   switch (action.type) {
-//     case SET_USER:
-//       console.log('SET_USER reducer reached');
-//       return action.value;
-//     default:
-//       return state;  //returns initial state = ''
-//   }
-// }
+//TRY OUT
 
 // function login(state = '', action) {
 //   switch (action.type) {
@@ -64,22 +60,12 @@ function user(state = '', action) {
 //   }
 // }
 
-function favorites(state = [], action) {
-  switch (action.type) {
-    case SET_FAVORITE: 
-      console.log('SET_FAVORITE reducer reached');
-      return action.value;
-    default:
-      return state;  //returns initial state = ''
-  }
-}
 
 
 const moviesApp = combineReducers({
   visibilityFilter,
   movies,
-  user, 
-  favorites
+  user
 });
 
 export default moviesApp;
