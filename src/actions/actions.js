@@ -3,6 +3,7 @@ export const SET_MOVIES = "SET_MOVIES";
 export const SET_FILTER = "SET_FILTER";
 export const SET_USER = "SET_USER";
 export const ADD_FAVORITE = "ADD_FAVORITE";
+//export const LOGIN = "LOGIN";
 
 
 //action creators
@@ -29,6 +30,14 @@ export function setUser(value) {
     value // this is what has to change
   }
 }
+
+// export function setLogin(value) {
+//   console.log('LOGIN action is triggered');
+//   return {
+//     type: LOGIN,
+//     value // this is what has to change
+//   }
+// }
 
 export function addFavorite(id) {
   console.log('ADD_FAVORITE action is triggered');

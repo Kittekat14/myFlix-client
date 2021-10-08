@@ -5,7 +5,6 @@ import Button from 'react-bootstrap/Button';
 import PropTypes from 'prop-types';
 import './login-view.scss';
 import { useHistory } from "react-router-dom";
-import { connect } from 'react-redux';
 
 export function LoginView(props) {
   const [ username, setUsername ] = useState('');
@@ -31,7 +30,7 @@ export function LoginView(props) {
       const data = response.data;
       props.onLoggedIn(data);
     })
-    .catch(err => {
+    .catch(() => {
       let errorMessage = document.querySelector('#fail');
       errorMessage.innerHTML = 'Wrong Username or Password';
     });

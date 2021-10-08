@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import { connect } from 'react-redux';
 
 const NavBar = ({ users, onLoggedOut }) => {
  
@@ -51,7 +51,26 @@ const NavBar = ({ users, onLoggedOut }) => {
     );
 }
 
-export default NavBar;
+const mapStateToProps = (state) => {
+  return { 
+    movies: state.movies,
+    user: state.user.username
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setMovies: (value) => dispatch({ 
+      type: "SET_MOVIES",
+      value }),
+    setUser: (value) => dispatch({
+      type: "SET_USER",
+      value
+    }),
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
 
 NavBar.propTypes = {
   users: PropTypes.object,

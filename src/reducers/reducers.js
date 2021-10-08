@@ -1,7 +1,7 @@
 //reducers
 import { combineReducers } from 'redux';
 
-import { SET_FILTER, SET_MOVIES, SET_USER, ADD_FAVORITE } from '../actions/actions';
+import { SET_FILTER, SET_MOVIES, SET_USER, ADD_FAVORITE, LOGIN } from '../actions/actions';
 
 function visibilityFilter(state = '', action) {
   switch (action.type) {
@@ -22,6 +22,15 @@ function movies(state = [], action) {
       return state;  //returns initial state = []
   }
 }
+
+// function login(state = '', action) {
+//   switch (action.type) {
+//     case LOGIN:
+//     return action.value;
+//   default:
+//     return state;    
+//   }
+// }
 
 const userData = {
     username: '',
@@ -46,26 +55,13 @@ function user(state = userData, action) {
   }
 }
 
-//TRY OUT
-
-// function login(state = '', action) {
-//   switch (action.type) {
-//     case LOGIN:
-//       console.log('LOGIN reducer reached');
-//       return (
-//        loginHandler???
-//              );
-//     default:
-//       return state;  //returns initial state = ''
-//   }
-// }
-
 
 
 const moviesApp = combineReducers({
   visibilityFilter,
   movies,
-  user
+  user,
+  login
 });
 
 export default moviesApp;

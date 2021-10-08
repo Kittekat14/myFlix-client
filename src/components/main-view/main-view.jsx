@@ -4,6 +4,7 @@ import axios from 'axios';
 import moment from 'moment';
 import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import { connect } from 'react-redux';
 
 import MoviesList from '../movies-list/movies-list';
 import { LoginView } from "../login-view/login-view";
@@ -25,23 +26,17 @@ class MainView extends React.Component {
 constructor() {
     super();
     this.state = {
-    //   user: {
-    //     username: '',
-    //     password: '',
-    //     email: '',
-    //     birthdate: '',
-    //     favorites: []
-    // }
+   
   }
 }
 
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
-      this.props.setUser({
+      this.setState({
         user: localStorage.getItem('user')
       });
-      this.props.setMovies(accessToken);
+      this.getMovies(accessToken);
     }
   }
  
@@ -67,7 +62,7 @@ constructor() {
 
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.username);
-    this.props.setMovies(authData.token);
+    this.getMovies(authData.token);
   }
 
   onLoggedOut() {
@@ -278,15 +273,25 @@ constructor() {
   }
 }
 
-export default MainView;
 
+const mapStateToProps = (state) => {
+  return { 
+    movies: state.movies,
+    user: state.user,
+    visibilityFilter: state.visibilityFilter 
+  }
+}
 
-// const mapStateToProps = (state) => {
-//   return { 
-//     movies: state.movies,
-//     user: state.user,
-//     visibilityFilter: state.visibilityFilter 
-//   }
-// }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    setMovies: (value) => dispatch({ 
+      type: "SET_MOVIES",
+      value }),
+    setUser: (value) => dispatch({
+      type: "SET_USER",
+      value
+    }),
+  }
+}
 
-// export default connect(mapStateToProps, {setMovies, setUser, setFilter, addFavorite})(MainView);
+export default connect(mapStateToProps, mapDispatchToProps)(MainView);

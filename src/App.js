@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import MainView from './components/main-view/main-view';
 import * as actionCreators from './actions/actions';
 
