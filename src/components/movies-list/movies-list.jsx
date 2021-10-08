@@ -5,13 +5,17 @@ import { connect } from 'react-redux';
 import VisibilityFilterInput from '../visibility-filter-input/visibility-filter-input';
 import MovieCard from '../movie-card/movie-card';
 
+const mapStateToProps = state => {
+  const { visibilityFilter, movies } = state;
+  return { visibilityFilter, movies };
+};
 
 function MoviesList(props) {
   const { movies, visibilityFilter } = props;
   let filteredMovies = movies;
 
   if (visibilityFilter !== '') {
-    filteredMovies = movies.filter(m => m.title.toLowerCase().includes(visibilityFilter.toLowerCase()));
+   let filteredMovies = movies.filter(m => m.title.toLowerCase().includes(visibilityFilter.toLowerCase()));
   }
 
   if (!movies) return <div className="main-view"/>;
@@ -20,20 +24,12 @@ function MoviesList(props) {
     <Col md={12} style={{ margin: '1em' }}>
       <VisibilityFilterInput visibilityFilter={visibilityFilter} />
     </Col>
-    {filteredMovies.map((m) => {
-    <Col md={3} key={m._id}>
-      <MovieCard movie={m} />
-    </Col>
-    })}
+    {filteredMovies.map(m => (
+      <Col md={3} key={m._id}>
+        <MovieCard movie={m} />
+      </Col>
+    ))}
   </>;
-}
-
-const mapStateToProps = (state) => {
-  return { 
-    movies: state.movies,
-    user: state.user, 
-    visibilityFilter: state.visibilityFilter
-  }
 }
 
 export default connect(mapStateToProps)(MoviesList); // state of store will go to { movies, visibilityFilter } = props

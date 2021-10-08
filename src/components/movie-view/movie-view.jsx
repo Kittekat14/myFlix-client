@@ -5,7 +5,7 @@ import Col from 'react-bootstrap/Col';
 import './movie-view.scss';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
-
+import { addFavorite } from '../../actions/actions';
 
 
 class MovieView extends React.Component {
@@ -15,7 +15,7 @@ class MovieView extends React.Component {
   
 
   addFavorite(_id) {
-    this.props.addMovie(_id);
+    this.props.addFavorite(_id);
   };
 
   render() {
@@ -86,7 +86,7 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(MovieView);
+export default connect(mapStateToProps, { addFavorite })(MovieView);
 
 
 MovieView.propTypes = {

@@ -8,7 +8,7 @@ import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { connect } from 'react-redux';
-import { setUser } from '../../actions/actions';
+import { setUser, deleteFavorite } from '../../actions/actions';
 
 
 class ProfileView extends Component {
@@ -101,7 +101,7 @@ let mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, null)(ProfileView);
+export default connect(mapStateToProps, { setUser, deleteFavorite })(ProfileView);
 
 
 ProfileView.propTypes = {

@@ -6,10 +6,7 @@ import './movie-card.scss';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 
-const mapStateToProps = state => {
-  const {user, movies} = state;
-  return {user, movies};
-};
+
 
 class MovieCard extends React.Component {
 
@@ -40,7 +37,7 @@ class MovieCard extends React.Component {
   }
 }
 
-export default connect(mapStateToProps)(MovieCard);
+export default MovieCard;
 
 MovieCard.propTypes = {
   movie: PropTypes.shape({ 

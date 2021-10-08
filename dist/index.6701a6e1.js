@@ -40048,12 +40048,13 @@ var _colDefault = parcelHelpers.interopDefault(_col);
 var _movieViewScss = require("./movie-view.scss");
 var _reactRouterDom = require("react-router-dom");
 var _reactRedux = require("react-redux");
+var _actions = require("../../actions/actions");
 class MovieView extends _reactDefault.default.Component {
     constructor(props){
         super(props);
     }
     addFavorite(_id) {
-        this.props.addMovie(_id);
+        this.props.addFavorite(_id);
     }
     render() {
         const { movie , user , onBackClick , favorites  } = this.props;
@@ -40339,7 +40340,9 @@ const mapStateToProps = (state)=>{
         favorites: state.favorites
     };
 };
-exports.default = _reactRedux.connect(mapStateToProps)(MovieView);
+exports.default = _reactRedux.connect(mapStateToProps, {
+    addFavorite: _actions.addFavorite
+})(MovieView);
 MovieView.propTypes = {
     movie: _propTypesDefault.default.shape({
         _id: _propTypesDefault.default.string,
@@ -40371,7 +40374,7 @@ MovieView.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","./movie-view.scss":"kvL93","react-router-dom":"cpyQW","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","react-redux":"2L0if"}],"kvL93":[function() {},{}],"2L0if":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","prop-types":"1tgq3","react-bootstrap/Row":"c0x1x","react-bootstrap/Col":"fbam0","./movie-view.scss":"kvL93","react-router-dom":"cpyQW","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","react-redux":"2L0if","../../actions/actions":"1Ttfj"}],"kvL93":[function() {},{}],"2L0if":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 parcelHelpers.export(exports, "batch", ()=>_reactBatchedUpdates.unstable_batchedUpdates
@@ -41591,7 +41594,72 @@ parcelHelpers.defineInteropFlag(exports);
 );
 var _reactDom = require("react-dom");
 
-},{"react-dom":"gkWJK","@parcel/transformer-js/src/esmodule-helpers.js":"2govV"}],"8WCoL":[function(require,module,exports) {
+},{"react-dom":"gkWJK","@parcel/transformer-js/src/esmodule-helpers.js":"2govV"}],"1Ttfj":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "SET_MOVIES", ()=>SET_MOVIES
+);
+parcelHelpers.export(exports, "SET_FILTER", ()=>SET_FILTER
+);
+parcelHelpers.export(exports, "SET_USER", ()=>SET_USER
+);
+parcelHelpers.export(exports, "ADD_FAVORITE", ()=>ADD_FAVORITE
+);
+parcelHelpers.export(exports, "DELETE_FAVORITE", ()=>DELETE_FAVORITE
+);
+//action creators
+parcelHelpers.export(exports, "setMovies", ()=>setMovies
+);
+parcelHelpers.export(exports, "setFilter", ()=>setFilter
+);
+parcelHelpers.export(exports, "setUser", ()=>setUser
+);
+parcelHelpers.export(exports, "addFavorite", ()=>addFavorite
+);
+parcelHelpers.export(exports, "deleteFavorite", ()=>deleteFavorite
+);
+const SET_MOVIES = "SET_MOVIES";
+const SET_FILTER = "SET_FILTER";
+const SET_USER = "SET_USER";
+const ADD_FAVORITE = "ADD_FAVORITE";
+const DELETE_FAVORITE = "DELETE_FAVORITE";
+function setMovies(value) {
+    console.log('SET_MOVIES action is triggered');
+    return {
+        type: SET_MOVIES,
+        value
+    };
+}
+function setFilter(value) {
+    console.log('SET_FILTER action is triggered');
+    return {
+        type: SET_FILTER,
+        value
+    };
+}
+function setUser(value) {
+    console.log('SET_USER action is triggered');
+    return {
+        type: SET_USER,
+        value
+    };
+}
+function addFavorite(id) {
+    console.log('ADD_FAVORITE action is triggered');
+    return {
+        type: ADD_FAVORITE,
+        id
+    };
+}
+function deleteFavorite(id) {
+    console.log('DELETE_FAVORITE action is triggered');
+    return {
+        type: DELETE_FAVORITE,
+        id
+    };
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"2govV"}],"8WCoL":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$5f0a = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -41760,72 +41828,7 @@ GenreView.propTypes = {
   window.$RefreshReg$ = prevRefreshReg;
   window.$RefreshSig$ = prevRefreshSig;
 }
-},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","prop-types":"1tgq3","react-bootstrap":"h2YVd","react-router-dom":"cpyQW","react-redux":"2L0if","../../actions/actions":"1Ttfj"}],"1Ttfj":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "SET_MOVIES", ()=>SET_MOVIES
-);
-parcelHelpers.export(exports, "SET_FILTER", ()=>SET_FILTER
-);
-parcelHelpers.export(exports, "SET_USER", ()=>SET_USER
-);
-parcelHelpers.export(exports, "ADD_FAVORITE", ()=>ADD_FAVORITE
-);
-parcelHelpers.export(exports, "DELETE_FAVORITE", ()=>DELETE_FAVORITE
-);
-//action creators
-parcelHelpers.export(exports, "setMovies", ()=>setMovies
-);
-parcelHelpers.export(exports, "setFilter", ()=>setFilter
-);
-parcelHelpers.export(exports, "setUser", ()=>setUser
-);
-parcelHelpers.export(exports, "addFavorite", ()=>addFavorite
-);
-parcelHelpers.export(exports, "deleteFavorite", ()=>deleteFavorite
-);
-const SET_MOVIES = "SET_MOVIES";
-const SET_FILTER = "SET_FILTER";
-const SET_USER = "SET_USER";
-const ADD_FAVORITE = "ADD_FAVORITE";
-const DELETE_FAVORITE = "DELETE_FAVORITE";
-function setMovies(value) {
-    console.log('SET_MOVIES action is triggered');
-    return {
-        type: SET_MOVIES,
-        value
-    };
-}
-function setFilter(value) {
-    console.log('SET_FILTER action is triggered');
-    return {
-        type: SET_FILTER,
-        value
-    };
-}
-function setUser(value) {
-    console.log('SET_USER action is triggered');
-    return {
-        type: SET_USER,
-        value
-    };
-}
-function addFavorite(id) {
-    console.log('ADD_FAVORITE action is triggered');
-    return {
-        type: ADD_FAVORITE,
-        id
-    };
-}
-function deleteFavorite(id) {
-    console.log('DELETE_FAVORITE action is triggered');
-    return {
-        type: DELETE_FAVORITE,
-        id
-    };
-}
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"2govV"}],"ck15y":[function(require,module,exports) {
+},{"react/jsx-runtime":"8xIwr","react":"6TuXu","axios":"iYoWk","@parcel/transformer-js/src/esmodule-helpers.js":"2govV","@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js":"3tkSd","prop-types":"1tgq3","react-bootstrap":"h2YVd","react-router-dom":"cpyQW","react-redux":"2L0if","../../actions/actions":"1Ttfj"}],"ck15y":[function(require,module,exports) {
 var $parcel$ReactRefreshHelpers$f8cc = require("@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
 var prevRefreshReg = window.$RefreshReg$;
 var prevRefreshSig = window.$RefreshSig$;
@@ -42348,7 +42351,10 @@ let mapStateToProps = (state)=>{
         movies: state.movies
     };
 };
-exports.default = _reactRedux.connect(mapStateToProps, null)(ProfileView);
+exports.default = _reactRedux.connect(mapStateToProps, {
+    setUser: _actions.setUser,
+    deleteFavorite: _actions.deleteFavorite
+})(ProfileView);
 ProfileView.propTypes = {
     movies: _propTypesDefault.default.array,
     username: _propTypesDefault.default.string,
@@ -42999,16 +43005,25 @@ var _visibilityFilterInput = require("../visibility-filter-input/visibility-filt
 var _visibilityFilterInputDefault = parcelHelpers.interopDefault(_visibilityFilterInput);
 var _movieCard = require("../movie-card/movie-card");
 var _movieCardDefault = parcelHelpers.interopDefault(_movieCard);
+const mapStateToProps = (state)=>{
+    const { visibilityFilter , movies  } = state;
+    return {
+        visibilityFilter,
+        movies
+    };
+};
 function MoviesList(props) {
     const { movies , visibilityFilter  } = props;
     let filteredMovies = movies;
-    if (visibilityFilter !== '') filteredMovies = movies.filter((m)=>m.title.toLowerCase().includes(visibilityFilter.toLowerCase())
-    );
+    if (visibilityFilter !== '') {
+        let filteredMovies1 = movies.filter((m)=>m.title.toLowerCase().includes(visibilityFilter.toLowerCase())
+        );
+    }
     if (!movies) return(/*#__PURE__*/ _jsxRuntime.jsx("div", {
         className: "main-view",
         __source: {
             fileName: "src/components/movies-list/movies-list.jsx",
-            lineNumber: 17
+            lineNumber: 21
         },
         __self: this
     }));
@@ -43021,47 +43036,39 @@ function MoviesList(props) {
                 },
                 __source: {
                     fileName: "src/components/movies-list/movies-list.jsx",
-                    lineNumber: 20
+                    lineNumber: 24
                 },
                 __self: this,
                 children: /*#__PURE__*/ _jsxRuntime.jsx(_visibilityFilterInputDefault.default, {
                     visibilityFilter: visibilityFilter,
                     __source: {
                         fileName: "src/components/movies-list/movies-list.jsx",
-                        lineNumber: 21
+                        lineNumber: 25
                     },
                     __self: this
                 })
             }),
-            filteredMovies.map((m)=>{
-                /*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
+            filteredMovies.map((m)=>/*#__PURE__*/ _jsxRuntime.jsx(_colDefault.default, {
                     md: 3,
                     __source: {
                         fileName: "src/components/movies-list/movies-list.jsx",
-                        lineNumber: 24
+                        lineNumber: 28
                     },
                     __self: this,
                     children: /*#__PURE__*/ _jsxRuntime.jsx(_movieCardDefault.default, {
                         movie: m,
                         __source: {
                             fileName: "src/components/movies-list/movies-list.jsx",
-                            lineNumber: 25
+                            lineNumber: 29
                         },
                         __self: this
                     })
-                }, m._id);
-            })
+                }, m._id)
+            )
         ]
     }));
 }
 _c = MoviesList;
-const mapStateToProps = (state)=>{
-    return {
-        movies: state.movies,
-        user: state.user,
-        visibilityFilter: state.visibilityFilter
-    };
-};
 exports.default = _reactRedux.connect(mapStateToProps)(MoviesList); // state of store will go to { movies, visibilityFilter } = props
 var _c;
 $RefreshReg$(_c, "MoviesList");
@@ -43163,13 +43170,6 @@ var _cardDefault = parcelHelpers.interopDefault(_card);
 var _movieCardScss = require("./movie-card.scss");
 var _reactRouterDom = require("react-router-dom");
 var _reactRedux = require("react-redux");
-const mapStateToProps = (state)=>{
-    const { user , movies  } = state;
-    return {
-        user,
-        movies
-    };
-};
 class MovieCard extends _reactDefault.default.Component {
     render() {
         const { movie  } = this.props;
@@ -43177,7 +43177,7 @@ class MovieCard extends _reactDefault.default.Component {
             className: "card h-100",
             __source: {
                 fileName: "src/components/movie-card/movie-card.jsx",
-                lineNumber: 22
+                lineNumber: 19
             },
             __self: this,
             children: [
@@ -43188,14 +43188,14 @@ class MovieCard extends _reactDefault.default.Component {
                     width: "300",
                     __source: {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 24
+                        lineNumber: 21
                     },
                     __self: this
                 }),
                 /*#__PURE__*/ _jsxRuntime.jsxs(_cardDefault.default.Body, {
                     __source: {
                         fileName: "src/components/movie-card/movie-card.jsx",
-                        lineNumber: 26
+                        lineNumber: 23
                     },
                     __self: this,
                     children: [
@@ -43203,7 +43203,7 @@ class MovieCard extends _reactDefault.default.Component {
                             className: "card-title",
                             __source: {
                                 fileName: "src/components/movie-card/movie-card.jsx",
-                                lineNumber: 28
+                                lineNumber: 25
                             },
                             __self: this,
                             children: movie.title
@@ -43212,7 +43212,7 @@ class MovieCard extends _reactDefault.default.Component {
                             className: "card-info",
                             __source: {
                                 fileName: "src/components/movie-card/movie-card.jsx",
-                                lineNumber: 29
+                                lineNumber: 26
                             },
                             __self: this,
                             children: movie.description
@@ -43221,14 +43221,14 @@ class MovieCard extends _reactDefault.default.Component {
                             to: `/movies/${movie.title}`,
                             __source: {
                                 fileName: "src/components/movie-card/movie-card.jsx",
-                                lineNumber: 31
+                                lineNumber: 28
                             },
                             __self: this,
                             children: /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
                                 className: "open-button",
                                 __source: {
                                     fileName: "src/components/movie-card/movie-card.jsx",
-                                    lineNumber: 32
+                                    lineNumber: 29
                                 },
                                 __self: this,
                                 children: "Open"
@@ -43240,7 +43240,7 @@ class MovieCard extends _reactDefault.default.Component {
         }, movie.title));
     }
 }
-exports.default = _reactRedux.connect(mapStateToProps)(MovieCard);
+exports.default = MovieCard;
 MovieCard.propTypes = {
     movie: _propTypesDefault.default.shape({
         _id: _propTypesDefault.default.string,
