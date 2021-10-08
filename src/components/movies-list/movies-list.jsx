@@ -20,17 +20,20 @@ function MoviesList(props) {
     <Col md={12} style={{ margin: '1em' }}>
       <VisibilityFilterInput visibilityFilter={visibilityFilter} />
     </Col>
-    {filteredMovies.map(m => (
-      <Col md={3} key={m._id}>
-        <MovieCard movie={m} />
-      </Col>
-    ))}
+    {filteredMovies.map((m) => {
+    <Col md={3} key={m._id}>
+      <MovieCard movie={m} />
+    </Col>
+    })}
   </>;
 }
 
-const mapStateToProps = state => {
-  const { visibilityFilter, movies, user } = state;
-  return { visibilityFilter, movies, user };
-};
+const mapStateToProps = (state) => {
+  return { 
+    movies: state.movies,
+    user: state.user, 
+    visibilityFilter: state.visibilityFilter
+  }
+}
 
 export default connect(mapStateToProps)(MoviesList); // state of store will go to { movies, visibilityFilter } = props

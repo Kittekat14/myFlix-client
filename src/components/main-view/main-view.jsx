@@ -62,7 +62,7 @@ constructor() {
 
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.username);
-    this.getMovies(authData.token);
+    this.props.setMovies(authData.token);
   }
 
   onLoggedOut() {
@@ -115,26 +115,6 @@ constructor() {
       }
   }
 
-
-  removeFromFavorites(_id) {
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-
-      
-    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${_id}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      .then((response) => {
-        this.setState({
-          favorites: response.data.favorites
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-  }
-
-
   addFavorite(_id) {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
@@ -152,7 +132,25 @@ constructor() {
       .catch(function (error) {
         console.log(error);
       });
-  };    
+  };
+
+  removeFromFavorites(_id) {
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+
+      
+    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${_id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then((response) => {
+        this.props.deleteFavorite({
+          favorites: response.data.favorites
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }
 
 
   // visual representation of main component:
@@ -277,8 +275,7 @@ constructor() {
 const mapStateToProps = (state) => {
   return { 
     movies: state.movies,
-    user: state.user,
-    visibilityFilter: state.visibilityFilter 
+    user: state.user 
   }
 }
 
@@ -290,6 +287,14 @@ const mapDispatchToProps = (dispatch) => {
     setUser: (value) => dispatch({
       type: "SET_USER",
       value
+    }),
+    deleteFavorite: (id) => dispatch({
+      type: "DELETE_FAVORITE",
+      id
+    }),
+    addFavorite: (id) => dispatch({
+      type: "ADD_FAVORITE",
+      id
     }),
   }
 }

@@ -23,14 +23,6 @@ function movies(state = [], action) {
   }
 }
 
-// function login(state = '', action) {
-//   switch (action.type) {
-//     case LOGIN:
-//     return action.value;
-//   default:
-//     return state;    
-//   }
-// }
 
 const userData = {
     username: '',
@@ -49,7 +41,12 @@ function user(state = userData, action) {
       return {
         ...state,
         favorites: action.id
-      }
+      };
+    case DELETE_FAVORITE:
+      return {
+        ...state,
+        favorites: action.id
+      };
     default:
       return state;  //returns initial state = ''
   }
@@ -60,8 +57,7 @@ function user(state = userData, action) {
 const moviesApp = combineReducers({
   visibilityFilter,
   movies,
-  user,
-  login
+  user
 });
 
 export default moviesApp;

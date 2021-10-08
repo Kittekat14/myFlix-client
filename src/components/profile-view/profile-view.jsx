@@ -92,14 +92,18 @@ class ProfileView extends Component {
 
 let mapStateToProps = state => {
   return {
-    user: state.user
+    username: state.user.username,
+    password: state.user.password,
+    email: state.user.email,
+    birthdate: state.user.birthdate,
+    favorites: state.user.favorites,
+    movies: state.movies
   }
 }
 
-export default connect(mapStateToProps, { setUser })(ProfileView);
+export default connect(mapStateToProps, null)(ProfileView);
 
 
-// getting ERRORS when I define these as prop
 ProfileView.propTypes = {
   movies: PropTypes.array,
   username: PropTypes.string,

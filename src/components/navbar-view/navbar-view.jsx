@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 const NavBar = ({ users, onLoggedOut }) => {
  
   const message = 'Welcome ';
-  
+
 
   return (
     <Navbar bg="light" expand="md" sticky="top" variant="light" className="navbar">
@@ -17,7 +17,7 @@ const NavBar = ({ users, onLoggedOut }) => {
         <Navbar.Collapse className="justify-content-end">
           <Nav className="navbar">
             
-            <Nav.Item className="nav-items">{message}{`${users}`}</Nav.Item>
+            <Nav.Item className="nav-items">{message}{`${users.username}`}</Nav.Item>
 
             <Link className="nav-items" to={`/profile/${users}`} >Profile</Link>
 
@@ -73,6 +73,6 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
 
 NavBar.propTypes = {
-  users: PropTypes.object,
-  onLoggedOut: PropTypes.func.isRequired,
+  user: PropTypes.string,
+  onLoggedOut: PropTypes.func,
 };

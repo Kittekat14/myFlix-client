@@ -7,8 +7,8 @@ import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
-  const {user} = state;
-  return {user};
+  const {user, movies} = state;
+  return {user, movies};
 };
 
 class MovieCard extends React.Component {

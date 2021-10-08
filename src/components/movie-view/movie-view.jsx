@@ -6,10 +6,7 @@ import './movie-view.scss';
 import { Link } from "react-router-dom";
 import { connect } from 'react-redux';
 
-const mapStateToProps = state => {
-  const { movies , user} = state;
-  return { movies , user};
-};
+
 
 class MovieView extends React.Component {
   constructor(props) {
@@ -24,12 +21,7 @@ class MovieView extends React.Component {
   render() {
    
     const { movie, user, onBackClick, favorites } = this.props;
-    
-    console.log(favorites);
-    console.log(movie);
-    console.log(user);
-    
-
+  
     return (
     
      <Row className="movie-view">
@@ -84,6 +76,14 @@ class MovieView extends React.Component {
     
   }
 
+}
+
+const mapStateToProps = (state) => {
+  return { 
+    movies: state.movies,
+    user: state.user,
+    favorites: state.favorites 
+  }
 }
 
 export default connect(mapStateToProps)(MovieView);

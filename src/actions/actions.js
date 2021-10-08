@@ -3,7 +3,7 @@ export const SET_MOVIES = "SET_MOVIES";
 export const SET_FILTER = "SET_FILTER";
 export const SET_USER = "SET_USER";
 export const ADD_FAVORITE = "ADD_FAVORITE";
-//export const LOGIN = "LOGIN";
+export const DELETE_FAVORITE = "DELETE_FAVORITE";
 
 
 //action creators
@@ -31,18 +31,17 @@ export function setUser(value) {
   }
 }
 
-// export function setLogin(value) {
-//   console.log('LOGIN action is triggered');
-//   return {
-//     type: LOGIN,
-//     value // this is what has to change
-//   }
-// }
-
 export function addFavorite(id) {
   console.log('ADD_FAVORITE action is triggered');
   return {
     type: ADD_FAVORITE,
+    id // this is what has to change
+  }
+}
+export function deleteFavorite(id) {
+  console.log('DELETE_FAVORITE action is triggered');
+  return {
+    type: DELETE_FAVORITE,
     id // this is what has to change
   }
 }
