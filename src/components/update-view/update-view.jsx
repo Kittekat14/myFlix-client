@@ -8,8 +8,7 @@ import Col from 'react-bootstrap/Col';
 import { connect } from 'react-redux';
 import { setUser } from '../../actions/actions';
 
-
-export class UpdateView extends Component {
+class UpdateView extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -145,3 +144,11 @@ export class UpdateView extends Component {
     )
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    user: state.user 
+  }
+}
+
+export default connect(mapStateToProps, { setUser })(UpdateView)
