@@ -1,9 +1,7 @@
 //actions ~ action types
 export const SET_MOVIES = "SET_MOVIES";
 export const SET_FILTER = "SET_FILTER";
-export const SET_USER = "SET_USER";
-export const ADD_FAVORITE = "ADD_FAVORITE";
-export const DELETE_FAVORITE = "DELETE_FAVORITE";
+//export const SET_USER = "SET_USER";
 
 
 //action creators
@@ -23,26 +21,12 @@ export function setFilter(value) {
   }
 }
 
-export function setUser(value) {
-  console.log('SET_USER action is triggered');
-  return {
-    type: SET_USER,
-    value // this is what has to change
-  }
-}
+// export function setUser(value) {
+//   console.log('SET_USER action is triggered');
+//   return {
+//     type: SET_USER,
+//     value 
+//   }
+// }
 
-export function addFavorite(id) {
-  console.log('ADD_FAVORITE action is triggered');
-  return {
-    type: ADD_FAVORITE,
-    id // this is what has to change
-  }
-}
-export function deleteFavorite(id) {
-  console.log('DELETE_FAVORITE action is triggered');
-  return {
-    type: DELETE_FAVORITE,
-    id // this is what has to change
-  }
-}
 

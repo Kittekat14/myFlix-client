@@ -1,21 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import axios from 'axios';
-import PropTypes from 'prop-types';
 import { UpdateView } from '../update-view/update-view';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import { connect } from 'react-redux';
-import { setUser, deleteFavorite } from '../../actions/actions';
 
 
-class ProfileView extends Component {
-  
-  constructor(props) {
-    super(props);
-  }
+export class ProfileView extends Component {
 
   removeFavorite(_id) {
     this.props.removeMovie(_id);
@@ -88,20 +80,6 @@ class ProfileView extends Component {
     )
   }
 }
-
-
-let mapStateToProps = state => {
-  return {
-    username: state.user.username,
-    password: state.user.password,
-    email: state.user.email,
-    birthdate: state.user.birthdate,
-    favorites: state.user.favorites,
-    movies: state.movies
-  }
-}
-
-export default connect(mapStateToProps, { setUser, deleteFavorite })(ProfileView);
 
 
 ProfileView.propTypes = {

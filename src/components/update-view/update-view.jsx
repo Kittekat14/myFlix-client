@@ -2,21 +2,20 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import Card from 'react-bootstrap/Card';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import { connect } from 'react-redux';
-import { setUser } from '../../actions/actions';
+// import Card from 'react-bootstrap/Card';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
 
-class UpdateView extends Component {
+
+export class UpdateView extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       username: '',
       password: '',
       email: '',
       birthdate: '',
-
       nameError: '',
       passwordError: '',
       emailError: ''
@@ -50,7 +49,7 @@ class UpdateView extends Component {
   }
 
   formValidation() {
-    const { username, password, email, birthdate } = this.state;
+    const { username, password, email } = this.state;
     const nameError = {};
     const passwordError = {};
     const emailError = {};
@@ -78,7 +77,8 @@ class UpdateView extends Component {
   
 
   render() {
-    const { username, password, email, birthdate, nameError, passwordError, emailError } = this.state;
+
+    const { nameError, passwordError, emailError } = this.state;
 
     return (
       <>
@@ -89,7 +89,7 @@ class UpdateView extends Component {
       <Form.Group className="mb-3" controlId="formUsername">
         <Form.Label>Username*:</Form.Label>
         <Form.Control required type="text" placeholder="Enter New Username"
-        onChange={(e) => this.setState( {username: e.target.value} ) }/>
+        onChange={(e) => this.setState( { username: e.target.value } )}/>
 
         {Object.keys(nameError).map((key) => {
         return <div style={{ fontSize: 12, color:'red'}} key={key}>{nameError[key]}</div>
@@ -100,9 +100,7 @@ class UpdateView extends Component {
       <Form.Group className="mb-3" controlId="formPassword">
         <Form.Label>Password*:</Form.Label>
         <Form.Control required type="password" placeholder="Enter New Password"
-            onChange={(e) => this.setState(
-              {password: e.target.value}
-              )}/>
+            onChange={(e) => this.setState( { password: e.target.value } )}/>
 
         {Object.keys(passwordError).map((key) => {
         return <div style={{ fontSize: 12, color:'red'}} key={key}>{passwordError[key]}</div>
@@ -114,9 +112,7 @@ class UpdateView extends Component {
           <Form.Label label="Email" className="mb-3"
           > Email*: 
             <Form.Control required type="email" placeholder="Enter New Email"
-            onChange={(e) => this.setState(
-              {email: e.target.value}
-              )}/>
+            onChange={(e) => this.setState( { email: e.target.value } )}/>
           </Form.Label>
 
           {Object.keys(emailError).map((key) => {
@@ -129,9 +125,7 @@ class UpdateView extends Component {
         <Form.Label label="Birthdate" className="mb-3"
         > Birthdate:
           <Form.Control type="date" placeholder="Enter New Birthdate"
-          onChange={(e) => this.setState(
-            {birthdate: e.target.value}
-            )}/>
+          onChange={(e) => this.setState( { birthdate: e.target.value } )}/>
         </Form.Label>
       </Form.Group>
 
@@ -144,11 +138,3 @@ class UpdateView extends Component {
     )
   }
 }
-
-const mapStateToProps = (state) => {
-  return {
-    user: state.user 
-  }
-}
-
-export default connect(mapStateToProps, { setUser })(UpdateView)

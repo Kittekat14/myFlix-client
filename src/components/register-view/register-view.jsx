@@ -4,7 +4,7 @@ import { Container, Form, Button } from 'react-bootstrap';
 import './register-view.scss';
 import { useHistory } from "react-router-dom";
 
-export function RegisterView(props) {
+export function RegisterView() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");

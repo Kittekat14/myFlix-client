@@ -4,8 +4,6 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import './movie-card.scss';
 import { Link } from "react-router-dom";
-import { connect } from 'react-redux';
-
 
 
 class MovieCard extends React.Component {

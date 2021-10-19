@@ -9,11 +9,12 @@ import { connect } from 'react-redux';
 import MoviesList from '../movies-list/movies-list';
 import { LoginView } from "../login-view/login-view";
 import { RegisterView } from "../register-view/register-view";
-import ProfileView from '../profile-view/profile-view';
-import MovieView from "../movie-view/movie-view";
-import NavBar from "../navbar-view/navbar-view";
+import { ProfileView } from '../profile-view/profile-view';
+import { MovieView } from "../movie-view/movie-view";
+import { NavBar } from "../navbar-view/navbar-view";
 import { GenreView } from "../genre-view/genre-view";
 import { DirectorView } from "../director-view/director-view";
+import { setMovies } from '../../actions/actions';
 
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -22,14 +23,18 @@ import Container from 'react-bootstrap/Container';
 import '../../index.scss';
 
 class MainView extends React.Component {  
-
 constructor() {
     super();
+
     this.state = {
-   
+      user: '',
+      username: '',
+      password: '',
+      email: '',
+      birthdate: '',
+      favorites: []
   }
 }
-
   componentDidMount() {
     let accessToken = localStorage.getItem('token');
     if (accessToken !== null) {
@@ -37,6 +42,7 @@ constructor() {
         user: localStorage.getItem('user')
       });
       this.getMovies(accessToken);
+      this.getUser(accessToken);
     }
   }
  
@@ -56,10 +62,9 @@ constructor() {
   /* When a user successfully logs in, this function updates the `user` property inside the state to that particular user */
   onLoggedIn(authData) {
     console.log(authData);
-    this.props.setUser({
+    this.setState({
       user: authData.user.username
     });
-
     localStorage.setItem('token', authData.token);
     localStorage.setItem('user', authData.user.username);
     this.props.setMovies(authData.token);
@@ -68,7 +73,7 @@ constructor() {
   onLoggedOut() {
     localStorage.removeItem("token");
     localStorage.removeItem("user");
-    this.props.setUser({
+    this.setState({
       user: null
     });
   }
@@ -81,7 +86,7 @@ constructor() {
       headers: { Authorization: `Bearer ${token}` },
     })
       .then((response) => {
-        this.props.setUser({
+        this.setState({
           username: response.data.username,
           password: response.data.password,
           email: response.data.email,
@@ -93,7 +98,6 @@ constructor() {
         console.log(error);
       });
   }
-
 
   deleteUser(token) {
     const username = localStorage.getItem('user');
@@ -115,6 +119,25 @@ constructor() {
       }
   }
 
+  removeFromFavorites(_id) {
+    const username = localStorage.getItem('user');
+    const token = localStorage.getItem('token');
+
+      
+    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${_id}`, {
+        headers: { Authorization: `Bearer ${token}` }
+      })
+      .then((response) => {
+        this.setState({
+          favorites: response.data.favorites
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+  }
+
+
   addFavorite(_id) {
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
@@ -125,39 +148,21 @@ constructor() {
         headers: { Authorization: `Bearer ${token}` }
       })
       .then((response) => {
-        this.props.addFavorite({
+        this.setState({
           favorites: response.data.favorites
         });
       })
       .catch(function (error) {
         console.log(error);
       });
-  };
-
-  removeFromFavorites(_id) {
-    const username = localStorage.getItem('user');
-    const token = localStorage.getItem('token');
-
-      
-    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}/favorites/${_id}`, {
-        headers: { Authorization: `Bearer ${token}` }
-      })
-      .then((response) => {
-        this.props.deleteFavorite({
-          favorites: response.data.favorites
-        });
-      })
-      .catch(function (error) {
-        console.log(error);
-      })
-  }
+  };    
 
 
   // visual representation of main component:
   render() {
    
-    const { user, movies } = this.props;
-    const { username, password, email, birthdate, favorites } = this.props;
+    const { movies } = this.props;
+    const { user, username, password, email, birthdate, favorites } = this.state;
    
   
     return (
@@ -227,7 +232,7 @@ constructor() {
               return (
               <>
               <Col md={8}>
-                <MovieView user={user} favorites={favorites} addMovie={(_id) => this.addFavorite(_id)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
+                <MovieView user={user} favorites={favorites} addFavorite={(_id) => this.addFavorite(_id)} movie={movies.find(m => m.title === match.params.title)} onBackClick={() => history.goBack()} />
               </Col>
               </>)
             }}  />
@@ -272,31 +277,8 @@ constructor() {
 }
 
 
-const mapStateToProps = (state) => {
-  return { 
-    movies: state.movies,
-    user: state.user 
-  }
-}
+let mapStateToProps = (state) => {
+  return { movies: state.movies };
+};
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    setMovies: (value) => dispatch({ 
-      type: "SET_MOVIES",
-      value }),
-    setUser: (value) => dispatch({
-      type: "SET_USER",
-      value
-    }),
-    deleteFavorite: (id) => dispatch({
-      type: "DELETE_FAVORITE",
-      id
-    }),
-    addFavorite: (id) => dispatch({
-      type: "ADD_FAVORITE",
-      id
-    }),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(MainView);
+export default connect(mapStateToProps, { setMovies })(MainView);
