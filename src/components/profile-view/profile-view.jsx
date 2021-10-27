@@ -73,7 +73,7 @@ export class ProfileView extends Component {
       <br />
       <br />
       <br />
-      <Button onClick={() => { this.deleteUser() } }>Delete Account</Button>  
+      <Button onClick={(event) => this.props.deleteUser(event)}>Delete Account</Button>
       <br />  
      
      </>
@@ -90,5 +90,6 @@ ProfileView.propTypes = {
   birthdate: PropTypes.string,
   favorites: PropTypes.array,
   onBackClick: PropTypes.func,
-  removeMovie: PropTypes.func
+  removeMovie: PropTypes.func,
+  deleteUser: PropTypes.func,
 };

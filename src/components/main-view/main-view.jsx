@@ -46,7 +46,7 @@ constructor() {
     }
   }
  
-  /* GET movie data from DB; getMovies method is called with this.getMovies() in 'onLoggedIn', when right token for username is sent*/
+  /* GET movie data from DB; you get the movies with this.props.setMovies-Action Creator in Promise and in 'onLoggedIn', when right token for username is sent*/
   getMovies(token) {
     axios.get('https://actor-inspector.herokuapp.com/movies', {
       headers: { Authorization: `Bearer ${token}`}
@@ -102,8 +102,7 @@ constructor() {
   deleteUser(token) {
     const username = localStorage.getItem('user');
 
-    if(window.confirm('Are you sure you want to delete your user account?')) {
-      axios.delete(`https://actor-inspector.herokuapp.com/users/${username}`, {
+    axios.delete(`https://actor-inspector.herokuapp.com/users/${username}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
         .then(() => {
@@ -116,7 +115,6 @@ constructor() {
         .catch((e) => {
           console.log(e);
         });
-      }
   }
 
   removeFromFavorites(_id) {
@@ -216,7 +214,7 @@ constructor() {
               return (
               <>
               <Col>
-              <ProfileView username={username} password={password} email={email} birthdate={birthdate} favorites={favorites} movies={movies} onBackClick={() => history.goBack()} removeMovie={(_id) => this.removeFromFavorites(_id)} />
+              <ProfileView username={username} password={password} email={email} birthdate={birthdate} favorites={favorites} movies={movies} onBackClick={() => history.goBack()} deleteUser={() => this.deleteUser()} removeMovie={(_id) => this.removeFromFavorites(_id)} />
               </Col>
               </>)
             }} />       

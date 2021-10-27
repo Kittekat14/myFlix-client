@@ -22810,7 +22810,7 @@ class MainView extends _reactDefault.default.Component {
             this.getUser(accessToken);
         }
     }
-    /* GET movie data from DB; getMovies method is called with this.getMovies() in 'onLoggedIn', when right token for username is sent*/ getMovies(token) {
+    /* GET movie data from DB; you get the movies with this.props.setMovies-Action Creator in Promise and in 'onLoggedIn', when right token for username is sent*/ getMovies(token) {
         _axiosDefault.default.get('https://actor-inspector.herokuapp.com/movies', {
             headers: {
                 Authorization: `Bearer ${token}`
@@ -22857,26 +22857,24 @@ class MainView extends _reactDefault.default.Component {
         });
     }
     deleteUser(token) {
+        var _s = $RefreshSig$();
         const username = localStorage.getItem('user');
-        if (window.confirm('Are you sure you want to delete your user account?')) {
-            var _s = $RefreshSig$();
-            _axiosDefault.default.delete(`https://actor-inspector.herokuapp.com/users/${username}`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            }).then(_s(()=>{
-                _s();
-                localStorage.removeItem('user');
-                localStorage.removeItem('token');
-                alert('Your account has been deleted.');
-                const history = _reactRouterDom.useHistory();
-                history.push("/");
-            }, "9cZfZ04734qoCGIctmKX7+sX6eU=", false, function() {
-                return [_reactRouterDom.useHistory];
-            })).catch((e)=>{
-                console.log(e);
-            });
-        }
+        _axiosDefault.default.delete(`https://actor-inspector.herokuapp.com/users/${username}`, {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then(_s(()=>{
+            _s();
+            localStorage.removeItem('user');
+            localStorage.removeItem('token');
+            alert('Your account has been deleted.');
+            const history = _reactRouterDom.useHistory();
+            history.push("/");
+        }, "9cZfZ04734qoCGIctmKX7+sX6eU=", false, function() {
+            return [_reactRouterDom.useHistory];
+        })).catch((e)=>{
+            console.log(e);
+        });
     }
     removeFromFavorites(_id) {
         const username = localStorage.getItem('user');
@@ -22916,13 +22914,13 @@ class MainView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 169
+                lineNumber: 167
             },
             __self: this,
             children: /*#__PURE__*/ _jsxRuntime.jsxs(_containerDefault.default, {
                 __source: {
                     fileName: "src/components/main-view/main-view.jsx",
-                    lineNumber: 170
+                    lineNumber: 168
                 },
                 __self: this,
                 children: [
@@ -22941,7 +22939,7 @@ class MainView extends _reactDefault.default.Component {
                         },
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 171
+                            lineNumber: 169
                         },
                         __self: this
                     }),
@@ -22949,7 +22947,7 @@ class MainView extends _reactDefault.default.Component {
                         className: "main-view justify-content-md-center",
                         __source: {
                             fileName: "src/components/main-view/main-view.jsx",
-                            lineNumber: 180
+                            lineNumber: 178
                         },
                         __self: this,
                         children: [
@@ -22977,7 +22975,7 @@ class MainView extends _reactDefault.default.Component {
                                 },
                                 __source: {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 182
+                                    lineNumber: 180
                                 },
                                 __self: this
                             }),
@@ -22998,7 +22996,7 @@ class MainView extends _reactDefault.default.Component {
                                 },
                                 __source: {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 197
+                                    lineNumber: 195
                                 },
                                 __self: this
                             }),
@@ -23026,6 +23024,8 @@ class MainView extends _reactDefault.default.Component {
                                                     movies: movies,
                                                     onBackClick: ()=>history.goBack()
                                                     ,
+                                                    deleteUser: ()=>this.deleteUser()
+                                                    ,
                                                     removeMovie: (_id)=>this.removeFromFavorites(_id)
                                                 })
                                             })
@@ -23034,7 +23034,7 @@ class MainView extends _reactDefault.default.Component {
                                 },
                                 __source: {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 208
+                                    lineNumber: 206
                                 },
                                 __self: this
                             }),
@@ -23069,7 +23069,7 @@ class MainView extends _reactDefault.default.Component {
                                 },
                                 __source: {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 224
+                                    lineNumber: 222
                                 },
                                 __self: this
                             }),
@@ -23102,7 +23102,7 @@ class MainView extends _reactDefault.default.Component {
                                 },
                                 __source: {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 240
+                                    lineNumber: 238
                                 },
                                 __self: this
                             }),
@@ -23133,7 +23133,7 @@ class MainView extends _reactDefault.default.Component {
                                 },
                                 __source: {
                                     fileName: "src/components/main-view/main-view.jsx",
-                                    lineNumber: 256
+                                    lineNumber: 254
                                 },
                                 __self: this
                             })
@@ -42257,9 +42257,8 @@ class ProfileView extends _react.Component {
                     __self: this
                 }),
                 /*#__PURE__*/ _jsxRuntime.jsx(_buttonDefault.default, {
-                    onClick: ()=>{
-                        this.deleteUser();
-                    },
+                    onClick: (event)=>this.props.deleteUser(event)
+                    ,
                     __source: {
                         fileName: "src/components/profile-view/profile-view.jsx",
                         lineNumber: 76
@@ -42286,7 +42285,8 @@ ProfileView.propTypes = {
     birthdate: _propTypesDefault.default.string,
     favorites: _propTypesDefault.default.array,
     onBackClick: _propTypesDefault.default.func,
-    removeMovie: _propTypesDefault.default.func
+    removeMovie: _propTypesDefault.default.func,
+    deleteUser: _propTypesDefault.default.func
 };
 
   $parcel$ReactRefreshHelpers$58c6.postlude(module);
