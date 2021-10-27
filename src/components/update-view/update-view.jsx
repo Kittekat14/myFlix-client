@@ -24,7 +24,8 @@ export class UpdateView extends Component {
   }
 
   
-  handleUserUpdate() { 
+  handleUserUpdate = (event) => { 
+    event.preventDefault();
     const username = localStorage.getItem('user');
     const token = localStorage.getItem('token');
     const data = {
@@ -39,8 +40,10 @@ export class UpdateView extends Component {
       headers: { Authorization: `Bearer ${token}` }
     })
     .then((response) => {
+      alert("Saved Changes");
       let username = response.data.username;
       localStorage.setItem('user', username);
+      window.location.reload();
     })
     .catch(function (error) {
       console.log(error);
@@ -83,7 +86,7 @@ export class UpdateView extends Component {
     return (
       <>
 
-    <Form>
+    <Form onSubmit={(event) => { this.handleUserUpdate(event) } }>
         <h3>Update Your User Data</h3>
 
       <Form.Group className="mb-3" controlId="formUsername">
@@ -130,7 +133,7 @@ export class UpdateView extends Component {
       </Form.Group>
 
 
-      <Button type="button" onClick={ () => { this.handleUserUpdate() } }>Update your Account</Button>
+      <Button type="submit">Update your Account</Button>
 
     </Form>
 
