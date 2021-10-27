@@ -63,11 +63,12 @@ constructor() {
   onLoggedIn(authData) {
     console.log(authData);
     this.setState({
-      user: authData.user.username
+      user: authData.user.username,
     });
-    localStorage.setItem('token', authData.token);
-    localStorage.setItem('user', authData.user.username);
-    this.props.setMovies(authData.token);
+
+    localStorage.setItem("token", authData.token);
+    localStorage.setItem("user", authData.user.username);
+    this.getMovies(authData.token);
   }
 
   onLoggedOut() {
