@@ -19,8 +19,8 @@ export class ProfileView extends Component {
 
   render() {
     
-    const { movies, username, password, email, birthdate, favorites } = this.props;
-    
+    const { username, password, email, birthdate, favorites, movies } = this.props;
+    console.log(username)
     return (
      <> 
      <Row>
