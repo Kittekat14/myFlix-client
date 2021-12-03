@@ -15,7 +15,7 @@ export class MovieCard extends React.Component {
     
       <Card className="card h-100" key={movie.title}>
        
-        <Card.Img variant="top" src={movie.imageUrl} crossOrigin="true" width="300"/>
+        <Card.Img variant="top" src={movie.imageUrl} crossOrigin="anonymous" width="300"/>
 
         <Card.Body>
 
