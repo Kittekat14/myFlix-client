@@ -39,6 +39,7 @@ export default class MainView extends React.Component {
         user: localStorage.getItem('user')
       });
       this.getMovies(accessToken);
+      this.getUser(accessToken);
     }
   }
  
@@ -59,6 +60,7 @@ export default class MainView extends React.Component {
   
   /* When a user successfully logs in, this function updates the `user` property inside the state to that particular user */
   onLoggedIn(authData) {
+    console.log(authData);
     this.setState({
       user: authData.user.username
     });
@@ -161,10 +163,6 @@ export default class MainView extends React.Component {
    
     const { movies, user, username, password, email, birthdate, favorites } = this.state;
     
-    console.log(movies);
-    console.log(user);
-
-
     return (
       <Router>
 

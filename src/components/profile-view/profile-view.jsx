@@ -13,6 +13,8 @@ export class ProfileView extends Component {
     super(props);
   }
 
+
+  
   removeFavorite(_id) {
     this.props.removeMovie(_id);
   }
@@ -20,7 +22,7 @@ export class ProfileView extends Component {
   render() {
     
     const { username, password, email, birthdate, favorites, movies } = this.props;
-    console.log(username)
+    console.log(username, password, email, birthdate)
     return (
      <> 
      <Row>
