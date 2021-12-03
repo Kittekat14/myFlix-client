@@ -22924,7 +22924,7 @@ class MainView extends _reactDefault.default.Component {
     constructor(){
         super();
         this.state = {
-            user: '',
+            user: null,
             movies: [],
             favorites: [],
             username: '',
@@ -23037,7 +23037,7 @@ class MainView extends _reactDefault.default.Component {
     }
     // visual representation of main component:
     render() {
-        const { movies , user , username , password , email , birthdate , favorites  } = this.state;
+        const { user , movies , favorites , username , password , email , birthdate  } = this.state;
         console.log(movies);
         console.log(user);
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {

@@ -22,7 +22,7 @@ export default class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-      user: '',
+      user: null,
       movies: [],
       favorites: [],
       username: '',
@@ -159,7 +159,7 @@ export default class MainView extends React.Component {
   // visual representation of main component:
   render() {
    
-    const { movies, user, username, password, email, birthdate, favorites } = this.state;
+    const { user, movies, favorites, username, password, email, birthdate } = this.state;
     
     console.log(movies);
     console.log(user);
@@ -177,7 +177,7 @@ export default class MainView extends React.Component {
               )} 
             }} />
 
-        <Row className="main-view justify-content-md-center">
+              <Row className="main-view justify-content-md-center">
 
             <Route exact path="/" render={() => {
               if ( !user ) 
