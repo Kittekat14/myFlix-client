@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-export const NavBar = ({ users, onLoggedOut }) => {
+export const NavBar = ({ user, onLoggedOut }) => {
  
   const message = 'Welcome ';
   
