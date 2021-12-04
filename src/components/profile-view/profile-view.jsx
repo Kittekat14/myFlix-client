@@ -9,12 +9,7 @@ import Col from 'react-bootstrap/Col';
 
 
 export class ProfileView extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-
-  
+    
   removeFavorite(_id) {
     this.props.removeMovie(_id);
   }
