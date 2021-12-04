@@ -20,10 +20,6 @@ export class MovieView extends React.Component {
    
     const { movie, user, onBackClick, favorites } = this.props;
     
-    console.log(favorites);
-    console.log(movie);
-    console.log(user);
-    
 
     return (
     

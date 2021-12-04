@@ -22,7 +22,7 @@ export class ProfileView extends Component {
   render() {
     
     const { username, password, email, birthdate, favorites, movies } = this.props;
-    console.log(username, password, email, birthdate)
+
     return (
      <> 
      <Row>
