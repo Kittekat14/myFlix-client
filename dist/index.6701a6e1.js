@@ -22944,7 +22944,7 @@ class MainView extends _reactDefault.default.Component {
     constructor(){
         super();
         this.state = {
-            user: null,
+            user: '',
             // movies: [],
             favorites: [],
             username: '',
@@ -23062,7 +23062,7 @@ class MainView extends _reactDefault.default.Component {
         return(/*#__PURE__*/ _jsxRuntime.jsxs(_reactRouterDom.BrowserRouter, {
             __source: {
                 fileName: "src/components/main-view/main-view.jsx",
-                lineNumber: 172
+                lineNumber: 171
             },
             __self: this,
             children: [
@@ -23081,7 +23081,7 @@ class MainView extends _reactDefault.default.Component {
                     },
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 174
+                        lineNumber: 173
                     },
                     __self: this
                 }),
@@ -23089,7 +23089,7 @@ class MainView extends _reactDefault.default.Component {
                     className: "main-view justify-content-md-center",
                     __source: {
                         fileName: "src/components/main-view/main-view.jsx",
-                        lineNumber: 183
+                        lineNumber: 182
                     },
                     __self: this,
                     children: [
@@ -23113,7 +23113,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 185
+                                lineNumber: 184
                             },
                             __self: this
                         }),
@@ -23134,7 +23134,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 198
+                                lineNumber: 197
                             },
                             __self: this
                         }),
@@ -23170,7 +23170,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 209
+                                lineNumber: 208
                             },
                             __self: this
                         }),
@@ -23205,7 +23205,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 225
+                                lineNumber: 224
                             },
                             __self: this
                         }),
@@ -23238,7 +23238,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 241
+                                lineNumber: 240
                             },
                             __self: this
                         }),
@@ -23269,7 +23269,7 @@ class MainView extends _reactDefault.default.Component {
                             },
                             __source: {
                                 fileName: "src/components/main-view/main-view.jsx",
-                                lineNumber: 257
+                                lineNumber: 256
                             },
                             __self: this
                         })
