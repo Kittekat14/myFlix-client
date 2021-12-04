@@ -217,7 +217,7 @@ export default class MainView extends React.Component {
               return (
               <>
               <Col>
-              <ProfileView username={username} password={password} email={email} birthdate={birthdate} favorites={favorites} movies={movies} onBackClick={() => history.goBack()} removeMovie={(_id) => this.removeFromFavorites(_id)} />
+              <ProfileView key={username} username={username} password={password} email={email} birthdate={birthdate} favorites={favorites} movies={movies} onBackClick={() => history.goBack()} removeMovie={(_id) => this.removeFromFavorites(_id)} />
               </Col>
               </>)
             }} />       

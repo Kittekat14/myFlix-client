@@ -23163,7 +23163,7 @@ class MainView extends _reactDefault.default.Component {
                                                 onBackClick: ()=>history.goBack()
                                                 ,
                                                 removeMovie: (_id)=>this.removeFromFavorites(_id)
-                                            })
+                                            }, username)
                                         })
                                     ]
                                 }));
