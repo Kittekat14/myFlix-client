@@ -28,7 +28,7 @@ class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-      user: null,
+      // user: null,
       // movies: [],
       favorites: [],
       username: '',
