@@ -16,9 +16,9 @@ export const NavBar = ({ user, onLoggedOut }) => {
         <Navbar.Collapse className="justify-content-end">
           <Nav className="navbar">
             
-            <Nav.Item className="nav-items">{message}{`${users}`}</Nav.Item>
+            <Nav.Item className="nav-items">{message}{`${user}`}</Nav.Item>
 
-            <Link className="nav-items" to={`/profile/${users}`} >Profile</Link>
+            <Link className="nav-items" to={`/profile/${user}`} >Profile</Link>
 
             <NavDropdown className="nav-items" title="Genres" id="basic-nav-dropdown">
             
@@ -51,6 +51,6 @@ export const NavBar = ({ user, onLoggedOut }) => {
 }
 
 NavBar.propTypes = {
-  users: PropTypes.string,
+  user: PropTypes.object,
   onLoggedOut: PropTypes.func.isRequired,
 };

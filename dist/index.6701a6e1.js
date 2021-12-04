@@ -22944,7 +22944,7 @@ class MainView extends _reactDefault.default.Component {
     constructor(){
         super();
         this.state = {
-            // user: null,
+            user: null,
             // movies: [],
             favorites: [],
             username: '',
@@ -41081,12 +41081,12 @@ const NavBar = ({ user , onLoggedOut  })=>{
                                 __self: undefined,
                                 children: [
                                     message,
-                                    `${users}`
+                                    `${user}`
                                 ]
                             }),
                             /*#__PURE__*/ _jsxRuntime.jsx(_reactRouterDom.Link, {
                                 className: "nav-items",
-                                to: `/profile/${users}`,
+                                to: `/profile/${user}`,
                                 __source: {
                                     fileName: "src/components/navbar-view/navbar-view.jsx",
                                     lineNumber: 21
@@ -41262,7 +41262,7 @@ const NavBar = ({ user , onLoggedOut  })=>{
 };
 _c = NavBar;
 NavBar.propTypes = {
-    users: _propTypesDefault.default.string,
+    user: _propTypesDefault.default.object,
     onLoggedOut: _propTypesDefault.default.func.isRequired
 };
 var _c;
