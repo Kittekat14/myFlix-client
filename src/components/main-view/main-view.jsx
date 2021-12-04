@@ -6,7 +6,6 @@ import { connect } from "react-redux";
 import { setMovies } from '../../actions/actions';
 import MoviesList from "../movie-list/movie-list";
 
-
 import { BrowserRouter as Router, Route, Redirect, Link } from "react-router-dom";
 import moment from 'moment';
 import { LoginView } from "../login-view/login-view";
@@ -28,7 +27,7 @@ export default class MainView extends React.Component {
   constructor() {
     super();
     this.state = {
-      user: null,
+      user: '',
       // movies: [],
       favorites: [],
       username: '',
