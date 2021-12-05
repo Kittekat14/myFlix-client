@@ -1,6 +1,6 @@
 # myFlix-client
---> The client-side and user interface for the Movie-API and database "ActorInspector".
-Here the user can find a lot of interesting movies for their movie evening. It delivers infos about genres, directors, actors and more. The Application is connected to an MongoDB Atlas Database, where I put in all the best movies I could find! Gladly, we live in such good times, that there are movies coming out almost each day!
+The client-side and user interface for the Movie-API and database "ActorInspector".
+Here the user can find a lot of interesting movies for their movie evening. It delivers infos about genres, directors, actors and more. The Application is connected to a MongoDB Database, where I put in all the best movies I could find!
 
 ![React-Movie-App](https://user-images.githubusercontent.com/83455469/144755629-0f1d3667-2788-46e9-8324-53b0525867a0.PNG)
 
