@@ -11,7 +11,6 @@ Here the user can find a lot of interesting movies for their movie evening. It d
 ![responsive-on-phone](https://user-images.githubusercontent.com/83455469/144755875-48e08d05-7246-4155-abcc-a674f64e205a.PNG)
 
 ## User Stories:
-
 - As a user, I want to be able to access information on movies, directors, and genres so
 that I can learn more about movies I’ve watched or am interested in.
 - As a user, I want to be able to create a profile so I can save data about my favorite
@@ -26,3 +25,7 @@ movies.
 * React-Router-DOM
 * React-Redux
 * Redux
+
+## Contact me on LinkedIn or check out my other projects:
+[My Profile](https://www.linkedin.com/in/katrin-hofstetter-25b945181/).
+[My Portfolio Website](https://Kittekat14.github.io/portfolio-website).
