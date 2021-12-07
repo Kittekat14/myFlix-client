@@ -27,5 +27,5 @@ movies.
 * Redux
 
 ## Contact me on LinkedIn or check out my other projects:
-[My Profile](https://www.linkedin.com/in/katrin-hofstetter-25b945181/).
-[My Portfolio Website](https://Kittekat14.github.io/portfolio-website).
+* [My LinkedIn Profile](https://www.linkedin.com/in/katrin-hofstetter-25b945181/)
+* [My Portfolio Website](https://Kittekat14.github.io/portfolio-website)
